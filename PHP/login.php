@@ -25,7 +25,7 @@ if($link === false){
     }
     else if($row['Roli']== "Rregjistrues")
     {
-        header('location: ../HTML/Inputerpage.html');
+        header('location: ../HTML/Inputerpage.php');
     }
     else
     {

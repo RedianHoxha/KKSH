@@ -1,0 +1,76 @@
+<?php
+
+session_start();
+$user=$_SESSION['user'];
+$link = mysqli_connect("localhost", "root", "", "kksh");
+//echo $user;
+
+if($link === false){
+die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+$idkursanti = $_GET['id'];
+//echo $idkursanti;
+$kursanti = "select * from kursant where ID = '$idkursanti'";
+//echo $kursanti;
+$kursantiigjetur = mysqli_query($link, $kursanti);
+$row = mysqli_fetch_array($kursantiigjetur)
+//echo $kursanti;
+?>
+
+<!DOCTYPE html>
+    <head>
+        <title>Kryqi i Kuq Shqipetar</title>
+        <link href='../CSS/Inputerstyle.css' rel='stylesheet' />
+    </head>
+    <body>
+        <div id="Form">
+            <form action="../PHP/RuajAmzenere.php" method="POST">
+                                <div id="hello">
+                                    <p id="hello-p">Welcome :)</p>
+                                </div>
+                                <div id="emri">
+                                    <p id="emri">Emri</p>
+                                    <input class="input100" id="emri-txt" type="text" 
+                                    name="emri-txt" value="<?php echo  $row['Emri']; ?>" ><br>
+
+                                    <p id="atesia">Atesia</p>
+                                    <input class="input100" id="atesia-txt" type="text" 
+                                    name="atesia-txt" value="<?php echo  $row['Atesia']; ?>" >
+
+                                    <p id="mbiemri">Mbiemri</p>
+                                    <input class="input100" id="mbiemri-txt" type="text" 
+                                    name="mbiemri-txt" value="<?php echo  $row['Mbiemri']; ?>" ><br>
+
+                                </div>
+
+                                <div id="id">
+                                    <p id="id">ID Personale</p>
+                                    <input class="input100" id="id-txt" type="text" 
+                                    name="id-txt" value="<?php echo  $row['ID']; ?>">
+                                </div><br>
+                                <div id="datvendlindje">
+                                    <p id="datelindja">Datelindja</p>
+                                    <input class="input100" id="datelindja-txt" type="date" name="datelindja-txt" value="<?php echo  $row['Datelindja']; ?>">
+
+                                    <p id="vendbanim">Venbanim</p>
+                                    <input class="input100" id="vendbanim-txt" type="text" 
+                                    name="vendbanim-txt" value="<?php echo  $row['Vendbanimi']; ?>">
+                                </div>
+
+                                <div id="tel">
+                                    <p id="telefoni">Telefoni</p>
+                                    <input class="input100" id="tel-txt" type="text" 
+                                    name="tel-txt" value="<?php echo  $row['Telefoni']; ?>">
+                                </div><br>
+                                <div id="amza">
+                                    <p id="amza">Amza</p>
+                                    <input class="input100" id="amza-txt" type="text" 
+                                    name="amza-txt" placeholder="Amza" autocomplete="off">
+                                </div><br>
+                                <div>
+                                <button type="submit" id="rregjistro-button">Rregjistro</button>
+                            </div> 
+            </form>
+        </div>
+    </body> 
+</html>

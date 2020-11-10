@@ -14,16 +14,21 @@
         <link rel="stylesheet" type="text/css"  href="../CSS/Confirm-stilizo.css">
     </head>
     <body>
-    <div id="logout">
-            <button onclick="location.href = '../PHP/Logout.php';" id="myButton" >Dil <?php echo $user ?></button>
-        </div>
-        <div id="search">
-            <form action="Searchamza.php" method="POST"> 
+        <div id="top-page">
+            <div id="top-page-left">
+                <button onclick="location.href = '../HTML/Inputerpage.html';" id="myButton" >Rregjistro kursant te ri</button>
+                <button onclick="location.href = '../PHP/Logout.php';" id="myButton" > Dil <?php echo $user ?></button>
+            </div>
+            <div id="top-page-right">
+            <form action="Search.php" method="POST"> 
                 <input type="text" name="search" id="search" placeholder = "Search">
                 <button type="submit" id="search-button">Search</button>
             </form>
                
             </div>
+
+        </div>
+
         <table id="tabela-kursanteve" >
             <tr>
                 <th>ID</th>
@@ -35,6 +40,7 @@
                 <th>Datelindja</th>
                 <th>Amza</th>
                 <th>Data</th>
+                <th>Orari</th>
                 <th>Edito</th>
             </tr>
 
@@ -54,7 +60,9 @@
                 <td class="text-left"><?php echo $row['Datelindja']; ?></td>
                 <td class="text-left"><?php echo $row['Amza']; ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
-                <td class="text-left"><button onclick="location.href = 'Ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button></td>
+                <td class="text-left"><?php echo $row['Orari']; ?></td>
+
+                <td class="text-left"><button onclick="location.href = 'Ndryshodatenrregjistrimit.php?id=<?php echo $row['ID'];?>'" >Ndrysho</button></td>
             </tr>
             <?php } ?>
         </table>

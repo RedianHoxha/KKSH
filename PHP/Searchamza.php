@@ -4,7 +4,7 @@
             $user=$_SESSION['user'];
             $link = mysqli_connect("localhost", "root", "", "kksh");
             //echo $user;
-    
+            $fjalakyc = mysqli_real_escape_string( $link,$_POST['search']);
         if($link === false){
             die("ERROR: Could not connect. " . mysqli_connect_error());
 }?>
@@ -16,6 +16,7 @@
     <body>
     <div id="logout">
             <button onclick="location.href = '../PHP/Logout.php';" id="myButton" >Dil <?php echo $user ?></button>
+            
         </div>
         <div id="search">
             <form action="Searchamza.php" method="POST"> 
@@ -41,7 +42,8 @@
 
             <tr>
                
-               <?php $sqlquery="Select * from kursant";
+               <?php  $sqlquery="Select * from kursant where Emri = '$fjalakyc' or Mbiemri = '$fjalakyc' or Atesia = '$fjalakyc' or Vendbanimi = '$fjalakyc' 
+               or ID = '$fjalakyc'";
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { ?>
 

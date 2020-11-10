@@ -1,10 +1,25 @@
+<?php 
+            
+            session_start();
+            $user=$_SESSION['user'];
+            $link = mysqli_connect("localhost", "root", "", "kksh");
+            //echo $user;
+    
+        if($link === false){
+            die("ERROR: Could not connect. " . mysqli_connect_error());
+}?>
+
+
 <!DOCTYPE html>
 <head>
     <title>Kryqi i Kuq Shqipetar</title>
     <link href='../CSS/Inputerstyle.css' rel='stylesheet' />
 </head>
 <body>
-
+    <div id="top-page">
+        <button onclick="location.href = '../PHP/Bejndryshime.php';" id="myButton" >Bej ndryshime</button>
+        <button onclick="location.href = '../PHP/Logout.php';" id="myButton" > Dil <?php echo $user ?></button>
+    </div>
     <div id="Form">
             <form action="../PHP/Rregjistro.php" method="POST">
                         <div id="hello">
