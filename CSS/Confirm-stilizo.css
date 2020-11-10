@@ -1,0 +1,22 @@
+table, td,th {
+    border-collapse: collapse;
+    border: 3px solid red;
+  }
+
+  table{
+      margin-left: 10%;
+      margin-top: 4%;
+      width: 80%;
+  }
+
+  th{
+      text-align: center;
+      text-transform: uppercase;
+  }
+  td{
+text-align: center;
+  }
+
+  body{
+      background-color: lemonchiffon;
+  }
