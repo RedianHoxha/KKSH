@@ -16,7 +16,7 @@
     <body>
         <div id="top-page">
             <div id="top-page-left">
-                <button onclick="location.href = '../HTML/Inputerpage.html';" id="myButton" >Rregjistro kursant te ri</button>
+                <button onclick="location.href = '../HTML/Inputerpage.php';" id="myButton" >Rregjistro kursant te ri</button>
                 <button onclick="location.href = '../PHP/Logout.php';" id="myButton" > Dil <?php echo $user ?></button>
             </div>
             <div id="top-page-right">

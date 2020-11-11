@@ -6,6 +6,13 @@
     font-size: large;
     font-size: 200%;
 }
+#KKSH_logo{
+position: center;;
+    width: 13%;
+    height: 13%;
+
+}
+
 p{
     text-align: center;
     text-decoration: none;
@@ -16,22 +23,13 @@ p{
 #Form{
     width: 100%;
     text-align: center;
-
+    
 }
 
 body{
     width: auto;
     height: auto;
     background-color: wheat;
-}
-
-input{
-    width: 30%;
-    padding: 7px 10px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border-radius: 6px;
-    
 }
 
 #rregjistro-button {
@@ -44,34 +42,31 @@ input{
     cursor: pointer;
     border-radius: 4px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 2%;
   }
 
-  #dega,#orari,#roli{
-      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      height: 20%;
-    }
 
-  #emri{
+  #dega,#roli{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 20%;
+  }
+
+  label {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ 
+  }
+  #tedhenapersonale{
+      margin-top: 3%;
+  }
+  #tedhenapersonale, #tedhenalogimi,#tedhenakontakti{
       display: inline-flex;
-      width: 50%;
+      margin-top: 3%;
   }
 
-  #logim{
-      display: inline-flex;
-      width: 50%;
-  }
+  input{
 
-  #mbiemri-txt{
-      margin-left: 2%;
-     
-  }
-  #emri-txt{
-      margin-right: 2%;
+    box-sizing: border-box;
+    border-radius: 6px;
     
-  }
-  
-
-  #atesia-txt,#vendbanim-txt,#datelindja-txt{
-      margin-right: 2%;
-      margin-left: 2%;
-  }
+    
+}
