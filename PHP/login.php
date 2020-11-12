@@ -21,7 +21,7 @@ if($link === false){
    
     if($row['Roli'] == "Admin")
     {
-        header('location: Adminpage.php');
+        header('location: Adminpageconfirm.php');
     }
     else if($row['Roli']== "Rregjistrues")
     {

@@ -22,7 +22,7 @@
      
      if($resultinsert = mysqli_query($link, $shtostaf))
      {
-        header('location:../PHP/Adminpage.php');
+        header('location:../PHP/Adminpageconfirm.php');
      }
      else
      {

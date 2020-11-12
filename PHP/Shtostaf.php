@@ -17,7 +17,7 @@
 </head>
 <body>
     <div id="top-page">
-        <button onclick="location.href = '../PHP/Adminpage.php';" id="myButton" > Home</button>
+        <button onclick="location.href = '../PHP/Adminpageconfirm.php';" id="myButton" > Home</button>
         <button onclick="location.href = '../PHP/Logout.php';" id="myButton" > Dil <?php echo $user ?></button>
     </div>
     <div id="Form">
@@ -64,18 +64,12 @@
                             
                                 <label for="dega">Dega e Kursantit:</label>
                                 <select id="dega" name="dega" style="width:15%;">
-                                <option value="Tirane">Tirane</option>
-                                <option value="Durres">Durres</option>
-                                <option value="Shkoder">Shkoder</option>
-                                <option value="Trropoje">Trropoje</option>
-                                <option value="Malesi e madhe">Malesi e madhe</option>
-                                <option value="Vlore">Vlore</option>
-                                <option value="Fier">Fier</option>
-                                <option value="Lushnje">Lushnje</option>
-                                <option value="Elbasan">Elbasan</option>
-                                <option value="Librazhd">Librazhd</option>
-                                <option value="Pogradec">Pogradec</option>
-                                <option value="Korce">Korce</option>
+                                <?php $sqlquery="Select * from qyteti";
+                                    $qytetet=mysqli_query($link, $sqlquery);
+                                    while ($row = mysqli_fetch_array($qytetet)) { ?>
+
+                                <option value="<?php echo $row['EmriDeges']; ?>"><?php echo $row['EmriDeges']; ?></option>
+                                <?php } ?>
                                 </select>
                             
                         </div>
