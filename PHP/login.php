@@ -11,26 +11,51 @@ if($link === false){
 
    //echo $username, $password;
 
-   $queryekzistonuser = "select * from staf where Username= '$username' and Password= '$password';";
-   echo $queryekzistonuser;
-   $resultuseri = mysqli_query($link, $queryekzistonuser);
-   $row = mysqli_fetch_array($resultuseri);
+//    $queryekzistonuser = "select * from staf where Username= '$username' and Password= '$password';";
+//    echo $queryekzistonuser;
+//    $resultuseri = mysqli_query($link, $queryekzistonuser);
+//    $row = mysqli_fetch_array($resultuseri);
 
-   session_start();
-   $_SESSION['user']= $username;
-   
-    if($row['Roli'] == "Admin")
-    {
-        header('location: Adminpageconfirm.php');
-    }
-    else if($row['Roli']== "Rregjistrues")
-    {
-        header('location: ../HTML/Inputerpage.php');
-    }
-    else
-    {
-        header('location: Confirmpage.php');
-    }
+$queryuser ="select * from staf where Username= ? and Password= ?";
+$stmt = mysqli_stmt_init($link);
+if(!mysqli_stmt_prepare($stmt,$queryuser))
+{
+    echo  'Prove e deshtuar';
+}
+else
+{
+    mysqli_stmt_bind_param($stmt, "ss" ,$username, $password);
+    
+    mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row =mysqli_fetch_assoc($result);
+       // $numrirreshtave = $stmt->rowCount();
+        if(mysqli_num_rows($result) > 0)
+        {
 
+            session_start();
+            $_SESSION['user']= $username;
+            
+            if($row['Roli'] == "Admin")
+            {
+                header('location: Adminpageconfirm.php');
+            }
+            else if($row['Roli']== "Rregjistrues")
+            {
+                header('location: ../PHP/Inputerpage.php');
+            }
+            else
+            {
+                header('location: Confirmpage.php');
+            }
+        }
+        else
+        {
+            echo "error";
+        }
+
+    
+
+}
 
 ?>

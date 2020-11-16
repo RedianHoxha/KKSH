@@ -7,14 +7,28 @@ $link = mysqli_connect("localhost", "root", "", "kksh");
 
 if($link === false){
 die("ERROR: Could not connect. " . mysqli_connect_error());
+
 }
+
 $idkursanti = $_GET['id'];
 //echo $idkursanti;
-$kursanti = "select * from kursant where ID = '$idkursanti'";
+
+$kursanti = "select * from kursant where ID = ?;";
 //echo $kursanti;
-$kursantiigjetur = mysqli_query($link, $kursanti);
-$row = mysqli_fetch_array($kursantiigjetur)
-//echo $kursanti;
+$stmt = mysqli_stmt_init($link);
+if(!mysqli_stmt_prepare($stmt,$kursanti))
+{
+    echo  'Prove e deshtuar';
+}
+else
+{
+    mysqli_stmt_bind_param($stmt, "s" ,$idkursanti);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $row =mysqli_fetch_assoc($result);
+
+}
+
 ?>
 
 <!DOCTYPE html>

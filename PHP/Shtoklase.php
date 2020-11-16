@@ -34,7 +34,7 @@
                             <input class="input100" id="kapaciteti-txt" type="number" 
                             name="kapaciteti-txt"  autocomplete="off"><br>
                             
-                           </div><br><br> 
+                        </div><br><br> 
                         <div id="vendodhja">
                             
                                 <label for="dega">Dega:</label>

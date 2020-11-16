@@ -56,7 +56,7 @@
 
                         <div id="tel">
                             <p id="telefoni">Telefoni</p>
-                            <input class="input100" id="tel-txt" type="text" 
+                            <input class="input100" id="tel-txt" type="number" 
                             name="tel-txt" placeholder="Telefoni" autocomplete="off">
                         </div><br>
                         <div id="dega">
@@ -71,7 +71,7 @@
                             </select>
                         </div>  <br>
                         <div id="datakursit">
-                                <p id="datakursit">Data dhe Orari i Kursit</p>
+                                <p id="datakursit">Data dhe Orari i Kursit<span style="color:red">   Kontrollo orarin para se te besh rregjistrimin</span></p>
                                 <input class="input100" id="datakursit" type="date" name="datakursit"><br>
 
                                 <label for="orari"></label>

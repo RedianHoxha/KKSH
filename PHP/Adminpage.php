@@ -25,8 +25,8 @@ die("ERROR: Could not connect. " . mysqli_connect_error());
                     <button onclick="location.href = 'Shtodege.php';" id="addButton" >Shto Dege</button>
             </div>  
             <div id="filebutton">
-                <button onclick="location.href = '../HTML/Inputerpage.php';" id="myButton" >Gjenero filen e te dhenave javore</button>
-                <button onclick="location.href = '../HTML/Inputerpage.php';" id="myButton" >Gjenero filen e te dhenave mujore</button>
+                <button onclick="location.href = '../PHP/Inputerpage.php';" id="myButton" >Gjenero filen e te dhenave javore</button>
+                <button onclick="location.href = '../PHP/Inputerpage.php';" id="myButton" >Gjenero filen e te dhenave mujore</button>
 
             </div>
     </body>

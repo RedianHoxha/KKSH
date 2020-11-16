@@ -21,9 +21,9 @@
             $sqlshtoklas = "insert into klasa (Qyteti,Kapaciteti,Emri) values('$iddeges','$kapaciteti','$emriklases');";
             echo $sqlshtoklas;
     
-            if( $resultinsert = mysqli_query($link, $idklases))
+            if( $resultinsert = mysqli_query($link, $sqlshtoklas))
             {
-               //header('location: Adminpageconfirm.php');
+               header('location: Adminpageconfirm.php');
                echo "jemi ketu";
             }
             else

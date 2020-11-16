@@ -10,11 +10,22 @@ die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 $idkursanti = $_GET['id'];
 //echo $idkursanti;
-$kursanti = "select * from kursant where ID = '$idkursanti'";
+
+$kursanti = "select * from kursant where ID = ?;";
 //echo $kursanti;
-$kursantiigjetur = mysqli_query($link, $kursanti);
-$row = mysqli_fetch_array($kursantiigjetur)
-//echo $kursanti;
+$stmt = mysqli_stmt_init($link);
+if(!mysqli_stmt_prepare($stmt,$kursanti))
+{
+    echo  'Prove e deshtuar';
+}
+else
+{
+    mysqli_stmt_bind_param($stmt, "s" ,$idkursanti);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $row =mysqli_fetch_assoc($result);
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -59,11 +70,11 @@ $row = mysqli_fetch_array($kursantiigjetur)
 
                                 <div id="tel">
                                     <p id="telefoni">Telefoni</p>
-                                    <input class="input100" id="tel-txt" type="text" 
+                                    <input class="input100" id="tel-txt" type="number" 
                                     name="tel-txt" value="<?php echo  $row['Telefoni']; ?>">
                                 </div><br>
                                 <div id="datakursit">
-                                <p id="datakursit">Data dhe Orari i Kursit</p>
+                                <p id="datakursit">Data dhe Orari i Kursit<span style="color:red">   Kontrollo orarin para se te besh rregjistrimin</span></p>
                                 <input class="input100" id="datakursit" type="date" name="datakursit" value="<?php echo  $row['Datakursit']; ?>"><br>
 
                                 <label for="orari"></label>
