@@ -2,8 +2,19 @@
             
             session_start();
             $user=$_SESSION['user'];
+            //require('session.php');
+            $iduseri = $_SESSION['UserID'];
             $link = mysqli_connect("localhost", "root", "", "kksh");
-            //echo $user;
+            //echo $iduseri;
+    
+            $query = "select * from staf where ID = '$iduseri';";
+            $kursantet=mysqli_query($link, $query);
+            $row = mysqli_fetch_array($kursantet);
+            //echo $row['Roli'];
+            if($row['Roli'] <> "Konfirmues")
+            {
+                header('location: ../HTML/Homepage.html');
+            }
     
         if($link === false){
             die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -34,6 +45,7 @@
                 <th>Telefoni</th>
                 <th>Datelindja</th>
                 <th>Amza</th>
+                <th>Nr Serie </th>
                 <th>Data</th>
                 <th>Edito</th>
             </tr>
@@ -53,6 +65,7 @@
                 <td class="text-left"><?php echo $row['Telefoni']; ?></td>
                 <td class="text-left"><?php echo $row['Datelindja']; ?></td>
                 <td class="text-left"><?php echo $row['Amza']; ?></td>
+                <td class="text-left"><?php echo $row['NrSerisDeshmis']; ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
                 <td class="text-left"><button onclick="location.href = 'Ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button></td>
             </tr>

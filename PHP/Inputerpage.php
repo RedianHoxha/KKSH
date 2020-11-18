@@ -1,12 +1,42 @@
 <?php 
             
-            session_start();
-            $user=$_SESSION['user'];
-            $link = mysqli_connect("localhost", "root", "", "kksh");
-            //echo $user;
+        //     session_start();
+        //     include('session.php');
+        //     $user=$_SESSION['user'];
+        //     $link = mysqli_connect("localhost", "root", "", "kksh");
+        //     //echo $user;
+
+        //     $iduseri = $_SESSION['UserID'];
+        //     $query = "select * from staf where ID = '$iduseri';";
+        //     $kursantet=mysqli_query($link, $query);
+        //     $row = mysqli_fetch_array($kursantet);
+        //     echo $row['Roli'];
+        //     if($row['Roli'] <> "Rregjistrues")
+        //     {
+        //         header('location: ../HTML/Homepage.html');
+        //     }
     
-        if($link === false){
-            die("ERROR: Could not connect. " . mysqli_connect_error());
+        // if($link === false){
+        //     die("ERROR: Could not connect. " . mysqli_connect_error());
+
+        session_start();
+        $user=$_SESSION['user'];
+        //require('session.php');
+        $iduseri = $_SESSION['UserID'];
+        $link = mysqli_connect("localhost", "root", "", "kksh");
+        //echo $iduseri;
+
+        $query = "select * from staf where ID = '$iduseri';";
+        $kursantet=mysqli_query($link, $query);
+        $row = mysqli_fetch_array($kursantet);
+        //echo $row['Roli'];
+        if($row['Roli'] <> "Inputer")
+        {
+            header('location: ../HTML/Homepage.html');
+        }
+
+    if($link === false){
+        die("ERROR: Could not connect. " . mysqli_connect_error());
 }?>
 
 
@@ -69,7 +99,7 @@
                                 <option value="<?php echo $row['EmriDeges']; ?>"><?php echo $row['EmriDeges']; ?></option>
                                 <?php } ?>
                             </select>
-                        </div>  <br>
+                        </div> <br>
                         <div id="datakursit">
                                 <p id="datakursit">Data dhe Orari i Kursit<span style="color:red">   Kontrollo orarin para se te besh rregjistrimin</span></p>
                                 <input class="input100" id="datakursit" type="date" name="datakursit"><br>

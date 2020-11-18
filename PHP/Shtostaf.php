@@ -1,12 +1,38 @@
 <?php 
             
-            session_start();
-            $user=$_SESSION['user'];
-            $link = mysqli_connect("localhost", "root", "", "kksh");
-            //echo $user;
-    
-        if($link === false){
-            die("ERROR: Could not connect. " . mysqli_connect_error());
+        //     session_start();
+        //     //require('session.php');
+        //     $user=$_SESSION['user'];
+        //     $link = mysqli_connect("localhost", "root", "", "kksh");
+        //     //echo $user;
+        //     $query = "select * from staf where ID = '$iduseri';";
+        //     $kursantet=mysqli_query($link, $query);
+        //     $row = mysqli_fetch_array($kursantet);
+        //     if($row['Roli'] <> "Admin")
+        //     {
+        //         header('location: ../HTML/Homepage.html');
+        //     }
+
+        // if($link === false){
+        //     die("ERROR: Could not connect. " . mysqli_connect_error());
+        session_start();
+        $user=$_SESSION['user'];
+        //require('session.php');
+        $iduseri = $_SESSION['UserID'];
+        $link = mysqli_connect("localhost", "root", "", "kksh");
+        //echo $iduseri;
+
+        $query = "select * from staf where ID = '$iduseri';";
+        $kursantet=mysqli_query($link, $query);
+        $row = mysqli_fetch_array($kursantet);
+        //echo $row['Roli'];
+        if($row['Roli'] <> "Admin")
+        {
+            header('location: ../HTML/Homepage.html');
+        }
+
+    if($link === false){
+        die("ERROR: Could not connect. " . mysqli_connect_error());
 }?>
 
 

@@ -2,12 +2,22 @@
 
 session_start();
 $user=$_SESSION['user'];
+//require('session.php');
+$iduseri = $_SESSION['UserID'];
 $link = mysqli_connect("localhost", "root", "", "kksh");
-//echo $user;
+//echo $iduseri;
+
+$query = "select * from staf where ID = '$iduseri';";
+$kursantet=mysqli_query($link, $query);
+$row = mysqli_fetch_array($kursantet);
+//echo $row['Roli'];
+if($row['Roli'] <> "Konfirmues")
+{
+    header('location: ../HTML/Homepage.html');
+}
 
 if($link === false){
 die("ERROR: Could not connect. " . mysqli_connect_error());
-
 }
 
 $idkursanti = $_GET['id'];
@@ -80,6 +90,11 @@ else
                                     <p id="amza">Amza</p>
                                     <input class="input100" id="amza-txt" type="text" 
                                     name="amza-txt" placeholder="Amza" autocomplete="off">
+                                </div>
+                                <div id="deshmi">
+                                    <p id="deshmi">Nr i Seris se Deshmise</p>
+                                    <input class="input100" id="deshmi-txt" type="text" 
+                                    name="deshmi-txt" placeholder="Nr Seris se Deshmis" autocomplete="off">
                                 </div><br>
                                 <div>
                                 <button type="submit" id="rregjistro-button">Rregjistro</button>

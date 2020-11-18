@@ -1,12 +1,41 @@
 <?php 
+        //     include('Session.php');
             
-            session_start();
-            $user=$_SESSION['user'];
-            $link = mysqli_connect("localhost", "root", "", "kksh");
-            //echo $user;
+        //     session_start();
+        //     $user=$_SESSION['user'];
+        //     $iduseri = $_SESSION['UserID'];
+        //     $link = mysqli_connect("localhost", "root", "", "kksh");
+        //     //echo $user;
+        //     $query = "select * from staf where ID = '$iduseri';";
+
+        //         $kursantet=mysqli_query($link, $query);
+        //         $row = mysqli_fetch_array($kursantet);
+        //         if($row['Roli'] <> "Rregjistrues")
+        //         {
+        //             header('location: ../HTML/Homepage.html');
+        //         }
     
-        if($link === false){
-            die("ERROR: Could not connect. " . mysqli_connect_error());
+        // if($link === false){
+        //     die("ERROR: Could not connect. " . mysqli_connect_error());
+
+        session_start();
+        $user=$_SESSION['user'];
+        //require('session.php');
+        $iduseri = $_SESSION['UserID'];
+        $link = mysqli_connect("localhost", "root", "", "kksh");
+        //echo $iduseri;
+
+        $query = "select * from staf where ID = '$iduseri';";
+        $kursantet=mysqli_query($link, $query);
+        $row = mysqli_fetch_array($kursantet);
+        //echo $row['Roli'];
+        if($row['Roli'] <> "Inputer")
+        {
+            header('location: ../HTML/Homepage.html');
+        }
+
+    if($link === false){
+        die("ERROR: Could not connect. " . mysqli_connect_error());
 }?>
 <!DOCTYPE html>
     <head>
@@ -39,6 +68,7 @@
                 <th>Telefoni</th>
                 <th>Datelindja</th>
                 <th>Amza</th>
+                <th>Nr Serise Deshmise</th>
                 <th>Data</th>
                 <th>Orari</th>
                 <th>Edito</th>
@@ -59,6 +89,7 @@
                 <td class="text-left"><?php echo $row['Telefoni']; ?></td>
                 <td class="text-left"><?php echo $row['Datelindja']; ?></td>
                 <td class="text-left"><?php echo $row['Amza']; ?></td>
+                <td class="text-left"><?php echo $row['NrSerisDeshmis']; ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
                 <td class="text-left"><?php echo $row['Orari']; ?></td>
 

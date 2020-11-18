@@ -33,25 +33,32 @@ else
         if(mysqli_num_rows($result) > 0)
         {
 
-            session_start();
+           session_start();
+            $_SESSION['UserID'] = $row['ID'];
             $_SESSION['user']= $username;
             
             if($row['Roli'] == "Admin")
             {
                 header('location: Adminpageconfirm.php');
             }
-            else if($row['Roli']== "Rregjistrues")
+            else if($row['Roli' ] == "Inputer")
             {
                 header('location: ../PHP/Inputerpage.php');
             }
-            else
+            else if($row['Roli' ] == "Konfirmues")
             {
                 header('location: Confirmpage.php');
+            }
+            else
+            {
+                echo "test";
+                //header('location: ../HTML/Homepage.html');
             }
         }
         else
         {
-            echo "error";
+            echo "test posht";
+           // header('location: ../HTML/Homepage.html');
         }
 
     

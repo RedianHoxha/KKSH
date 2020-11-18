@@ -1,13 +1,26 @@
 <?php 
-            
             session_start();
             $user=$_SESSION['user'];
+            //require('session.php');
+            $iduseri = $_SESSION['UserID'];
             $link = mysqli_connect("localhost", "root", "", "kksh");
-            //echo $user;
-            $fjalakyc = mysqli_real_escape_string( $link,$_POST['search']);
+            //echo $iduseri;
+    
+            $query = "select * from staf where ID = '$iduseri';";
+            $kursantet=mysqli_query($link, $query);
+            $row = mysqli_fetch_array($kursantet);
+            //echo $row['Roli'];
+            if($row['Roli'] <> "Konfirmues")
+            {
+                header('location: ../HTML/Homepage.html');
+            }
+    
         if($link === false){
             die("ERROR: Could not connect. " . mysqli_connect_error());
-}?>
+}
+            $fjalakyc = mysqli_real_escape_string( $link,$_POST['search']);
+      
+?>
 <!DOCTYPE html>
     <head>
         <title>Kryqi i Kuq Shqipetar</title>

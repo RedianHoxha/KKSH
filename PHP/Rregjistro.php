@@ -23,7 +23,7 @@
     
     if($resultinsert = mysqli_query($link, $shtokursant))
     {
-       header('location:../HTML/Inputerpage.php');
+       header('location:../PHP/Inputerpage.php');
     }
     else
     {

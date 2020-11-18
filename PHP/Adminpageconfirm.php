@@ -1,9 +1,20 @@
 <?php
 
 session_start();
+//require('session.php');
 $user=$_SESSION['user'];
+$iduseri = $_SESSION['UserID'];
 $link = mysqli_connect("localhost", "root", "", "kksh");
+//echo $iduseri;
 //echo $user;
+
+$query = "select * from staf where ID = '$iduseri';";
+$kursantet=mysqli_query($link, $query);
+$row = mysqli_fetch_array($kursantet);
+if($row['Roli'] <> "Admin")
+{
+    header('location: ../HTML/Homepage.html');
+}
 
 if($link === false){
 die("ERROR: Could not connect. " . mysqli_connect_error());
