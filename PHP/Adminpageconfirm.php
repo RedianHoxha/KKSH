@@ -41,12 +41,10 @@ if($row['Roli'] <> "Admin")
         
                 var result = exportToExel(this.responseText);
                 saveAs(new Blob([s2ab(result)],{type:"application/octet-stream"}), qyteti+ '.xlsx');
-              
             }
             };
-            xmlhttp.open("GET","../Gjenerofile/tedhenat.php",true);
+            xmlhttp.open("GET","../Gjenerofile/tedhenat.php?dega="+ qyteti,true);
             xmlhttp.send();
-        //}
         }
         </script>
 
@@ -74,7 +72,8 @@ if($row['Roli'] <> "Admin")
 
             function exportToExel(dataSource)
             {
-                 var headers = ["ID","EMri","Mbiemri","Atesia","Datelidnje","data","orari"];
+                 var headers = ["Emri","Atesia","Mbiemri","ID","Datelindja","Nr. Rregjistrit Amza","Nr. Serisë Dëshmisë."];
+
                  var parseData  = JSON.parse(dataSource);
                  parseData.unshift(headers);
                  var qyteti =document.getElementById("dega").value;
@@ -99,9 +98,6 @@ if($row['Roli'] <> "Admin")
                return XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
             }
 
-           // 
-
-            
             function s2ab(s)
              {
             
@@ -111,13 +107,12 @@ if($row['Roli'] <> "Admin")
                 return buf;
                 
             }
-                    // $("#button-a").click(function(){
-                    // });
             
             </script>
 
             <button onclick="location.href = '../PHP';" id="myButton" >Gjenero file javore </button>
-<div id="txthint"></div>
+
+
         </div>
     </div>
     <div id="bottom">

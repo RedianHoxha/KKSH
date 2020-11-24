@@ -6,9 +6,10 @@ if($link === false){
    die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
+$degazgjedhur = $_GET['dega'];
 $jsonData = array();
 
-$sqlquery = "select * from kursant;";
+$sqlquery = "select Emri,Atesia,Mbiemri,ID,Datelindja,Amza,NrSerisDeshmis from kursant where Dega= '$degazgjedhur';";
 $resultinsert = mysqli_query($link, $sqlquery) or die(mysql_error());
 
 //$res = json_encode(mysqli_fetch_array($resultinsert));
