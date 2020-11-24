@@ -58,8 +58,19 @@
 
             <tr>
                
-               <?php $sqlquery="Select * from kursant where Emri = '$fjalakyc' or Mbiemri = '$fjalakyc' or Atesia = '$fjalakyc' or Vendbanimi = '$fjalakyc' 
-               or ID = '$fjalakyc'";
+               <?php 
+               
+               if($fjalakyc <> "")
+               {
+               
+                         $sqlquery="Select * from kursant where Emri = '$fjalakyc' or Mbiemri = '$fjalakyc' or Atesia = '$fjalakyc' or Vendbanimi = '$fjalakyc' 
+                or ID = '$fjalakyc'";
+               }
+               else
+               {
+                $sqlquery="Select * from kursant";
+               }
+
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { ?>
 

@@ -87,12 +87,12 @@ else
                                     name="tel-txt" value="<?php echo  $row['Telefoni']; ?>">
                                 </div><br>
                                 <div id="amza">
-                                    <p id="amza">Amza</p>
+                                    <p id="amza">Amza (09-989-01)</p>
                                     <input class="input100" id="amza-txt" type="text" 
                                     name="amza-txt" placeholder="Amza" autocomplete="off">
                                 </div>
                                 <div id="deshmi">
-                                    <p id="deshmi">Nr i Seris se Deshmise</p>
+                                    <p id="deshmi">Nr i Seris se Deshmise (070001)</p>
                                     <input class="input100" id="deshmi-txt" type="text" 
                                     name="deshmi-txt" placeholder="Nr Seris se Deshmis" autocomplete="off">
                                 </div><br>

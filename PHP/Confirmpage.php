@@ -45,7 +45,7 @@
                 <th>Telefoni</th>
                 <th>Datelindja</th>
                 <th>Amza</th>
-                <th>Nr Serie </th>
+                <th>Nr Serie</th>
                 <th>Data</th>
                 <th>Edito</th>
             </tr>

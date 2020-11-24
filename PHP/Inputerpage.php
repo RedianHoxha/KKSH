@@ -1,35 +1,15 @@
 <?php 
-            
-        //     session_start();
-        //     include('session.php');
-        //     $user=$_SESSION['user'];
-        //     $link = mysqli_connect("localhost", "root", "", "kksh");
-        //     //echo $user;
-
-        //     $iduseri = $_SESSION['UserID'];
-        //     $query = "select * from staf where ID = '$iduseri';";
-        //     $kursantet=mysqli_query($link, $query);
-        //     $row = mysqli_fetch_array($kursantet);
-        //     echo $row['Roli'];
-        //     if($row['Roli'] <> "Rregjistrues")
-        //     {
-        //         header('location: ../HTML/Homepage.html');
-        //     }
-    
-        // if($link === false){
-        //     die("ERROR: Could not connect. " . mysqli_connect_error());
-
         session_start();
         $user=$_SESSION['user'];
-        //require('session.php');
         $iduseri = $_SESSION['UserID'];
         $link = mysqli_connect("localhost", "root", "", "kksh");
-        //echo $iduseri;
-
+        
         $query = "select * from staf where ID = '$iduseri';";
         $kursantet=mysqli_query($link, $query);
         $row = mysqli_fetch_array($kursantet);
-        //echo $row['Roli'];
+        $degastafit = $row['Degakupunon'];
+        
+
         if($row['Roli'] <> "Inputer")
         {
             header('location: ../HTML/Homepage.html');
@@ -44,6 +24,29 @@
 <head>
     <title>Kryqi i Kuq Shqipetar</title>
     <link href='../CSS/Inputerstyle.css' rel='stylesheet' />
+
+            <script>
+        function showclass(str) {
+            
+            document.getElementById("txtHint").innerHTML = str;
+            var data = str.toString();
+
+        if (str == "") {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+            };
+            xmlhttp.open("GET","afishoklasat.php?data="+str,true);
+            xmlhttp.send();
+        }
+        }
+        </script>
+
 </head>
 <body>
     <div id="top-page">
@@ -89,29 +92,18 @@
                             <input class="input100" id="tel-txt" type="number" 
                             name="tel-txt" placeholder="Telefoni" autocomplete="off">
                         </div><br>
-                        <div id="dega">
-                            <label for="dega">Dega e Kursantit:</label>
-                            <select id="dega" name="dega" style="width:15%;">
-                            <?php $sqlquery="Select * from qyteti";
-                                    $qytetet=mysqli_query($link, $sqlquery);
-                                    while ($row = mysqli_fetch_array($qytetet)) { ?>
 
-                                <option value="<?php echo $row['EmriDeges']; ?>"><?php echo $row['EmriDeges']; ?></option>
-                                <?php } ?>
-                            </select>
-                        </div> <br>
                         <div id="datakursit">
                                 <p id="datakursit">Data dhe Orari i Kursit<span style="color:red">   Kontrollo orarin para se te besh rregjistrimin</span></p>
-                                <input class="input100" id="datakursit" type="date" name="datakursit"><br>
+                                <input class="input100" id="datakursit" type="date" name="datakursit" onchange="showclass(this.value)"><br>
 
-                                <label for="orari"></label>
-                                <select id="orari" name="orari" style="width:15%;">
-                                  <option value="paradite">9-1</option>
-                                  <option value="mesdite">1-5</option>
-                                  <option value="mbasdite">5-9</option>
-    
-                                </select>
+                                <div id="txtHint"></div>
                         </div>
+                        <div id="idkursi">
+                            <p id="idkursi">Id kursit ku do rregjistrohet kursanti</p>
+                            <input class="input100" id="idkursi" type="number" 
+                            name="idkursi" placeholder="ID Kursi" autocomplete="off">
+                        </div><br>
                         <div>
                             <button type="submit" id="rregjistro-button">Rregjistro</button>
                         </div>    

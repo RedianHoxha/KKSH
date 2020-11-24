@@ -80,12 +80,13 @@
                             <select id="roli" name="roli" style="width:15%;">
                               <option value="Inputer">Inputer</option>
                               <option value="Confirmues">Konfirmues</option>
+                              <option value="Admindege">Admin Dege</option>
                             </select>
                         </div><br><br>
                         <div id="tedhenakontakti">
                                 <p id="telefoni">Telefoni</p>
                                 <input class="input100" id="tel-txt" type="text" 
-                                name="tel-txt" placeholder="..." autocomplete="off">
+                                name="tel-txt" placeholder="..." autocomplete="off"><br>
         
                             
                                 <label for="dega">Dega e Kursantit:</label>

@@ -76,3 +76,25 @@ input{
       margin-right: 2%;
       margin-left: 2%;
   }
+
+  #txtHint{
+      text-align: center;
+      margin-left: 20%;
+  }
+
+  table, td,th {
+    border-collapse: collapse;
+    border: 3px solid red;
+  }
+
+  table{
+      width: 80%;
+  }
+
+  th{
+      text-align: center;
+      text-transform: uppercase;
+  }
+  td{
+text-align: center;
+  }

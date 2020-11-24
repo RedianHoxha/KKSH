@@ -13,10 +13,12 @@
 
     //echo $id . $amza;
 
-    $vendosamzen = "update kursant set Amza= '$amza', NrSerisDeshmis = '$seria' where ID = '$id'";
+    $vendosamzen = "update kursant set Amza= '$amza', NrSerisDeshmis = '$seria', Statusi= 'perfunduar' where ID = '$id'";
     //echo $vendosamzen;
     if($runupdetin  =mysqli_query($link, $vendosamzen))
     {
+        $quryupdetostatusinkursantit = "update organizimkursantesh set statusi = 'Perfunduar' where  idkursanti = '$id';";
+        mysqli_query($link, $quryupdetostatusinkursantit);
         header('location: Confirmpage.php');
     }
     else

@@ -13,51 +13,33 @@
     $datelindja= mysqli_real_escape_string( $link,$_POST['datelindja-txt']);
     $vendbanim= mysqli_real_escape_string( $link,$_POST['vendbanim-txt']);
     $tel= mysqli_real_escape_string( $link,$_POST['tel-txt']);
-    $dega= mysqli_real_escape_string( $link,$_POST['dega']);
     $datakursit= mysqli_real_escape_string( $link,$_POST['datakursit']);
-    $orari= mysqli_real_escape_string( $link,$_POST['orari']);
+    $idkursi= mysqli_real_escape_string( $link,$_POST['idkursi']);
 
-    $shtokursant = "insert into kursant(ID,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari)
-    values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$dega', '$datakursit','$orari');";
-    //echo $shtokursant;
+
+      $querymerrtedhena = "Select * from programijavor where idkursi = '$idkursi';";
+      $resulttedhenash = mysqli_query($link, $querymerrtedhena);
+      $rowtedhena = mysqli_fetch_array($resulttedhenash);
+
+      $idklase = $rowtedhena['idklase'];
+      $orari = $rowtedhena['orari'];
+
+
+
+   $shtokursant = "insert into kursant(ID,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari, Statusi)
+    values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$dega', '$datakursit','$orari','pabere');";
+   
     
     if($resultinsert = mysqli_query($link, $shtokursant))
     {
+       $quryshto = "insert into organizimkursantesh (idkursi, idkursanti,statusi ) values ('$idkursi','$id', 'pabere');";
+       mysqli_query($link, $quryshto);
        header('location:../PHP/Inputerpage.php');
     }
     else
     {
        echo "Dicka shkoi gabim ne rregjistrimine kursantit!";
     }
-
-   //echo gettype($tel);
-   //  echo gettype($datakursit);
-   //  $shtokursant = "insert into kursant(ID,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari)
-   //   values ( ?,?,?,?,?,?,?,?,?,?);";
-   //   //echo $shtokursant;
-   //   $stmt = mysqli_stmt_init($link);
-   //    if(!mysqli_stmt_prepare($stmt,$shtokursant))
-   //    {
-   //       echo  'Prove e deshtuar';
-   //    }
-   //    else
-   //    {
-   //       mysqli_stmt_bind_param($stmt, "ssssssssss" ,$id,$emri,$mbiemri,$atesia,$datelindja,$vendbanim,$tel,$dega,$datakursit,$orari);
-   //       mysqli_stmt_execute($stmt);
-   //        //$result = mysqli_stmt_get_result($stmt);
-   //        //$row =mysqli_fetch_assoc($result);
-   //        //echo $result;
-   //        //$rreshta =  mysqli_num_rows($result);
-         
-   //          if(!mysqli_stmt_execute($stmt))
-   //          {
-   //             header('location:../PHP/Inputerpage.php');
-   //          }
-   //          else
-   //          {
-   //             echo "Dicka shkoi gabim ne rregjistrimine kursantit!";
-   //          }
-   //    }
 
 
 
