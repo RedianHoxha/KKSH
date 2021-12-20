@@ -16,15 +16,11 @@
     $datakursit= mysqli_real_escape_string( $link,$_POST['datakursit']);
     $idkursi= mysqli_real_escape_string( $link,$_POST['idkursi']);
 
-
       $querymerrtedhena = "Select * from programijavor where idkursi = '$idkursi';";
       $resulttedhenash = mysqli_query($link, $querymerrtedhena);
       $rowtedhena = mysqli_fetch_array($resulttedhenash);
-
       $idklase = $rowtedhena['idklase'];
       $orari = $rowtedhena['orari'];
-
-
 
    $shtokursant = "insert into kursant(ID,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari, Statusi)
     values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$dega', '$datakursit','$orari','pabere');";
@@ -34,13 +30,13 @@
     {
        $quryshto = "insert into organizimkursantesh (idkursi, idkursanti,statusi ) values ('$idkursi','$id', 'pabere');";
        mysqli_query($link, $quryshto);
-       header('location:../PHP/Inputerpage.php');
+       header('location:../Inputer/Inputerpage.php');
     }
     else
     {
-       echo "Dicka shkoi gabim ne rregjistrimine kursantit!";
-    }
-
-
-
+      echo "<script>
+      alert('Something went wrong! Try again!');
+      window.location.href='../Inputer/Inputerpage.php';
+      </script>";
+    } 
 ?>

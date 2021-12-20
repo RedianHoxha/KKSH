@@ -8,17 +8,13 @@ if($link === false){
 
 $degazgjedhur = $_GET['dega'];
 $jsonData = array();
-
 $sqlquery = "select Emri,Atesia,Mbiemri,ID,Datelindja,Amza,NrSerisDeshmis from kursant where Dega= '$degazgjedhur';";
 $resultinsert = mysqli_query($link, $sqlquery) or die(mysql_error());
 
 //$res = json_encode(mysqli_fetch_array($resultinsert));
-
 while ($array = mysqli_fetch_row($resultinsert)) {
    $jsonData[] = $array;
 }
 echo json_encode($jsonData);
-
-
 ?>
 

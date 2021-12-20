@@ -1,32 +1,31 @@
 <!DOCTYPE html>
+
 <head>
     <title>Kryqi i Kuq Shqipetar</title>
     <link rel="stylesheet" type="text/css" href="../CSS/Homepage_Stilizime.css" />
 </head>
+
 <body>
 
     <img src="../Images/KKSH_logo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
-    <p id="welcome">Welcome :)</p><br>
-
+    <!-- <img src="../Images/foto1.jpg" alt="Simply Easy Learning" id="background-page"> -->
     <div id="form">
-        <form action="../PHP/login.php" method="POST">
+        <form action="../Authenticate/Login.php" method="POST">
             <div class="wrap-input100">
                 <p id="username">Username</p>
-                <input class="input100" id="username-txt" type="text" name="username" placeholder="Username" autocomplete="off">
+                <input class="input100" id="username-txt" type="text" name="username" placeholder="Username"
+                    autocomplete="off">
             </div><br>
             <div class="wrap-input100">
                 <p id="password">Password</p>
-                <input class="input100" id="password-txt" type="password" name="password" placeholder="PassWord" autocomplete="off">
+                <input class="input100" id="password-txt" type="password" name="password" placeholder="PassWord"
+                    autocomplete="off">
             </div><br>
             <div>
                 <button type="submit" id="login-button">Login</button>
             </div>
-            
-
-       
-       </form>
+        </form>
     </div>
-
-
 </body>
+
 </html>

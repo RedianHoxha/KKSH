@@ -2,6 +2,7 @@ body{
     background-color: lemonchiffon;
     width: 90%;
     height: 90%;
+    background-image: url("../Images/foto1.jpg");
 }
 
 #form{
@@ -17,6 +18,7 @@ text-align: center;
         text-shadow: 2px 2px 5px red;
         font-size: large;
 }
+
 
 #KKSH_logo{
     margin-top: 5%;
