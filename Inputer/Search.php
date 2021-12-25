@@ -84,7 +84,7 @@
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
                 <td class="text-left"><?php echo $row['Orari']; ?></td>
 
-                <td class="text-left"><button onclick="location.href = 'ndryshodatenrregjistrimit.php?id=<?php echo $row['ID'];?>'" >Ndrysho</button></td>
+                <td class="text-left"><button onclick="location.href = 'ndryshodatenrregjistrimit.php?id=<?php echo $row['ID'];?>'" >Ndrysho</button><button onclick="location.href = '../php/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
             </tr>
             <?php } ?>
         </table>
