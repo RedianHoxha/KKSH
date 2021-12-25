@@ -62,7 +62,7 @@
                 <td class="text-left"><?php echo $row['Amza']; ?></td>
                 <td class="text-left"><?php echo $row['NrSerisDeshmis']; ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
-                <td class="text-left"><button onclick="location.href = 'Ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button></td>
+                <td class="text-left"><button onclick="location.href = '../php/Ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button></td>
             </tr>
             <?php } ?>
         </table>

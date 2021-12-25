@@ -5,9 +5,16 @@
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
 
-    $id= mysqli_real_escape_string( $link,$_POST['id-txt']);
-    $amza= mysqli_real_escape_string( $link,$_POST['amza-txt']);
-    $seria= mysqli_real_escape_string( $link,$_POST['deshmi-txt']);
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+      }
+
+    $id= test_input(mysqli_real_escape_string( $link,$_POST['id-txt']));
+    $amza= test_input(mysqli_real_escape_string( $link,$_POST['amza-txt']));
+    $seria=test_input( mysqli_real_escape_string( $link,$_POST['deshmi-txt']));
 
     $vendosamzen = "update kursant set Amza= '$amza', NrSerisDeshmis = '$seria', Statusi= 'perfunduar' where ID = '$id'";
     

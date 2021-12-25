@@ -5,10 +5,18 @@
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
 
-    $id= mysqli_real_escape_string( $link,$_POST['id-txt']);
-    $datakursit= mysqli_real_escape_string( $link,$_POST['datakursit']);
-    $orari = mysqli_real_escape_string( $link,$_POST['orari']);
-    $tel   =mysqli_real_escape_string( $link,$_POST['tel-txt']);
+    
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+      }
+
+    $id= test_input(mysqli_real_escape_string( $link,$_POST['id-txt']));
+    $datakursit= test_input(mysqli_real_escape_string( $link,$_POST['datakursit']));
+    $orari = test_input(mysqli_real_escape_string( $link,$_POST['orari']));
+    $tel = test_input(mysqli_real_escape_string( $link,$_POST['tel-txt']));
 
     $vendosamzen = "update kursant set Datakursit = '$datakursit', ORari = '$orari', Telefoni = '$tel' where ID = '$id'";
     if($runupdetin  =mysqli_query($link, $vendosamzen))

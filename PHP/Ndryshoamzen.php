@@ -41,6 +41,10 @@
         <link href='../CSS/Inputerstyle.css' rel='stylesheet' />
     </head>
     <body>
+    <div id="top-page">
+        <button onclick="location.href = '../confirm/ConfirmPage.php';" id="myButton" >Ktheu</button>
+        <button onclick="location.href = '../Authenticate/Logout.php';" id="myButton" > Dil <?php echo $user ?></button>
+    </div>
         <div id="Form">
             <form action="RuajAmzeneRe.php" method="POST">
                 <div id="hello">

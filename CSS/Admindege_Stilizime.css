@@ -29,23 +29,9 @@ p{
 
 #KKSH_logo{
     margin-top: 5%;
-    margin-left: 43.5%;
-    width: 13%;
-    height: 13%;
-
-}
-#save-button{
-    border-radius: 8px;
-    width: 10%;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: large;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-decoration: none;
-    background-color: red;
-    border: none;
-    padding: 10px 16px;
-
+    margin-left: 40%;
+    width: 20%;
+    height: 20%;
 
 }
 
@@ -61,5 +47,19 @@ input{
 #instruktori,#klasa{
 
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    height: 20%;
+  
 }
+
+table, td,th {
+    border-collapse: collapse;
+    border: 3px solid red;
+    text-align: center;
+  }
+
+  td{
+      width: 10%;
+  }
+
+  table{
+      margin-left: 17%;
+  }

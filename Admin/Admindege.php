@@ -31,53 +31,56 @@
     <link rel="stylesheet" type="text/css" href="../CSS/Admindege_Stilizime.css" />
 </head>
 <body>
-    
-<button onclick="location.href = '../Authenticate/Logout.php';" id="myButton" > Dil <?php echo $user ?></button><br>
+
+    <button onclick="location.href = '../Authenticate/Logout.php';" id="myButton" > Dil <?php echo $user ?></button><br>
+    <div id="add_button">
+             <button onclick="location.href = 'shtoplanifikim.php';" id="addbutton" >Shto Planifikim</button>
+        </div>
     <img src="../Images/KKSH_logo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
+
     <p id="welcome">Welcome</p><br>
-    <div id="form">
-        <form action="../DAO/RregjistroTimeTable.php" method="POST">
-            <div id="instruktori">
-                <label for="instruktori">Instruktori:</label>
-                    <select id="instruktori" name="instruktori" style="width:15%;">
-                    <?php 
-                        $sqlqueryinstruktori="Select * from staf where Degakupunon = '$dega'";
-                        $instruktoret=mysqli_query($link, $sqlqueryinstruktori);
-                        while ($row = mysqli_fetch_array($instruktoret)) { 
-                    ?>
-                    <option value="<?php echo $row['ID']; ?>"><?php echo $row['Emri']?> <?php echo $row['Mbiemri']?></option>
-                    <?php } ?>
-                    </select>
-            </div>
-            <br>
-            <div id="klasa">
-                <label for="klasa">Klasa:</label>
-                    <select id="klasa" name="klasa" style="width:15%;">
-                    <?php 
-                        $sqlklasa="Select * from klasa where Qyteti = '$idqyteti'";
-                        $klasa=mysqli_query($link, $sqlklasa);
-                        while ($row = mysqli_fetch_array($klasa)) { 
-                    ?>
-                    <option value="<?php echo $row['ID']; ?>"><?php echo $row['Emri']?></option>
-                    <?php } ?>
-                    </select>
-            </div>
-            <div id="datakursit">
-                <p id="datakursit">Data dhe Orari i Kursit</p>
-                <input class="input100" id="datakursit" type="date" name="datakursit"><br>
 
-                <label for="orari"></label>
-                <select id="orari" name="orari" style="width:15%;">
-                  <option value="paradite">9-1</option>
-                  <option value="mesdite">1-5</option>
-                  <option value="mbasdite">5-9</option>
+    <div id="organisation_table">
+        
+        <div id="tabela">
+        <table id="organizim_javor">  
+                    <tr>
+                        <th>Klasa</th>
+                        <th>Instruktori</th>
+                        <th>Orari</th>
+                        <th>Data</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <?php 
+                        $firstday = date('Y-m-d', strtotime("monday -1 week"));
+                        $lastday = date('Y-m-d', strtotime("sunday 0 week"));
+                        $sqlquery="SELECT * FROM `programijavor` WHERE data BETWEEN '$firstday' AND '$lastday' ORDER BY data ASC;";
+                        echo "<script>console.log('Debug Objects: " . $sqlquery .  "' );</script>";
+                        $kursantet=mysqli_query($link, $sqlquery);
+                        while ($row = mysqli_fetch_array($kursantet)) { 
 
-                </select>
-        </div><br>  
-            <div>
-                <button type="submit" id="save-button">Rregjistro</button>
-            </div> 
-       </form>
+                            $idKlase = $row['idklase'];
+                            $sqlKlasa = "SELECT * FROM klasa where ID = '$idKlase';";
+                            $klasa = mysqli_query($link, $sqlKlasa);
+                            $rowKlasa = mysqli_fetch_array($klasa);
+                            
+                            $idInstruktori = $row['idinstruktori'];
+                            $sqlInstruktori = "SELECT * FROM staf where ID =  '$idInstruktori';";
+                            $instruktori = mysqli_query($link, $sqlInstruktori);
+                            $rowInstruktori = mysqli_fetch_array($instruktori);
+                            ?> 
+
+                        <td><?php echo $rowKlasa['Emri']; ?></td>
+                        <td><?php echo $rowInstruktori['Emri']; ?>  <?php echo $rowInstruktori['Mbiemri']; ?></td>
+                        <td><?php echo $row['orari']; ?></td>
+                        <td><?php echo $row['data']; ?></td>
+                        <td class="text-left"><button onclick="location.href = '../php/ndryshoplanifikim.php?id=<?php echo $row['idkursi'];?>'" >Modifiko</button></td>
+                    </tr> 
+                    <?php } ?>
+                </table>
+
+        </div>
     </div>
 </body>
 </html>

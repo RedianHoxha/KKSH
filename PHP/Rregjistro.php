@@ -6,15 +6,23 @@
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
 
-    $emri= mysqli_real_escape_string( $link,$_POST['emri-txt']);
-    $mbiemri= mysqli_real_escape_string( $link,$_POST['mbiemri-txt']);
-    $atesia= mysqli_real_escape_string( $link,$_POST['atesia-txt']);
-    $id= mysqli_real_escape_string( $link,$_POST['id-txt']);
-    $datelindja= mysqli_real_escape_string( $link,$_POST['datelindja-txt']);
-    $vendbanim= mysqli_real_escape_string( $link,$_POST['vendbanim-txt']);
-    $tel= mysqli_real_escape_string( $link,$_POST['tel-txt']);
-    $datakursit= mysqli_real_escape_string( $link,$_POST['datakursit']);
-    $idkursi= mysqli_real_escape_string( $link,$_POST['idkursi']);
+
+    function test_input($data) {
+      $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
+      return $data;
+    }
+
+    $emri= test_input(mysqli_real_escape_string( $link,$_POST['emri-txt']));
+    $mbiemri= test_input(mysqli_real_escape_string( $link,$_POST['mbiemri-txt']));
+    $atesia= test_input(mysqli_real_escape_string( $link,$_POST['atesia-txt']));
+    $id=test_input( mysqli_real_escape_string( $link,$_POST['id-txt']));
+    $datelindja= test_input(mysqli_real_escape_string( $link,$_POST['datelindja-txt']));
+    $vendbanim= test_input(mysqli_real_escape_string( $link,$_POST['vendbanim-txt']));
+    $tel= test_input(mysqli_real_escape_string( $link,$_POST['tel-txt']));
+    $datakursit=test_input( mysqli_real_escape_string( $link,$_POST['datakursit']));
+    $idkursi=test_input( mysqli_real_escape_string( $link,$_POST['idkursi']));
 
       $querymerrtedhena = "Select * from programijavor where idkursi = '$idkursi';";
       $resulttedhenash = mysqli_query($link, $querymerrtedhena);

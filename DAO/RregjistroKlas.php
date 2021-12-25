@@ -4,9 +4,15 @@
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-    $emriklases= mysqli_real_escape_string( $link,$_POST['emriklases-txt']);
-    $kapaciteti= mysqli_real_escape_string( $link,$_POST['kapaciteti-txt']);
-    $dega= mysqli_real_escape_string( $link,$_POST['dega']);
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+    $emriklases= test_input(mysqli_real_escape_string( $link,$_POST['emriklases-txt']));
+    $kapaciteti=test_input(mysqli_real_escape_string( $link,$_POST['kapaciteti-txt']));
+    $dega= test_input(mysqli_real_escape_string( $link,$_POST['dega']));
 
     $idklases = "select * from qyteti where EmriDeges = '$dega';";
     $resultinsert = mysqli_query($link, $idklases);

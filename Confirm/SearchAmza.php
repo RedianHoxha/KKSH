@@ -17,7 +17,14 @@
     {
         die("ERROR: Could not connect. " . mysqli_connect_error());
     }
-    $fjalakyc = mysqli_real_escape_string( $link,$_POST['search']);
+
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+      }
+    $fjalakyc = test_input(mysqli_real_escape_string( $link,$_POST['search']));
 ?>
 <!DOCTYPE html>
     <head>
@@ -48,7 +55,7 @@
                 <th>Edito</th>
             </tr>
             <tr>   
-               <?php  $sqlquery="Select * from kursant where Emri = '$fjalakyc' or Mbiemri = '$fjalakyc' or Atesia = '$fjalakyc' or Vendbanimi = '$fjalakyc' 
+               <?php  $sqlquery="Select * from kursant where Emri LIKE '%{$fjalakyc}%' or Mbiemri LIKE '%{$fjalakyc}%' or Atesia LIKE '%{$fjalakyc}%' or Vendbanimi LIKE '%{$fjalakyc}%' 
                or ID = '$fjalakyc'";
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { ?>

@@ -13,7 +13,13 @@
         window.location.href='../HTML/Homepage.html';
         </script>";
     }
-    $fjalakyc= mysqli_real_escape_string( $link,$_POST['search']);
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+      }
+    $fjalakyc= test_input(mysqli_real_escape_string( $link,$_POST['search']));
 
     if($link === false)
     {
@@ -28,7 +34,7 @@
     <body>
         <div id="logout">
             <button onclick="location.href = '../Authenticate/Logout.php';" id="myButton" >Dil <?php echo $user ?></button>
-            <button onclick="location.href = '../PHP/BejNdryshime.php';" id="myButton" >Ktheu</button>
+            <button onclick="location.href = 'BejNdryshime.php';" id="myButton" >Ktheu</button>
         </div>
         <div id="search">
             <form action="Search.php" method="POST"> 
@@ -56,7 +62,7 @@
                
                if($fjalakyc <> "")
                {
-                 $sqlquery="Select * from kursant where Emri = '$fjalakyc' or Mbiemri = '$fjalakyc' or Atesia = '$fjalakyc' or Vendbanimi = '$fjalakyc' 
+                 $sqlquery="Select * from kursant where Emri LIKE '%{$fjalakyc}%' or Mbiemri LIKE '%{$fjalakyc}%' or Atesia LIKE '%{$fjalakyc}%' or Vendbanimi LIKE '%{$fjalakyc}%' 
                 or ID = '$fjalakyc'";
                }
                else

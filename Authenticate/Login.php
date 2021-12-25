@@ -6,7 +6,13 @@ if($link === false){
    die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-   $username= mysqli_real_escape_string( $link,$_POST['username']);
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+   $username= test_input(mysqli_real_escape_string( $link,$_POST['username']));
    $password=mysqli_real_escape_string( $link,$_POST['password']);
 
 $queryuser ="select * from staf where Username= ? and Password= ?";
@@ -46,6 +52,10 @@ else
             else if($row['Roli' ] == "Admindege")
             {
                 header('location: ../Admin/Admindege.php');
+            }
+            else if($row['Roli' ] == "webrole")
+            {
+                header('location: ../web/webpage.html');
             }
             else
             {
