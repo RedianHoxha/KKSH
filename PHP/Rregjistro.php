@@ -38,13 +38,13 @@
     {
        $quryshto = "insert into organizimkursantesh (idkursi, idkursanti,statusi ) values ('$idkursi','$id', 'pabere');";
        mysqli_query($link, $quryshto);
-       header('location:../Inputer/Inputerpage.php');
+       header('location:../inputer/inputerpage.php');
     }
     else
     {
       echo "<script>
       alert('Something went wrong! Try again!');
-      window.location.href='../Inputer/Inputerpage.php';
+      window.location.href='../inputer/inputerpage.php';
       </script>";
     } 
 ?>

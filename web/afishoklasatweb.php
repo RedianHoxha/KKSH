@@ -6,11 +6,9 @@ if (!$link) {
 }
 
 $dataZgjedhur = $_GET['data'];
-
 mysqli_select_db($link,"ajax_demo");
 
 ?>
-
 <!DOCTYPE html>
 <body>
 <table id="tabela-kursanteve" >
@@ -23,7 +21,6 @@ mysqli_select_db($link,"ajax_demo");
     <th>Zgjidh</th>
   </tr>
   <tr>
-
   <?php 
   $sql="SELECT * FROM programijavor WHERE data = '".$dataZgjedhur."'";
 
@@ -55,14 +52,12 @@ mysqli_select_db($link,"ajax_demo");
               <td class="text-left"><input type="radio" name="select" value="<?php echo $idKursi ?>">Choose</radio></td>
             </tr>
           <?php 
-        
           }
         }
           else
           {
               echo "Nuk ka kurse ne kete date";
           }
- ?>
-      
+ ?>   
 </table>
 </body>

@@ -21,7 +21,7 @@ if(!mysqli_stmt_prepare($stmt,$queryuser))
 {
     echo "<script>
         alert('Retry');
-        window.location.href='../HTML/Homepage.html';
+        window.location.href='../html/homepage.html';
         </script>";
 }
 else
@@ -39,19 +39,19 @@ else
             
             if($row['Roli'] == "Admin")
             {
-                header('location: ../Admin/Adminpageconfirm.php');
+                header('location: ../admin/adminpageconfirm.php');
             }
             else if($row['Roli' ] == "Inputer")
             {
-                header('location: ../Inputer/InputerPage.php');
+                header('location: ../inputer/inputerpage.php');
             }
             else if($row['Roli' ] == "Konfirmues")
             {
-                header('location: ../Confirm/ConfirmPage.php');
+                header('location: ../confirm/confirmpage.php');
             }
             else if($row['Roli' ] == "Admindege")
             {
-                header('location: ../Admin/Admindege.php');
+                header('location: ../admin/admindege.php');
             }
             else if($row['Roli' ] == "webrole")
             {
@@ -59,14 +59,14 @@ else
             }
             else
             {
-                header('location: ../HTML/Homepage.html');
+                header('location: ../html/homepage.html');
             }
         }
         else
         {
             echo "<script>
             alert('Login failed! Username or Password wrong');
-            window.location.href='../HTML/Homepage.html';
+            window.location.href='../html/homepage.html';
             </script>";
         }
 }

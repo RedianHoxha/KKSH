@@ -22,13 +22,13 @@
     {
         $quryupdetostatusinkursantit = "update organizimkursantesh set statusi = 'Perfunduar' where  idkursanti = '$id';";
         mysqli_query($link, $quryupdetostatusinkursantit);
-        header('location: ../Confirm/Confirmpage.php');
+        header('location: ../confirm/confirmpage.php');
     }
     else
     {
         echo "<script>
         alert('Something went wrong! Try again!');
-        window.location.href='../Inputer/Inputerpage.php';
+        window.location.href='../confirm/confirmpage.php';
         </script>";
     }
 ?>

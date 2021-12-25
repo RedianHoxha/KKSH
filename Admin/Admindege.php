@@ -13,7 +13,7 @@
             {
                 echo "<script>
                 alert('You don't have access to see this page! Session Failed!');
-                window.location.href='../HTML/Homepage.html';
+                window.location.href='../html/homepage.html';
                 </script>";
             }
             $queryqyteti = "select * from qyteti where EmriDeges = '$dega';";
@@ -28,15 +28,15 @@
 <!DOCTYPE html>
 <head>
     <title>Kryqi i Kuq Shqiptar</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/Admindege_Stilizime.css" />
+    <link rel="stylesheet" type="text/css" href="../css/admindegestilizime.css" />
 </head>
 <body>
 
-    <button onclick="location.href = '../Authenticate/Logout.php';" id="myButton" > Dil <?php echo $user ?></button><br>
+    <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo $user ?></button><br>
     <div id="add_button">
              <button onclick="location.href = 'shtoplanifikim.php';" id="addbutton" >Shto Planifikim</button>
         </div>
-    <img src="../Images/KKSH_logo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
+    <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
 
     <p id="welcome">Welcome</p><br>
 

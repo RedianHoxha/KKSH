@@ -14,7 +14,7 @@ if($row['Roli'] <> "Inputer")
 {
     echo "<script>
     alert('You don't have access to see this page! Session Failed!');
-    window.location.href='../HTML/Homepage.html';
+    window.location.href='../html/homepage.html';
     </script>";
 }
 
@@ -49,16 +49,16 @@ else
 <!DOCTYPE html>
 <head>
     <title>Kryqi i Kuq Shqiptar</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/Admindege_Stilizime.css" />
+    <link rel="stylesheet" type="text/css" href="../css/admindegestilizime.css" />
 </head>
 <body>
     
-<button onclick="location.href = '../admin/Admindege.php';" id="myButton" > Ktheu</button>
-<button onclick="location.href = '../Authenticate/Logout.php';" id="myButton" > Dil <?php echo $user ?></button><br>
-<img src="../Images/KKSH_logo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
+<button onclick="location.href = '../admin/admindege.php';" id="myButton" > Ktheu</button>
+<button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo $user ?></button><br>
+<img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
     <p id="welcome">Welcome</p><br>
     <div id="form">
-        <form action="../DAO/modifikotimetable.php?edit=<?php echo $idPlanifikimi ?>" method="POST">
+        <form action="../dao/modifikotimetable.php?edit=<?php echo $idPlanifikimi ?>" method="POST">
             <div id="instruktori">
                 <label for="instruktori">Instruktori:</label>
                     <select id="instruktori" name="instruktori" style="width:15%;">

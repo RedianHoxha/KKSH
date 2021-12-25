@@ -13,7 +13,7 @@
         {
             echo "<script>
             alert('You don't have access to see this page! Session Failed!');
-            window.location.href='../HTML/Homepage.html';
+            window.location.href='../html/homepage.html';
             </script>";
         }
     if($link === false){
@@ -24,7 +24,7 @@
 <!DOCTYPE html>
 <head>
     <title>Kryqi i Kuq Shqipetar</title>
-    <link href='../CSS/Inputerstyle.css' rel='stylesheet' />
+    <link href='../css/inputerstyle.css' rel='stylesheet' />
 
         <script>
             function showclass(str) 
@@ -53,11 +53,11 @@
 </head>
 <body>
     <div id="top-page">
-        <button onclick="location.href = '../Inputer/BejNdryshime.php';" id="myButton" >Bej ndryshime</button>
-        <button onclick="location.href = '../Authenticate/Logout.php';" id="myButton" > Dil <?php echo $user ?></button>
+        <button onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Bej ndryshime</button>
+        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo $user ?></button>
     </div>
     <div id="Form">
-            <form action="../PHP/Rregjistro.php" method="POST">
+            <form action="../php/rregjistro.php" method="POST">
                 <div id="hello">
                     <p id="hello-p">Welcome :)</p>
                 </div>

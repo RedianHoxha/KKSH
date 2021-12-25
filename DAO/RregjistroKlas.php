@@ -23,21 +23,21 @@ function test_input($data) {
         $sqlshtoklas = "insert into klasa (Qyteti,Kapaciteti,Emri) values('$iddeges','$kapaciteti','$emriklases');";
         if( $resultinsert = mysqli_query($link, $sqlshtoklas))
         {
-            header('location: ../Admin/Adminpageconfirm.php');
+            header('location: ../admin/adminpageconfirm.php');
         }
         else
         {
             echo "<script>
-            alert('Something went wrong! Try agaoin');
-            window.location.href='../Admin/Adminpageconfirm.php';
+            alert('Something went wrong! Try again! ');
+            window.location.href='../admin/adminpageconfirm.php';
             </script>";
         }
     }
     else
     {
         echo "<script>
-        alert('Something went wrong! Try again');
-        window.location.href='../Admin/Adminpageconfirm.php';
+        alert('Something went wrong! Try again! Klasa doesnt exist');
+        window.location.href='../admin/adminpageconfirm.php';
         </script>";
     }
 ?>

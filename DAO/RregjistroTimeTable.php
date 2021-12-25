@@ -21,13 +21,13 @@ function test_input($data) {
 
     if($resultinsert = mysqli_query($link, $queryshtoprogram))
     {
-       header('location:../Admin/Admindege.php');
+       header('location:../admin/admindege.php');
     }
     else
     {
       echo "<script>
       alert('Something went wrong! Try again');
-      window.location.href='../Admin/Adminpageconfirm.php';
+      window.location.href='../admin/adminpageconfirm.php';
       </script>";
   }
 ?>

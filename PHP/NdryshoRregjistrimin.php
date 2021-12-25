@@ -12,7 +12,7 @@ if($row['Roli'] <> "Inputer")
 {
     echo "<script>
     alert('You don't have access to see this page! Session Failed!');
-    window.location.href='../HTML/Homepage.html';
+    window.location.href='../html/homepage.html';
     </script>";
 }
 
@@ -39,11 +39,11 @@ else
 <!DOCTYPE html>
     <head>
         <title>Kryqi i Kuq Shqipetar</title>
-        <link href='../CSS/Inputerstyle.css' rel='stylesheet' />
+        <link href='../css/inputerstyle.css' rel='stylesheet' />
     </head>
     <body>
         <div id="Form">
-            <form action="../PHP/RuajNdryshimet.php" method="POST">
+            <form action="../php/ruajndryshimet.php" method="POST">
                 <div id="hello">
                     <p id="hello-p">Welcome :)</p>
                 </div>

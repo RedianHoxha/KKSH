@@ -21,13 +21,13 @@
     $vendosamzen = "update kursant set Datakursit = '$datakursit', ORari = '$orari', Telefoni = '$tel' where ID = '$id'";
     if($runupdetin  =mysqli_query($link, $vendosamzen))
     {
-        header('location: ../Inputer/BejNdryshime.php');
+        header('location: ../inputer/bejndryshime.php');
     }
     else
     {
         echo "<script>
         alert('Something went wrong! Try again!');
-        window.location.href='../Inputer/Inputerpage.php';
+        window.location.href='../inputer/inputerpage.php';
         </script>";
     }
 ?>

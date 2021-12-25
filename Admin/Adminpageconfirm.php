@@ -14,7 +14,7 @@ if($row['Roli'] <> "Admin")
 {
     echo "<script>
     alert('You don't have access to see this page! Session Failed!');
-    window.location.href='../HTML/Homepage.html';
+    window.location.href='../html/homepage.html';
     </script>";
 }
 ?>
@@ -22,8 +22,8 @@ if($row['Roli'] <> "Admin")
 <!DOCTYPE html>
 <head>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-        <script lang="javascript" src="../Gjenerofile/xlsx.full.min.js"></script>
-        <script lang="javascript" src="../Gjenerofile/FileSaver.js"></script>
+        <script lang="javascript" src="../gjenerofile/xlsx.full.min.js"></script>
+        <script lang="javascript" src="../gjenerofile/FileSaver.js"></script>
         <script>
             function showclass() {
                 var qyteti =document.getElementById("dega").value;
@@ -40,19 +40,19 @@ if($row['Roli'] <> "Admin")
                     saveAs(new Blob([s2ab(result)],{type:"application/octet-stream"}), qyteti+'-'+today + '.xlsx');
                 }
                 };
-                xmlhttp.open("GET","../Gjenerofile/tedhenat.php?dega="+ qyteti,true);
+                xmlhttp.open("GET","../gjenerofile/tedhenat.php?dega="+ qyteti,true);
                 xmlhttp.send();
             }
         </script>
 
 
 <title>Kryqi i Kuq Shqiptar</title>
-<link rel="stylesheet" type="text/css" href="../CSS/Admintestimecss.css" />
+<link rel="stylesheet" type="text/css" href="../css/admintestimecss.css" />
 </head>
 <body>
     <div id="top">
         <div id="logout">
-            <button onclick="location.href = '../Authenticate/Logout.php';" id="myButton" >Dil <?php echo $user ?></button>                               <label for="dega">Dega:</label>
+            <button onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo $user ?></button>                               <label for="dega">Dega:</label>
             <select id="dega" name="dega" style="width:15%;">
                     <?php $sqlquery="Select * from qyteti";
                         $qytetet=mysqli_query($link, $sqlquery);
@@ -94,14 +94,14 @@ if($row['Roli'] <> "Admin")
                 }
             </script>
 
-            <button onclick="location.href = '../PHP';" id="myButton" >Gjenero file javore </button>
+            <button onclick="location.href = '../php';" id="myButton" >Gjenero file javore </button>
         </div>
     </div>
 
     <div id="bottom">
         <div id="Staf">
             <div>
-              <button onclick="location.href = 'ShtoStaf.php';" id="addbutton" >Shto Staf</button>
+              <button onclick="location.href = 'shtostaf.php';" id="addbutton" >Shto Staf</button>
             </div>
             <div id="tabela">
                 <table id="stafi">  
@@ -131,7 +131,7 @@ if($row['Roli'] <> "Admin")
         </div>
         <div id="Dege">
                <div>
-                    <button onclick="location.href = 'ShtoDege.php';" id="addButton" >Shto Dege</button> 
+                    <button onclick="location.href = 'shtodege.php';" id="addButton" >Shto Dege</button> 
                </div>
             <div id="tabela">
                     <table id="dega">  
@@ -151,7 +151,7 @@ if($row['Roli'] <> "Admin")
         <div id="Klase">
             <div id="tabela">
                 <div>
-                 <button onclick="location.href = 'ShtoKlase.php';" id="addButton" >Shto Klase</button>
+                 <button onclick="location.href = 'shtoklase.php';" id="addButton" >Shto Klase</button>
                 </div>
                 <table id="klasa">  
                     <tr>

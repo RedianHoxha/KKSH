@@ -11,7 +11,7 @@
         {
             echo "<script>
             alert('You don't have access to see this page! Session Failed!');
-            window.location.href='../HTML/Homepage.html';
+            window.location.href='../html/homepage.html';
             </script>";
         }
     if($link === false){
@@ -21,17 +21,17 @@
 <!DOCTYPE html>
 <head>
     <title>Kryqi i Kuq Shqiptar</title>
-   <link href='../CSS/Shtostafstyle.css' rel='stylesheet' /> 
+   <link href='../css/shtostafstyle.css' rel='stylesheet' /> 
 </head>
 <body>
     <div id="top-page">
-        <button onclick="location.href = 'Adminpageconfirm.php';" id="myButton" > Home</button>
-        <button onclick="location.href = '../Authenticate/Logout.php';" id="myButton" > Dil <?php echo $user ?></button>
+        <button onclick="location.href = 'adminpageconfirm.php';" id="myButton" > Home</button>
+        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo $user ?></button>
     </div>
     <div id="Form">
-        <form action="../DAO/RregjistroStaf.php" method="POST">
+        <form action="../dao/rregjistrostaf.php" method="POST">
             <div id="hello">
-                <img src="../Images/KKSH_logo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
+                <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
             </div>
             <div id="tedhenapersonale">
                 <p id="emri">Emri</p>

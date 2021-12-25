@@ -10,7 +10,7 @@
     {
         echo "<script>
         alert('You don't have access to see this page! Session Failed!');
-        window.location.href='../HTML/Homepage.html';
+        window.location.href='../html/homepage.html';
         </script>";
     }
     if($link === false)
@@ -21,11 +21,11 @@
 <!DOCTYPE html>
     <head>
         <title>Kryqi i Kuq Shqipetar</title>
-        <link rel="stylesheet" type="text/css"  href="../CSS/Confirm-stilizo.css">
+        <link rel="stylesheet" type="text/css"  href="../css/confirmstilizo.css">
     </head>
     <body>
     <div id="logout">
-            <button onclick="location.href = '../Authenticate/Logout.php';" id="myButton" >Dil <?php echo $user ?></button>
+            <button onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo $user ?></button>
         </div>
         <div id="search">
             <form action="SearchAmza.php" method="POST"> 
@@ -62,7 +62,7 @@
                 <td class="text-left"><?php echo $row['Amza']; ?></td>
                 <td class="text-left"><?php echo $row['NrSerisDeshmis']; ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
-                <td class="text-left"><button onclick="location.href = '../php/Ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button></td>
+                <td class="text-left"><button onclick="location.href = '../php/ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button></td>
             </tr>
             <?php } ?>
         </table>

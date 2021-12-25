@@ -18,13 +18,13 @@ function test_input($data) {
 
     if($resultinsert = mysqli_query($link, $shtodege))
     {
-        header('location: ../Admin/Adminpageconfirm.php');
+        header('location: ../admin/adminpageconfirm.php');
     }
     else
     {
         echo "<script>
         alert('Something went wrong! Try again');
-        window.location.href='../Admin/Adminpageconfirm.php';
+        window.location.href='../admin/adminpageconfirm.php';
         </script>";
     }
 ?>

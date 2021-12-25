@@ -10,7 +10,7 @@
     {
         echo "<script>
         alert('You don't have access to see this page! Session Failed!');
-        window.location.href='../HTML/Homepage.html';
+        window.location.href='../html/homepage.html';
         </script>";
     }
     function test_input($data) {
@@ -29,15 +29,15 @@
 <!DOCTYPE html>
     <head>
         <title>Kryqi i Kuq Shqiptar</title>
-        <link rel="stylesheet" type="text/css"  href="../CSS/Confirm-stilizo.css">
+        <link rel="stylesheet" type="text/css"  href="../css/confirmstilizo.css">
     </head>
     <body>
         <div id="logout">
-            <button onclick="location.href = '../Authenticate/Logout.php';" id="myButton" >Dil <?php echo $user ?></button>
-            <button onclick="location.href = 'BejNdryshime.php';" id="myButton" >Ktheu</button>
+            <button onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo $user ?></button>
+            <button onclick="location.href = 'bejndryshime.php';" id="myButton" >Ktheu</button>
         </div>
         <div id="search">
-            <form action="Search.php" method="POST"> 
+            <form action="search.php" method="POST"> 
                 <input type="text" name="search" id="search" placeholder = "Search">
                 <button type="submit" id="search-button">Search</button>
             </form>
@@ -84,7 +84,7 @@
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
                 <td class="text-left"><?php echo $row['Orari']; ?></td>
 
-                <td class="text-left"><button onclick="location.href = 'Ndryshodatenrregjistrimit.php?id=<?php echo $row['ID'];?>'" >Ndrysho</button></td>
+                <td class="text-left"><button onclick="location.href = 'ndryshodatenrregjistrimit.php?id=<?php echo $row['ID'];?>'" >Ndrysho</button></td>
             </tr>
             <?php } ?>
         </table>

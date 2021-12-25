@@ -25,14 +25,14 @@
     {
         echo "<script>
         alert('OK');
-        window.location.href='../admin/Admindege.php';
+        window.location.href='../admin/admindege.php';
         </script>";
     }
     else
     {
       echo "<script>
       alert('Something went wrong! Try again');
-      window.location.href='../admin/Admindege.php';
+      window.location.href='../admin/admindege.php';
       </script>";
   }
 ?>

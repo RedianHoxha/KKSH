@@ -11,7 +11,7 @@
     {
         echo "<script>
         alert('You don't have access to see this page! Session Failed!');
-        window.location.href='../HTML/Homepage.html';
+        window.location.href='../html/homepage.html';
         </script>";
     }
     if($link === false){
@@ -38,15 +38,15 @@
 <!DOCTYPE html>
     <head>
         <title>Kryqi i Kuq Shqipetar</title>
-        <link href='../CSS/Inputerstyle.css' rel='stylesheet' />
+        <link href='../css/inputerstyle.css' rel='stylesheet' />
     </head>
     <body>
     <div id="top-page">
-        <button onclick="location.href = '../confirm/ConfirmPage.php';" id="myButton" >Ktheu</button>
-        <button onclick="location.href = '../Authenticate/Logout.php';" id="myButton" > Dil <?php echo $user ?></button>
+        <button onclick="location.href = '../confirm/confirmpage.php';" id="myButton" >Ktheu</button>
+        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo $user ?></button>
     </div>
         <div id="Form">
-            <form action="RuajAmzeneRe.php" method="POST">
+            <form action="ruajamzenere.php" method="POST">
                 <div id="hello">
                     <p id="hello-p">Welcome :)</p>
                 </div>
