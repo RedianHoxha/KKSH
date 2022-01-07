@@ -80,43 +80,43 @@ else
                     <div id="emri">
                         <p id="emri">Emri</p>
                         <input class="input100" id="emri-txt" type="text" 
-                        name="emri-txt" value="<?php echo  $row['Emri']; ?>" ><br>
+                        name="emri-txt" value="<?php echo  $row['Emri']; ?>" required ><br>
 
                         <p id="atesia">Atesia</p>
                         <input class="input100" id="atesia-txt" type="text" 
-                        name="atesia-txt" value="<?php echo  $row['Atesia']; ?>" >
+                        name="atesia-txt" value="<?php echo  $row['Atesia']; ?>" required>
 
                         <p id="mbiemri">Mbiemri</p>
                         <input class="input100" id="mbiemri-txt" type="text" 
-                        name="mbiemri-txt" value="<?php echo  $row['Mbiemri']; ?>" ><br>
+                        name="mbiemri-txt" value="<?php echo  $row['Mbiemri']; ?>" required><br>
                     </div>
                     <div id="id">
                         <p id="id">ID Personale</p>
                         <input class="input100" id="id-txt" type="text" 
-                        name="id-txt" value="<?php echo  $row['ID']; ?>">
+                        name="id-txt" value="<?php echo  $row['ID']; ?>" required>
                     </div><br>
                     <div id="datvendlindje">
                         <p id="datelindja">Datelindja</p>
-                        <input class="input100" id="datelindja-txt" type="date" name="datelindja-txt" value="<?php echo  $row['Datelindja']; ?>">
+                        <input class="input100" id="datelindja-txt" type="date" name="datelindja-txt" value="<?php echo  $row['Datelindja']; ?>" required>
 
                         <p id="vendbanim">Venbanim</p>
                         <input class="input100" id="vendbanim-txt" type="text" 
-                        name="vendbanim-txt" value="<?php echo  $row['Vendbanimi']; ?>">
+                        name="vendbanim-txt" value="<?php echo  $row['Vendbanimi']; ?>" required>
                     </div>
                     <div id="tel">
                         <p id="telefoni">Telefoni</p>
                         <input class="input100" id="tel-txt" type="number" 
-                        name="tel-txt" value="<?php echo  $row['Telefoni']; ?>">
+                        name="tel-txt" value="<?php echo  $row['Telefoni']; ?>" required >
                     </div><br>
                     <div id="datakursit">
                     <p id="datakursit">Data dhe Orari i Kursit<span style="color:red">   Kontrollo orarin para se te besh rregjistrimin</span></p>
-                    <input class="input100" id="datakursit" type="date" name="datakursit"  onchange="showclass(this.value)"><br>
+                    <input class="input100" id="datakursit" type="date" name="datakursit"  onchange="showclass(this.value)" required><br>
                     <div id="txtHint"></div>
                     </div>
                     <div id="idkursi">
                         <p id="idkursi">Id kursit ku do rregjistrohet kursanti</p>
                         <input class="input100" id="idkursi" type="number" 
-                        name="idkursi" placeholder="ID Kursi" autocomplete="off">
+                        name="idkursi" placeholder="ID Kursi" autocomplete="off" required>
                     </div><br>
                     <div>
                         <button type="submit" id="rregjistro-button">Rregjistro</button>

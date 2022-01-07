@@ -37,7 +37,13 @@
                 <div id="tedhenapersonale">
                     <p id="emri">Emri Deges</p>
                     <input class="input100" id="emrideges-txt" type="text" 
-                    name="emrideges-txt" placeholder="..." autocomplete="off"><br>
+                    name="emrideges-txt" placeholder="..." autocomplete="off" required><br>
+                    </div><br><br> 
+                    <div>
+                    <div id="adresa">
+                    <p id="adresa">Adresa ne Google Maps</p>
+                    <input class="input100" id="adresa-txt" type="text" 
+                    name="eadresa-txt" placeholder="..." autocomplete="off" required><br>
                     </div><br><br> 
                     <div>
                     <button type="submit" id="rregjistro-button">Rregjistro</button>

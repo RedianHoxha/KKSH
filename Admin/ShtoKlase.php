@@ -37,15 +37,15 @@
             <div id="tedhenapersonale">
                 <p id="emri">Emri Klases</p>
                 <input class="input100" id="emriklases-txt" type="text" 
-                name="emriklases-txt" placeholder="..." autocomplete="off"><br>
+                name="emriklases-txt" placeholder="..." autocomplete="off" required ><br>
 
                 <p id="kapaciteti">Kapaciteti</p>
                 <input class="input100" id="kapaciteti-txt" type="number" 
-                name="kapaciteti-txt"  autocomplete="off"><br> 
+                name="kapaciteti-txt"  autocomplete="off" required><br> 
             </div><br><br> 
             <div id="vendodhja">
                 <label for="dega">Dega:</label>
-                <select id="dega" name="dega" style="width:15%;">
+                <select id="dega" name="dega" style="width:15%;" required>
 
                     <?php $sqlquery="Select * from qyteti";
                     $qytetet=mysqli_query($link, $sqlquery);

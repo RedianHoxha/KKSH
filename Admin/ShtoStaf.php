@@ -36,39 +36,40 @@
             <div id="tedhenapersonale">
                 <p id="emri">Emri</p>
                 <input class="input100" id="emri-txt" type="text" 
-                name="emri-txt" placeholder="..." autocomplete="off"><br>
+                name="emri-txt" placeholder="..." autocomplete="off" required><br>
 
                 <p id="mbiemri">Mbiemri</p>
                 <input class="input100" id="mbiemri-txt" type="text" 
-                name="mbiemri-txt" placeholder="..." autocomplete="off"><br>
+                name="mbiemri-txt" placeholder="..." autocomplete="off" required ><br>
                 
                 <p id="id">ID Personale</p>
                 <input class="input100" id="id-txt" type="text" 
-                name="id-txt" placeholder="..." autocomplete="off">
+                name="id-txt" placeholder="..." autocomplete="off" required>
             </div><br><br>
             <div id="tedhenalogimi">    
                 <p id="username">Username</p>
                 <input class="input100" id="username-txt" type="text" 
-                name="username-txt" placeholder="..." autocomplete="off">
+                name="username-txt" placeholder="..." autocomplete="off" required>
 
                 <p id="password">Password</p>
                 <input class="input100" id="password-txt" type="password" 
-                name="password-txt" placeholder="..." autocomplete="off"><br><br>
+                name="password-txt" placeholder="..." autocomplete="off" required><br><br>
 
                 <label for="roli">Roli i Personelit:</label>
-                <select id="roli" name="roli" style="width:15%;">
+                <select id="roli" name="roli" style="width:15%;" required>
                     <option value="Inputer">Inputer</option>
                     <option value="Confirmues">Konfirmues</option>
                     <option value="Admindege">Admin Dege</option>
+                    <option value="Instruktor">Instruktor</option>
                 </select>
             </div><br><br>
             <div id="tedhenakontakti">
                 <p id="telefoni">Telefoni</p>
                 <input class="input100" id="tel-txt" type="text" 
-                name="tel-txt" placeholder="..." autocomplete="off"><br>
+                name="tel-txt" placeholder="..." autocomplete="off" required><br>
 
                 <label for="dega">Dega e Kursantit:</label>
-                <select id="dega" name="dega" style="width:15%;">
+                <select id="dega" name="dega" style="width:15%;" required>
                 <?php $sqlquery="Select * from qyteti";
                     $qytetet=mysqli_query($link, $sqlquery);
                     while ($row = mysqli_fetch_array($qytetet)) { ?>

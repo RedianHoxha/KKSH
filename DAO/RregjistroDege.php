@@ -13,8 +13,8 @@ function test_input($data) {
     return $data;
   }
     $emrideges= test_input(mysqli_real_escape_string( $link,$_POST['emrideges-txt']));
-
-    $shtodege = "insert into qyteti (EmriDeges) values ('$emrideges');";
+    $adersa = test_input(mysqli_real_escape_string( $link,$_POST['adresa-txt']));
+    $shtodege = "insert into qyteti (EmriDeges, Adresa) values ('$emrideges', '$adersa');";
 
     if($resultinsert = mysqli_query($link, $shtodege))
     {

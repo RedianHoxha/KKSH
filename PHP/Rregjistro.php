@@ -22,7 +22,7 @@
     $vendbanim= test_input(mysqli_real_escape_string( $link,$_POST['vendbanim-txt']));
     $tel= test_input(mysqli_real_escape_string( $link,$_POST['tel-txt']));
     $datakursit=test_input( mysqli_real_escape_string( $link,$_POST['datakursit']));
-    $idkursi=test_input( mysqli_real_escape_string( $link,$_POST['idkursi']));
+    $idkursi=test_input( mysqli_real_escape_string( $link,$_POST['select']));
 
       $querymerrtedhena = "Select * from programijavor where idkursi = '$idkursi';";
       $resulttedhenash = mysqli_query($link, $querymerrtedhena);

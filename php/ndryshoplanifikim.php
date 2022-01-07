@@ -61,7 +61,7 @@ else
         <form action="../dao/modifikotimetable.php?edit=<?php echo $idPlanifikimi ?>" method="POST">
             <div id="instruktori">
                 <label for="instruktori">Instruktori:</label>
-                    <select id="instruktori" name="instruktori" style="width:15%;">
+                    <select id="instruktori" name="instruktori" style="width:15%;" required>
                     <?php 
                        $sqlqueryinstruktori="Select * from staf where Degakupunon = '$dega'";
                         $instruktoret=mysqli_query($link, $sqlqueryinstruktori);
@@ -74,7 +74,7 @@ else
             <br>
             <div id="klasa">
                 <label for="klasa">Klasa:</label>
-                    <select id="klasa" name="klasa" style="width:15%;">
+                    <select id="klasa" name="klasa" style="width:15%;" required>
                     <?php 
                     $sqlklasa="Select * from klasa where Qyteti = '$idqyteti'";
                         $klasa=mysqli_query($link, $sqlklasa);
@@ -86,13 +86,13 @@ else
             </div>
             <div id="datakursit">
                 <p id="datakursit">Data dhe Orari i Kursit</p>
-                <input class="input100" id="datakursit" type="date" name="datakursit" value="<?php echo  $idOrarikursit; ?>"><br>
+                <input class="input100" id="datakursit" type="date" name="datakursit" value="<?php echo  $idOrarikursit; ?>" required><br>
 
                 <label for="orari"></label>
-                <select id="orari" name="orari" style="width:15%;">
-                  <option value="paradite">9-1</option>
-                  <option value="mesdite">1-5</option>
-                  <option value="mbasdite">5-9</option>
+                <select id="orari" name="orari" style="width:15%;" required>
+                <option value="9:00 - 13:00">9:00 - 13:00</option>
+                  <option value="13:00 - 17:00">13:00 - 17:00</option>
+                  <option value="17:00 -21:00">17:00 -21:00</option>
 
                 </select>
         </div><br>  

@@ -42,7 +42,7 @@
                 <label for="instruktori">Instruktori:</label>
                     <select id="instruktori" name="instruktori" style="width:15%;">
                     <?php 
-                        $sqlqueryinstruktori="Select * from staf where Degakupunon = '$dega'";
+                        $sqlqueryinstruktori="Select * from staf where Degakupunon = '$dega' and Roli ='Instruktor'";
                         $instruktoret=mysqli_query($link, $sqlqueryinstruktori);
                         while ($row = mysqli_fetch_array($instruktoret)) { 
                     ?>
@@ -65,13 +65,13 @@
             </div>
             <div id="datakursit">
                 <p id="datakursit">Data dhe Orari i Kursit</p>
-                <input class="input100" id="datakursit" type="date" name="datakursit"><br>
+                <input class="input100" id="datakursit" type="date" name="datakursit" required><br>
 
                 <label for="orari"></label>
-                <select id="orari" name="orari" style="width:15%;">
-                  <option value="paradite">9-1</option>
-                  <option value="mesdite">1-5</option>
-                  <option value="mbasdite">5-9</option>
+                <select id="orari" name="orari" style="width:15%;" required>
+                  <option value="9:00 - 13:00">9:00 - 13:00</option>
+                  <option value="13:00 - 17:00">13:00 - 17:00</option>
+                  <option value="17:00 -21:00">17:00 -21:00</option>
 
                 </select>
         </div><br>  
