@@ -6,6 +6,13 @@ if (!$link) {
 }
 
 $dataZgjedhur = $_GET['data'];
+$city = $_GET['id'];
+
+$sqlqyeti = "SELECT * FROM qyteti WHERE EmriDeges = '$city';";
+$resultqyteti = mysqli_query($link,$sqlqyeti);
+$rowqyteti = mysqli_fetch_array($resultqyteti);
+$cityId = $rowqyteti['IDQyteti'];
+
 mysqli_select_db($link,"ajax_demo");
 
 ?>
@@ -13,22 +20,19 @@ mysqli_select_db($link,"ajax_demo");
 <body>
 <table id="tabela-kursanteve" >
   <tr>
-    <th>Emri Klases</th>
     <th>Te rregjistruar</th>
     <th>Kapaciteti</th>
     <th>Orari</th>
-    <th>ID Kursi</th>
     <th>Zgjidh</th>
   </tr>
   <tr>
   <?php 
-  $sql="SELECT * FROM programijavor WHERE data = '".$dataZgjedhur."'";
+  $sqlquery="SELECT * FROM programijavor WHERE data = '$dataZgjedhur' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$cityId');";
 
- //echo $sql;
-  if($result = mysqli_query($link,$sql))
+  if($result = mysqli_query($link,$sqlquery))
       {
-      //  if(mysqli_fetch_array($result) > 0)
-      //    {
+        if(mysqli_num_rows($result) > 0)
+          {
           while($row = mysqli_fetch_array($result))
           {
              $idKlase = $row['idklase'];
@@ -51,11 +55,9 @@ mysqli_select_db($link,"ajax_demo");
              if($kapacitetiKlases > $kursantet)
              {
             ?>
-                <td class="text-left"><?php echo $emriKlases ?></td>
                 <td class="text-left"><?php echo $kursantet ?></td>
                 <td class="text-left"><?php echo $kapacitetiKlases ?></td>
                 <td class="text-left"><?php echo $orariKursit ?></td>
-                <td class="text-left"><?php echo $idKursi ?></td>
                 <td class="text-left"><input type="radio" name="select" value="<?php echo $idKursi ?>">Choose</radio></td>
               </tr>
             <?php 
@@ -65,17 +67,17 @@ mysqli_select_db($link,"ajax_demo");
         else
         {
           ?>
-              <td class="text-left" colspan="7" style="text-align:center">Per daten qe ju keni zgjedhur nuk ka vende te lira</td>              </tr>
+              <td class="text-left" colspan="7" style="text-align:center">Per daten qe ju keni zgjedhur nuk ka vende te lira! Ju lutem zgjidhni nje date tjeter</td>              </tr>
             <?php
         }
-      // }   
-      // else 
-      // {
-      //   echo "<script>
-      //   alert('Something went wrong! Try again!');
-      //   window.location.href='webpage.php';
-      //   </script>";
-      // }
+      }   
+      else 
+      {
+        echo "<script>
+        alert('Something went wrong! Try again!');
+        window.location.href='webpage.php';
+        </script>";
+      }
  ?>   
 </table>
 </body>

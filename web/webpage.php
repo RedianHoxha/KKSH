@@ -11,14 +11,15 @@ if($link === false){
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<!-- <link rel="stylesheet" type="text/css" href="webpage.css" /> -->
-<link rel="stylesheet" type="text/css" href="test.css" />
+<link rel="stylesheet" type="text/css" href="webpage.css" />
+<!-- <link rel="stylesheet" type="text/css" href="test.css" /> -->
 
 <head>
    <script>
       function showclass(str) 
       {
           document.getElementById("txtHint").innerHTML = str;
+          var city  = document.getElementById("city").value;
           var data = str.toString();
           if (str == "") 
           {
@@ -34,7 +35,31 @@ if($link === false){
                       document.getElementById("txtHint").innerHTML = this.responseText;
                   }
               };
-              xmlhttp.open("GET","afishoklasatweb.php?data="+str,true);
+              xmlhttp.open("GET",`afishoklasatweb.php?data=${str}&id=${city}`,true);
+              xmlhttp.send();
+          }
+      }
+
+      function showclassCity(city) 
+      {
+          document.getElementById("txtHint").innerHTML = str;
+          var str  = document.getElementById("datakursit").value;
+          var data = str.toString();
+          if (str == "") 
+          {
+              document.getElementById("txtHint").innerHTML = "";
+              return;
+          } else 
+          {
+              var xmlhttp = new XMLHttpRequest();
+              xmlhttp.onreadystatechange = function() 
+              {
+                  if (this.readyState == 4 && this.status == 200) 
+                  {
+                      document.getElementById("txtHint").innerHTML = this.responseText;
+                  }
+              };
+              xmlhttp.open("GET",`afishoklasatweb.php?data=${str}&id=${city}`,true);
               xmlhttp.send();
           }
       }
@@ -61,7 +86,7 @@ if($link === false){
                         $('#captcha_error').text('');
                         document.getElementById("txtHint").innerHTML = '';
                         grecaptcha.reset();
-                        if (window.confirm(`Rregjistrimi u krye me sukses!\nParaqituni ne daten : ${data.datakursit} , Ora: ${data.orari} prane zyrave te Kryqit te Kuq Shiptar!\nKliko 'OK' per te pare vendodhjen ne google maps`)) 
+                        if (window.confirm(`Rregjistrimi u krye me sukses!\nParaqituni ne daten : ${data.datakursit} , Ora: ${data.orari} prane zyrave te Kryqit te Kuq Shqiptar!\nDuhet te keni me vete :\n1->Mandatin e pageses\n 2->Karten e Identitetit\nKliko 'OK' per te pare vendodhjen ne harte`)) 
                         {
                            window.location.href=`${data.url}`;
                         };
@@ -110,12 +135,8 @@ if($link === false){
          <input name="phone" class="input-text js-input" type="number" required>
          <label class="label" for="phone-number">Numri Telefonit</label>
       </div>
-       <div class="form-field col-lg-6 ">
-         <input name="adress" class="input-text js-input" type="text" required>
-         <label class="label" for="address">Adresa Banimit</label>
-      </div>
       <div class="form-field col-lg-6 ">
-            <select id="city" name="city" >
+            <select id="city" name="city" onchange=showclassCity(this.value)>
                <?php $sqlquery="Select * from qyteti";
                   $qytetet=mysqli_query($link, $sqlquery);
                   while ($row = mysqli_fetch_array($qytetet)) { ?>
@@ -125,11 +146,15 @@ if($link === false){
         <label class="label" for="city">Qyteti</label>
      </div>
      <div class="form-field col-lg-6 ">
+         <input name="adress" class="input-text js-input" type="text" required>
+         <label class="label" for="address">Adresa Banimit</label>
+      </div>
+     <div class="form-field col-lg-6 ">
         <input name="paymentnumber" class="input-text js-input" type="text" required>
         <label class="label" for="paymentnumber">Numri i pageses</label>
      </div>
      <div class="form-field col-lg-6 ">
-         <input name="datakursit" class="input-text js-input"  type="date"  name="datakursit" onchange="showclass(this.value)" required>
+         <input id="datakursit" class="input-text js-input"  type="date"  name="datakursit" onchange="showclass(this.value)" required>
          <label class="label" for="address">Data dhe Orari i Kursit</label>    
      </div>
      <div class="form-field col-lg-12 ">

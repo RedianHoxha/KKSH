@@ -8,6 +8,11 @@
         $kursantet=mysqli_query($link, $query);
         $row = mysqli_fetch_array($kursantet);
         $degastafit = $row['Degakupunon'];
+
+        $querydega = "select * from qyteti where EmriDeges = '$degastafit';";
+        $dega=mysqli_query($link, $querydega);
+        $rowdega = mysqli_fetch_array($dega);
+        $idDeges = $rowdega['IDQyteti'];
     
         if($row['Roli'] <> "Inputer")
         {
@@ -27,8 +32,9 @@
     <link href='../css/inputerstyle.css' rel='stylesheet' />
 
         <script>
-            function showclass(str) 
+            function showclass(str,idDege) 
             {
+                //var param = "data="+str+"idDege="idDege;
                 document.getElementById("txtHint").innerHTML = str;
                 var data = str.toString();
                 if (str == "") 
@@ -45,7 +51,7 @@
                             document.getElementById("txtHint").innerHTML = this.responseText;
                         }
                     };
-                    xmlhttp.open("GET","afishoklasat.php?data="+str,true);
+                    xmlhttp.open("GET",`afishoklasat.php?data=${str}&id=${idDege}`,true);
                     xmlhttp.send();
                 }
             }
@@ -82,7 +88,6 @@
                 <div id="datvendlindje">
                     <p id="datelindja">Datelindja</p>
                     <input class="input100" id="datelindja-txt" type="date" name="datelindja-txt" required>
-
                     <p id="vendbanim">Venbanim</p>
                     <input class="input100" id="vendbanim-txt" type="text" 
                     name="vendbanim-txt" placeholder="Adresa ku banon" autocomplete="off" required>
@@ -94,7 +99,7 @@
                 </div><br>
                 <div id="datakursit">
                         <p id="datakursit">Data dhe Orari i Kursit<span style="color:red">   Kontrollo orarin para se te besh rregjistrimin</span></p>
-                        <input class="input100" id="datakursit" type="date" name="datakursit" onchange="showclass(this.value)"><br>
+                        <input class="input100" id="datakursit" type="date" name="datakursit" onchange="showclass(this.value, <?php echo $idDeges?>)"><br>
                         <div id="txtHint"></div>
                 </div>
                 <div>

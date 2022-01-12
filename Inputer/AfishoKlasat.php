@@ -6,6 +6,7 @@ if (!$link) {
 }
 
 $dataZgjedhur = $_GET['data'];
+$idDeges = $_GET['id'];
 mysqli_select_db($link,"ajax_demo");
 
 ?>
@@ -22,11 +23,11 @@ mysqli_select_db($link,"ajax_demo");
   </tr>
   <tr>
   <?php 
-  $sql="SELECT * FROM programijavor WHERE data = '".$dataZgjedhur."'";
+  $sqlquery="SELECT * FROM programijavor WHERE data = '$dataZgjedhur' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges');";
 
-  if($result = mysqli_query($link,$sql))
+  if($result = mysqli_query($link,$sqlquery))
       {
-        if(mysqli_fetch_array($result) != 0)
+        if(mysqli_num_rows($result) != 0)
         {
           while($row = mysqli_fetch_array($result))
           {
@@ -60,7 +61,7 @@ mysqli_select_db($link,"ajax_demo");
         else
         {
           ?>
-              <td class="text-left" colspan="7" style="text-align:center">Per daten qe ju keni zgjedhur nuk ka vende te lira</td>              </tr>
+              <td class="text-left" colspan="7" style="text-align:center">Per daten qe ju keni zgjedhur nuk ka vende te lira! Ju lutem zgjidhni nje date tjeter</td> </tr>
             <?php
         }
       }   
