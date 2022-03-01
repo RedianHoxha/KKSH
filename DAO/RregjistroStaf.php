@@ -1,7 +1,7 @@
 <?php
 
     $link = mysqli_connect("localhost", "root", "", "kksh");
-
+    require_once('../php/extra_function.php');
     if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
@@ -13,14 +13,14 @@
       return $data;
     }
     
-    $emri= test_input(mysqli_real_escape_string( $link,$_POST['emri-txt']));
-    $mbiemri= test_input(mysqli_real_escape_string( $link,$_POST['mbiemri-txt']));
-    $id= test_input(mysqli_real_escape_string( $link,$_POST['id-txt']));
-    $username= test_input(mysqli_real_escape_string( $link,$_POST['username-txt']));
-    $password= test_input(mysqli_real_escape_string( $link,$_POST['password-txt']));
-    $roli= test_input(mysqli_real_escape_string( $link,$_POST['roli']));
+    $emri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['emri-txt'])));
+    $mbiemri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['mbiemri-txt'])));
+    $id= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['id-txt'])));
+    $username= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['username-txt'])));
+    $password= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['password-txt'])));
+    $roli= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['roli'])));
     $tel= test_input(mysqli_real_escape_string( $link,$_POST['tel-txt']));
-    $dega= test_input(mysqli_real_escape_string( $link,$_POST['dega']));
+    $dega= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['dega'])));
     //echo $vendbanim . $orari . $datakursit. $dega;
 
     $shtostaf = "insert into staf(ID,Emri,Mbiemri,Username,Password,Roli,Degakupunon,Telefoni)

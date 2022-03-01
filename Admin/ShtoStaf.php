@@ -61,6 +61,7 @@
                     <option value="Confirmues">Konfirmues</option>
                     <option value="Admindege">Admin Dege</option>
                     <option value="Instruktor">Instruktor</option>
+                    <option value="Admin">Admin</option>
                 </select>
             </div><br><br>
             <div id="tedhenakontakti">

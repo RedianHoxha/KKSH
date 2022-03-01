@@ -1,9 +1,11 @@
 <?php
     $link = mysqli_connect("localhost", "root", "", "kksh");
 
+    require_once('../php/extra_function.php');
     if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
+
 
     function test_input($data) {
       $data = trim($data);
@@ -12,7 +14,10 @@
       return $data;
     }
 
+  
+
     $emri= test_input(mysqli_real_escape_string( $link,$_POST['name']));
+
     $mbiemri= test_input(mysqli_real_escape_string( $link,$_POST['surname']));
     $datelindja= test_input(mysqli_real_escape_string( $link,$_POST['bday']));
     $atesia= test_input(mysqli_real_escape_string( $link,$_POST['father']));

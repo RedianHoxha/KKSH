@@ -20,8 +20,8 @@ mysqli_select_db($link,"ajax_demo");
 <body>
 <table id="tabela-kursanteve" >
   <tr>
-    <th>Te rregjistruar</th>
-    <th>Kapaciteti</th>
+    <th>Te rregjistruar ne kete kurs</th>
+    <th>Kapaciteti i Klases</th>
     <th>Orari</th>
     <th>Zgjidh</th>
   </tr>
@@ -55,10 +55,10 @@ mysqli_select_db($link,"ajax_demo");
              if($kapacitetiKlases > $kursantet)
              {
             ?>
-                <td class="text-left"><?php echo $kursantet ?></td>
-                <td class="text-left"><?php echo $kapacitetiKlases ?></td>
-                <td class="text-left"><?php echo $orariKursit ?></td>
-                <td class="text-left"><input type="radio" name="select" value="<?php echo $idKursi ?>">Choose</radio></td>
+                <td class="text-left" style="text-align: center;"><?php echo $kursantet ?></td>
+                <td class="text-left" style="text-align: center;"><?php echo $kapacitetiKlases ?></td>
+                <td class="text-left" style="text-align: center;"><?php echo $orariKursit ?></td>
+                <td class="text-left" style="text-align: center;">><input type="radio" name="select" value="<?php echo $idKursi ?>">Choose</radio></td>
               </tr>
             <?php 
             }

@@ -2,6 +2,7 @@
 session_start();
 $user=$_SESSION['user'];
 $iduseri = $_SESSION['UserID'];
+require_once('../php/extra_function.php');
 $link = mysqli_connect("localhost", "root", "", "kksh");
 
 $query = "select * from staf where ID = '$iduseri';";

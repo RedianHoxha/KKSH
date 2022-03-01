@@ -104,8 +104,12 @@ if($link === false){
 
 <body>
 <section class="get-in-touch">
+<div id="header">
+<img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="kksh_logo">
    <h1 class="title">Welcome</h1>
-
+   <img src="../images/kksh_logo2.PNG" alt="Simply Easy Learning" id="kksh_logo">
+</div>  
+<div id="form">
    <form id="captcha_form" class="contact-form row" action="rregjistroweb.php" method="POST">
       <div class="form-field col-lg-4">
          <input name="name" class="input-text js-input" type="text" required>
@@ -168,5 +172,6 @@ if($link === false){
          <input class="submit-btn" type="submit" name="register" id="register" value="Submit">
       </div>
    </form>
+</div>
 </section>
 </body>

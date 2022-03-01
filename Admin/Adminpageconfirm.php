@@ -2,6 +2,7 @@
 session_start();
 $user=$_SESSION['user'];
 $iduseri = $_SESSION['UserID'];
+require_once('../php/extra_function.php');
 $link = mysqli_connect("localhost", "root", "", "kksh");
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -118,11 +119,11 @@ if($row['Roli'] <> "Admin")
                         $kursantet=mysqli_query($link, $sqlquery);
                         while ($row = mysqli_fetch_array($kursantet)) { ?> 
 
-                        <td><?php echo $row['Emri']; ?></td>
-                        <td><?php echo $row['Mbiemri']; ?></td>
-                        <td><?php echo $row['Roli']; ?></td>
-                        <td><?php echo $row['Degakupunon']; ?></td>
-                        <td><?php echo $row['Username']; ?></td>
+                        <td><?php echo decrypt($row['Emri']); ?></td>
+                        <td><?php echo decrypt($row['Mbiemri']); ?></td>
+                        <td><?php echo decrypt($row['Roli']); ?></td>
+                        <td><?php echo decrypt($row['Degakupunon']); ?></td>
+                        <td><?php echo decrypt($row['Username']); ?></td>
                         <td><?php echo $row['Telefoni']; ?></td>
                     </tr> 
                     <?php } ?>
@@ -168,7 +169,7 @@ if($row['Roli'] <> "Admin")
                                 $dega = mysqli_query($link, $sqlQyetiKlases);
                                 $degaRow = mysqli_fetch_array($dega);
                                 ?> 
-                        <td><?php echo $row['Emri']; ?></td>
+                        <td><?php echo decrypt($row['Emri']);?></td>
                         <td><?php echo $degaRow['EmriDeges']; ?></td>
                         <td><?php echo $row['Kapaciteti']; ?></td>
                     </tr> 

@@ -2,7 +2,8 @@
     max-width: 75%;
     margin: 8% auto;
     position: relative;
-  
+    /* background-color: grey;
+    opacity:0.6; */
   }
   .get-in-touch .title {
     text-align: center;
@@ -96,7 +97,36 @@ td{
 text-align: center;
 }
   
+h1{
+  margin-right: 20%;
+  margin-left: 20%;
+}
 
 #dega{
   width: 100%;
 }
+
+#header{
+ display: inline-flex;
+ margin-left: 1%;
+}
+
+#kksh_logo{
+  width: 10%;
+  height: 10%;
+  margin-left: 5%;
+  margin-right: 3%;
+}
+
+#kksh_logo_right{
+  width: 10%;
+  height: 10%;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+
+/* html {    
+  background: url('https://cdn.bitdegree.org/learn/soap-colorful-color-fruit-68525.jpeg') no-repeat center fixed;     
+  background-size: cover;
+} */

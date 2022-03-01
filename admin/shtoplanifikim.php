@@ -2,6 +2,7 @@
             session_start();
             $user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
+            require_once('../php/extra_function.php');
             $link = mysqli_connect("localhost", "root", "", "kksh");
     
             $query = "select * from staf where ID = '$iduseri';";
@@ -42,11 +43,14 @@
                 <label for="instruktori">Instruktori:</label>
                     <select id="instruktori" name="instruktori" style="width:15%;">
                     <?php 
-                        $sqlqueryinstruktori="Select * from staf where Degakupunon = '$dega' and Roli ='Instruktor'";
+                        $roli = encryptValues("Instruktor");
+                        $dega1 = encryptValues($dega);
+                        $sqlqueryinstruktori="Select * from staf where Degakupunon = '$dega1' and Roli ='$roli'";
+                        echo $sqlqueryinstruktori;
                         $instruktoret=mysqli_query($link, $sqlqueryinstruktori);
                         while ($row = mysqli_fetch_array($instruktoret)) { 
                     ?>
-                    <option value="<?php echo $row['ID']; ?>"><?php echo $row['Emri']?> <?php echo $row['Mbiemri']?></option>
+                    <option value="<?php echo $row['ID']; ?>"><?php echo decrypt($row['Emri'])?> <?php echo decrypt($row['Mbiemri'])?></option>
                     <?php } ?>
                     </select>
             </div>
@@ -59,7 +63,7 @@
                         $klasa=mysqli_query($link, $sqlklasa);
                         while ($row = mysqli_fetch_array($klasa)) { 
                     ?>
-                    <option value="<?php echo $row['ID']; ?>"><?php echo $row['Emri']?></option>
+                    <option value="<?php echo $row['ID']; ?>"><?php echo decrypt($row['Emri'])?></option>
                     <?php } ?>
                     </select>
             </div>

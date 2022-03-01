@@ -1,6 +1,7 @@
 <?php
 
 $link = mysqli_connect("localhost", "root", "", "kksh");
+require_once('../php/extra_function.php');
 
 if($link === false){
    die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -12,8 +13,8 @@ function test_input($data) {
     $data = htmlspecialchars($data);
     return $data;
   }
-   $username= test_input(mysqli_real_escape_string( $link,$_POST['username']));
-   $password=mysqli_real_escape_string( $link,$_POST['password']);
+   $username= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['username'])));
+   $password= encryptValues(mysqli_real_escape_string( $link,$_POST['password']));
 
 $queryuser ="select * from staf where Username= ? and Password= ?";
 $stmt = mysqli_stmt_init($link);
@@ -34,26 +35,26 @@ else
         if(mysqli_num_rows($result) > 0)
         {
            session_start();
-            $_SESSION['UserID'] = $row['ID'];
-            $_SESSION['user']= $username;
+            $_SESSION['UserID'] = decrypt($row['ID']);
+            $_SESSION['user']= decrypt($username);
             
-            if($row['Roli'] == "Admin")
+            if(decrypt($row['Roli']) == "Admin")
             {
                 header('location: ../admin/adminpageconfirm.php');
             }
-            else if($row['Roli' ] == "Inputer")
+            else if(decrypt($row['Roli']) == "Inputer")
             {
                 header('location: ../inputer/inputerpage.php');
             }
-            else if($row['Roli' ] == "Konfirmues")
+            else if(decrypt($row['Roli']) == "Konfirmues")
             {
                 header('location: ../confirm/confirmpage.php');
             }
-            else if($row['Roli' ] == "Admindege")
+            else if(decrypt($row['Roli']) == "Admindege")
             {
                 header('location: ../admin/admindege.php');
             }
-            else if($row['Roli' ] == "webrole")
+            else if(decrypt($row['Roli']) == "webrole")
             {
                 header('location: ../web/webpage.html');
             }

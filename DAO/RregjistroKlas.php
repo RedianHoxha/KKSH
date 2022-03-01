@@ -1,4 +1,5 @@
 <?php
+    require_once('../php/extra_function.php');
     $link = mysqli_connect("localhost", "root", "", "kksh");
     if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -10,9 +11,9 @@ function test_input($data) {
     $data = htmlspecialchars($data);
     return $data;
   }
-    $emriklases= test_input(mysqli_real_escape_string( $link,$_POST['emriklases-txt']));
+    $emriklases= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['emriklases-txt'])));
     $kapaciteti=test_input(mysqli_real_escape_string( $link,$_POST['kapaciteti-txt']));
-    $dega= test_input(mysqli_real_escape_string( $link,$_POST['dega']));
+    $dega=test_input(mysqli_real_escape_string( $link,$_POST['dega']));
 
     $idklases = "select * from qyteti where EmriDeges = '$dega';";
     $resultinsert = mysqli_query($link, $idklases);

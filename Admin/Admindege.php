@@ -1,28 +1,29 @@
 <?php 
-            session_start();
-            $user=$_SESSION['user'];
-            $iduseri = $_SESSION['UserID'];
-            $link = mysqli_connect("localhost", "root", "", "kksh");
-    
-            $query = "select * from staf where ID = '$iduseri';";
-            $staf=mysqli_query($link, $query);
-            $row = mysqli_fetch_array($staf);
-            $dega = $row['Degakupunon'];
+    session_start();
+    $user=$_SESSION['user'];
+    $iduseri = $_SESSION['UserID'];
+    require_once('../php/extra_function.php');
+    $link = mysqli_connect("localhost", "root", "", "kksh");
 
-            if($row['Roli'] <> "Admindege")
-            {
-                echo "<script>
-                alert('You don't have access to see this page! Session Failed!');
-                window.location.href='../html/homepage.html';
-                </script>";
-            }
-            $queryqyteti = "select * from qyteti where EmriDeges = '$dega';";
-            $klasa=mysqli_query($link, $queryqyteti);
-            $row = mysqli_fetch_array($klasa);
-            $idqyteti = $row['IDQyteti'];
+    $query = "select * from staf where ID = '$iduseri';";
+    $staf=mysqli_query($link, $query);
+    $row = mysqli_fetch_array($staf);
+    $dega = $row['Degakupunon'];
 
-        if($link === false){
-            die("ERROR: Could not connect. " . mysqli_connect_error());
+    if($row['Roli'] <> "Admindege")
+    {
+        echo "<script>
+        alert('You don't have access to see this page! Session Failed!');
+        window.location.href='../html/homepage.html';
+        </script>";
+    }
+    $queryqyteti = "select * from qyteti where EmriDeges = '$dega';";
+    $klasa=mysqli_query($link, $queryqyteti);
+    $row = mysqli_fetch_array($klasa);
+    $idqyteti = $row['IDQyteti'];
+
+    if($link === false){
+        die("ERROR: Could not connect. " . mysqli_connect_error());
 }?>
 
 <!DOCTYPE html>
@@ -71,8 +72,8 @@
                             $rowInstruktori = mysqli_fetch_array($instruktori);
                             ?> 
 
-                        <td><?php echo $rowKlasa['Emri']; ?></td>
-                        <td><?php echo $rowInstruktori['Emri']; ?>  <?php echo $rowInstruktori['Mbiemri']; ?></td>
+                        <td><?php echo decrypt($rowKlasa['Emri']); ?></td>
+                        <td><?php echo decrypt($rowInstruktori['Emri']);?>  <?php echo decrypt($rowInstruktori['Mbiemri']); ?></td>
                         <td><?php echo $row['orari']; ?></td>
                         <td><?php echo $row['data']; ?></td>
                         <td class="text-left"><button onclick="location.href = '../php/ndryshoplanifikim.php?id=<?php echo $row['idkursi'];?>'" >Modifiko</button></td>
