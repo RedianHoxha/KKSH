@@ -1,16 +1,15 @@
 <?php 
     session_start();
+    require_once('../php/extra_function.php');
     $user=$_SESSION['user'];
     $iduseri = $_SESSION['UserID'];
-    require_once('../php/extra_function.php');
     $link = mysqli_connect("localhost", "root", "", "kksh");
 
     $query = "select * from staf where ID = '$iduseri';";
     $staf=mysqli_query($link, $query);
     $row = mysqli_fetch_array($staf);
     $dega = $row['Degakupunon'];
-
-    if($row['Roli'] <> "Admindege")
+    if(decrypt($row['Roli']) <> "Admindege")
     {
         echo "<script>
         alert('You don't have access to see this page! Session Failed!');
@@ -33,7 +32,7 @@
 </head>
 <body>
 
-    <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo $user ?></button><br>
+    <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button><br>
     <div id="add_button">
              <button onclick="location.href = 'shtoplanifikim.php';" id="addbutton" >Shto Planifikim</button>
         </div>

@@ -2,6 +2,7 @@
         session_start();
         $user=$_SESSION['user'];
         $iduseri = $_SESSION['UserID'];
+        require_once('../php/extra_function.php');
         $link = mysqli_connect("localhost", "root", "", "kksh");
 
         $query = "select * from staf where ID = '$iduseri';";
@@ -26,7 +27,7 @@
 <body>
     <div id="top-page">
         <button onclick="location.href = 'adminpageconfirm.php';" id="myButton" > Home</button>
-        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo $user ?></button>
+        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
     </div>
     <div id="Form">
         <form action="../dao/rregjistrostaf.php" method="POST">
@@ -69,12 +70,12 @@
                 <input class="input100" id="tel-txt" type="text" 
                 name="tel-txt" placeholder="..." autocomplete="off" required><br>
 
-                <label for="dega">Dega e Kursantit:</label>
+                <label for="dega">Qyteti:</label>
                 <select id="dega" name="dega" style="width:15%;" required>
                 <?php $sqlquery="Select * from qyteti";
                     $qytetet=mysqli_query($link, $sqlquery);
                     while ($row = mysqli_fetch_array($qytetet)) { ?>
-                <option value="<?php echo $row['EmriDeges']; ?>"><?php echo $row['EmriDeges']; ?></option>
+                <option value="<?php echo decrypt($row['EmriDeges']);?>"><?php echo decrypt($row['EmriDeges']);?></option>
                 <?php } ?>
                 </select>
             </div>

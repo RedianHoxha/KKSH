@@ -1,6 +1,7 @@
 
 <?php
 $link = mysqli_connect("localhost", "root", "", "kksh");
+require_once('../php/extra_function.php');
 if (!$link) {
   die('Could not connect: ' . mysqli_error($con));
 }
@@ -18,7 +19,6 @@ mysqli_select_db($link,"ajax_demo");
     <th>Te rregjistruar</th>
     <th>Kapaciteti</th>
     <th>Orari</th>
-    <th>ID Kursi</th>
     <th>Zgjidh</th>
   </tr>
   <tr>
@@ -48,11 +48,10 @@ mysqli_select_db($link,"ajax_demo");
     
              $kursantet = $rowKasiKursantesh['Sasia'];
             ?>
-                <td class="text-left"><?php echo $emriKlases ?></td>
+                <td class="text-left"><?php echo decrypt($emriKlases) ?></td>
                 <td class="text-left"><?php echo $kursantet ?></td>
                 <td class="text-left"><?php echo $kapacitetiKlases ?></td>
                 <td class="text-left"><?php echo $orariKursit ?></td>
-                <td class="text-left"><?php echo $idKursi ?></td>
                 <td class="text-left"><input type="radio" name="select" value="<?php echo $idKursi ?>">Choose</radio></td>
               </tr>
             <?php 

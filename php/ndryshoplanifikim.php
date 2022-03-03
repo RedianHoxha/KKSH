@@ -1,8 +1,8 @@
 <?php
 session_start();
+require_once('../php/extra_function.php');
 $user=$_SESSION['user'];
 $iduseri = $_SESSION['UserID'];
-require_once('../php/extra_function.php');
 $link = mysqli_connect("localhost", "root", "", "kksh");
 
 $query = "select * from staf where ID = '$iduseri';";
@@ -11,7 +11,7 @@ $row = mysqli_fetch_array($kursantet);
 $dega = $row['Degakupunon'];
 
 
-if($row['Roli'] <> "Inputer")
+if(decrypt($row['Roli']) <> "Admindege")
 {
     echo "<script>
     alert('You don't have access to see this page! Session Failed!');
@@ -41,9 +41,9 @@ else
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     $row =mysqli_fetch_assoc($result);
-    $idInstruktori = $row['idinstruktori'];
-    $idKlase = $row['idklase'];
-    $idOrarikursit = $row['data'];
+    $idInstruktori = decrypt($row['idinstruktori']);
+    $idKlase = decrypt($row['idklase']);
+    $idOrarikursit = decrypt($row['data']);
 }
 ?>
 
@@ -55,7 +55,7 @@ else
 <body>
     
 <button onclick="location.href = '../admin/admindege.php';" id="myButton" > Ktheu</button>
-<button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo $user ?></button><br>
+<button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button><br>
 <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
     <p id="welcome">Welcome</p><br>
     <div id="form">
@@ -64,11 +64,12 @@ else
                 <label for="instruktori">Instruktori:</label>
                     <select id="instruktori" name="instruktori" style="width:15%;" required>
                     <?php 
-                       $sqlqueryinstruktori="Select * from staf where Degakupunon = '$dega'";
+                        $roli = encryptValues("Instruktor");
+                        $sqlqueryinstruktori="Select * from staf where Degakupunon = '$dega' and Roli ='$roli'";
                         $instruktoret=mysqli_query($link, $sqlqueryinstruktori);
                         while ($row = mysqli_fetch_array($instruktoret)) { 
                             ?>
-                            <option value="<?php echo $row['ID']; ?>"><?php echo $row['Emri']?> <?php echo $row['Mbiemri']?></option>
+                            <option value="<?php echo $row['ID']; ?>"><?php echo decrypt($row['Emri'])?> <?php echo decrypt($row['Mbiemri'])?></option>
                             <?php } ?>
                             </select>
             </div>
@@ -81,7 +82,7 @@ else
                         $klasa=mysqli_query($link, $sqlklasa);
                         while ($row = mysqli_fetch_array($klasa)) { 
                     ?>
-                    <option value="<?php echo $row['ID']; ?>"><?php echo $row['Emri']?></option>
+                    <option value="<?php echo $row['ID']; ?>"><?php echo decrypt($row['Emri'])?></option>
                     <?php } ?>
                     </select>
             </div>

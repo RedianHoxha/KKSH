@@ -1,5 +1,6 @@
 <?php 
             session_start();
+            require_once('../php/extra_function.php');
             $user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
             $link = mysqli_connect("localhost", "root", "", "kksh");
@@ -27,7 +28,7 @@
 <body>
     <div id="top-page">
         <button onclick="location.href = 'adminpageconfirm.php';" id="myButton" > Home</button>
-        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo $user ?></button>
+        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
     </div>
     <div id="Form">
         <form action="../dao/rregjistroklas.php" method="POST">

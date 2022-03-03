@@ -1,13 +1,13 @@
 <?php 
         session_start();
+        require_once('../php/extra_function.php');
         $user=$_SESSION['user'];
         $iduseri = $_SESSION['UserID'];
         $link = mysqli_connect("localhost", "root", "", "kksh");
-
         $query = "select * from staf where ID = '$iduseri';";
         $kursantet=mysqli_query($link, $query);
         $row = mysqli_fetch_array($kursantet);
-        if($row['Roli'] <> "Admin")
+        if(decrypt($row['Roli']) <> "Admin")
         {
             echo "<script>
             alert('You don't have access to see this page! Session Failed!');
@@ -27,7 +27,7 @@
 <body>
     <div id="top-page">
         <button onclick="location.href = 'adminpageconfirm.php';" id="myButton" > Home</button>
-        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo $user ?></button>
+        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
     </div>
     <div id="Form">
             <form action="../dao/rregjistrodege.php" method="POST">
@@ -43,7 +43,7 @@
                     <div id="adresa">
                     <p id="adresa">Adresa ne Google Maps</p>
                     <input class="input100" id="adresa-txt" type="text" 
-                    name="eadresa-txt" placeholder="..." autocomplete="off" required><br>
+                    name="adresa-txt" placeholder="..." autocomplete="off" required><br>
                     </div><br><br> 
                     <div>
                     <button type="submit" id="rregjistro-button">Rregjistro</button>

@@ -35,8 +35,8 @@ else
         if(mysqli_num_rows($result) > 0)
         {
            session_start();
-            $_SESSION['UserID'] = decrypt($row['ID']);
-            $_SESSION['user']= decrypt($username);
+            $_SESSION['UserID'] = $row['ID'];
+            $_SESSION['user']= $username;
             
             if(decrypt($row['Roli']) == "Admin")
             {
@@ -46,7 +46,7 @@ else
             {
                 header('location: ../inputer/inputerpage.php');
             }
-            else if(decrypt($row['Roli']) == "Konfirmues")
+            else if(decrypt($row['Roli']) == "Confirmues")
             {
                 header('location: ../confirm/confirmpage.php');
             }

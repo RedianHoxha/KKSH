@@ -2,11 +2,12 @@
     session_start();
     $user=$_SESSION['user'];
     $iduseri = $_SESSION['UserID'];
+    require_once('../php/extra_function.php');
     $link = mysqli_connect("localhost", "root", "", "kksh");
     $query = "select * from staf where ID = '$iduseri';";
     $kursantet=mysqli_query($link, $query);
     $row = mysqli_fetch_array($kursantet);
-    if($row['Roli'] <> "Konfirmues")
+    if(decrypt($row['Roli']) <> "Konfirmues")
     {
         echo "<script>
         alert('You don't have access to see this page! Session Failed!');
@@ -24,7 +25,7 @@
         $data = htmlspecialchars($data);
         return $data;
       }
-    $fjalakyc = test_input(mysqli_real_escape_string( $link,$_POST['search']));
+    $fjalakyc = encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['search'])));
 ?>
 <!DOCTYPE html>
     <head>
@@ -33,7 +34,7 @@
     </head>
     <body>
     <div id="logout">
-        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo $user ?></button>
+        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
     </div>
         <div id="search">
             <form action="searchamza.php" method="POST"> 
@@ -51,6 +52,7 @@
                 <th>Telefoni</th>
                 <th>Datelindja</th>
                 <th>Amza</th>
+                <th>Nr Serie</th>
                 <th>Data</th>
                 <th>Edito</th>
             </tr>
@@ -60,14 +62,15 @@
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { ?>
 
-                <td class="text-left"><?php echo $row['ID']; ?></td>
-                <td class="text-left"><?php echo $row['Emri']; ?></td>
-                <td class="text-left"><?php echo $row['Mbiemri']; ?></td>
-                <td class="text-left"><?php echo $row['Atesia']; ?></td>
-                <td class="text-left"><?php echo $row['Vendbanimi']; ?></td>
+                <td class="text-left"><?php echo decrypt($row['ID']); ?></td>
+                <td class="text-left"><?php echo decrypt($row['Emri']); ?></td>
+                <td class="text-left"><?php echo decrypt($row['Mbiemri']); ?></td>
+                <td class="text-left"><?php echo decrypt($row['Atesia']); ?></td>
+                <td class="text-left"><?php echo decrypt($row['Vendbanimi']); ?></td>
                 <td class="text-left"><?php echo $row['Telefoni']; ?></td>
                 <td class="text-left"><?php echo $row['Datelindja']; ?></td>
-                <td class="text-left"><?php echo $row['Amza']; ?></td>
+                <td class="text-left"><?php echo decrypt($row['Amza']); ?></td>
+                <td class="text-left"><?php echo decrypt($row['NrSerisDeshmis']); ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
                 <td class="text-left"><button onclick="location.href = '../php/ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button><button onclick="location.href = '../php/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
             </tr>

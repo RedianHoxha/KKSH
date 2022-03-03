@@ -1,5 +1,6 @@
 <?php 
         session_start();
+        require_once('../php/extra_function.php');
         $user=$_SESSION['user'];
         $iduseri = $_SESSION['UserID'];
         $link = mysqli_connect("localhost", "root", "", "kksh");
@@ -14,7 +15,7 @@
         $rowdega = mysqli_fetch_array($dega);
         $idDeges = $rowdega['IDQyteti'];
     
-        if($row['Roli'] <> "Inputer")
+        if(decrypt($row['Roli']) <> "Inputer")
         {
             echo "<script>
             alert('You don't have access to see this page! Session Failed!');
@@ -60,7 +61,7 @@
 <body>
     <div id="top-page">
         <button onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Bej ndryshime</button>
-        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo $user ?></button>
+        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
     </div>
     <div id="Form">
             <form action="../php/rregjistro.php" method="POST">
@@ -98,9 +99,9 @@
                     name="tel-txt" placeholder="Telefoni" autocomplete="off" required>
                 </div><br>
                 <div id="datakursit">
-                        <p id="datakursit">Data dhe Orari i Kursit<span style="color:red">   Kontrollo orarin para se te besh rregjistrimin</span></p>
-                        <input class="input100" id="datakursit" type="date" name="datakursit" onchange="showclass(this.value, <?php echo $idDeges?>)"><br>
-                        <div id="txtHint"></div>
+                    <p id="datakursit">Data dhe Orari i Kursit<span style="color:red">   Kontrollo orarin para se te besh rregjistrimin</span></p>
+                    <input class="input100" id="datakursit" type="date" name="datakursit" onchange="showclass(this.value, <?php echo $idDeges?>)"><br>
+                    <div id="txtHint"></div>
                 </div>
                 <div>
                     <button type="submit" id="rregjistro-button">Rregjistro</button>

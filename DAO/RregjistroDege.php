@@ -1,7 +1,7 @@
 <?php
 
     $link = mysqli_connect("localhost", "root", "", "kksh");
-
+    require_once('../php/extra_function.php');
     if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
@@ -12,8 +12,8 @@ function test_input($data) {
     $data = htmlspecialchars($data);
     return $data;
   }
-    $emrideges= test_input(mysqli_real_escape_string( $link,$_POST['emrideges-txt']));
-    $adersa = test_input(mysqli_real_escape_string( $link,$_POST['adresa-txt']));
+    $emrideges= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['emrideges-txt'])));
+    $adersa = encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['adresa-txt'])));
     $shtodege = "insert into qyteti (EmriDeges, Adresa) values ('$emrideges', '$adersa');";
 
     if($resultinsert = mysqli_query($link, $shtodege))

@@ -1,8 +1,6 @@
 <?php
 
 function encryptValues($string){
-    
-    echo "Original String: " . $string . "\n";
 
     // Store cipher method
     $ciphering = "AES-128-CTR";

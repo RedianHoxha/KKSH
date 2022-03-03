@@ -1,13 +1,13 @@
 <?php
-
     session_start();
     $user=$_SESSION['user'];
     $iduseri = $_SESSION['UserID'];
+    require_once('../php/extra_function.php');
     $link = mysqli_connect("localhost", "root", "", "kksh");
     $query = "select * from staf where ID = '$iduseri';";
     $kursantet=mysqli_query($link, $query);
     $row = mysqli_fetch_array($kursantet);
-    if($row['Roli'] <> "Konfirmues")
+    if(decrypt($row['Roli']) <> "Confirmues")
     {
         echo "<script>
         alert('You don't have access to see this page! Session Failed!');
@@ -18,7 +18,7 @@
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
 
-    $idkursanti = $_GET['id'];
+    $idkursanti = encryptValues($_GET['id']);
 
     $kursanti = "select * from kursant where ID = ?;";
     $stmt = mysqli_stmt_init($link);
@@ -43,7 +43,7 @@
     <body>
     <div id="top-page">
         <button onclick="location.href = '../confirm/confirmpage.php';" id="myButton" >Ktheu</button>
-        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo $user ?></button>
+        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
     </div>
         <div id="Form">
             <form action="ruajamzenere.php" method="POST">
@@ -53,28 +53,28 @@
                 <div id="emri">
                     <p id="emri">Emri</p>
                     <input class="input100" id="emri-txt" type="text" 
-                    name="emri-txt" value="<?php echo  $row['Emri']; ?>" required ><br>
+                    name="emri-txt" value="<?php echo  decrypt($row['Emri']); ?>" required ><br>
 
                     <p id="atesia">Atesia</p>
                     <input class="input100" id="atesia-txt" type="text" 
-                    name="atesia-txt" value="<?php echo  $row['Atesia']; ?>" required >
+                    name="atesia-txt" value="<?php echo  decrypt($row['Atesia']); ?>" required >
 
                     <p id="mbiemri">Mbiemri</p>
                     <input class="input100" id="mbiemri-txt" type="text" 
-                    name="mbiemri-txt" value="<?php echo  $row['Mbiemri']; ?>"required  ><br>
+                    name="mbiemri-txt" value="<?php echo  decrypt($row['Mbiemri']); ?>"required  ><br>
                 </div>
                 <div id="id">
                     <p id="id">ID Personale</p>
                     <input class="input100" id="id-txt" type="text" 
-                    name="id-txt" value="<?php echo  $row['ID']; ?>" required>
+                    name="id-txt" value="<?php echo  decrypt($row['ID']); ?>" readonly>
                 </div><br>
                 <div id="datvendlindje">
                     <p id="datelindja">Datelindja</p>
-                    <input class="input100" id="datelindja-txt" type="date" name="datelindja-txt" required value="<?php echo  $row['Datelindja']; ?>">
+                    <input class="input100" id="datelindja-txt" type="date" name="datelindja-txt" required value="<?php echo  $row['Datelindja']    ; ?>">
 
                     <p id="vendbanim">Venbanim</p>
                     <input class="input100" id="vendbanim-txt" type="text" 
-                    name="vendbanim-txt" value="<?php echo  $row['Vendbanimi']; ?>" required>
+                    name="vendbanim-txt" value="<?php echo  decrypt($row['Vendbanimi']); ?>" required>
                 </div>
                 <div id="tel">
                     <p id="telefoni">Telefoni</p>

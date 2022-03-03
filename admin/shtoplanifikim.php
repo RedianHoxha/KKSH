@@ -1,8 +1,8 @@
 <?php 
-            session_start();
+            session_start();           
+            require_once('../php/extra_function.php');
             $user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
-            require_once('../php/extra_function.php');
             $link = mysqli_connect("localhost", "root", "", "kksh");
     
             $query = "select * from staf where ID = '$iduseri';";
@@ -10,7 +10,7 @@
             $row = mysqli_fetch_array($staf);
             $dega = $row['Degakupunon'];
 
-            if($row['Roli'] <> "Admindege")
+            if(decrypt($row['Roli']) <> "Admindege")
             {
                 echo "<script>
                 alert('You don't have access to see this page! Session Failed!');
@@ -34,7 +34,7 @@
 <body>
     
 <button onclick="location.href = '../admin/admindege.php';" id="myButton" > Ktheu</button>
-<button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo $user ?></button><br>
+<button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button><br>
     <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
     <p id="welcome">Welcome</p><br>
     <div id="form">
@@ -44,9 +44,7 @@
                     <select id="instruktori" name="instruktori" style="width:15%;">
                     <?php 
                         $roli = encryptValues("Instruktor");
-                        $dega1 = encryptValues($dega);
-                        $sqlqueryinstruktori="Select * from staf where Degakupunon = '$dega1' and Roli ='$roli'";
-                        echo $sqlqueryinstruktori;
+                        $sqlqueryinstruktori="Select * from staf where Degakupunon = '$dega' and Roli ='$roli'";
                         $instruktoret=mysqli_query($link, $sqlqueryinstruktori);
                         while ($row = mysqli_fetch_array($instruktoret)) { 
                     ?>

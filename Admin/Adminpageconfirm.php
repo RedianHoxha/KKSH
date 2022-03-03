@@ -1,8 +1,9 @@
 <?php
 session_start();
+require_once('../php/extra_function.php');
 $user=$_SESSION['user'];
 $iduseri = $_SESSION['UserID'];
-require_once('../php/extra_function.php');
+$iduserienc = decrypt($_SESSION['UserID']);
 $link = mysqli_connect("localhost", "root", "", "kksh");
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -11,7 +12,7 @@ if($link === false){
 $query = "select * from staf where ID = '$iduseri';";
 $kursantet=mysqli_query($link, $query);
 $row = mysqli_fetch_array($kursantet);
-if($row['Roli'] <> "Admin")
+if(decrypt($row['Roli']) <> "Admin")
 {
     echo "<script>
     alert('You don't have access to see this page! Session Failed!');
@@ -53,7 +54,7 @@ if($row['Roli'] <> "Admin")
 <body>
     <div id="top">
         <div id="logout">
-            <button onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo $user ?></button>                               <label for="dega">Dega:</label>
+            <button onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>                               <label for="dega">Dega:</label>
             <select id="dega" name="dega" style="width:15%;">
                     <?php $sqlquery="Select * from qyteti";
                         $qytetet=mysqli_query($link, $sqlquery);
@@ -143,7 +144,7 @@ if($row['Roli'] <> "Admin")
                         <?php $sqlquery="Select * from qyteti";
                             $kursantet=mysqli_query($link, $sqlquery);
                             while ($row = mysqli_fetch_array($kursantet)) { ?> 
-                        <td><?php echo $row['EmriDeges']; ?></td>
+                        <td><?php echo decrypt($row['EmriDeges']); ?></td>
                         </tr> 
                         <?php } ?>
                     </table>
@@ -162,15 +163,15 @@ if($row['Roli'] <> "Admin")
                     </tr>
                     <tr>
                     <?php $sqlquery="Select * from klasa";
-                            $kursantet=mysqli_query($link, $sqlquery);
-                            while ($row = mysqli_fetch_array($kursantet)) { 
+                            $klasat=mysqli_query($link, $sqlquery);
+                            while ($row = mysqli_fetch_array($klasat)) { 
                                 $idQyteti = $row['Qyteti'];
                                 $sqlQyetiKlases = "Select * from qyteti where IDQyteti = '$idQyteti';";
                                 $dega = mysqli_query($link, $sqlQyetiKlases);
                                 $degaRow = mysqli_fetch_array($dega);
                                 ?> 
                         <td><?php echo decrypt($row['Emri']);?></td>
-                        <td><?php echo $degaRow['EmriDeges']; ?></td>
+                        <td><?php echo decrypt($degaRow['EmriDeges']); ?></td>
                         <td><?php echo $row['Kapaciteti']; ?></td>
                     </tr> 
                     <?php } ?>
