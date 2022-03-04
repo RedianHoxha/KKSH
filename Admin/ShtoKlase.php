@@ -6,9 +6,10 @@
             $link = mysqli_connect("localhost", "root", "", "kksh");
     
             $query = "select * from staf where ID = '$iduseri';";
+            echo $query;
             $kursantet=mysqli_query($link, $query);
             $row = mysqli_fetch_array($kursantet);
-            if($row['Roli'] <> "Admin")
+            if(decrypt($row['Roli']) <> "Admin")
             {
                 echo "<script>
                 alert('You don't have access to see this page! Session Failed!');
@@ -52,7 +53,7 @@
                     $qytetet=mysqli_query($link, $sqlquery);
                     while ($row = mysqli_fetch_array($qytetet)) { ?>
 
-                <option value="<?php echo $row['EmriDeges']; ?>"><?php echo $row['EmriDeges']; ?></option>
+                <option value="<?php echo $row['EmriDeges']; ?>"><?php echo decrypt($row['EmriDeges']); ?></option>
                 <?php } ?>
                 </select> 
             </div>

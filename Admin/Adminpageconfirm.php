@@ -60,18 +60,21 @@ if(decrypt($row['Roli']) <> "Admin")
                         $qytetet=mysqli_query($link, $sqlquery);
                         while ($row = mysqli_fetch_array($qytetet)) { ?>
 
-                    <option value="<?php echo $row['EmriDeges']; ?>"><?php echo $row['EmriDeges']; ?></option>
+                    <option value="<?php echo decrypt($row['EmriDeges']); ?>"><?php echo decrypt($row['EmriDeges']);?></option>
                     <?php } ?>
             </select>
             <button id="button-a" onclick="showclass()">Create Excel</button>
             <script>
                 function exportToExel(dataSource)
                 {
+                   
                     var headers = ["Emri","Atesia","Mbiemri","ID","Datelindja","Nr. Rregjistrit Amza","Nr. Serisë Dëshmisë."];
+                    console.log(dataSource);
                     var parseData  = JSON.parse(dataSource);
                     parseData.unshift(headers);
-                    var qyteti =document.getElementById("dega").value;
-                    console.log(parseData);
+                    var qyteti = document.getElementById("dega").value;
+                    console.log(qyteti);
+
                     var wb = XLSX.utils.book_new();
                     wb.Props = {
                             Title: "SheetJS Tutorial",
@@ -79,6 +82,8 @@ if(decrypt($row['Roli']) <> "Admin")
                             Author: "Red Stapler",
                             CreatedDate: new Date(2017,12,19)
                     };
+
+                    
                     wb.SheetNames.push(qyteti);
                     var ws = XLSX.utils.aoa_to_sheet(parseData);
                     wb.Sheets[qyteti] = ws;
@@ -96,7 +101,7 @@ if(decrypt($row['Roli']) <> "Admin")
                 }
             </script>
 
-            <button onclick="location.href = '../php';" id="myButton" >Gjenero file javore </button>
+            <!-- <button onclick="location.href = '../php';" id="myButton" >Gjenero file javore </button> -->
         </div>
     </div>
 

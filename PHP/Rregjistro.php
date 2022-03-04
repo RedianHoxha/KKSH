@@ -1,10 +1,20 @@
 <?php
 
-    $link = mysqli_connect("localhost", "root", "", "kksh");
-    require_once('../php/extra_function.php');
-    if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-    }
+session_start();
+require_once('../php/extra_function.php');
+$user=$_SESSION['user'];
+$iduseri = $_SESSION['UserID'];
+$link = mysqli_connect("localhost", "root", "", "kksh");
+
+$query = "select * from staf where ID = '$iduseri';";
+$kursantet=mysqli_query($link, $query);
+$row = mysqli_fetch_array($kursantet);
+$degastafit = $row['Degakupunon'];
+
+$querydega = "select * from qyteti where EmriDeges = '$degastafit';";
+$dega=mysqli_query($link, $querydega);
+$rowdega = mysqli_fetch_array($dega);
+$idDeges = $rowdega['IDQyteti'];
 
 
     function test_input($data) {
@@ -31,7 +41,7 @@
       $orari = $rowtedhena['orari'];
 
    $shtokursant = "insert into kursant(ID,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari,Statusi)
-    values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$dega', '$datakursit','$orari','pabere');";
+    values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges', '$datakursit','$orari','pabere');";
    
     
     if($resultinsert = mysqli_query($link, $shtokursant))
