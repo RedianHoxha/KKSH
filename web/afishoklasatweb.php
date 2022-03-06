@@ -55,10 +55,10 @@ mysqli_select_db($link,"ajax_demo");
              if($kapacitetiKlases > $kursantet)
              {
             ?>
-                <td class="text-left" style="text-align: center;"><?php echo $kursantet ?></td>
+                <td class="text-left"><?php echo $kursantet ?></td>
                 <td class="text-left" style="text-align: center;"><?php echo $kapacitetiKlases ?></td>
                 <td class="text-left" style="text-align: center;"><?php echo $orariKursit ?></td>
-                <td class="text-left" style="text-align: center;">><input type="radio" name="select" value="<?php echo $idKursi ?>">Choose</radio></td>
+                <td class="text-left" style="text-align: center;"><input type="radio" name="select" value="<?php echo $idKursi ?>">Choose</radio></td>
               </tr>
             <?php 
             }
@@ -67,7 +67,7 @@ mysqli_select_db($link,"ajax_demo");
         else
         {
           ?>
-              <td class="text-left" colspan="7" style="text-align:center">Per daten qe ju keni zgjedhur nuk ka vende te lira! Ju lutem zgjidhni nje date tjeter</td>              </tr>
+              <td class="text-left" colspan="7" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka vende te lira! Ju lutem zgjidhni nje date tjeter</td>              </tr>
             <?php
         }
       }   

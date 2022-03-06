@@ -89,12 +89,9 @@ table{
     width: 100%;
 }
 
-th{
+th, td{
     text-align: center;
     text-transform: uppercase;
-}
-td{
-text-align: center;
 }
   
 h1{

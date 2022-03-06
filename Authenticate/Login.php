@@ -37,6 +37,8 @@ else
            session_start();
             $_SESSION['UserID'] = $row['ID'];
             $_SESSION['user']= $username;
+            $_SESSION['start'] = time();
+            $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
             
             if(decrypt($row['Roli']) == "Admin")
             {
