@@ -49,11 +49,11 @@
                 <th>Edito</th>
             </tr>
             <tr>
-               <?php $sqlquery="Select * from kursant";
+               <?php $sqlquery="Select * from kursantet";
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { ?>
 
-                <td class="text-left"><?php echo decrypt($row['ID']); ?></td>
+                <td class="text-left"><?php echo decrypt($row['PersonalId']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['Emri']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['Mbiemri']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['Atesia']); ?></td>

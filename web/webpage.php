@@ -1,4 +1,5 @@
 <?php
+require_once('../php/extra_function.php');
 $link = mysqli_connect("localhost", "root", "", "kksh");
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -95,6 +96,10 @@ if($link === false){
                      {
                         $('#captcha_error').text(data.captcha_error);
                      }
+                  },
+                  error:function(par1, par2, par3)
+                  {
+                     console.log(par1.responseText);
                   }
             })
          });

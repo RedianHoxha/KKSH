@@ -31,11 +31,11 @@
     $idklase = $rowtedhena['idklase'];
     $orari = $rowtedhena['orari'];
     
-    $updetorow = "update kursant set Datakursit = '$datakursit', Orari = '$orari', Telefoni = '$tel',Vendbanimi = '$vendbanim',Datelindja = '$datelindja',Atesia = '$atesia',Emri = '$emri', Mbiemri = '$mbiemri' where ID = '$id'";
+    $updetorow = "update kursantet set Datakursit = '$datakursit', Orari = '$orari', Telefoni = '$tel',Vendbanimi = '$vendbanim',Datelindja = '$datelindja',Atesia = '$atesia',Emri = '$emri', Mbiemri = '$mbiemri' where ID = '$id'";
     if($runupdetin  =mysqli_query($link, $updetorow))
     {
         
-        // $quryshto = "insert into organizimkursantesh (idkursi, idkursanti,statusi ) values ('$idkursi','$id', 'pabere');";
+        // $quryshto = "insert into organizimkursantesh1 (idkursi, idkursanti,statusi ) values ('$idkursi','$id', 'pabere');";
         // mysqli_query($link, $quryshto);
         header('location: ../inputer/bejndryshime.php');
     }

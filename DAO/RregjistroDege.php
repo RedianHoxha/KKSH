@@ -13,7 +13,7 @@ function test_input($data) {
     return $data;
   }
     $emrideges= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['emrideges-txt'])));
-    $adersa = encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['adresa-txt'])));
+    $adersa = test_input(mysqli_real_escape_string( $link,$_POST['adresa-txt']));
     $shtodege = "insert into qyteti (EmriDeges, Adresa) values ('$emrideges', '$adersa');";
 
     if($resultinsert = mysqli_query($link, $shtodege))

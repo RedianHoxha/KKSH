@@ -28,7 +28,7 @@
     <body>
         <div id="top-page">
             <div id="top-page-left">
-                <button onclick="location.href = 'inputerpage.php';" id="myButton" >Rregjistro kursant te ri</button>
+                <button onclick="location.href = 'inputerpage.php';" id="myButton" >Rregjistro kursantet te ri</button>
                 <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
             </div>
             <div id="top-page-right">
@@ -54,11 +54,11 @@
                 <th>Edito</th>
             </tr>
             <tr>
-               <?php $sqlquery="Select * from kursant";
+               <?php $sqlquery="Select * from kursantet";
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { ?>
 
-                <td class="text-left"><?php echo decrypt($row['ID']); ?></td>
+                <td class="text-left"><?php echo decrypt($row['PersonalId']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['Emri']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['Mbiemri']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['Atesia']); ?></td>

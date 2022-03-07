@@ -40,13 +40,13 @@ $idDeges = $rowdega['IDQyteti'];
       $idklase = $rowtedhena['idklase'];
       $orari = $rowtedhena['orari'];
 
-   $shtokursant = "insert into kursant(ID,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari,Statusi)
+   $shtokursant = "insert into kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari,Statusi)
     values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges', '$datakursit','$orari','pabere');";
    
     
     if($resultinsert = mysqli_query($link, $shtokursant))
     {
-       $quryshto = "insert into organizimkursantesh (idkursi, idkursanti,statusi ) values ('$idkursi','$id','pabere');";
+       $quryshto = "insert into organizimkursantesh1 (idkursi, idkursanti,statusi ) values ('$idkursi','$id','pabere');";
        mysqli_query($link, $quryshto);
        header('location:../inputer/inputerpage.php');
     }

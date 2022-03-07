@@ -42,7 +42,7 @@ mysqli_select_db($link,"ajax_demo");
              $emriKlases = $rowKlasa['Emri'];
              $kapacitetiKlases = $rowKlasa['Kapaciteti'];
     
-             $kursanteneKurs = "select Count(organizimkursantesh.idkursi) as Sasia from organizimkursantesh where organizimkursantesh.statusi = 'pabere' and organizimkursantesh.idkursi = '$idKursi';";
+             $kursanteneKurs = "select Count(organizimkursantesh1.idkursi) as Sasia from organizimkursantesh1 where organizimkursantesh1.statusi = 'pabere' and organizimkursantesh1.idkursi = '$idKursi';";
              $resultKursante = mysqli_query($link,$kursanteneKurs);
              $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
     

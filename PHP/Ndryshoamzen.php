@@ -20,7 +20,7 @@
 
     $idkursanti = encryptValues($_GET['id']);
 
-    $kursanti = "select * from kursant where ID = ?;";
+    $kursanti = "select * from kursantet where ID = ?;";
     $stmt = mysqli_stmt_init($link);
     if(!mysqli_stmt_prepare($stmt,$kursanti))
     {
@@ -66,7 +66,7 @@
                 <div id="id">
                     <p id="id">ID Personale</p>
                     <input class="input100" id="id-txt" type="text" 
-                    name="id-txt" value="<?php echo  decrypt($row['ID']); ?>" readonly>
+                    name="id-txt" value="<?php echo  decrypt($row['PersonalId']); ?>" readonly>
                 </div><br>
                 <div id="datvendlindje">
                     <p id="datelindja">Datelindja</p>

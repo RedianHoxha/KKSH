@@ -35,7 +35,7 @@ else
         if(mysqli_num_rows($result) > 0)
         {
            session_start();
-            $_SESSION['UserID'] = $row['ID'];
+            $_SESSION['UserID'] = $row['PersonalId'];
             $_SESSION['user']= $username;
             $_SESSION['start'] = time();
             $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);

@@ -16,11 +16,11 @@
     $amza= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['amza-txt'])));
     $seria= encryptValues(test_input( mysqli_real_escape_string( $link,$_POST['deshmi-txt'])));
 
-    $vendosamzen = "update kursant set Amza= '$amza', NrSerisDeshmis = '$seria', Statusi= 'perfunduar' where ID = '$id'";
+    $vendosamzen = "update kursantet set Amza= '$amza', NrSerisDeshmis = '$seria', Statusi= 'perfunduar' where ID = '$id'";
     
     if($runupdetin  =mysqli_query($link, $vendosamzen))
     {
-        $quryupdetostatusinkursantit = "update organizimkursantesh set statusi = 'Perfunduar' where  idkursanti = '$id';";
+        $quryupdetostatusinkursantit = "update organizimkursantesh1 set statusi = 'Perfunduar' where  idkursanti = '$id';";
         mysqli_query($link, $quryupdetostatusinkursantit);
         header('location: ../confirm/confirmpage.php');
     }

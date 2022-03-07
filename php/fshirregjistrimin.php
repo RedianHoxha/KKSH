@@ -8,11 +8,11 @@
       $idKursanti = $_GET['id'];
 
 
-    $fshikursantngaplanifikimi = "DELETE FROM organizimkursantesh where idkursanti = '$idKursanti'";
+    $fshikursantngaplanifikimi = "DELETE FROM organizimkursantesh1 where idkursanti = '$idKursanti'";
 
     if($runupdetinorganizim  = mysqli_query($link, $fshikursantngaplanifikimi))
     {
-        $fshiKursant = "DELETE FROM kursant  where ID = '$idKursanti'";
+        $fshiKursant = "DELETE FROM kursantet  where ID = '$idKursanti'";
         if($runfshiorganizim = mysqli_query($link, $fshiKursant))
         {
             header('location: ../inputer/bejndryshime.php');
@@ -28,7 +28,7 @@
     }
     else
     {
-        $fshiKursant = "DELETE FROM kursant  where ID = '$idKursanti'";
+        $fshiKursant = "DELETE FROM kursantet  where ID = '$idKursanti'";
         if($runpaorganizim = mysqli_query($link, $fshiKursant))
         {
             header('location: ../inputer/bejndryshime.php');

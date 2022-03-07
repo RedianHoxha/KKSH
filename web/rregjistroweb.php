@@ -1,7 +1,6 @@
 <?php
+require_once('../php/extra_function.php');
     $link = mysqli_connect("localhost", "root", "", "kksh");
-
-    require_once('../php/extra_function.php');
     if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
@@ -16,19 +15,19 @@
 
   
 
-    $emri= test_input(mysqli_real_escape_string( $link,$_POST['name']));
+    $emri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['name'])));
 
-    $mbiemri= test_input(mysqli_real_escape_string( $link,$_POST['surname']));
+    $mbiemri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['surname'])));
     $datelindja= test_input(mysqli_real_escape_string( $link,$_POST['bday']));
-    $atesia= test_input(mysqli_real_escape_string( $link,$_POST['father']));
-    $id=test_input( mysqli_real_escape_string( $link,$_POST['id']));
-    $email=test_input(mysqli_real_escape_string( $link,$_POST['email']));
+    $atesia= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['father'])));
+    $id= encryptValues(test_input( mysqli_real_escape_string( $link,$_POST['id'])));
+    $email= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['email'])));
     $tel= test_input(mysqli_real_escape_string( $link,$_POST['phone']));
     $paymentnumber= test_input(mysqli_real_escape_string( $link,$_POST['paymentnumber']));
-    $vendbanim= test_input(mysqli_real_escape_string( $link,$_POST['adress']));
-    $qyteti=  test_input(mysqli_real_escape_string( $link,$_POST['city']));
-    $datakursit=test_input( mysqli_real_escape_string( $link,$_POST['datakursit']));
-    $idkursi=test_input( mysqli_real_escape_string( $link,$_POST['select']));
+    $vendbanim= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['adress'])));
+    $qyteti= test_input(mysqli_real_escape_string( $link,$_POST['city']));
+    $datakursit= test_input( mysqli_real_escape_string( $link,$_POST['datakursit']));
+    $idkursi= test_input( mysqli_real_escape_string( $link,$_POST['select']));
 
       $querymerrtedhena = "Select * from programijavor where idkursi = '$idkursi';";
       $resulttedhenash = mysqli_query($link, $querymerrtedhena);
@@ -64,13 +63,14 @@
       }
       if($captcha_error == '')
       {
-          $shtokursant = "insert into kursant(ID, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi)
+          $shtokursant = "insert into kursantet(PersonalID, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi)
           values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$qyteti', '$datakursit','$orari','$email','$paymentnumber','pabere');";
           
           if($resultinsert = mysqli_query($link, $shtokursant))
           {
-            $quryshto = "insert into organizimkursantesh (idkursi, idkursanti,statusi ) values ('$idkursi','$id', 'pabere');";
-            if($resultorganizim = mysqli_query($link, $quryshto))
+            $quryshto = "insert into organizimkursantesh1(idkursi, idkursanti,statusi ) values ('$idkursi','$id', 'pabere');";
+            $resultorganizim = mysqli_query($link, $quryshto);
+            if($resultorganizim == 1)
             {
               $data = array(
                 'success'  => true,
@@ -82,7 +82,7 @@
             else
             {
               echo "<script>
-              alert('Something went wrong! Try again!');
+              alert('Something went wrong11! Try again!');
               window.location.href='webpage.php';
               </script>";
             }
@@ -90,7 +90,7 @@
           else
           {
             echo "<script>
-            alert('Something went wrong! Try again!');
+            alert('Something went wrongw222! Try again!');
             window.location.href='webpage.php';
             </script>";
           } 
