@@ -30,14 +30,19 @@
                 $pageRole = "Admin";
                 $result = strcmp($roli, $pageRole);
 
-				if($result != 0)
-				{
+				if($result != 0){
                     session_destroy();
                     echo "<script>
                     alert('Session Ended');
                     window.location.href='../html/homepage.html';
                     </script>";
 				}
+                else{
+                    $iduseriToModify = $_GET['id'];
+                    $queryUserToModify = "SELECT * FROM staf where UniqueId = '$iduseriToModify'";
+                    $resultUserToModify=mysqli_query($link, $queryUserToModify);
+                    $rowUserToModify = mysqli_fetch_array($resultUserToModify);
+                }
 			}
 		}
     }
@@ -50,38 +55,38 @@
 </head>
 <body>
     <div id="top-page">
-        <button onclick="location.href = 'adminpageconfirm.php';" id="myButton" > Home</button>
+        <button onclick="location.href = '../admin/adminpageconfirm.php';" id="myButton" > Home</button>
         <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
     </div>
     <div id="Form">
-        <form action="../dao/rregjistrostaf.php" method="POST">
+        <form action="../dao/modifikostafdao.php?id=<?php echo $iduseriToModify?>" method="POST">
             <div id="hello">
                 <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
             </div>
             <div id="tedhenapersonale">
                 <p id="emri">Emri</p>
                 <input class="input100" id="emri-txt" type="text" 
-                name="emri-txt" placeholder="..." autocomplete="off" required><br>
+                name="emri-txt"  value="<?php echo decrypt($rowUserToModify['Emri']); ?>" required><br>
 
                 <p id="mbiemri">Mbiemri</p>
                 <input class="input100" id="mbiemri-txt" type="text" 
-                name="mbiemri-txt" placeholder="..." autocomplete="off" required ><br>
+                name="mbiemri-txt" value="<?php echo decrypt($rowUserToModify['Mbiemri']); ?>" required ><br>
                 
                 <p id="id">ID Personale</p>
                 <input class="input100" id="id-txt" type="text" 
-                name="id-txt" placeholder="..." autocomplete="off" required>
+                name="id-txt" value="<?php echo decrypt($rowUserToModify['ID']); ?>" require>
             </div><br><br>
             <div id="tedhenalogimi">    
                 <p id="username">Username</p>
                 <input class="input100" id="username-txt" type="text" 
-                name="username-txt" placeholder="..." autocomplete="off" required>
+                name="username-txt" value="<?php echo decrypt($rowUserToModify['Username']); ?>" required>
 
                 <p id="password">Password</p>
                 <input class="input100" id="password-txt" type="password" 
-                name="password-txt" placeholder="..." autocomplete="off" required><br><br>
+                name="password-txt" value="<?php echo decrypt($rowUserToModify['Password']); ?>" required><br><br>
 
                 <label for="roli">Roli i Personelit:</label>
-                <select id="roli" name="roli" style="width:15%;" required>
+                <select id="roli" name="roli" style="width:15%;"  value="<?php echo decrypt($rowUserToModify['Roli']); ?>" required>
                     <option value="Inputer">Inputer</option>
                     <option value="Confirmues">Konfirmues</option>
                     <option value="Admindege">Admin Dege</option>
@@ -92,7 +97,7 @@
             <div id="tedhenakontakti">
                 <p id="telefoni">Telefoni</p>
                 <input class="input100" id="tel-txt" type="text" 
-                name="tel-txt" placeholder="..." autocomplete="off" required><br>
+                name="tel-txt" value="<?php echo $rowUserToModify['Telefoni']; ?>" required><br>
 
                 <label for="dega">Qyteti:</label>
                 <select id="dega" name="dega" style="width:15%;" required>

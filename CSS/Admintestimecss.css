@@ -3,7 +3,6 @@
     margin-left: 5%;
     width: 40%;
     height: 40%;
-
 }
 
 #logout{
@@ -28,35 +27,36 @@ body{
 }
 
 #top{
-display: inline-flex;
+    display: inline-flex;
 }
 
 table, td,th {
     border-collapse: collapse;
     border: 3px solid red;
-  }
+}
 
   table{
-      margin-left: 10px;
-      margin-top: 4px;
-      width: 80%;
+    margin-left: 6px;
+    margin-top: 4px;
+    width: 80%;
   }
 
   th{
-      text-align: center;
-      text-transform: uppercase;
+    text-align: center;
+    text-transform: uppercase;
   }
+
   td{
-text-align: center;
+    text-align: center;
   }
+
   #Dege{
-      width: 23%;
+    width: 23%;
   }
   #Klase{
-      width: 25%;
+    width: 20%;
   }
   #Staf
   {
-  
-      width: 52%;
+    width: 58%;
   }

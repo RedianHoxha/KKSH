@@ -12,7 +12,7 @@ $sqlQyteti = "SELECT * FROM qyteti where EmriDeges = '$degazgjedhur'";
 $qytetet=mysqli_query($link, $sqlQyteti);
 $row = mysqli_fetch_array($qytetet);
 $dega = $row['IDQyteti'];
-$sqlquery = "select Emri,Atesia,Mbiemri,ID,Datelindja,Amza,NrSerisDeshmis from kursantet where Dega= '$dega' and Statusi = 'perfunduar';";
+$sqlquery = "select Emri,Atesia,Mbiemri,PersonalId,Datelindja,Amza,NrSerisDeshmis from kursantet where Dega= '$dega' and Statusi = 'perfunduar';";
 $resultinsert = mysqli_query($link, $sqlquery) or die(mysql_error());
 
 while ($array = mysqli_fetch_row($resultinsert)) {

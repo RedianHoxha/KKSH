@@ -1,29 +1,54 @@
-<?php  
+<?php 
     session_start();
-    $user=$_SESSION['user'];
-    $iduseri = $_SESSION['UserID'];
-    $link = mysqli_connect("localhost", "root", "", "kksh");
-    $query = "select * from staf where ID = '$iduseri';";
-    $kursantet=mysqli_query($link, $query);
-    $row = mysqli_fetch_array($kursantet);
-    if($row['Roli'] <> "Inputer")
-    {
-        echo "<script>
-        alert('You don't have access to see this page! Session Failed!');
-        window.location.href='../html/homepage.html';
-        </script>";
-    }
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-      }
-    $fjalakyc= test_input(mysqli_real_escape_string( $link,$_POST['search']));
+    require_once('../php/extra_function.php');
+    if (!isset($_SESSION['user'])) {
+        echo "Please Login again";
+        echo "<a href='../html/homepage.html'>Click Here to Login</a>";
+    }else{
+        $now = time();
+		if ($now > $_SESSION['expire']) {
+			session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../html/homepage.html';
+            </script>";
+		}else
+		{
+			$user=$_SESSION['user'];
+            $iduseri = $_SESSION['UserID'];
+            $link = mysqli_connect("localhost", "root", "", "kksh");
+			if($link === false)
+			{
+                    die("ERROR: Could not connect. " . mysqli_connect_error());
+            }else
+			{
+				$query = "select * from staf where ID = '$iduseri';";
+				$kursantet=mysqli_query($link, $query);
+				$row = mysqli_fetch_array($kursantet);
+                $dega = $row['Degakupunon'];
+                $roli = decrypt($row['Roli']);
+                $pageRole = "Inputer";
+                $result = strcmp($roli, $pageRole);
 
-    if($link === false)
-    {
-        die("ERROR: Could not connect. " . mysqli_connect_error());
+				if($result != 0)
+				{
+                    session_destroy();
+                    echo "<script>
+                    alert('Session Ended');
+                    window.location.href='../html/homepage.html';
+                    </script>";
+				}
+				
+				function test_input($data) {
+					$data = trim($data);
+					$data = stripslashes($data);
+					$data = htmlspecialchars($data);
+					return $data;
+				  }
+
+				$fjalakyc= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['search'])));
+			}
+		}
     }
 ?>
 <!DOCTYPE html>
@@ -33,7 +58,7 @@
     </head>
     <body>
         <div id="logout">
-            <button onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo $user ?></button>
+            <button onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
             <button onclick="location.href = 'bejndryshime.php';" id="myButton" >Ktheu</button>
         </div>
         <div id="search">
@@ -73,14 +98,14 @@
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { ?>
 
-                <td class="text-left"><?php echo $row['PersonalId']; ?></td>
-                <td class="text-left"><?php echo $row['Emri']; ?></td>
-                <td class="text-left"><?php echo $row['Mbiemri']; ?></td>
-                <td class="text-left"><?php echo $row['Atesia']; ?></td>
-                <td class="text-left"><?php echo $row['Vendbanimi']; ?></td>
+                <td class="text-left"><?php echo decrypt($row['PersonalId']); ?></td>
+                <td class="text-left"><?php echo decrypt($row['Emri']); ?></td>
+                <td class="text-left"><?php echo decrypt($row['Mbiemri']); ?></td>
+                <td class="text-left"><?php echo decrypt($row['Atesia']); ?></td>
+                <td class="text-left"><?php echo decrypt($row['Vendbanimi']); ?></td>
                 <td class="text-left"><?php echo $row['Telefoni']; ?></td>
                 <td class="text-left"><?php echo $row['Datelindja']; ?></td>
-                <td class="text-left"><?php echo $row['Amza']; ?></td>
+                <td class="text-left"><?php echo decrypt($row['Amza']); ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
                 <td class="text-left"><?php echo $row['Orari']; ?></td>
 

@@ -35,10 +35,10 @@ else
         if(mysqli_num_rows($result) > 0)
         {
            session_start();
-            $_SESSION['UserID'] = $row['PersonalId'];
+            $_SESSION['UserID'] = $row['ID'];
             $_SESSION['user']= $username;
             $_SESSION['start'] = time();
-            $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
+            $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
             
             if(decrypt($row['Roli']) == "Admin")
             {

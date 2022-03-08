@@ -1,50 +1,70 @@
-<?php
+<?php 
+    session_start();
+    require_once('../php/extra_function.php');
+    if (!isset($_SESSION['user'])) {
+        echo "Please Login again";
+        echo "<a href='../html/homepage.html'>Click Here to Login</a>";
+    }else{
+        $now = time();
+		if ($now > $_SESSION['expire']) {
+			session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../html/homepage.html';
+            </script>";
+		}else
+		{
+			$user=$_SESSION['user'];
+            $iduseri = $_SESSION['UserID'];
+            $link = mysqli_connect("localhost", "root", "", "kksh");
+			if($link === false)
+			{
+                    die("ERROR: Could not connect. " . mysqli_connect_error());
+            }else
+			{
+				$query = "select * from staf where ID = '$iduseri';";
+                $kursantet=mysqli_query($link, $query);
+                $row = mysqli_fetch_array($kursantet);
+                $degastafit = $row['Degakupunon'];
 
-session_start();
-require_once('../php/extra_function.php');
-$user=$_SESSION['user'];
-$iduseri = $_SESSION['UserID'];
-$link = mysqli_connect("localhost", "root", "", "kksh");
+                $querydega = "select * from qyteti where EmriDeges = '$degastafit';";
+                $dega=mysqli_query($link, $querydega);
+                $rowdega = mysqli_fetch_array($dega);
+                $idDeges = $rowdega['IDQyteti'];
+                $roli = decrypt($row['Roli']);
+                $pageRole = "Inputer";
+                $result = strcmp($roli, $pageRole);
 
-$query = "select * from staf where ID = '$iduseri';";
-$kursantet=mysqli_query($link, $query);
-$row = mysqli_fetch_array($kursantet);
+				if($result != 0)
+				{
+                    session_destroy();
+                    echo "<script>
+                    alert('Session Ended');
+                    window.location.href='../html/homepage.html';
+                    </script>";
+				}
+                else{
+                    
+                    $idkursanti = $_GET['id'];
 
-$degastafit = $row['Degakupunon'];
-
-$querydega = "select * from qyteti where EmriDeges = '$degastafit';";
-$dega=mysqli_query($link, $querydega);
-$rowdega = mysqli_fetch_array($dega);
-$idDeges = $rowdega['IDQyteti'];
-
-if(decrypt($row['Roli']) <> "Inputer")
-{
-    echo "<script>
-    alert('You don't have access to see this page! Session Failed!');
-    window.location.href='../html/homepage.html';
-    </script>";
-}
-
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
-    
-$idkursanti = $_GET['id'];
-
-$kursanti = "select * from kursantet where ID = ?;";
-$stmt = mysqli_stmt_init($link);
-if(!mysqli_stmt_prepare($stmt,$kursanti))
-{
-    echo  'Prove e deshtuar';
-}
-else
-{
-    mysqli_stmt_bind_param($stmt, "s" ,$idkursanti);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $row =mysqli_fetch_assoc($result);
-    $data = $row['Datakursit'];
-}
+                    $kursanti = "select * from kursantet where PersonalId = ?;";
+                    $stmt = mysqli_stmt_init($link);
+                    if(!mysqli_stmt_prepare($stmt,$kursanti))
+                    {
+                        echo  'Prove e deshtuar';
+                    }
+                    else
+                    {
+                        mysqli_stmt_bind_param($stmt, "s" ,$idkursanti);
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
+                        $row =mysqli_fetch_assoc($result);
+                        $data = $row['Datakursit'];
+                    }
+                }
+			}
+		}
+    }
 ?>
 <!DOCTYPE html>
     <head>

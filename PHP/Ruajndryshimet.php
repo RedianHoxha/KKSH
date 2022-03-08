@@ -31,7 +31,7 @@
     $idklase = $rowtedhena['idklase'];
     $orari = $rowtedhena['orari'];
     
-    $updetorow = "update kursantet set Datakursit = '$datakursit', Orari = '$orari', Telefoni = '$tel',Vendbanimi = '$vendbanim',Datelindja = '$datelindja',Atesia = '$atesia',Emri = '$emri', Mbiemri = '$mbiemri' where ID = '$id'";
+    $updetorow = "update kursantet set Datakursit = '$datakursit', Orari = '$orari', Telefoni = '$tel',Vendbanimi = '$vendbanim',Datelindja = '$datelindja',Atesia = '$atesia',Emri = '$emri', Mbiemri = '$mbiemri' where PersonalId = '$id'";
     if($runupdetin  =mysqli_query($link, $updetorow))
     {
         

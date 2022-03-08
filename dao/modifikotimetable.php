@@ -15,16 +15,16 @@
     }
 
     $instruktori= test_input(mysqli_real_escape_string( $link,$_POST['instruktori']));
-    $klasa=test_input(mysqli_real_escape_string( $link,$_POST['klasa']));
+    $klasa= test_input(mysqli_real_escape_string( $link,$_POST['klasa']));
     $data= test_input(mysqli_real_escape_string( $link,$_POST['datakursit']));
-    $ora=test_input(mysqli_real_escape_string( $link,$_POST['orari']));
+    $ora= test_input(mysqli_real_escape_string( $link,$_POST['orari']));
 
     $queryshtoprogram ="UPDATE programijavor set idinstruktori = '$instruktori', orari = '$ora', data = '$data', idklase = '$klasa'  WHERE idkursi = '$idPlanifikimi';";
 
     if($resultinsert = mysqli_query($link, $queryshtoprogram))
     {
         echo "<script>
-        alert('OK');
+        alert('Modification gone successfully');
         window.location.href='../admin/admindege.php';
         </script>";
     }

@@ -39,6 +39,7 @@ require_once('../php/extra_function.php');
       $resultsqlurlqyteti = mysqli_query($link, $sqlurlqyteti);
       $row = mysqli_fetch_array($resultsqlurlqyteti);
       $url = $row['Adresa'];
+      $idQyteti = $row['IDQyteti'];
 
     if(isset($_POST["g-recaptcha-response"]))
     {
@@ -64,7 +65,7 @@ require_once('../php/extra_function.php');
       if($captcha_error == '')
       {
           $shtokursant = "insert into kursantet(PersonalID, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi)
-          values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$qyteti', '$datakursit','$orari','$email','$paymentnumber','pabere');";
+          values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere');";
           
           if($resultinsert = mysqli_query($link, $shtokursant))
           {

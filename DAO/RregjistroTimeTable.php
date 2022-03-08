@@ -13,9 +13,9 @@ function test_input($data) {
  }
 
     $instruktori= test_input(mysqli_real_escape_string( $link,$_POST['instruktori']));
-    $klasa=test_input(mysqli_real_escape_string( $link,$_POST['klasa']));
+    $klasa= test_input(mysqli_real_escape_string( $link,$_POST['klasa']));
     $data= test_input(mysqli_real_escape_string( $link,$_POST['datakursit']));
-    $ora=test_input(mysqli_real_escape_string( $link,$_POST['orari']));
+    $ora= test_input(mysqli_real_escape_string( $link,$_POST['orari']));
 
     $queryshtoprogram ="insert into programijavor(idklase,idinstruktori,orari,data) values ('$klasa','$instruktori','$ora','$data');";
 

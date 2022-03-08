@@ -149,7 +149,7 @@ if($link === false){
                <?php $sqlquery="Select * from qyteti";
                   $qytetet=mysqli_query($link, $sqlquery);
                   while ($row = mysqli_fetch_array($qytetet)) { ?>
-               <option value="<?php echo $row['EmriDeges']; ?>"><?php echo $row['EmriDeges']; ?></option>
+               <option value="<?php echo $row['EmriDeges']; ?>"><?php echo decrypt($row['EmriDeges']); ?></option>
                <?php } ?>
             </select>
         <label class="label" for="city">Qyteti</label>

@@ -1,24 +1,46 @@
-<?php
-session_start();
-require_once('../php/extra_function.php');
-$user=$_SESSION['user'];
-$iduseri = $_SESSION['UserID'];
-$iduserienc = decrypt($_SESSION['UserID']);
-$link = mysqli_connect("localhost", "root", "", "kksh");
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-    }
+<?php 
+    session_start();
+    require_once('../php/extra_function.php');
+    if (!isset($_SESSION['user'])) {
+        echo "Please Login again";
+        echo "<a href='../html/homepage.html'>Click Here to Login</a>";
+    }else{
+        $now = time();
+		if ($now > $_SESSION['expire']) {
+			session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../html/homepage.html';
+            </script>";
+		}else
+		{
+			$user=$_SESSION['user'];
+            $iduseri = $_SESSION['UserID'];
+            $link = mysqli_connect("localhost", "root", "", "kksh");
+			if($link === false)
+			{
+                    die("ERROR: Could not connect. " . mysqli_connect_error());
+            }else
+			{
+				$query = "select * from staf where ID = '$iduseri';";
+                $staf=mysqli_query($link, $query);
+                $row = mysqli_fetch_array($staf);
+                $dega = $row['Degakupunon'];
+                $roli = decrypt($row['Roli']);
+                $pageRole = "Admin";
+                $result = strcmp($roli, $pageRole);
 
-$query = "select * from staf where ID = '$iduseri';";
-$kursantet=mysqli_query($link, $query);
-$row = mysqli_fetch_array($kursantet);
-if(decrypt($row['Roli']) <> "Admin")
-{
-    echo "<script>
-    alert('You don't have access to see this page! Session Failed!');
-    window.location.href='../html/homepage.html';
-    </script>";
-}
+				if($result != 0)
+				{
+                    session_destroy();
+                    echo "<script>
+                    alert('Session Ended');
+                    window.location.href='../html/homepage.html';
+                    </script>";
+				}
+			}
+		}
+    }
 ?>
 
 <!DOCTYPE html>
@@ -113,24 +135,27 @@ if(decrypt($row['Roli']) <> "Admin")
             <div id="tabela">
                 <table id="stafi">  
                     <tr>
+                        <th>Personale ID</th>
                         <th>Emri</th>
                         <th>Mbiemer</th>
                         <th>Rol</th>
                         <th>Dega</th>
                         <th>Username</th>
                         <th>Telefoni</th>
+                        <th>Edito</th>
                     </tr>
                     <tr>
                         <?php $sqlquery="Select * from staf";
                         $kursantet=mysqli_query($link, $sqlquery);
                         while ($row = mysqli_fetch_array($kursantet)) { ?> 
-
+                        <td><?php echo decrypt($row['ID']); ?></td>
                         <td><?php echo decrypt($row['Emri']); ?></td>
                         <td><?php echo decrypt($row['Mbiemri']); ?></td>
                         <td><?php echo decrypt($row['Roli']); ?></td>
                         <td><?php echo decrypt($row['Degakupunon']); ?></td>
                         <td><?php echo decrypt($row['Username']); ?></td>
                         <td><?php echo $row['Telefoni']; ?></td>
+                        <td class="text-left"><button onclick="location.href = '../php/modifikostaf.php?id=<?php echo $row['UniqueId'];?>'" >Modifiko</button><button onclick="location.href = '../php/fshiuser.php?id=<?php echo $row['UniqueId'];?>'" >Fshi</button></td>
                     </tr> 
                     <?php } ?>
                 </table>

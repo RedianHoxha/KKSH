@@ -8,11 +8,15 @@
         $now = time();
 		if ($now > $_SESSION['expire']) {
 			session_destroy();
-            echo "Your session has expired! <a href='../html/homepage.html'>Login here</a>";
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../html/homepage.html';
+            </script>";
 		}else
 		{
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
+
             $link = mysqli_connect("localhost", "root", "", "kksh");
 			if($link === false)
 			{
@@ -23,20 +27,24 @@
                 $staf=mysqli_query($link, $query);
                 $row = mysqli_fetch_array($staf);
                 $dega = $row['Degakupunon'];
-				
-				if(decrypt($row['Roli']) <> "Admindege")
+                $roli = decrypt($row['Roli']);
+                $pageRole = "Admindege";
+                $result = strcmp($roli, $pageRole);
+				if($result == 0)
 				{
-					echo "<script>
-                    alert('You don't have access to see this page! Session Failed!');
-                    window.location.href='../html/homepage.html';
-                    </script>";
-				}
-				else
-				{
-					$queryqyteti = "select * from qyteti where EmriDeges = '$dega';";
+
+                    $queryqyteti = "select * from qyteti where EmriDeges = '$dega';";
                     $klasa=mysqli_query($link, $queryqyteti);
                     $row = mysqli_fetch_array($klasa);
                     $idqyteti = $row['IDQyteti'];
+				}
+				else
+				{
+                    session_destroy();
+                    echo "<script>
+                    alert('Session Ended');
+                    window.location.href='../html/homepage.html';
+                    </script>";
 				}
 			}
 		}

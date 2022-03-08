@@ -1,22 +1,45 @@
 <?php 
-    session_start();    
+    session_start();
     require_once('../php/extra_function.php');
-    $user=$_SESSION['user'];
-    $iduseri = $_SESSION['UserID'];
-    $link = mysqli_connect("localhost", "root", "", "kksh");
-    $query = "select * from staf where ID = '$iduseri';";
-    $kursantet=mysqli_query($link, $query);
-    $row = mysqli_fetch_array($kursantet);
-    if(decrypt($row['Roli']) <> "Confirmues")
-    {
-        echo "<script>
-        alert('You don't have access to see this page! Session Failed!');
-        window.location.href='../html/homepage.html';
-        </script>";
-    }
-    if($link === false)
-    {
-        die("ERROR: Could not connect. " . mysqli_connect_error());
+    if (!isset($_SESSION['user'])) {
+        echo "Please Login again";
+        echo "<a href='../html/homepage.html'>Click Here to Login</a>";
+    }else{
+        $now = time();
+		if ($now > $_SESSION['expire']) {
+			session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../html/homepage.html';
+            </script>";
+		}else
+		{
+			$user=$_SESSION['user'];
+            $iduseri = $_SESSION['UserID'];
+            $link = mysqli_connect("localhost", "root", "", "kksh");
+			if($link === false)
+			{
+               die("ERROR: Could not connect. " . mysqli_connect_error());
+            }else
+			{
+				$query = "select * from staf where ID = '$iduseri';";
+				$kursantet=mysqli_query($link, $query);
+				$row = mysqli_fetch_array($kursantet);
+                $dega = $row['Degakupunon'];
+                $roli = decrypt($row['Roli']);
+                $pageRole = "Confirmues";
+                $result = strcmp($roli, $pageRole);
+
+				if($result != 0)
+				{
+                    session_destroy();
+                    echo "<script>
+                    alert('Session Ended');
+                    window.location.href='../html/homepage.html';
+                    </script>";
+				}
+			}
+		}
     }
 ?>
 <!DOCTYPE html>
@@ -63,7 +86,7 @@
                 <td class="text-left"><?php echo decrypt($row['Amza']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['NrSerisDeshmis']); ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
-                <td class="text-left"><button onclick="location.href = '../php/ndryshoamzen.php?id=<?php echo decrypt($row['ID']);?>'" >Ploteso Amzen</button></td>
+                <td class="text-left"><button onclick="location.href = '../php/ndryshoamzen.php?id=<?php echo $row['PersonalId'];?>'" >Ploteso Amzen</button><button onclick="location.href = '../php/fshirregjistrimin.php?id=<?php echo $row['PersonalId'];?>'" >Fshi</button></td>
             </tr>
             <?php } ?>
         </table>

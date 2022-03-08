@@ -46,8 +46,11 @@ $idDeges = $rowdega['IDQyteti'];
     
     if($resultinsert = mysqli_query($link, $shtokursant))
     {
-       $quryshto = "insert into organizimkursantesh1 (idkursi, idkursanti,statusi ) values ('$idkursi','$id','pabere');";
-       mysqli_query($link, $quryshto);
+       $queryshto = "insert into organizimkursantesh1 (idkursi, idkursanti,statusi ) values ('$idkursi','$id','pabere');";
+       mysqli_query($link, $queryshto);
+       echo $datelindja;
+       echo $shtokursant;
+       echo $queryshto;
        header('location:../inputer/inputerpage.php');
     }
     else

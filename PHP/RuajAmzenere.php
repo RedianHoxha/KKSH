@@ -16,7 +16,7 @@
     $amza= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['amza-txt'])));
     $seria= encryptValues(test_input( mysqli_real_escape_string( $link,$_POST['deshmi-txt'])));
 
-    $vendosamzen = "update kursantet set Amza= '$amza', NrSerisDeshmis = '$seria', Statusi= 'perfunduar' where ID = '$id'";
+    $vendosamzen = "update kursantet set Amza= '$amza', NrSerisDeshmis = '$seria', Statusi= 'perfunduar' where PersonalId = '$id'";
     
     if($runupdetin  =mysqli_query($link, $vendosamzen))
     {

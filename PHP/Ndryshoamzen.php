@@ -1,37 +1,63 @@
-<?php
+<?php 
     session_start();
-    $user=$_SESSION['user'];
-    $iduseri = $_SESSION['UserID'];
     require_once('../php/extra_function.php');
-    $link = mysqli_connect("localhost", "root", "", "kksh");
-    $query = "select * from staf where ID = '$iduseri';";
-    $kursantet=mysqli_query($link, $query);
-    $row = mysqli_fetch_array($kursantet);
-    if(decrypt($row['Roli']) <> "Confirmues")
-    {
-        echo "<script>
-        alert('You don't have access to see this page! Session Failed!');
-        window.location.href='../html/homepage.html';
-        </script>";
-    }
-    if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-    }
+    if (!isset($_SESSION['user'])) {
+        echo "Please Login again";
+        echo "<a href='../html/homepage.html'>Click Here to Login</a>";
+    }else{
+        $now = time();
+		if ($now > $_SESSION['expire']) {
+			session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../html/homepage.html';
+            </script>";
+		}else
+		{
+			$user=$_SESSION['user'];
+            $iduseri = $_SESSION['UserID'];
+            $link = mysqli_connect("localhost", "root", "", "kksh");
+			if($link === false)
+			{
+                    die("ERROR: Could not connect. " . mysqli_connect_error());
+            }else
+			{
+				$query = "select * from staf where ID = '$iduseri';";
+				$kursantet=mysqli_query($link, $query);
+				$row = mysqli_fetch_array($kursantet);
+                $dega = $row['Degakupunon'];
+                $roli = decrypt($row['Roli']);
+                $pageRole = "Confirmues";
+                $result = strcmp($roli, $pageRole);
 
-    $idkursanti = encryptValues($_GET['id']);
+				if($result != 0)
+				{
+                    session_destroy();
+                    echo "<script>
+                    alert('Session Ended');
+                    window.location.href='../html/homepage.html';
+                    </script>";
+				}
+                else
+                {
+                    $idkursanti = $_GET['id'];
 
-    $kursanti = "select * from kursantet where ID = ?;";
-    $stmt = mysqli_stmt_init($link);
-    if(!mysqli_stmt_prepare($stmt,$kursanti))
-    {
-        echo  'Prove e deshtuar';
-    }
-    else
-    {
-        mysqli_stmt_bind_param($stmt, "s" ,$idkursanti);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        $row =mysqli_fetch_assoc($result);
+                    $kursanti = "select * from kursantet where PersonalId = ?;";
+                    $stmt = mysqli_stmt_init($link);
+                    if(!mysqli_stmt_prepare($stmt,$kursanti))
+                    {
+                        echo  'Prove e deshtuar';
+                    }
+                    else
+                    {
+                        mysqli_stmt_bind_param($stmt, "s" ,$idkursanti);
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
+                        $row =mysqli_fetch_assoc($result);
+                    }
+                }
+			}
+		}
     }
 ?>
 
@@ -70,7 +96,7 @@
                 </div><br>
                 <div id="datvendlindje">
                     <p id="datelindja">Datelindja</p>
-                    <input class="input100" id="datelindja-txt" type="date" name="datelindja-txt" required value="<?php echo  $row['Datelindja']    ; ?>">
+                    <input class="input100" id="datelindja-txt" type="date" name="datelindja-txt" required value="<?php echo  $row['Datelindja']; ?>">
 
                     <p id="vendbanim">Venbanim</p>
                     <input class="input100" id="vendbanim-txt" type="text" 

@@ -1,23 +1,47 @@
 <?php 
-        session_start();
-        require_once('../php/extra_function.php');
-        $user=$_SESSION['user'];
-        $iduseri = $_SESSION['UserID'];
-        $link = mysqli_connect("localhost", "root", "", "kksh");
-        $query = "select * from staf where ID = '$iduseri';";
-        $kursantet=mysqli_query($link, $query);
-        $row = mysqli_fetch_array($kursantet);
-        if(decrypt($row['Roli']) <> "Admin")
-        {
+    session_start();
+    require_once('../php/extra_function.php');
+    if (!isset($_SESSION['user'])) {
+        echo "Please Login again";
+        echo "<a href='../html/homepage.html'>Click Here to Login</a>";
+    }else{
+        $now = time();
+		if ($now > $_SESSION['expire']) {
+			session_destroy();
             echo "<script>
-            alert('You don't have access to see this page! Session Failed!');
+            alert('Session Ended');
             window.location.href='../html/homepage.html';
             </script>";
-        }
-    if($link === false){
-        die("ERROR: Could not connect. " . mysqli_connect_error());
-}?>
+		}else
+		{
+			$user=$_SESSION['user'];
+            $iduseri = $_SESSION['UserID'];
+            $link = mysqli_connect("localhost", "root", "", "kksh");
+			if($link === false)
+			{
+                    die("ERROR: Could not connect. " . mysqli_connect_error());
+            }else
+			{
+				$query = "select * from staf where ID = '$iduseri';";
+                $staf=mysqli_query($link, $query);
+                $row = mysqli_fetch_array($staf);
+                $dega = $row['Degakupunon'];
+                $roli = decrypt($row['Roli']);
+                $pageRole = "Admin";
+                $result = strcmp($roli, $pageRole);
 
+				if($result != 0)
+				{
+                    session_destroy();
+                    echo "<script>
+                    alert('Session Ended');
+                    window.location.href='../html/homepage.html';
+                    </script>";
+				}
+			}
+		}
+    }
+?>
 
 <!DOCTYPE html>
 <head>

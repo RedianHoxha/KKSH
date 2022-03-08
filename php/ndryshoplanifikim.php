@@ -1,49 +1,73 @@
 <?php
 session_start();
 require_once('../php/extra_function.php');
-$user=$_SESSION['user'];
-$iduseri = $_SESSION['UserID'];
-$link = mysqli_connect("localhost", "root", "", "kksh");
+if (!isset($_SESSION['user'])) {
+    echo "Please Login again";
+    echo "<a href='../html/homepage.html'>Click Here to Login</a>";
+}else{
+    $now = time();
+    if ($now > $_SESSION['expire']) {
+        session_destroy();
+        echo "<script>
+        alert('Session Ended');
+        window.location.href='../html/homepage.html';
+        </script>";
+    }else
+    {
+        $user=$_SESSION['user'];
+        $iduseri = $_SESSION['UserID'];
+        $link = mysqli_connect("localhost", "root", "", "kksh");
+        if($link === false)
+        {
+                die("ERROR: Could not connect. " . mysqli_connect_error());
+        }else
+        {
+            $query = "select * from staf where ID = '$iduseri';";
+            $staf=mysqli_query($link, $query);
+            $row = mysqli_fetch_array($staf);
+            $dega = $row['Degakupunon'];
+            $roli = decrypt($row['Roli']);
+            $pageRole = "Admindege";
+            $result = strcmp($roli, $pageRole);
 
-$query = "select * from staf where ID = '$iduseri';";
-$kursantet=mysqli_query($link, $query);
-$row = mysqli_fetch_array($kursantet);
-$dega = $row['Degakupunon'];
-
-
-if(decrypt($row['Roli']) <> "Admindege")
-{
-    echo "<script>
-    alert('You don't have access to see this page! Session Failed!');
-    window.location.href='../html/homepage.html';
-    </script>";
-}
-
-$queryqyteti = "select * from qyteti where EmriDeges = '$dega';";
-$klasa=mysqli_query($link, $queryqyteti);
-$row = mysqli_fetch_array($klasa);
-$idqyteti = $row['IDQyteti'];
-
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
-
-$idPlanifikimi = $_GET['id'];
-$planifikim  = "Select * from programijavor where idkursi = ?";
-$stmt = mysqli_stmt_init($link);
-if(!mysqli_stmt_prepare($stmt,$planifikim))
-{
-    echo  'Prove e deshtuar';
-}
-else
-{
-    mysqli_stmt_bind_param($stmt, "s" ,$idPlanifikimi);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $row =mysqli_fetch_assoc($result);
-    $idInstruktori = decrypt($row['idinstruktori']);
-    $idKlase = decrypt($row['idklase']);
-    $idOrarikursit = decrypt($row['data']);
+            if($result != 0)
+            {
+                session_destroy();
+                echo "<script>
+                alert('Session Ended');
+                window.location.href='../html/homepage.html';
+                </script>";
+            }
+            else{
+                $queryqyteti = "select * from qyteti where EmriDeges = '$dega';";
+                $klasa=mysqli_query($link, $queryqyteti);
+                $row = mysqli_fetch_array($klasa);
+                $idqyteti = $row['IDQyteti'];
+                
+                if($link === false){
+                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                }
+                
+                $idPlanifikimi = $_GET['id'];
+                $planifikim  = "Select * from programijavor where idkursi = ?";
+                $stmt = mysqli_stmt_init($link);
+                if(!mysqli_stmt_prepare($stmt,$planifikim))
+                {
+                    echo  'Prove e deshtuar';
+                }
+                else
+                {
+                    mysqli_stmt_bind_param($stmt, "s" ,$idPlanifikimi);
+                    mysqli_stmt_execute($stmt);
+                    $result = mysqli_stmt_get_result($stmt);
+                    $row =mysqli_fetch_assoc($result);
+                    $idInstruktori = decrypt($row['idinstruktori']);
+                    $idKlase = decrypt($row['idklase']);
+                    $idOrarikursit = decrypt($row['data']);
+                }
+            }
+        }
+    }
 }
 ?>
 
