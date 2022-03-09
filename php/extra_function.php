@@ -48,6 +48,11 @@ function decrypt($string){
     return $decryption;
 }
 
-
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
 
 ?>

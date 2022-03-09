@@ -6,14 +6,6 @@
 }
 
     $idPlanifikimi = $_GET['edit'];
-
-    function test_input($data) {
-      $data = trim($data);
-      $data = stripslashes($data);
-      $data = htmlspecialchars($data);
-      return $data;
-    }
-
     $instruktori= test_input(mysqli_real_escape_string( $link,$_POST['instruktori']));
     $klasa= test_input(mysqli_real_escape_string( $link,$_POST['klasa']));
     $data= test_input(mysqli_real_escape_string( $link,$_POST['datakursit']));

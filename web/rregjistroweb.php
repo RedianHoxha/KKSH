@@ -5,16 +5,6 @@ require_once('../php/extra_function.php');
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
 
-
-    function test_input($data) {
-      $data = trim($data);
-      $data = stripslashes($data);
-      $data = htmlspecialchars($data);
-      return $data;
-    }
-
-  
-
     $emri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['name'])));
 
     $mbiemri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['surname'])));

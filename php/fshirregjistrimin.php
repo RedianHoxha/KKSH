@@ -20,7 +20,7 @@
 
     if($runupdetinorganizim  = mysqli_query($link, $fshikursantngaplanifikimi))
     {
-        $fshiKursant = "DELETE FROM kursantet  where PersonalId = '$idKursanti'";
+        $fshiKursant = "DELETE FROM kursantet  where ID = '$idKursanti'";
         if($runfshiorganizim = mysqli_query($link, $fshiKursant))
         {
             if(strcmp($roli,"Inputer") == 0)

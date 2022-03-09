@@ -16,6 +16,7 @@
 		{
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
+            $_SESSION['expire'] = $_SESSION['expire'] + (5 * 60);
             $link = mysqli_connect("localhost", "root", "", "kksh");
 			if($link === false)
 			{
@@ -83,7 +84,7 @@
                 <label for="roli">Roli i Personelit:</label>
                 <select id="roli" name="roli" style="width:15%;" required>
                     <option value="Inputer">Inputer</option>
-                    <option value="Confirmues">Konfirmues</option>
+                    <option value="Confirmues">Confirmues</option>
                     <option value="Admindege">Admin Dege</option>
                     <option value="Instruktor">Instruktor</option>
                     <option value="Admin">Admin</option>

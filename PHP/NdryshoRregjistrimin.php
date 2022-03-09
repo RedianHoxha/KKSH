@@ -16,6 +16,7 @@
 		{
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
+            $_SESSION['expire'] = $_SESSION['expire'] + (3 * 60);
             $link = mysqli_connect("localhost", "root", "", "kksh");
 			if($link === false)
 			{
@@ -47,7 +48,7 @@
                     
                     $idkursanti = $_GET['id'];
 
-                    $kursanti = "select * from kursantet where PersonalId = ?;";
+                    $kursanti = "select * from kursantet where ID = ?;";
                     $stmt = mysqli_stmt_init($link);
                     if(!mysqli_stmt_prepare($stmt,$kursanti))
                     {
@@ -102,7 +103,7 @@
                     <button onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Ktheu</button>
             </div>
             <div id="Form">
-                <form action="../php/ruajndryshimet.php" method="POST">
+                <form action="../php/ruajndryshimet.php?id=<?php echo $idkursanti; ?>" method="POST">
                     <div id="hello">
                         <p id="hello-p">Welcome :)</p>
                     </div>
@@ -122,7 +123,7 @@
                     <div id="id">
                         <p id="id">ID Personale</p>
                         <input class="input100" id="id-txt" type="text" 
-                        name="id-txt" value="<?php echo  decrypt($row['PersonalId']); ?>" readonly>
+                        name="id-txt" value="<?php echo  decrypt($row['PersonalId']); ?>" required>
                     </div><br>
                     <div id="datvendlindje">
                         <p id="datelindja">Datelindja</p>
@@ -139,7 +140,7 @@
                     </div><br>
                     <div id="datakursit">
                     <p id="datakursit">Data dhe Orari i Kursit<span style="color:red">   Kontrollo orarin para se te besh rregjistrimin</span></p>
-                    <input class="input100" id="datakursit" type="date" name="datakursit" onchange="showclass(this.value, <?php echo $idDeges?>)"><br>
+                    <input class="input100" id="datakursit" type="date" value="<?php echo $data?>" name="datakursit" onchange="showclass(this.value, <?php echo $idDeges?>)"><br>
                     <div id="txtHint"></div>
                     </div>
                     <div>

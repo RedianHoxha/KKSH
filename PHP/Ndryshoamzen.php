@@ -16,6 +16,7 @@
 		{
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
+            $_SESSION['expire'] = $_SESSION['expire'] + (3 * 60);
             $link = mysqli_connect("localhost", "root", "", "kksh");
 			if($link === false)
 			{
@@ -42,7 +43,7 @@
                 {
                     $idkursanti = $_GET['id'];
 
-                    $kursanti = "select * from kursantet where PersonalId = ?;";
+                    $kursanti = "select * from kursantet where ID = ?;";
                     $stmt = mysqli_stmt_init($link);
                     if(!mysqli_stmt_prepare($stmt,$kursanti))
                     {
@@ -72,7 +73,7 @@
         <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
     </div>
         <div id="Form">
-            <form action="ruajamzenere.php" method="POST">
+            <form action="ruajamzenere.php?id=<?php echo $idkursanti; ?>" method="POST">
                 <div id="hello">
                     <p id="hello-p">Welcome :)</p>
                 </div>

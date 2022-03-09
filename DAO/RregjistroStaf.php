@@ -6,14 +6,6 @@
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
 
-    function test_input($data) {
-      $data = trim($data);
-      $data = stripslashes($data);
-      $data = htmlspecialchars($data);
-      return $data;
-    }
-    
-
     $emri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['emri-txt'])));
     $mbiemri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['mbiemri-txt'])));
     $id= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['id-txt'])));

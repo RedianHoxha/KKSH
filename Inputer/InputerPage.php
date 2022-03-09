@@ -16,6 +16,7 @@
 		{
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
+            $_SESSION['expire'] = $_SESSION['expire'] + (5 * 60);
             $link = mysqli_connect("localhost", "root", "", "kksh");
 			if($link === false)
 			{
@@ -82,6 +83,7 @@
 </head>
 <body>
     <div id="top-page">
+        <button onclick="location.href = '../inputer/afishokurset.php';" id="myButton" >Shiko Kurset</button>
         <button onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Bej ndryshime</button>
         <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
     </div>

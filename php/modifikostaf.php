@@ -16,6 +16,7 @@
 		{
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
+            $_SESSION['expire'] = $_SESSION['expire'] + (5 * 60);
             $link = mysqli_connect("localhost", "root", "", "kksh");
 			if($link === false)
 			{
@@ -42,6 +43,7 @@
                     $queryUserToModify = "SELECT * FROM staf where UniqueId = '$iduseriToModify'";
                     $resultUserToModify=mysqli_query($link, $queryUserToModify);
                     $rowUserToModify = mysqli_fetch_array($resultUserToModify);
+                    $degaexistuse = $rowUserToModify['Degakupunon'];
                 }
 			}
 		}
@@ -86,9 +88,10 @@
                 name="password-txt" value="<?php echo decrypt($rowUserToModify['Password']); ?>" required><br><br>
 
                 <label for="roli">Roli i Personelit:</label>
-                <select id="roli" name="roli" style="width:15%;"  value="<?php echo decrypt($rowUserToModify['Roli']); ?>" required>
+                <select id="roli" name="roli" style="width:15%;" required>
+                    <option selected="selected" value="<?php echo decrypt($rowUserToModify['Roli']); ?>"><?php echo decrypt($rowUserToModify['Roli']); ?></option>
                     <option value="Inputer">Inputer</option>
-                    <option value="Confirmues">Konfirmues</option>
+                    <option value="Confirmues">Confirmues</option>
                     <option value="Admindege">Admin Dege</option>
                     <option value="Instruktor">Instruktor</option>
                     <option value="Admin">Admin</option>
@@ -96,16 +99,19 @@
             </div><br><br>
             <div id="tedhenakontakti">
                 <p id="telefoni">Telefoni</p>
-                <input class="input100" id="tel-txt" type="text" 
-                name="tel-txt" value="<?php echo $rowUserToModify['Telefoni']; ?>" required><br>
+                <input class="input100" id="tel-txt" type="text" name="tel-txt" value="<?php echo $rowUserToModify['Telefoni']; ?>" required><br>
 
                 <label for="dega">Qyteti:</label>
                 <select id="dega" name="dega" style="width:15%;" required>
                 <?php $sqlquery="Select * from qyteti";
                     $qytetet=mysqli_query($link, $sqlquery);
-                    while ($row = mysqli_fetch_array($qytetet)) { ?>
-                <option value="<?php echo decrypt($row['EmriDeges']);?>"><?php echo decrypt($row['EmriDeges']);?></option>
-                <?php } ?>
+                    while ($row = mysqli_fetch_array($qytetet)) { 
+                        if(strcmp($row['EmriDeges'], $degaexistuse) === 0){
+                ?>
+                <option selected="selected" value="<?php echo decrypt($row['EmriDeges']);?>"><?php echo decrypt($row['EmriDeges']);?></option>
+                <?php }else{?>
+                    <option value="<?php echo decrypt($row['EmriDeges']);?>"><?php echo decrypt($row['EmriDeges']);?></option>
+               <?php }} ?>
                 </select>
             </div>
             <div>

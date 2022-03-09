@@ -16,6 +16,7 @@
 		{
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
+            $_SESSION['expire'] = $_SESSION['expire'] + (3 * 60);
             $link = mysqli_connect("localhost", "root", "", "kksh");
 			if($link === false)
 			{
@@ -169,12 +170,14 @@
                     <table id="dega">  
                         <tr>
                             <th>Emri</th>
+                            <th>Edito</th>
                         </tr>
                         <tr>
                         <?php $sqlquery="Select * from qyteti";
                             $kursantet=mysqli_query($link, $sqlquery);
                             while ($row = mysqli_fetch_array($kursantet)) { ?> 
                         <td><?php echo decrypt($row['EmriDeges']); ?></td>
+                        <td><button onclick="location.href = '../dao/fshidege.php?id=<?php echo $row['IDqyteti'];?>'" >Fshi</button></td>
                         </tr> 
                         <?php } ?>
                     </table>
@@ -190,6 +193,7 @@
                         <th>Idetifikimi</th>
                         <th>Qyteti</th>
                         <th>Kapaciteti</th> 
+                        <th>Edito</th> 
                     </tr>
                     <tr>
                     <?php $sqlquery="Select * from klasa";
@@ -203,7 +207,8 @@
                         <td><?php echo decrypt($row['Emri']);?></td>
                         <td><?php echo decrypt($degaRow['EmriDeges']); ?></td>
                         <td><?php echo $row['Kapaciteti']; ?></td>
-                    </tr> 
+                        <td><button onclick="location.href = '../dao/fshiklase.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
+                        </tr> 
                     <?php } ?>
                 </table>
             </div><br>

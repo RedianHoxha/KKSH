@@ -16,6 +16,7 @@
 		{
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
+            $_SESSION['expire'] = $_SESSION['expire'] + (5 * 60);
             $link = mysqli_connect("localhost", "root", "", "kksh");
 			if($link === false)
 			{
@@ -38,14 +39,6 @@
                     window.location.href='../html/homepage.html';
                     </script>";
 				}
-				
-				function test_input($data) {
-					$data = trim($data);
-					$data = stripslashes($data);
-					$data = htmlspecialchars($data);
-					return $data;
-				  }
-
 				$fjalakyc= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['search'])));
 			}
 		}

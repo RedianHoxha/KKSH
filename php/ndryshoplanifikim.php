@@ -16,6 +16,7 @@ if (!isset($_SESSION['user'])) {
     {
         $user=$_SESSION['user'];
         $iduseri = $_SESSION['UserID'];
+        $_SESSION['expire'] = $_SESSION['expire'] + (2 * 60);
         $link = mysqli_connect("localhost", "root", "", "kksh");
         if($link === false)
         {
@@ -61,9 +62,16 @@ if (!isset($_SESSION['user'])) {
                     mysqli_stmt_execute($stmt);
                     $result = mysqli_stmt_get_result($stmt);
                     $row =mysqli_fetch_assoc($result);
-                    $idInstruktori = decrypt($row['idinstruktori']);
-                    $idKlase = decrypt($row['idklase']);
-                    $idOrarikursit = decrypt($row['data']);
+                    $idInstruktori = $row['idinstruktori'];
+
+                    $idKlase = $row['idklase'];
+                    $sqlklasaExistuse="Select * from klasa where ID = '$idKlase'";
+                    $klasaExistuse=mysqli_query($link, $sqlklasaExistuse);
+                    $rowklasaExistuse = mysqli_fetch_array($klasaExistuse);
+                    $existKlasName = $rowklasaExistuse['Emri'];
+
+                    $idOrarikursit = $row['data'];
+                    $orari = $row['orari'];
                 }
             }
         }
@@ -92,36 +100,45 @@ if (!isset($_SESSION['user'])) {
                         $sqlqueryinstruktori="Select * from staf where Degakupunon = '$dega' and Roli ='$roli'";
                         $instruktoret=mysqli_query($link, $sqlqueryinstruktori);
                         while ($row = mysqli_fetch_array($instruktoret)) { 
-                            ?>
-                            <option value="<?php echo $row['ID']; ?>"><?php echo decrypt($row['Emri'])?> <?php echo decrypt($row['Mbiemri'])?></option>
-                            <?php } ?>
-                            </select>
-            </div>
-            <br>
-            <div id="klasa">
-                <label for="klasa">Klasa:</label>
-                    <select id="klasa" name="klasa" style="width:15%;" required>
-                    <?php 
-                    $sqlklasa="Select * from klasa where Qyteti = '$idqyteti'";
-                        $klasa=mysqli_query($link, $sqlklasa);
-                        while ($row = mysqli_fetch_array($klasa)) { 
+                            if(strcmp($row['ID'], $idInstruktori ) === 0){
                     ?>
-                    <option value="<?php echo $row['ID']; ?>"><?php echo decrypt($row['Emri'])?></option>
-                    <?php } ?>
+                        <option selected="selected" value="<?php echo $row['ID']; ?>"><?php echo decrypt($row['Emri'])?> <?php echo decrypt($row['Mbiemri'])?></option>
+                    <?php }else{?>
+                        <option  value="<?php echo $row['ID']; ?>"><?php echo decrypt($row['Emri'])?> <?php echo decrypt($row['Mbiemri'])?></option>
+                    <?php }} ?>
                     </select>
             </div>
+            <br>
+
+            <div id="klasa">
+                <label for="klasa">Klasa:</label>
+                <select id="klasa" name="klasa" style="width:15%;" required>
+                <?php 
+                    $sqlklasa="Select * from klasa where Qyteti = '$idqyteti'";
+                    $klasa=mysqli_query($link, $sqlklasa);
+                    while ($row = mysqli_fetch_array($klasa)) { 
+                        if(strcmp($row['Emri'], $existKlasName) === 0)
+                        {
+                ?>
+                  <option selected="selected" value="<?php echo $row['ID']; ?>"><?php echo decrypt($row['Emri'])?></option>
+                <?php }else{ ?>
+                  <option value="<?php echo $row['ID']; ?>"><?php echo decrypt($row['Emri'])?></option>
+               <?php }}?>
+                </select>
+            </div>
+
             <div id="datakursit">
                 <p id="datakursit">Data dhe Orari i Kursit</p>
-                <input class="input100" id="datakursit" type="date" name="datakursit" value="<?php echo  $idOrarikursit; ?>" required><br>
+                <input class="input100" id="datakursit" type="date" name="datakursit" value="<?php echo $idOrarikursit?>"  required><br>
 
                 <label for="orari"></label>
                 <select id="orari" name="orari" style="width:15%;" required>
-                <option value="9:00 - 13:00">9:00 - 13:00</option>
-                  <option value="13:00 - 17:00">13:00 - 17:00</option>
-                  <option value="17:00 -21:00">17:00 -21:00</option>
-
+                    <option selected="selected" value="<?php echo $orari ?>"><?php echo $orari ?></option>
+                    <option value="9:00 - 13:00">9:00 - 13:00</option>
+                    <option value="13:00 - 17:00">13:00 - 17:00</option>
+                    <option value="17:00 -21:00">17:00 -21:00</option>
                 </select>
-        </div><br>  
+            </div><br>  
             <div>
                 <button type="submit" id="save-button">Modifiko</button>
             </div> 

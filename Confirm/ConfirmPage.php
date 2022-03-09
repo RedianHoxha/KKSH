@@ -16,6 +16,7 @@
 		{
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
+            $_SESSION['expire'] = $_SESSION['expire'] + (5 * 60);
             $link = mysqli_connect("localhost", "root", "", "kksh");
 			if($link === false)
 			{
@@ -72,7 +73,7 @@
                 <th>Edito</th>
             </tr>
             <tr>
-               <?php $sqlquery="Select * from kursantet";
+               <?php $sqlquery="SELECT * FROM kursantet WHERE Statusi = 'pabere'";
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { ?>
 
@@ -86,7 +87,7 @@
                 <td class="text-left"><?php echo decrypt($row['Amza']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['NrSerisDeshmis']); ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
-                <td class="text-left"><button onclick="location.href = '../php/ndryshoamzen.php?id=<?php echo $row['PersonalId'];?>'" >Ploteso Amzen</button><button onclick="location.href = '../php/fshirregjistrimin.php?id=<?php echo $row['PersonalId'];?>'" >Fshi</button></td>
+                <td class="text-left"><button onclick="location.href = '../php/ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button><button onclick="location.href = '../php/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
             </tr>
             <?php } ?>
         </table>

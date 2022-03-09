@@ -4,13 +4,6 @@
     if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
-
-function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
     $emriklases= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['emriklases-txt'])));
     $kapaciteti=test_input(mysqli_real_escape_string( $link,$_POST['kapaciteti-txt']));
     $dega=test_input(mysqli_real_escape_string( $link,$_POST['dega']));

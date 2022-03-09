@@ -16,6 +16,7 @@
 		{
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
+            $_SESSION['expire'] = $_SESSION['expire'] + (5 * 60);
             $link = mysqli_connect("localhost", "root", "", "kksh");
 			if($link === false)
 			{
@@ -39,13 +40,6 @@
                     </script>";
 				}
 				
-				function test_input($data) {
-					$data = trim($data);
-					$data = stripslashes($data);
-					$data = htmlspecialchars($data);
-					return $data;
-				  }
-
 				$fjalakyc= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['search'])));
 			}
 		}
@@ -58,8 +52,9 @@
     </head>
     <body>
         <div id="logout">
-            <button onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
+            <button onclick="location.href = '../inputer/afishokurset.php';" id="myButton" >Shiko Kurset</button>
             <button onclick="location.href = 'bejndryshime.php';" id="myButton" >Ktheu</button>
+            <button onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
         </div>
         <div id="search">
             <form action="search.php" method="POST"> 
@@ -70,14 +65,13 @@
             </div>
         <table id="tabela-kursanteve" >
             <tr>
-                <th>ID</th>
+                <th>Personal ID</th>
                 <th>Emri</th>
                 <th>Mbiemri</th>
                 <th>Atesia</th>
                 <th>Vendbanimi</th>
                 <th>Telefoni</th>
                 <th>Datelindja</th>
-                <th>Amza</th>
                 <th>Data</th>
                 <th>Orari</th>
                 <th>Edito</th>
@@ -105,11 +99,10 @@
                 <td class="text-left"><?php echo decrypt($row['Vendbanimi']); ?></td>
                 <td class="text-left"><?php echo $row['Telefoni']; ?></td>
                 <td class="text-left"><?php echo $row['Datelindja']; ?></td>
-                <td class="text-left"><?php echo decrypt($row['Amza']); ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
                 <td class="text-left"><?php echo $row['Orari']; ?></td>
 
-                <td class="text-left"><button onclick="location.href = 'ndryshodatenrregjistrimit.php?id=<?php echo $row['PersonalId'];?>'" >Ndrysho</button><button onclick="location.href = '../php/fshirregjistrimin.php?id=<?php echo $row['PersonalId'];?>'" >Fshi</button></td>
+                <td class="text-left"><button onclick="location.href = '../php/ndryshorregjistrimin.php?id=<?php echo $row['ID'];?>'" >Ndrysho</button><button onclick="location.href = '../php/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
             </tr>
             <?php } ?>
         </table>

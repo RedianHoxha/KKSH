@@ -4,14 +4,7 @@
     if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
-
-    
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-      }
+      $idkursanti = $_GET['id'];
 
     $emri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['emri-txt'])));
     $mbiemri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['mbiemri-txt'])));
@@ -31,7 +24,7 @@
     $idklase = $rowtedhena['idklase'];
     $orari = $rowtedhena['orari'];
     
-    $updetorow = "update kursantet set Datakursit = '$datakursit', Orari = '$orari', Telefoni = '$tel',Vendbanimi = '$vendbanim',Datelindja = '$datelindja',Atesia = '$atesia',Emri = '$emri', Mbiemri = '$mbiemri' where PersonalId = '$id'";
+    $updetorow = "update kursantet set Datakursit = '$datakursit', Orari = '$orari', Telefoni = '$tel',Vendbanimi = '$vendbanim',Datelindja = '$datelindja',Atesia = '$atesia',Emri = '$emri', Mbiemri = '$mbiemri' where ID = '$idkursanti'";
     if($runupdetin  =mysqli_query($link, $updetorow))
     {
         

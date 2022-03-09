@@ -16,6 +16,7 @@
 		{
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
+            $_SESSION['expire'] = $_SESSION['expire'] + (5 * 60);
             $link = mysqli_connect("localhost", "root", "", "kksh");
 			if($link === false)
 			{
@@ -59,6 +60,7 @@
 <body>
     
 <button onclick="location.href = '../admin/admindege.php';" id="myButton" > Ktheu</button>
+<button onclick="location.href = 'shikooret.php';" id="addbutton" >Shiko Oret</button>
 <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button><br>
     <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
     <p id="welcome">Welcome</p><br>
@@ -98,7 +100,7 @@
                 <select id="orari" name="orari" style="width:15%;" required>
                   <option value="9:00 - 13:00">9:00 - 13:00</option>
                   <option value="13:00 - 17:00">13:00 - 17:00</option>
-                  <option value="17:00 -21:00">17:00 -21:00</option>
+                  <option value="17:00 - 21:00">17:00 - 21:00</option>
 
                 </select>
         </div><br>  

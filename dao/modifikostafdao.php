@@ -4,15 +4,7 @@
     require_once('../php/extra_function.php');
     if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
-    }
-
-    function test_input($data) {
-      $data = trim($data);
-      $data = stripslashes($data);
-      $data = htmlspecialchars($data);
-      return $data;
-    }
-    
+    }    
 
     $idUserToDelete = $_GET['id'];
 
