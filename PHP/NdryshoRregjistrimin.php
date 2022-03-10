@@ -152,6 +152,7 @@
                             <th>Te rregjistruar</th>
                             <th>Kapaciteti</th>
                             <th>Orari</th>
+                            <th>Zgjidh</th>
                         </tr>
                         <tr>
                         <?php 
@@ -163,7 +164,7 @@
                                     $row = mysqli_fetch_array($result);
                                     $idKursi = $row['idkursi'];
                             
-                                    $queryKursi="SELECT * FROM programijavor WHERE idkursi='$idKursi'";
+                                    $queryKursi="SELECT * FROM programijavor  WHERE idkursi='$idKursi'";
                                     if($resultKursi = mysqli_query($link,$queryKursi)){
                                         $rowKursi = mysqli_fetch_array($resultKursi);
                                         $idklaseExist= $rowKursi['idklase'];
@@ -186,12 +187,13 @@
                                         <td class="text-left"><?php echo $kursantet ?></td>
                                         <td class="text-left"><?php echo $kapacitetiKlases ?></td>
                                         <td class="text-left"><?php echo $orarikursitexistues ?></td>
+                                        <td class="text-left"><input type="radio" name="select" checked="checked" value="<?php echo $idKursi ?>">Choose</radio></td>
                                     </tr>
                                     <?php 
                                     }else{
                                         echo "<script>
                                         alert('Something went wrong ouring filtering! Try again!');
-                                        window.location.href='webpage.php';
+                                        window.location.href='../html/homepage.html';
                                         </script>";
                                     }
                                 }
@@ -206,7 +208,7 @@
                             {
                                 echo "<script>
                                 alert('Something went wrong! Try again!');
-                                window.location.href='webpage.php';
+                                window.location.href='../html/homepage.html';
                                 </script>";
                             }
                         ?>   
