@@ -115,6 +115,7 @@ if($link === false){
    <img src="../images/kksh_logo2.PNG" alt="Simply Easy Learning" id="kksh_logo">
 </div>  
 <div id="form">
+   <!--styles to be applied and form validations -->
    <form id="captcha_form" class="contact-form row" action="rregjistroweb.php" method="POST">
       <div class="form-field col-lg-4">
          <input name="name" class="input-text js-input" type="text" required>
