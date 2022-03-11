@@ -50,7 +50,7 @@
         <script lang="javascript" src="../gjenerofile/xlsx.full.min.js"></script>
         <script lang="javascript" src="../gjenerofile/FileSaver.js"></script>
         <script>
-            function showclass() {
+            function generate() {
                 var qyteti =document.getElementById("dega").value;
                 var today = new Date();
                 var dd = String(today.getDate()).padStart(2, '0');
@@ -86,7 +86,7 @@
                     <option value="<?php echo decrypt($row['EmriDeges']); ?>"><?php echo decrypt($row['EmriDeges']);?></option>
                     <?php } ?>
             </select>
-            <button id="button-a" onclick="showclass()">Create Excel</button>
+            <button id="button-a" onclick="generate()">Create Excel</button>
             <script>
                 function exportToExel(dataSource)
                 {

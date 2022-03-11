@@ -7,12 +7,14 @@ if($link === false){
 
 $degazgjedhur = encryptValues($_GET['dega']);
 $jsonData = array();
+$firstday = date('Y-m-d', strtotime("monday -1 week"));
+$lastday = date('Y-m-d', strtotime("sunday 0 week"));
 
 $sqlQyteti = "SELECT * FROM qyteti where EmriDeges = '$degazgjedhur'";
 $qytetet=mysqli_query($link, $sqlQyteti);
 $row = mysqli_fetch_array($qytetet);
 $dega = $row['IDQyteti'];
-$sqlquery = "select Emri,Atesia,Mbiemri,PersonalId,Datelindja,Amza,NrSerisDeshmis from kursantet where Dega= '$dega' and Statusi = 'perfunduar';";
+$sqlquery = "SELECT Emri,Atesia,Mbiemri,PersonalId,Datelindja,Amza,NrSerisDeshmis FROM kursantet WHERE Dega= '$dega' AND Statusi = 'perfunduar' AND Datakursit BETWEEN '$firstday' AND '$lastday';";
 $resultinsert = mysqli_query($link, $sqlquery) or die(mysql_error());
 
 while ($array = mysqli_fetch_row($resultinsert)) {
