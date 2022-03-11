@@ -19,7 +19,7 @@
       -webkit-background-clip: text !important;
       -webkit-text-fill-color: transparent !important;
   }
-  
+
   .contact-form .form-field {
     position: relative;
     margin: 3% 0;
@@ -56,7 +56,7 @@
     cursor: text;
     transition: -webkit-transform .2s ease-in-out;
     transition: transform .2s ease-in-out;
-    transition: transform .2s ease-in-out, 
+    transition: transform .2s ease-in-out,
     -webkit-transform .2s ease-in-out;
   }
 
@@ -74,7 +74,7 @@
 
     border-radius: 25px;
   }
-  
+
 
   #txtHint{
     text-align: center;
@@ -93,7 +93,7 @@ th, td{
     text-align: center;
     text-transform: uppercase;
 }
-  
+
 h1{
   margin-right: 20%;
   margin-left: 20%;
@@ -122,8 +122,18 @@ h1{
   margin-right: 3%;
 }
 
+.btn-custom {
+  padding: 15px 45px;
+  box-shadow: 6px 5px 11px 0px grey;
+}
 
-/* html {    
-  background: url('https://cdn.bitdegree.org/learn/soap-colorful-color-fruit-68525.jpeg') no-repeat center fixed;     
+input:hover, select:hover{
+  box-shadow: 4px 3px 7px 0px grey;
+  cursor: pointer;
+}
+
+
+/* html {
+  background: url('https://cdn.bitdegree.org/learn/soap-colorful-color-fruit-68525.jpeg') no-repeat center fixed;
   background-size: cover;
 } */
