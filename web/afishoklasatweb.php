@@ -18,13 +18,15 @@ mysqli_select_db($link,"ajax_demo");
 ?>
 <!DOCTYPE html>
 <body>
-<table id="tabela-kursanteve" >
-  <tr>
+<table id="tabela-kursanteve" class="table" >
+    <thead>
+  <tr class="table-light">
     <th>Te rregjistruar ne kete kurs</th>
     <th>Kapaciteti i Klases</th>
     <th>Orari</th>
     <th>Zgjidh</th>
   </tr>
+    </thead>
   <tr>
   <?php 
   $sqlquery="SELECT * FROM programijavor WHERE data = '$dataZgjedhur' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$cityId');";
@@ -58,7 +60,7 @@ mysqli_select_db($link,"ajax_demo");
                 <td class="text-left"><?php echo $kursantet ?></td>
                 <td class="text-left" style="text-align: center;"><?php echo $kapacitetiKlases ?></td>
                 <td class="text-left" style="text-align: center;"><?php echo $orariKursit ?></td>
-                <td class="text-left" style="text-align: center;"><input type="radio" name="select" value="<?php echo $idKursi ?>">Choose</radio></td>
+                <td class="text-left " style="text-align: center;"><input type="radio" name="select" value="<?php echo $idKursi ?>"required>Choose</input></td>
               </tr>
             <?php 
             }

@@ -1,13 +1,15 @@
+body{
+  background-color:#eeeee4;
+}
 .get-in-touch {
-    max-width: 75%;
-    margin: 8% auto;
-    position: relative;
+    max-width: 70%;
+    margin: auto;
+    margin-top: 2%;
     /* background-color: grey;
     opacity:0.6; */
   }
   .get-in-touch .title {
     text-align: center;
-    text-transform: uppercase;
     letter-spacing: 2%;
     font-size: 3.2em;
     padding-bottom: 2%;
@@ -62,8 +64,7 @@
 
   .contact-form .submit-btn {
     display: inline-block;
-    background-color: #000;
-    background-image: linear-gradient(125deg,#a72879,#fa2323);
+    background-color: #e90024;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 2%;
@@ -80,10 +81,10 @@
     text-align: center;
 }
 
-table, td,th {
-  border-collapse: collapse;
-  border: 3px solid #fa2323;
-}
+/*table, td,th {*/
+/*  border-collapse: collapse;*/
+/*  border: 3px solid #fa2323;*/
+/*}*/
 
 table{
     width: 100%;
@@ -94,33 +95,30 @@ th, td{
     text-transform: uppercase;
 }
 
-h1{
-  margin-right: 20%;
-  margin-left: 20%;
-}
-
 #dega{
   width: 100%;
 }
 
-#header{
- display: inline-flex;
- margin-left: 1%;
-}
+/*#header{*/
+/* display: inline-flex;*/
+/* margin-left: 1%;*/
+/*}*/
 
 #kksh_logo{
   width: 10%;
-  height: 10%;
-  margin-left: 5%;
-  margin-right: 3%;
+  height: 10%
+}
+#kksh_logo100{
+  width: 13%;
+  height: 13%;
 }
 
-#kksh_logo_right{
-  width: 10%;
-  height: 10%;
-  margin-left: 3%;
-  margin-right: 3%;
-}
+/*#kksh_logo_right{*/
+/*  width: 10%;*/
+/*  height: 10%;*/
+/*  margin-left: 3%;*/
+/*  margin-right: 3%;*/
+/*}*/
 
 .btn-custom {
   padding: 15px 45px;

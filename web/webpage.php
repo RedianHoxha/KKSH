@@ -111,12 +111,15 @@ if($link === false){
 
 <body>
 <section class="get-in-touch">
-<div id="header">
-<img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="kksh_logo">
-   <h1 class="title">Welcome</h1>
-   <img src="../images/kksh_logo2.PNG" alt="Simply Easy Learning" id="kksh_logo">
-</div>  
-<div id="form" class="pt-5">
+<div id="header" class="d-flex justify-content-around">
+<img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="kksh_logo" class="p-2">
+   <p class="title p-2 ">Kryqi I Kuq Shqiptar</p>
+   <img src="../images/kksh_logo2.PNG" alt="Simply Easy Learning" id="kksh_logo100" class="p-2">
+</div>
+    <div class="d-flex justify-content-start">
+        <p>Ju lutem plotesoni formen me te dhenat tuaja!</p>
+    </div>
+<div id="form" class="shadow p-3 mb-5 bg-white rounded">
    <!--styles to be applied and form validations -->
    <form id="captcha_form" class="contact-form row g-3 needs-validation" action="rregjistroweb.php" method="POST" novalidate>
 <!--      <div class="form-field col-lg-4">-->
@@ -126,104 +129,107 @@ if($link === false){
 
        <div class="col-md-6 position-relative">
            <label for="validationTooltip01" class="form-label">Emri</label>
-           <input type="text" class="form-control" name="name" id="validationTooltip01" required placeholder="emri...">
-           <div class="valid-tooltip">
-               Looks good!
+           <input type="text" class="form-control" name="name" id="validationTooltip01" required placeholder="Emri...">
+           <div id="validationServerUsernameFeedback" class="invalid-feedback">
+               Ju lutem plotesoni Emrin.
            </div>
        </div>
 
        <div class="col-md-6 position-relative">
            <label for="validationTooltip02" class="form-label">Mbiemri</label>
-           <input type="text" class="form-control" name="surname" id="validationTooltip02" required>
-           <div class="valid-tooltip">
-               Looks good!
+           <input type="text" class="form-control" name="surname" id="validationTooltip02" required placeholder="Mbiemri...">
+           <div id="validationServerUsernameFeedback" class="invalid-feedback">
+               Ju lutem plotesoni Mbiemrin.
            </div>
        </div>
 
        <div class="col-md-6 position-relative">
            <label for="validationTooltip03" class="form-label">ID</label>
-           <input type="text" class="form-control" name="id" id="validationTooltip03" required>
-           <div class="valid-tooltip">
-               Looks good!
+           <input type="text" class="form-control" name="id" id="validationTooltip03" pattern="^[A-Z]\d{9}[A-Z]$" required placeholder="psh: J257489657P">
+           <div id="validationServerUsernameFeedback" class="invalid-feedback">
+               Ju lutem plotesoni ID e sakte.
            </div>
        </div>
 
        <div class="col-md-6 position-relative">
            <label for="validationTooltip04" class="form-label">Datelindja</label>
-           <input type="date" class="form-control" name="bday" id="validationTooltip04" required>
-           <div class="valid-tooltip">
-               Looks good!
+           <input type="date" class="form-control" name="bday" id="validationTooltip04" required placeholder="Datelindja...">
+           <div id="validationServerUsernameFeedback" class="invalid-feedback">
+               Ju lutem plotesoni Datelindjen.
            </div>
        </div>
 
        <div class="col-md-6 position-relative">
            <label for="validationTooltip05" class="form-label">Atesia</label>
-           <input type="text" class="form-control" name="father" id="validationTooltip05" required>
-           <div class="valid-tooltip">
-               Looks good!
+           <input type="text" class="form-control" name="father" id="validationTooltip05" required placeholder="Atesia...">
+           <div id="validationServerUsernameFeedback" class="invalid-feedback">
+               Ju lutem plotesoni Atesine.
            </div>
        </div>
 
        <div class="col-md-6 position-relative">
            <label for="validationTooltip06" class="form-label">E-mail</label>
-           <input type="email" class="form-control" name="email" id="validationTooltip06" required>
-           <div class="valid-tooltip">
-               Looks good!
+           <input type="email" class="form-control" name="email" id="validationTooltip06" required placeholder="Email...">
+           <div id="validationServerUsernameFeedback" class="invalid-feedback">
+               Ju lutem vendosni E-Mailin e sakte.
            </div>
        </div>
 
        <div class="col-md-6 position-relative">
            <label for="validationTooltip07" class="form-label">Numri i Telefonit</label>
-           <input type="number" class="form-control" name="phone" id="validationTooltip07" required>
-           <div class="valid-tooltip">
-               Looks good!
+           <input type="number" class="form-control" name="phone" id="validationTooltip07" pattern="^\\d{10}$" required placeholder="psh: emer.mbiemer@gmail.com">
+           <div id="validationServerUsernameFeedback" class="invalid-feedback">
+               Ju lutem vendosni numrin 10 shifror.
            </div>
        </div>
 
       <div class="col-md-6 position-relative">
           <label for="validationTooltip08" class="form-label">Qyteti</label>
-          <select id="city validationTooltip08" name="city" class="form-select" onchange=showclassCity(this.value)>
-              <option value="">-- Zgjidh qytetin --</option>
+          <select id="city" name="city" class="form-select" onchange=showclassCity(this.value) required>
+              <option selected disabled value="">-- Zgjidh qytetin --</option>
                <?php $sqlquery="Select * from qyteti";
                   $qytetet=mysqli_query($link, $sqlquery);
                   while ($row = mysqli_fetch_array($qytetet)) { ?>
                <option value="<?php echo $row['EmriDeges']; ?>"><?php echo decrypt($row['EmriDeges']); ?></option>
                <?php } ?>
             </select>
+          <div class="invalid-feedback">
+              Ju lutem zgjidhni nje qytet.
+          </div>
      </div>
 
        <div class="col-md-6 position-relative">
            <label for="validationTooltip09" class="form-label">Adresa Banimit</label>
-           <input type="text" class="form-control" name="adress" id="validationTooltip09" required>
-           <div class="valid-tooltip">
-               Looks good!
+           <input type="text" class="form-control" name="adress" id="validationTooltip09" required placeholder="Adresa...">
+           <div id="validationServerUsernameFeedback" class="invalid-feedback">
+               Ju lutem vendosni adresen tuaj.
            </div>
        </div>
 
        <div class="col-md-6 position-relative">
            <label for="validationTooltip10" class="form-label">Numri i pageses</label>
-           <input type="text" class="form-control" name="paymentnumber" id="validationTooltip10" required>
-           <div class="valid-tooltip">
-               Looks good!
+           <input type="text" class="form-control" name="paymentnumber" id="validationTooltip10" required placeholder="Mund te duhet validim">
+           <div id="validationServerUsernameFeedback" class="invalid-feedback">
+               Ju lutem vendosni numrin e pageses.
            </div>
        </div>
 
        <div class="col-md-6 position-relative">
            <label for="validationTooltip11" class="form-label">Data dhe Orari i Kursit</label>
-           <input type="date" class="form-control" name="datakursit" id="validationTooltip11" onchange="showclass(this.value)" required>
-           <div class="valid-tooltip">
-               Looks good!
+           <input type="date" class="form-control" name="datakursit" id="datakursit" onchange="showclass(this.value)" required>
+           <div id="validationServerUsernameFeedback" class="invalid-feedback">
+               Ju lutem zgjidhni daten e kursit.
            </div>
        </div>
       <div class="form-field col-6">
       <div class="g-recaptcha" data-sitekey="6LfwjbwdAAAAAIjvSq7c6CXVKuA3BRy5vs8TMAJX" style="text-align: -webkit-center" require></div>
-      <span id="captcha_error" class="text-danger"></span>   
+      <span id="captcha_error" class="text-danger"></span>
       </div>
        <div class="form-field col-lg-12">
            <div id="txtHint"></div>
        </div>
       <div class="form-field col-md-12 text-center">
-         <input class="btn btn-secondary btn-custom" type="submit" name="register" id="register" value="Submit">
+         <input class="submit-btn" type="submit" name="register" id="register" value="Submit">
       </div>
    </form>
 
@@ -265,7 +271,6 @@ if($link === false){
     <!--         <label class="label" for="address">Data dhe Orari i Kursit</label>    -->
     <!--     </div>-->
 </div>
-
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
         (function () {
@@ -282,7 +287,6 @@ if($link === false){
                             event.preventDefault()
                             event.stopPropagation()
                         }
-
                         form.classList.add('was-validated')
                     }, false)
                 })
