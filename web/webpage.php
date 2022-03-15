@@ -66,37 +66,48 @@ if ($link === false) {
             }
         }
 
-        $(document).ready(function() {
-            $('#captcha_form').on('submit', function(event) {
-                event.preventDefault();
-                $.ajax({
-                    url: "rregjistroweb.php",
-                    method: "POST",
-                    data: $(this).serialize(),
-                    dataType: "json",
-                    beforeSend: function() {
-                        $('#register').attr('disabled', 'disabled');
-                    },
-                    success: function(data) {
-                        $('#register').attr('disabled', false);
-                        if (data.success) {
-                            $('#captcha_form')[0].reset();
-                            $('#captcha_error').text('');
-                            document.getElementById("txtHint").innerHTML = '';
-                            grecaptcha.reset();
-                            if (window.confirm(`Rregjistrimi u krye me sukses!\nParaqituni në datën : ${data.datakursit} , Ora: ${data.orari} pranë zyrave të Kryqit të Kuq Shqiptar!\nDuhet të keni me vete :\n1->Mandatin e pageses\n2->Karteën e Identitetit\nKliko 'OK' për të parë vendodhjen në hartë`)) {
-                                window.location.href = `${data.url}`;
-                            };
-                        } else {
-                            $('#captcha_error').text(data.captcha_error);
-                        }
-                    },
-                    error: function(par1, par2, par3) {
-                        console.log(par1.responseText);
-                    }
-                })
-            });
-        });
+        $(document).ready(function(){
+         $('#captcha_form').on('submit', function(event)
+         {
+            event.preventDefault();
+            $.ajax({
+               url:"rregjistroweb.php",
+               method:"POST",
+               data:$(this).serialize(),
+               dataType:"json",
+               beforeSend:function()
+                  {
+                     $('#register').attr('disabled','disabled');
+                  },
+                  success:function(data)
+                  {
+                     $('#register').attr('disabled', false);
+                     if(data.success)
+                     {
+                        $('#captcha_form')[0].reset();
+                        $('#captcha_error').text('');
+                        document.getElementById("txtHint").innerHTML = '';
+                        grecaptcha.reset();
+                        if (window.confirm(`Rregjistrimi u krye me sukses!\nParaqituni në datën : ${data.datakursit} , Ora: ${data.orari} pranë zyrave të Kryqit të Kuq Shqiptar!\nDuhet të keni me vete :\n1->Mandatin e pageses\n2->Karteën e Identitetit\nKliko 'OK' për të parë vendodhjen në hartë`)) 
+                        {
+                           window.location.href=`${data.url}`;
+                        };
+                     }
+                     else if(data.selected_error !== null)
+                     {
+                        $('#selected_error').text(data.selected_error);
+                     }
+                     else{
+                        $('#captcha_error').text(data.captcha_error);
+                     }
+                  },
+                  error:function(par1, par2, par3)
+                  {
+                     console.log(par1.responseText);
+                  }
+            })
+         });
+      });
     </script>
 </head>
 
