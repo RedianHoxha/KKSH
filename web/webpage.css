@@ -130,6 +130,10 @@ input:hover, select:hover{
   cursor: pointer;
 }
 
+#my_changing_image {
+  width: 200%;
+  height: 100%;
+}
 
 /* html {
   background: url('https://cdn.bitdegree.org/learn/soap-colorful-color-fruit-68525.jpeg') no-repeat center fixed;

@@ -17,8 +17,17 @@ if($link === false){
 <link rel="stylesheet" type="text/css" href="webpage.css" />
 <!-- <link rel="stylesheet" type="text/css" href="test.css" /> -->
 
+
 <head>
    <script>
+
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+            }
+
+            function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+            }
       function showclass(str) 
       {
           document.getElementById("txtHint").innerHTML = str;
@@ -89,7 +98,7 @@ if($link === false){
                         $('#captcha_error').text('');
                         document.getElementById("txtHint").innerHTML = '';
                         grecaptcha.reset();
-                        if (window.confirm(`Rregjistrimi u krye me sukses!\nParaqituni ne daten : ${data.datakursit} , Ora: ${data.orari} prane zyrave te Kryqit te Kuq Shqiptar!\nDuhet te keni me vete :\n1->Mandatin e pageses\n 2->Karten e Identitetit\nKliko 'OK' per te pare vendodhjen ne harte`)) 
+                        if (window.confirm(`Rregjistrimi u krye me sukses!\nParaqituni në datën : ${data.datakursit} , Ora: ${data.orari} pranë zyrave të Kryqit të Kuq Shqiptar!\nDuhet të keni me vete :\n1->Mandatin e pageses\n2->Karteën e Identitetit\nKliko 'OK' për të parë vendodhjen në hartë`)) 
                         {
                            window.location.href=`${data.url}`;
                         };
@@ -117,21 +126,16 @@ if($link === false){
    <img src="../images/kksh_logo2.PNG" alt="Simply Easy Learning" id="kksh_logo100" class="p-2">
 </div>
     <div class="d-flex justify-content-start">
-        <p>Ju lutem plotesoni formen me te dhenat tuaja!</p>
+        <p>Ju lutem plotësoni formën me të dhënat tuaja!</p>
     </div>
 <div id="form" class="shadow p-3 mb-5 bg-white rounded">
    <!--styles to be applied and form validations -->
    <form id="captcha_form" class="contact-form row g-3 needs-validation" action="rregjistroweb.php" method="POST" novalidate>
-<!--      <div class="form-field col-lg-4">-->
-<!--         <input name="name" class="input-text js-input" type="text" required>-->
-<!--         <label class="label" for="name">Emri</label>-->
-<!--      </div>-->
-
        <div class="col-md-6 position-relative">
            <label for="validationTooltip01" class="form-label">Emri</label>
            <input type="text" class="form-control" name="name" id="validationTooltip01" required placeholder="Emri...">
            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-               Ju lutem plotesoni Emrin.
+               Ju lutem plotësoni Emrin.
            </div>
        </div>
 
@@ -139,31 +143,31 @@ if($link === false){
            <label for="validationTooltip02" class="form-label">Mbiemri</label>
            <input type="text" class="form-control" name="surname" id="validationTooltip02" required placeholder="Mbiemri...">
            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-               Ju lutem plotesoni Mbiemrin.
+               Ju lutem plotësoni Mbiemrin.
            </div>
        </div>
 
        <div class="col-md-6 position-relative">
            <label for="validationTooltip03" class="form-label">ID</label>
-           <input type="text" class="form-control" name="id" id="validationTooltip03" pattern="^[A-Z]\d{9}[A-Z]$" required placeholder="psh: J257489657P">
+           <input type="text" class="form-control" name="id" id="validationTooltip03" pattern="^[A-Z]\d{8}[A-Z]$" required placeholder="psh: J257489657P">
            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-               Ju lutem plotesoni ID e sakte.
+               Ju lutem plotësoni ID e sakte.
            </div>
        </div>
 
        <div class="col-md-6 position-relative">
-           <label for="validationTooltip04" class="form-label">Datelindja</label>
-           <input type="date" class="form-control" name="bday" id="validationTooltip04" required placeholder="Datelindja...">
+           <label for="validationTooltip04" class="form-label">Datëlindja</label>
+           <input type="date" class="form-control" name="bday" id="validationTooltip04" required placeholder="Datëlindja...">
            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-               Ju lutem plotesoni Datelindjen.
+               Ju lutem plotësoni Datelindjen.
            </div>
        </div>
 
        <div class="col-md-6 position-relative">
-           <label for="validationTooltip05" class="form-label">Atesia</label>
-           <input type="text" class="form-control" name="father" id="validationTooltip05" required placeholder="Atesia...">
+           <label for="validationTooltip05" class="form-label">Atësia</label>
+           <input type="text" class="form-control" name="father" id="validationTooltip05" required placeholder="Atësia...">
            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-               Ju lutem plotesoni Atesine.
+               Ju lutem plotësoni Atesine.
            </div>
        </div>
 
@@ -171,13 +175,13 @@ if($link === false){
            <label for="validationTooltip06" class="form-label">E-mail</label>
            <input type="email" class="form-control" name="email" id="validationTooltip06" required placeholder="Email...">
            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-               Ju lutem vendosni E-Mailin e sakte.
+               Ju lutem vendosni E-Mailin e saktë.
            </div>
        </div>
 
        <div class="col-md-6 position-relative">
            <label for="validationTooltip07" class="form-label">Numri i Telefonit</label>
-           <input type="number" class="form-control" name="phone" id="validationTooltip07" pattern="^\\d{10}$" required placeholder="psh: emer.mbiemer@gmail.com">
+           <input type="number" class="form-control" name="phone" id="validationTooltip07" pattern="^\\d{10}$" required placeholder="psh: 06xxxxxxxx">
            <div id="validationServerUsernameFeedback" class="invalid-feedback">
                Ju lutem vendosni numrin 10 shifror.
            </div>
@@ -194,31 +198,50 @@ if($link === false){
                <?php } ?>
             </select>
           <div class="invalid-feedback">
-              Ju lutem zgjidhni nje qytet.
+              Ju lutem zgjidhni një qytet.
           </div>
      </div>
 
-       <div class="col-md-6 position-relative">
+       <div class="col-md-2 position-relative">
            <label for="validationTooltip09" class="form-label">Adresa Banimit</label>
            <input type="text" class="form-control" name="adress" id="validationTooltip09" required placeholder="Adresa...">
            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-               Ju lutem vendosni adresen tuaj.
+               Ju lutem vendosni adresën tuaj.
            </div>
        </div>
 
-       <div class="col-md-6 position-relative">
-           <label for="validationTooltip10" class="form-label">Numri i pageses</label>
-           <input type="text" class="form-control" name="paymentnumber" id="validationTooltip10" required placeholder="Mund te duhet validim">
+       <div class="col-md-2 position-relative">
+          <label for="validationTooltip20" class="form-label">Banka</label>
+          <select id="my_select_box" name="my_select_box" class="form-select" required>
+              <option selected disabled value="">-- Zgjidh Bankën --</option>
+              <option  value="../Images/credinsbank.jpeg">Credins Bank</option>
+              <option  value="../Images/tiranabank.jpeg">Tirana Bank</option>
+              <option  value="../Images/bkt.jpeg">Banka Kombetare Tregtare</option>
+              <option  value="../Images/intesa.jpeg">Intesa San Paolo Bank</option>
+              <option  value="../Images/raiffeisen.jpeg">Raiffeisen Bank</option>
+          </select>
+          <div class="invalid-feedback">
+              Ju lutem zgjidhni nje Bankë.
+          </div>
+        </div>
+
+       <div class="col-md-2 position-relative">
+           <label for="validationTooltip10" class="form-label">Referenca pagesës</label>
+           <input type="text" class="form-control" name="paymentnumber" id="validationTooltip10" required placeholder="Shikoni Foton">
            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-               Ju lutem vendosni numrin e pageses.
+               Ju lutem vendosni numrin e pagesës.
            </div>
        </div>
+
+       <div class="col-md-2 position-relative" id="popup" style="display: none;">
+             <img id="my_changing_image" src="" />
+        </div>
 
        <div class="col-md-6 position-relative">
            <label for="validationTooltip11" class="form-label">Data dhe Orari i Kursit</label>
            <input type="date" class="form-control" name="datakursit" id="datakursit" onchange="showclass(this.value)" required>
            <div id="validationServerUsernameFeedback" class="invalid-feedback">
-               Ju lutem zgjidhni daten e kursit.
+               Ju lutem zgjidhni datën e kursit.
            </div>
        </div>
       <div class="form-field col-6">
@@ -227,49 +250,12 @@ if($link === false){
       </div>
        <div class="form-field col-lg-12">
            <div id="txtHint"></div>
+           <span id="selected_error" class="text-danger"></span>
        </div>
       <div class="form-field col-md-12 text-center">
          <input class="submit-btn" type="submit" name="register" id="register" value="Submit">
       </div>
    </form>
-
-
-    <!--      <div class="form-field col-lg-4">-->
-    <!--        <input name="surname" class="input-text js-input" type="text" required>-->
-    <!--        <label class="label" for="surname">Mbiemri</label>-->
-    <!--     </div>-->
-    <!--     <div class="form-field col-lg-4">-->
-    <!--        <input name="id" class="input-text js-input" type="text" required>-->
-    <!--        <label class="label" for="id">ID</label>-->
-    <!--     </div>-->
-    <!--     <div class="form-field col-lg-6">-->
-    <!--      <input name="bday" class="input-text js-input" type="date" required>-->
-    <!--      <label class="label" for="bday">Datelindja</label>-->
-    <!--      </div>-->
-    <!--     <div class="form-field col-lg-6">-->
-    <!--        <input name="father" class="input-text js-input" type="text" required>-->
-    <!--        <label class="label" for="father-name">Atesia</label>-->
-    <!--     </div>-->
-    <!--      <div class="form-field col-lg-6">-->
-    <!--         <input name="email" class="input-text js-input" type="email">-->
-    <!--         <label class="label" for="email">E-mail</label>-->
-    <!--      </div>-->
-    <!--      <div class="form-field col-lg-6 ">-->
-    <!--         <input name="phone" class="input-text js-input" type="number" required>-->
-    <!--         <label class="label" for="phone-number">Numri Telefonit</label>-->
-    <!--      </div>-->
-    <!--     <div class="form-field col-lg-6 ">-->
-    <!--         <input name="adress" class="input-text js-input" type="text" required>-->
-    <!--         <label class="label" for="address">Adresa Banimit</label>-->
-    <!--      </div>-->
-    <!--     <div class="form-field col-lg-6 ">-->
-    <!--        <input name="paymentnumber" class="input-text js-input" type="text" required>-->
-    <!--        <label class="label" for="paymentnumber">Numri i pageses</label>-->
-    <!--     </div>-->
-    <!--     <div class="form-field col-lg-6 ">-->
-    <!--         <input id="datakursit" class="input-text js-input"  type="date"  name="datakursit" onchange="showclass(this.value)" required>-->
-    <!--         <label class="label" for="address">Data dhe Orari i Kursit</label>    -->
-    <!--     </div>-->
 </div>
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -291,6 +277,11 @@ if($link === false){
                     }, false)
                 })
         })()
+
+        $('#my_select_box').change(function(){
+        let popup = document.querySelector("#popup").style.display = "block"
+        $('#my_changing_image').attr('src', $('#my_select_box').val());
+        });
     </script>
 </section>
 </body>

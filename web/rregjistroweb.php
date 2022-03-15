@@ -6,7 +6,6 @@ require_once('../php/extra_function.php');
     }
 
     $emri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['name'])));
-
     $mbiemri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['surname'])));
     $datelindja= test_input(mysqli_real_escape_string( $link,$_POST['bday']));
     $atesia= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['father'])));
@@ -17,19 +16,8 @@ require_once('../php/extra_function.php');
     $vendbanim= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['adress'])));
     $qyteti= test_input(mysqli_real_escape_string( $link,$_POST['city']));
     $datakursit= test_input( mysqli_real_escape_string( $link,$_POST['datakursit']));
-    $idkursi= test_input( mysqli_real_escape_string( $link,$_POST['select']));
 
-      $querymerrtedhena = "Select * from programijavor where idkursi = '$idkursi';";
-      $resulttedhenash = mysqli_query($link, $querymerrtedhena);
-      $rowtedhena = mysqli_fetch_array($resulttedhenash);
-      $idklase = $rowtedhena['idklase'];
-      $orari = $rowtedhena['orari'];
 
-      $sqlurlqyteti = "SELECT * FROM `qyteti` where EmriDeges = '$qyteti';";
-      $resultsqlurlqyteti = mysqli_query($link, $sqlurlqyteti);
-      $row = mysqli_fetch_array($resultsqlurlqyteti);
-      $url = $row['Adresa'];
-      $idQyteti = $row['IDQyteti'];
 
     if(isset($_POST["g-recaptcha-response"]))
     {
@@ -54,6 +42,21 @@ require_once('../php/extra_function.php');
       }
       if($captcha_error == '')
       {
+        if(isset($_POST['select']))
+        {
+          $idkursi= test_input( mysqli_real_escape_string( $link,$_POST['select']));
+          $querymerrtedhena = "SELECT * FROM programijavor WHERE idkursi = $idkursi;";
+          $resulttedhenash = mysqli_query($link, $querymerrtedhena);
+          $rowtedhena = mysqli_fetch_array($resulttedhenash);
+          $idklase = $rowtedhena['idklase'];
+          $orari = $rowtedhena['orari'];
+    
+          $sqlurlqyteti = "SELECT * FROM `qyteti` where EmriDeges = '$qyteti';";
+          $resultsqlurlqyteti = mysqli_query($link, $sqlurlqyteti);
+          $row = mysqli_fetch_array($resultsqlurlqyteti);
+          $url = $row['Adresa'];
+          $idQyteti = $row['IDQyteti'];
+
           $shtokursant = "insert into kursantet(PersonalID, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi)
           values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere');";
           
@@ -85,6 +88,15 @@ require_once('../php/extra_function.php');
             window.location.href='webpage.php';
             </script>";
           } 
+        }else{
+          // echo "<script>
+          //   alert('Zgjidhni kursin! Try again!');
+          //   window.location.href='webpage.php';
+          //   </script>";
+            $data = array(
+              'success'  => false
+              );
+        }
       }
       else
       {
@@ -93,5 +105,6 @@ require_once('../php/extra_function.php');
         );
       }
        echo json_encode($data);
+      
     }
 ?>
