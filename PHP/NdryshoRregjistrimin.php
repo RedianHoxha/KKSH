@@ -17,9 +17,6 @@
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
             $_SESSION['expire'] = $_SESSION['expire'] + (1 * 60);
-            echo $now;
-            echo ' ';
-            echo $_SESSION['expire'];
             $link = mysqli_connect("localhost", "root", "", "kksh");
 			if($link === false)
 			{
@@ -75,6 +72,9 @@
     <head>
         <title>Kryqi i Kuq Shqipetar</title>
         <link href='../css/inputerstyle.css' rel='stylesheet' />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 
         <script>
             function showclass(str, idDege) 
@@ -104,7 +104,7 @@
     <body>
         <div id="fullbody">
             <div id="top-page-left">
-                    <button onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Ktheu</button>
+                    <button class="btn btn-secondary" onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Ktheu</button>
             </div>
             <div id="Form">
                 <form action="../php/ruajndryshimet.php?id=<?php echo $idkursanti; ?>" method="POST">
@@ -146,7 +146,7 @@
                     <p id="datakursit">Data dhe Orari i Kursit<span style="color:red">   Kontrollo orarin para se te besh rregjistrimin</span></p>
                     <input class="input100" id="datakursit" type="date" value="<?php echo $data?>" name="datakursit" onchange="showclass(this.value, <?php echo $idDeges?>)"><br>
                     <div id="txtHint">
-                    <table id="tabela-kursanteve" >
+                    <table id="tabela-kursanteve" class="table table-bordered" >
                         <tr>
                             <th>Emri Klases</th>
                             <th>Te rregjistruar</th>
@@ -216,7 +216,7 @@
                     </div>
                     </div>
                     <div>
-                        <button type="submit" id="rregjistro-button">Rregjistro</button>
+                        <button class="btn btn-success" type="submit" id="rregjistro-button">Rregjistro</button>
                     </div> 
                 </form>
             </div>

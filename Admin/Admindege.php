@@ -55,20 +55,50 @@
 <head>
     <title>Kryqi i Kuq Shqiptar</title>
     <link rel="stylesheet" type="text/css" href="../css/admindegestilizime.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script>
+
+            $(document).ready(function() {
+            $('#organizim_javor').after('<div id="nav"></div>');
+            var rowsShown = 12;
+            var rowsTotal = $('#organizim_javor tbody tr').length;
+            var numPages = rowsTotal / rowsShown;
+            for (i = 0; i < numPages; i++) {
+                var pageNum = i + 1;
+                $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+            }
+            $('#organizim_javor tbody tr').hide();
+            $('#organizim_javor tbody tr').slice(0, rowsShown).show();
+            $('#nav a:first').addClass('active');
+            $('#nav a').bind('click', function() {
+
+                $('#nav a').removeClass('active');
+                $(this).addClass('active');
+                var currPage = $(this).attr('rel');
+                var startItem = currPage * rowsShown;
+                var endItem = startItem + rowsShown;
+                $('#organizim_javor tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
+                css('display', 'table-row').animate({
+                opacity: 1
+                }, 300);
+            });
+        });
+        </script>
 </head>
 <body>
     <div id="add_button">
-        <button onclick="location.href = 'shtoplanifikim.php';" id="addbutton" >Shto Planifikim</button>
-        <button onclick="location.href = 'shikooret.php';" id="addbutton" >Shiko Oret</button>
-        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button><br>
+        <button class="btn btn-success" onclick="location.href = 'shtoplanifikim.php';" id="addbutton" >Shto Planifikim</button>
+        <button class="btn btn-info" onclick="location.href = 'shikooret.php';" id="addbutton" >Shiko Oret</button>
+        <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button><br>
     </div>
     <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
 
-    <p id="welcome">Welcome</p><br>
-
     <div id="organisation_table">
         <div id="tabela">
-            <table id="organizim_javor">  
+            <table id="organizim_javor" class="table table-bordered">  
                 <tr>
                     <th>Klasa</th>
                     <th>Instruktori</th>

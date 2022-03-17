@@ -61,12 +61,14 @@
 <head>
     <title>Kryqi i Kuq Shqipetar</title>
     <link href='../css/inputerstyle.css' rel='stylesheet' />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
 </head>
 <body>
     <div id="top-page">
-        <button onclick="location.href = '../inputer/afishokurset.php';" id="myButton" >Shiko Kurset</button>
-        <button onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Bej ndryshime</button>
-        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
+        <button class="btn btn-secondary" onclick="location.href = '../inputer/afishokurset.php';" id="myButton" >Shiko Kurset</button>
+        <button class="btn btn-secondary" onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Bej ndryshime</button>
+        <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
     </div>
     <div id="Form">
         <form action="../php/rregjistrokursant1.php?id=<?php echo $idkursi;?>" method="POST">
@@ -107,7 +109,7 @@
                 <p>Ju keni zgjedhur kursin ne date <?php echo $data ?>  ne oren  <?php echo $orari ?></p>
             </div>
             <div>
-                <button type="submit" id="rregjistro-button">Rregjistro</button>
+                <button class="btn btn-success" type="submit" id="rregjistro-button">Rregjistro</button>
             </div>    
         </form>
     </div>

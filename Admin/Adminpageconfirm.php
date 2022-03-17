@@ -48,7 +48,7 @@
 <head>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
         <script lang="javascript" src="../gjenerofile/xlsx.full.min.js"></script>
         <script lang="javascript" src="../gjenerofile/FileSaver.js"></script>
@@ -138,6 +138,35 @@
               <button  class="btn btn-success" onclick="location.href = 'shtostaf.php';" id="addbutton" >Shto Staf</button>
             </div>
             <div id="tabela">
+                <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+                <script>
+
+                    $(document).ready(function() {
+                    $('#stafi').after('<div id="nav"></div>');
+                    var rowsShown = 9;
+                    var rowsTotal = $('#stafi tbody tr').length;
+                    var numPages = rowsTotal / rowsShown;
+                    for (i = 0; i < numPages; i++) {
+                        var pageNum = i + 1;
+                        $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+                    }
+                    $('#stafi tbody tr').hide();
+                    $('#stafi tbody tr').slice(0, rowsShown).show();
+                    $('#nav a:first').addClass('active');
+                    $('#nav a').bind('click', function() {
+
+                        $('#nav a').removeClass('active');
+                        $(this).addClass('active');
+                        var currPage = $(this).attr('rel');
+                        var startItem = currPage * rowsShown;
+                        var endItem = startItem + rowsShown;
+                        $('#stafi tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
+                        css('display', 'table-row').animate({
+                        opacity: 1
+                        }, 300);
+                    });
+                });
+                </script>
                 <table id="stafi" class="table table-bordered">  
                     <tr>
                         <th>Personale ID</th>
@@ -171,6 +200,35 @@
                 <div>
                  <button class="btn btn-success" onclick="location.href = 'shtoklase.php';" id="addButton" >Shto Klase</button>
                 </div>
+                <!-- <script>
+
+                    $(document).ready(function() {
+                    $('#klasa').after('<div id="nav"></div>');
+                    var rowsShown = 12;
+                    var rowsTotal = $('#klasa tbody tr').length;
+                    var numPages = rowsTotal / rowsShown;
+                    for (i = 0; i < numPages; i++) {
+                        var pageNum = i + 1;
+                        $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+                    }
+                    $('#klasa tbody tr').hide();
+                    $('#klasa tbody tr').slice(0, rowsShown).show();
+                    $('#nav a:first').addClass('active');
+                    $('#nav a').bind('click', function() {
+
+                        $('#nav a').removeClass('active');
+                        $(this).addClass('active');
+                        var currPage = $(this).attr('rel');
+                        var startItem = currPage * rowsShown;
+                        var endItem = startItem + rowsShown;
+                        $('#klasa tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
+                        css('display', 'table-row').animate({
+                        opacity: 1
+                        }, 300);
+                    });
+                });
+                </script> -->
+
                 <table id="klasa" class="table table-bordered">  
                     <tr>
                         <th>Idetifikimi</th>

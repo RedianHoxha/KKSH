@@ -54,11 +54,13 @@
 <head>
     <title>Kryqi i Kuq Shqiptar</title>
    <link href='../css/shtostafstyle.css' rel='stylesheet' /> 
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="top-page">
-        <button onclick="location.href = '../admin/adminpageconfirm.php';" id="myButton" > Home</button>
-        <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
+        <button class="btn btn-secondary" onclick="location.href = '../admin/adminpageconfirm.php';" id="myButton" > Home</button>
+        <button class="btn btn-danger"  onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
     </div>
     <div id="Form">
         <form action="../dao/modifikostafdao.php?id=<?php echo $iduseriToModify?>" method="POST">
@@ -88,7 +90,7 @@
                 name="password-txt" value="<?php echo decrypt($rowUserToModify['Password']); ?>" required><br><br>
 
                 <label for="roli">Roli i Personelit:</label>
-                <select id="roli" name="roli" style="width:15%;" required>
+                <select class="form-select" aria-label="Default select example" id="roli" name="roli" required>
                     <option selected="selected" value="<?php echo decrypt($rowUserToModify['Roli']); ?>"><?php echo decrypt($rowUserToModify['Roli']); ?></option>
                     <option value="Inputer">Inputer</option>
                     <option value="Confirmues">Confirmues</option>
@@ -102,7 +104,7 @@
                 <input class="input100" id="tel-txt" type="text" name="tel-txt" value="<?php echo $rowUserToModify['Telefoni']; ?>" required><br>
 
                 <label for="dega">Qyteti:</label>
-                <select id="dega" name="dega" style="width:15%;" required>
+                <select class="form-select" aria-label="Default select example" id="dega" name="dega" required>
                 <?php $sqlquery="Select * from qyteti";
                     $qytetet=mysqli_query($link, $sqlquery);
                     while ($row = mysqli_fetch_array($qytetet)) { 
@@ -115,7 +117,7 @@
                 </select>
             </div>
             <div>
-                <button type="submit" id="rregjistro-button">Rregjistro</button>
+                <button class="btn btn-success" type="submit" id="rregjistro-button">Rregjistro</button>
             </div>    
         </form>
     </div>

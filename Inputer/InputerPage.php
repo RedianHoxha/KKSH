@@ -130,7 +130,7 @@
                     <div id="txtHint"></div>
                 </div>
                 <div>
-                    <button type="submit" id="rregjistro-button">Rregjistro</button>
+                    <button class="btn btn-success" type="submit" id="rregjistro-button">Rregjistro</button>
                 </div>    
         </form>
     </div>
