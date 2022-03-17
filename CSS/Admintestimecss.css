@@ -1,10 +1,3 @@
-#KKSH_logo{
-    margin-top: 1%;
-    margin-left: 5%;
-    width: 40%;
-    height: 40%;
-}
-
 #logout{
     margin-top: 2%;
     margin-left: 70%;
@@ -12,34 +5,33 @@
 }
 
 body{
-    background-color: blanchedalmond;
+    background-color: #eeeee4;
     width: 99%;
-}
-#top{
- 
-    width: 100%;
-    height: 10%;   
-}
-#bottom {
-    width: 100%;
-    height: 84%;
-    display: inline-flex;
 }
 
 #top{
+    width: 100%;
+    height: 10%;   
     display: inline-flex;
 }
+
+#bottom {
+    width: 100%;
+    height: 90%;
+    display: inline-flex;
+}
+
 
 table, td,th {
     border-collapse: collapse;
-    border: 3px solid red;
+    border: 3px solid black;
 }
 
-  table{
+  /* table{
     margin-left: 6px;
     margin-top: 4px;
     width: 80%;
-  }
+  } */
 
   th{
     text-align: center;
@@ -50,13 +42,19 @@ table, td,th {
     text-align: center;
   }
 
-  #Dege{
-    width: 23%;
-  }
-  #Klase{
-    width: 20%;
-  }
   #Staf
   {
-    width: 58%;
+    /* width: 60%; */
+    margin-left: 2%;
+    margin-right:  3%;
+  }
+
+  #Dege{
+    /* width: 14%; */
+    margin-left: 1%;
+
+  }
+  #Klase{
+    /* width: 10%; */
+    margin-right: 3%;
   }

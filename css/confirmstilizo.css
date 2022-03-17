@@ -4,15 +4,16 @@ table, td,th {
   }
 
   table{
-      margin-left: 10%;
-      margin-top: 4%;
-      width: 80%;
+      margin-left: 1%;
+      margin-top: 2%;
+      width: 90%;
   }
 
   th{
       text-align: center;
       text-transform: uppercase;
   }
+
   td{
 text-align: center;
   }
@@ -20,3 +21,13 @@ text-align: center;
   body{
       background-color: lemonchiffon;
   }
+
+  #top-page-left{
+      display: inline-flex;
+      margin-bottom: 1%;
+  }
+  
+
+#logout{
+    margin-bottom: 1%;
+}

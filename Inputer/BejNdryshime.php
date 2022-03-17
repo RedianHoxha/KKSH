@@ -47,22 +47,24 @@
     <head>
         <title>Kryqi i Kuq Shqipetar</title>
         <link rel="stylesheet" type="text/css"  href="../css/confirmstilizo.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>       
     </head>
     <body>
         <div id="top-page">
             <div id="top-page-left">
-                <button onclick="location.href = 'inputerpage.php';" id="myButton" >Rregjistro kursantet te ri</button>
-                <button onclick="location.href = '../inputer/afishokurset.php';" id="myButton" >Shiko Kurset</button>
-                <button onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
+                <button class="btn btn-success" onclick="location.href = 'inputerpage.php';" id="myButton" >Rregjistro kursantet te ri</button>
+                <button class="btn btn-secondary" onclick="location.href = '../inputer/afishokurset.php';" id="myButton" >Shiko Kurset</button>
+                <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button></br>
             </div>
             <div id="top-page-right">
             <form action="Search.php" method="POST"> 
-                <input type="text" name="search" id="search" placeholder = "Search">
-                <button type="submit" id="search-button">Search</button>
+                <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search">
+                <button class="btn btn-secondary" type="submit" id="search-button">Search</button>
             </form>
             </div>
         </div>
-        <table id="tabela-kursanteve" >
+        <table id="tabela-kursanteve" class="table table-bordered">
             <tr>
                 <th>ID</th>
                 <th>Emri</th>
@@ -89,7 +91,7 @@
                 <td class="text-left"><?php echo $row['Datelindja']; ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
                 <td class="text-left"><?php echo $row['Orari']; ?></td>
-                <td class="text-left"><button onclick="location.href = '../php/ndryshorregjistrimin.php?id=<?php echo $row['ID'];?>'">Ndrysho</button><button onclick="location.href = '../php/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button>
+                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../php/ndryshorregjistrimin.php?id=<?php echo $row['ID'];?>'">Ndrysho</button><button class="btn btn-danger" onclick="location.href = '../php/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button>
                 </td>
             </tr>
             <?php } ?>

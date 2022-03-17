@@ -47,6 +47,9 @@
 <!DOCTYPE html>
 <head>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
         <script lang="javascript" src="../gjenerofile/xlsx.full.min.js"></script>
         <script lang="javascript" src="../gjenerofile/FileSaver.js"></script>
         <script>
@@ -77,8 +80,8 @@
 <body>
     <div id="top">
         <div id="logout">
-            <button onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>                               <label for="dega">Dega:</label>
-            <select id="dega" name="dega" style="width:15%;">
+            <label for="dega">Dega:</label>
+            <select id="dega" name="dega" >
                     <?php $sqlquery="Select * from qyteti";
                         $qytetet=mysqli_query($link, $sqlquery);
                         while ($row = mysqli_fetch_array($qytetet)) { ?>
@@ -86,7 +89,8 @@
                     <option value="<?php echo decrypt($row['EmriDeges']); ?>"><?php echo decrypt($row['EmriDeges']);?></option>
                     <?php } ?>
             </select>
-            <button id="button-a" onclick="generate()">Create Excel</button>
+            <button class="btn btn-success" id="button-a" onclick="generate()">Create Excel</button>          
+            <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>          
             <script>
                 function exportToExel(dataSource)
                 {
@@ -131,10 +135,10 @@
     <div id="bottom">
         <div id="Staf">
             <div>
-              <button onclick="location.href = 'shtostaf.php';" id="addbutton" >Shto Staf</button>
+              <button  class="btn btn-success" onclick="location.href = 'shtostaf.php';" id="addbutton" >Shto Staf</button>
             </div>
             <div id="tabela">
-                <table id="stafi">  
+                <table id="stafi" class="table table-bordered">  
                     <tr>
                         <th>Personale ID</th>
                         <th>Emri</th>
@@ -156,39 +160,18 @@
                         <td><?php echo decrypt($row['Degakupunon']); ?></td>
                         <td><?php echo decrypt($row['Username']); ?></td>
                         <td><?php echo $row['Telefoni']; ?></td>
-                        <td class="text-left"><button onclick="location.href = '../php/modifikostaf.php?id=<?php echo $row['UniqueId'];?>'" >Modifiko</button><button onclick="location.href = '../php/fshiuser.php?id=<?php echo $row['UniqueId'];?>'" >Fshi</button></td>
+                        <td class="text-left"><button  class="btn btn-info" onclick="location.href = '../php/modifikostaf.php?id=<?php echo $row['UniqueId'];?>'" >Modifiko</button><button  class="btn btn-danger" onclick="location.href = '../php/fshiuser.php?id=<?php echo $row['UniqueId'];?>'" >Fshi</button></td>
                     </tr> 
                     <?php } ?>
                 </table>
             </div><br>
         </div>
-        <div id="Dege">
-               <div>
-                    <button onclick="location.href = 'shtodege.php';" id="addButton" >Shto Dege</button> 
-               </div>
-            <div id="tabela">
-                    <table id="dega">  
-                        <tr>
-                            <th>Emri</th>
-                            <th>Edito</th>
-                        </tr>
-                        <tr>
-                        <?php $sqlquery="Select * from qyteti";
-                            $kursantet=mysqli_query($link, $sqlquery);
-                            while ($row = mysqli_fetch_array($kursantet)) { ?> 
-                        <td><?php echo decrypt($row['EmriDeges']); ?></td>
-                        <td><button onclick="location.href = '../dao/fshidege.php?id=<?php echo $row['IDqyteti'];?>'" >Fshi</button></td>
-                        </tr> 
-                        <?php } ?>
-                    </table>
-                </div><br>
-            </div>
         <div id="Klase">
             <div id="tabela">
                 <div>
-                 <button onclick="location.href = 'shtoklase.php';" id="addButton" >Shto Klase</button>
+                 <button class="btn btn-success" onclick="location.href = 'shtoklase.php';" id="addButton" >Shto Klase</button>
                 </div>
-                <table id="klasa">  
+                <table id="klasa" class="table table-bordered">  
                     <tr>
                         <th>Idetifikimi</th>
                         <th>Qyteti</th>
@@ -207,12 +190,34 @@
                         <td><?php echo decrypt($row['Emri']);?></td>
                         <td><?php echo decrypt($degaRow['EmriDeges']); ?></td>
                         <td><?php echo $row['Kapaciteti']; ?></td>
-                        <td><button onclick="location.href = '../dao/fshiklase.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
+                        <td><button class="btn btn-danger" onclick="location.href = '../dao/fshiklase.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
                         </tr> 
                     <?php } ?>
                 </table>
             </div><br>
         </div>
+        <div id="Dege">
+               <div>
+                    <button class="btn btn-success" onclick="location.href = 'shtodege.php';" id="addButton" >Shto Dege</button> 
+               </div>
+            <div id="tabela">
+                    <table id="dega" class="table table-bordered">  
+                        <tr>
+                            <th>Emri</th>
+                            <th>Edito</th>
+                        </tr>
+                        <tr>
+                        <?php $sqlquery="Select * from qyteti";
+                            $kursantet=mysqli_query($link, $sqlquery);
+                            while ($row = mysqli_fetch_array($kursantet)) { ?> 
+                        <td><?php echo decrypt($row['EmriDeges']); ?></td>
+                        <td><button class="btn btn-danger" onclick="location.href = '../dao/fshidege.php?id=<?php echo $row['IDqyteti'];?>'" >Fshi</button></td>
+                        </tr> 
+                        <?php } ?>
+                    </table>
+                </div><br>
+            </div>
+
     </div>
 </body>
 </html>
