@@ -55,6 +55,8 @@
         <script>
             function generate() {
                 var qyteti =document.getElementById("dega").value;
+                var start =document.getElementById("start").value;
+                var end =document.getElementById("end").value;
                 var today = new Date();
                 var dd = String(today.getDate()).padStart(2, '0');
                 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -68,7 +70,7 @@
                     saveAs(new Blob([s2ab(result)],{type:"application/octet-stream"}), qyteti+'-'+today + '.xlsx');
                 }
                 };
-                xmlhttp.open("GET","../gjenerofile/tedhenat.php?dega="+ qyteti,true);
+                xmlhttp.open("GET",`../gjenerofile/tedhenat.php?dega=${qyteti}&start=${start}&end=${end}`,true);
                 xmlhttp.send();
             }
         </script>
@@ -80,6 +82,10 @@
 <body>
     <div id="top">
         <div id="logout">
+            <label for="start">Start:</label>
+            <input type="date" id="start" name="start">
+            <label for="end">End:</label>
+            <input type="date" id="end" name="end">
             <label for="dega">Dega:</label>
             <select id="dega" name="dega" >
                     <?php $sqlquery="Select * from qyteti";
@@ -94,13 +100,14 @@
             <script>
                 function exportToExel(dataSource)
                 {
-                   
+                    var qyteti = document.getElementById("dega").value;
+                    console.log(qyteti);
                     var headers = ["Emri","Atesia","Mbiemri","ID","Datelindja","Nr. Rregjistrit Amza","Nr. Serisë Dëshmisë."];
                     console.log(dataSource);
                     var parseData  = JSON.parse(dataSource);
                     parseData.unshift(headers);
-                    var qyteti = document.getElementById("dega").value;
-                    console.log(qyteti);
+
+                  
 
                     var wb = XLSX.utils.book_new();
                     wb.Props = {
