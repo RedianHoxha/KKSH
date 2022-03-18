@@ -92,7 +92,7 @@
     <div id="Form">
             <form action="../php/rregjistro.php" method="POST">
                 <div id="hello">
-                    <p id="hello-p">Welcome :)</p>
+                    <p id="hello-p">Welcome</p>
                 </div>
                 <div id="emri">
                     <p id="emri">Emri</p>

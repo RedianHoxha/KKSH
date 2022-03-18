@@ -110,13 +110,32 @@
                 <th>Datelindja</th>
                 <th>Data</th>
                 <th>Orari</th>
+                <th>Instruktori</th>
                 <th>Edito</th>
             </tr>
             <tr>
                <?php $sqlquery="SELECT * FROM kursantet WHERE Statusi = 'pabere'";
                  $kursantet=mysqli_query($link, $sqlquery);
-                 while ($row = mysqli_fetch_array($kursantet)) { ?>
+                 while ($row = mysqli_fetch_array($kursantet)) { 
+                     
+                    $idkursnti = $row['PersonalId'];
+                    $kursi = "SELECT * FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursanti='$idkursnti'";
+                    $kursiresult =mysqli_query($link, $kursi);
+                    $rowkursi = mysqli_fetch_array($kursiresult);
 
+                    $idkursi = $rowkursi['idkursi'];
+                    $instruktori = "SELECT * FROM programijavor WHERE idkursi='$idkursi'";
+                    $instruktoriresult =mysqli_query($link, $instruktori);
+                    $rowinstruktori = mysqli_fetch_array($instruktoriresult);
+
+                    $idinstruktori = $rowinstruktori['idinstruktori'];
+
+                    $instructorname = "SELECT * FROM staf where ID='$idinstruktori'";
+                    $instruktoriname =mysqli_query($link, $instructorname);
+                    $rowinstruktoriname = mysqli_fetch_array($instruktoriname);
+                    $name = decrypt($rowinstruktoriname['Emri']).' '.decrypt($rowinstruktoriname['Mbiemri']);
+
+                    ?>
                 <td class="text-left"><?php echo decrypt($row['PersonalId']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['Emri']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['Mbiemri']); ?></td>
@@ -126,6 +145,7 @@
                 <td class="text-left"><?php echo $row['Datelindja']; ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
                 <td class="text-left"><?php echo $row['Orari']; ?></td>
+                <td class="text-left"><?php echo $name ?></td>
                 <td class="text-left"><button class="btn btn-success" onclick="location.href = '../php/ndryshorregjistrimin.php?id=<?php echo $row['ID'];?>'">Ndrysho</button><button class="btn btn-danger" onclick="location.href = '../php/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button>
                 </td>
             </tr>
