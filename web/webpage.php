@@ -42,7 +42,8 @@ if ($link === false) {
                         document.getElementById("txtHint").innerHTML = this.responseText;
                     }
                 };
-                xmlhttp.open("GET", `afishoklasatweb.php?data=${str}&id=${city}`, true);
+               // xmlhttp.open("GET", `afishoklasatweb.php?data=${str}&id=${city}`, true);
+                xmlhttp.open("GET", `afishoweb2.php?data=${str}&id=${city}`, true);
                 xmlhttp.send();
             }
         }
@@ -61,7 +62,7 @@ if ($link === false) {
                         document.getElementById("txtHint").innerHTML = this.responseText;
                     }
                 };
-                xmlhttp.open("GET", `afishoklasatweb.php?data=${str}&id=${city}`, true);
+                xmlhttp.open("GET", `afishoweb2.php?data=${str}&id=${city}`, true);
                 xmlhttp.send();
             }
         }
@@ -124,7 +125,7 @@ if ($link === false) {
         <div id="form" class="shadow p-3 mb-5 bg-white rounded">
             <!--styles to be applied and form validations -->
             <form id="captcha_form" class="contact-form row g-3 needs-validation" action="rregjistroweb.php" method="POST" novalidate>
-                <div class="col-md-6 position-relative">
+                <div class="col-md-4 position-relative">
                     <label for="validationTooltip01" class="form-label">Emri</label>
                     <input type="text" class="form-control" name="name" id="validationTooltip01" required placeholder="Emri...">
                     <div id="validationServerUsernameFeedback" class="invalid-feedback">
@@ -132,11 +133,23 @@ if ($link === false) {
                     </div>
                 </div>
 
-                <div class="col-md-6 position-relative">
+                <div class="col-md-4 position-relative">
                     <label for="validationTooltip02" class="form-label">Mbiemri</label>
                     <input type="text" class="form-control" name="surname" id="validationTooltip02" required placeholder="Mbiemri...">
                     <div id="validationServerUsernameFeedback" class="invalid-feedback">
                         Ju lutem plotësoni Mbiemrin.
+                    </div>
+                </div>
+
+                <div class="col-md-4 position-relative">
+                    <label for="validationTooltip20" class="form-label">Gjinia</label>
+                    <select id="gjinia" name="gjinia" class="form-select" required>
+                        <option selected disabled value="">-- Gjinia --</option>
+                        <option value="M">Mashkull</option>
+                        <option value="F">Femer</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Ju lutem zgjidhni Gjinine.
                     </div>
                 </div>
 
@@ -203,7 +216,7 @@ if ($link === false) {
 
                 <div class="col-md-6 position-relative">
                     <label for="validationTooltip10" class="form-label">Referenca pagesës</label>
-                    <input type="text" class="form-control" name="paymentnumber" id="validationTooltip10" required placeholder="Nr. pageses">
+                    <input type="text" class="form-control" name="paymentnumber" id="validationTooltip10" required placeholder="Ref pageses">
                     <div id="validationServerUsernameFeedback" class="invalid-feedback">
                         Ju lutem vendosni numrin e pagesës.
                     </div>

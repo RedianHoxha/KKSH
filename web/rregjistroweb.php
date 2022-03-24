@@ -5,6 +5,8 @@ require_once('../php/extra_function.php');
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
 
+    $now = date('Y-m-d');
+
     $emri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['name'])));
     $mbiemri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['surname'])));
     $datelindja= test_input(mysqli_real_escape_string( $link,$_POST['bday']));
@@ -16,6 +18,7 @@ require_once('../php/extra_function.php');
     $vendbanim= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['adress'])));
     $qyteti= test_input(mysqli_real_escape_string( $link,$_POST['city']));
     $datakursit= test_input( mysqli_real_escape_string( $link,$_POST['datakursit']));
+    $gjinia= test_input(mysqli_real_escape_string( $link,$_POST['gjinia']));
     if(isset($_POST['select']))
     {
       if(isset($_POST["g-recaptcha-response"]))
@@ -55,8 +58,8 @@ require_once('../php/extra_function.php');
             $url = $row['Adresa'];
             $idQyteti = $row['IDQyteti'];
 
-            $shtokursant = "insert into kursantet(PersonalID, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi)
-            values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere');";
+            $shtokursant = "insert into kursantet(PersonalID, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi, IdKursi, DataRregjistrimit, Gjinia)
+            values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere', '$idkursi', '$now', '$gjinia');";
             
             if($resultinsert = mysqli_query($link, $shtokursant))
             {

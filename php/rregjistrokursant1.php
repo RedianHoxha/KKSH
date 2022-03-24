@@ -14,6 +14,7 @@ $querydega = "select * from qyteti where EmriDeges = '$degastafit';";
 $dega=mysqli_query($link, $querydega);
 $rowdega = mysqli_fetch_array($dega);
 $idDeges = $rowdega['IDQyteti'];
+$now = date('Y-m-d');
 
 $idkursi= test_input(mysqli_real_escape_string( $link,$_GET['id']));
 
@@ -24,6 +25,7 @@ $idkursi= test_input(mysqli_real_escape_string( $link,$_GET['id']));
     $datelindja= test_input(mysqli_real_escape_string( $link,$_POST['datelindja-txt']));
     $vendbanim= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['vendbanim-txt'])));
     $tel= test_input(mysqli_real_escape_string( $link,$_POST['tel-txt']));
+    $gjinia= test_input(mysqli_real_escape_string( $link,$_POST['gjinia']));
 
       $querymerrtedhena = "Select * from programijavor where idkursi = '$idkursi';";
       $resulttedhenash = mysqli_query($link, $querymerrtedhena);
@@ -32,8 +34,8 @@ $idkursi= test_input(mysqli_real_escape_string( $link,$_GET['id']));
       $data = $rowtedhena['data'];
       $orari = $rowtedhena['orari'];
 
-   $shtokursant = "insert into kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari,Statusi)
-    values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges', '$data','$orari','pabere');";
+   $shtokursant = "insert into kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari,Statusi, IdKursi, DataRregjistrimit, Gjinia)
+    values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges', '$data','$orari','pabere','$idkursi', '$now', '$gjinia');";
    
     
     if($resultinsert = mysqli_query($link, $shtokursant))

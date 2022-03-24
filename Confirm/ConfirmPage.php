@@ -110,7 +110,7 @@
                 <th>Action</th>
             </tr>
             <tr>
-               <?php $sqlquery="SELECT * FROM kursantet WHERE Statusi = 'pabere'";
+               <?php $sqlquery="SELECT * FROM kursantet WHERE Statusi='pabere'";
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { ?>
 
@@ -124,7 +124,7 @@
                 <td class="text-left"><?php echo decrypt($row['Amza']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['NrSerisDeshmis']); ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
-                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../php/ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button><button class="btn btn-danger" onclick="location.href = '../php/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
+                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../php/ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button><button class="btn btn-secondary" onclick="location.href = '../php/munges.php?id=<?php echo $row['ID'];?>'" >Mungoi</button><button class="btn btn-danger" onclick="location.href = '../php/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
             </tr>
             <?php } ?>
         </table>      

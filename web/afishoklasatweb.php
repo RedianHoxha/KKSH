@@ -4,6 +4,7 @@ $link = mysqli_connect("localhost", "root", "", "kksh");
 if (!$link) {
   die('Could not connect: ' . mysqli_error($con));
 }
+require_once('../php/extra_function.php');
 
 $dataZgjedhur = $_GET['data'];
 $city = $_GET['id'];
@@ -23,7 +24,9 @@ mysqli_select_db($link,"ajax_demo");
   <tr class="table-light">
     <th>Te rregjistruar ne kete kurs</th>
     <th>Kapaciteti i Klases</th>
+    <th>Klasa</th>
     <th>Orari</th>
+    <th>Data</th>
     <th>Zgjidh</th>
   </tr>
     </thead>
@@ -59,7 +62,9 @@ mysqli_select_db($link,"ajax_demo");
             ?>
                 <td class="text-left"><?php echo $kursantet ?></td>
                 <td class="text-left" style="text-align: center;"><?php echo $kapacitetiKlases ?></td>
+                <td class="text-left" style="text-align: center;"><?php echo decrypt($emriKlases) ?></td>
                 <td class="text-left" style="text-align: center;"><?php echo $orariKursit ?></td>
+                <td class="text-left" style="text-align: center;"><?php echo $dataZgjedhur ?></td>
                 <td class="text-left " style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $idKursi ?>"required>Zgjidh</input></td>
               </tr>
             <?php 

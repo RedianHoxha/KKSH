@@ -87,6 +87,7 @@
     <div id="top-page">
         <button class="btn btn-secondary" onclick="location.href = '../inputer/afishokurset.php';" id="myButton" >Shiko Kurset</button>
         <button class="btn btn-secondary" onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Bej ndryshime</button>
+        <button class="btn btn-secondary" onclick="location.href = '../inputer/gjeneroexel.php';" id="myButton" >Gjenero Excel</button>
         <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
     </div>
     <div id="Form">
@@ -111,6 +112,13 @@
                     <p id="id">ID Personale</p>
                     <input class="input100" id="id-txt" type="text" 
                     name="id-txt" placeholder="ID" autocomplete="off" required>
+
+                    <label for="validationTooltip20" class="form-label">Gjinia</label>
+                    <select id="gjinia" name="gjinia"  required>
+                        <option selected disabled value=""  style="size:20px">-- Gjinia --</option>
+                        <option value="M">Mashkull</option>
+                        <option value="F">Femer</option>
+                    </select>
                 </div><br>
                 <div id="datvendlindje">
                     <p id="datelindja">Datelindja</p>

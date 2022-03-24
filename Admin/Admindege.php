@@ -87,6 +87,32 @@
             });
         });
         </script>
+
+        <script lang="javascript" src="../gjenerofile/xlsx.full.min.js"></script>
+        <script lang="javascript" src="../gjenerofile/FileSaver.js"></script>
+        <script>
+            function generate() {
+                var qyteti =document.getElementById("dega").value;
+                var start =document.getElementById("start").value;
+                var end =document.getElementById("end").value;
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                var yyyy = today.getFullYear();
+
+                today = dd + '/' + mm + '/' + yyyy;
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var result = exportToExel(this.responseText);
+                    saveAs(new Blob([s2ab(result)],{type:"application/octet-stream"}), qyteti+'-'+today + '.xlsx');
+                }
+                };
+                xmlhttp.open("GET",`../gjenerofile/tedhenat.php?dega=${qyteti}&start=${start}&end=${end}`,true);
+                xmlhttp.send();
+            }
+        </script>
+
 </head>
 <body>
     <div id="add_button">
@@ -94,6 +120,61 @@
         <button class="btn btn-info" onclick="location.href = 'shikooret.php';" id="addbutton" >Shiko Oret</button>
         <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button><br>
     </div>
+    <div id="logout">
+            <label for="start">Start:</label>
+            <input type="date" id="start" name="start">
+            <label for="end">End:</label>
+            <input type="date" id="end" name="end">
+            <label for="dega">Dega:</label>
+            <select id="dega" name="dega" >
+                    <?php $sqlquery="Select * from qyteti";
+                        $qytetet=mysqli_query($link, $sqlquery);
+                        while ($row = mysqli_fetch_array($qytetet)) { ?>
+
+                    <option value="<?php echo decrypt($row['EmriDeges']); ?>"><?php echo decrypt($row['EmriDeges']);?></option>
+                    <?php } ?>
+            </select>
+            <button class="btn btn-success" id="button-a" onclick="generate()">Create Excel</button>                         
+            <script>
+                function exportToExel(dataSource)
+                {
+                    var qyteti = document.getElementById("dega").value;
+                    console.log(qyteti);
+                    var headers = ["Emri","Atesia","Mbiemri","ID","Datelindja","Nr. Rregjistrit Amza","Nr. Serisë Dëshmisë."];
+                    console.log(dataSource);
+                    var parseData  = JSON.parse(dataSource);
+                    parseData.unshift(headers);
+
+                  
+
+                    var wb = XLSX.utils.book_new();
+                    wb.Props = {
+                            Title: "SheetJS Tutorial",
+                            Subject: "Test",
+                            Author: "Red Stapler",
+                            CreatedDate: new Date(2017,12,19)
+                    };
+
+                    
+                    wb.SheetNames.push(qyteti);
+                    var ws = XLSX.utils.aoa_to_sheet(parseData);
+                    wb.Sheets[qyteti] = ws;
+
+                    return XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
+                }
+
+                function s2ab(s)
+                {
+                    var buf = new ArrayBuffer(s.length);
+                    var view = new Uint8Array(buf);
+                    for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+                    return buf;
+                    
+                }
+            </script>
+
+            <!-- <button onclick="location.href = '../php';" id="myButton" >Gjenero file javore </button> -->
+        </div>
     <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
 
     <div id="organisation_table">
