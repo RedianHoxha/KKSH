@@ -90,6 +90,7 @@
             <div id="top-page-left">
                 <button class="btn btn-success" onclick="location.href = 'inputerpage.php';" id="myButton" >Rregjistro kursantet te ri</button>
                 <button class="btn btn-secondary" onclick="location.href = '../inputer/afishokurset.php';" id="myButton" >Shiko Kurset</button>
+                <button class="btn btn-secondary" onclick="location.href = '../inputer/gjeneroexel.php';" id="myButton" >Gjenero Excel</button>
                 <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button></br>
             </div>
             <div id="top-page-right">

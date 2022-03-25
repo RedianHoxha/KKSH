@@ -14,17 +14,42 @@ $resultqyteti = mysqli_query($link,$sqlqyeti);
 $rowqyteti = mysqli_fetch_array($resultqyteti);
 $cityId = $rowqyteti['IDQyteti'];
 
-$klasid = array();
-$klasnr = 0;
+$klasparaditeid = array();
+$klasparaditenrnr = 0;
 
-$sqlklasa = "SELECT * FROM klasa WHERE Qyteti = $cityId;";
-$resultklasa = mysqli_query($link,$sqlklasa);
-while($rowklasa = mysqli_fetch_array($resultklasa))
-          {
-            $klasid[$klasnr] = $rowklasa['ID'];
-            $klasnr += 1;
-          }
+$klasmesditid = array();
+$klasmesditnr = 0;
 
+$klaspasditeid = array();
+$klaspasditenr = 0;
+
+
+//$sqlklasa = "SELECT * FROM programijavor WHERE orari='9:00 - 13:00' AND  data='$dataZgjedhur' AND idklase IN (SELECT ID FROM klasa WHERE Qyteti = $cityId)";
+//$sqlklasa = "SELECT * FROM klasa WHERE Qyteti = $cityId;"
+//nuk duhet from klasa pasi ajo mung te ket 7 klasa por 3 bhetkurse so duhet ne programi javor aty shikojet
+//sa organizime jane per ate date dhe ate orar
+$sqlklasaparadite = "SELECT * FROM programijavor WHERE orari='9:00 - 13:00' AND  data='$dataZgjedhur' AND idklase IN (SELECT ID FROM klasa WHERE Qyteti = $cityId)";
+$resultklasaparadite = mysqli_query($link,$sqlklasaparadite);
+while($rowklasaparadite = mysqli_fetch_array($resultklasaparadite))
+    {
+      $klasparaditeid[$klasparaditenrnr] = $rowklasaparadite['idklase'];
+      $klasparaditenrnr += 1;
+    }
+
+$sqlklasamesdit = "SELECT * FROM programijavor WHERE orari='9:00 - 13:00' AND  data='$dataZgjedhur' AND idklase IN (SELECT ID FROM klasa WHERE Qyteti = $cityId)";
+$resultklasamesdit = mysqli_query($link,$sqlklasamesdit);
+while($rowklasamesdit = mysqli_fetch_array($resultklasamesdit))
+    {
+      $klasmesditid[$klasmesditnr] = $rowklasamesdit['idklase'];
+      $klasmesditnr += 1;
+    }
+$sqlklasapasdite = "SELECT * FROM programijavor WHERE orari='9:00 - 13:00' AND  data='$dataZgjedhur' AND idklase IN (SELECT ID FROM klasa WHERE Qyteti = $cityId)";
+$resultklasapasdite = mysqli_query($link,$sqlklasapasdite);
+while($rowklasapasdite = mysqli_fetch_array($resultklasapasdite))
+    {
+      $klaspasditeid[$klaspasditenr] = $rowklasapasdite['idklase'];
+      $klaspasditenr += 1;
+    }
 mysqli_select_db($link,"ajax_demo");
 
 ?>
@@ -45,19 +70,21 @@ mysqli_select_db($link,"ajax_demo");
  
     if($result = mysqli_query($link,$sqlquery)){
 
-            if(mysqli_num_rows($result)< 37){
+            $max = $klasparaditenrnr * 12;
+            if(mysqli_num_rows($result) < $max){
 
             $registered = mysqli_num_rows($result);
             $mbetje = $registered / 12;
 
                 if($mbetje <= 1 ){
-                    $idKlase = $klasid[0];
+                    $idKlase = $klasparaditeid[0];
                 }else if($mbetje > 1 && $mbetje <= 2){
-                    $idKlase = $klasid[1];
+                    $idKlase = $klasparaditeid[1];
                 }
                 else{
-                    $idKlase = $klasid[2];
+                    $idKlase = $klasparaditeid[2];
                 }
+
                 $selectidkursi = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '9:00 - 13:00'";
                 $resultkursi = mysqli_query($link,$selectidkursi);
                 $rowkursi= mysqli_fetch_array($resultkursi);
@@ -85,17 +112,18 @@ mysqli_select_db($link,"ajax_demo");
 
         $sqlquerymesdit="SELECT COUNT(*) FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00')";
         if($resultmesdit = mysqli_query($link,$sqlquerymesdit)){
-        if(mysqli_num_rows($resultmesdit) < 37){
+          $max = $klasmesditnr * 12;
+        if(mysqli_num_rows($resultmesdit) < $max){
 
             $registered = mysqli_num_rows($result);
             $mbetje = $registered / 12;
             if($mbetje <= 1 ){
-                $idKlase = $klasid[0];
+                $idKlase = $klasmesditid[0];
             }else if($mbetje > 1 && $mbetje <= 2){
-                $idKlase = $klasid[1];
+                $idKlase = $klasmesditid[1];
             }
             else{
-                $idKlase = $klasid[2];
+                $idKlase = $klasmesditid[2];
             }
                 $selectidkursidrek = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '13:00 - 17:00'";
                 $resultkursidrek = mysqli_query($link,$selectidkursidrek);
@@ -125,17 +153,19 @@ mysqli_select_db($link,"ajax_demo");
 
         $sqlquerymbasdite="SELECT COUNT(*) FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00')";
         if($resultbasdite = mysqli_query($link,$sqlquerymbasdite)){
-        if(mysqli_num_rows($resultbasdite) < 37){
+
+          $max = $klaspasditenr * 12;
+        if(mysqli_num_rows($resultbasdite) < $max){
 
             $registered = mysqli_num_rows($result);
             $mbetje = $registered / 12;
             if($mbetje <= 1 ){
-                $idKlase = $klasid[0];
+                $idKlase = $klaspasditeid[0];
             }else if($mbetje > 1 && $mbetje <= 2){
-                $idKlase = $klasid[1];
+                $idKlase = $klaspasditeid[1];
             }
             else{
-                $idKlase = $klasid[2];
+                $idKlase = $klaspasditeid[2];
             }
                 $selectidkursimbasdit = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '17:00 - 21:00'";
                 $resultkursimbasdi = mysqli_query($link,$selectidkursimbasdit);

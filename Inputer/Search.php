@@ -85,6 +85,7 @@
         <div id="logout">
             <button class="btn btn-secondary" onclick="location.href = '../inputer/afishokurset.php';" id="myButton" >Shiko Kurset</button>
             <button class="btn btn-secondary" onclick="location.href = 'bejndryshime.php';" id="myButton" >Ktheu</button>
+             <button class="btn btn-secondary" onclick="location.href = '../inputer/gjeneroexel.php';" id="myButton" >Gjenero Excel</button>
             <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
         </div>
         <div id="search">

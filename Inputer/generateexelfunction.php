@@ -6,8 +6,9 @@ if (!$link) {
   die('Could not connect: ' . mysqli_error($con));
 }
 
-$idklase = $_GET['klasa'];
+$klasa = encryptValues($_GET['klasa']);
 $dataKursit = $_GET['data'];
+$orari = $_GET['orari'];
 mysqli_select_db($link,"ajax_demo");
 
 ?>
@@ -32,8 +33,13 @@ mysqli_select_db($link,"ajax_demo");
   </tr>
   <tr>
   <?php 
-  $sqlquery="SELECT * FROM `kursantet` WHERE Datakursit = '$dataKursit' AND IdKursi IN (SELECT IdKursi FROM programijavor WHERE idklase =$idklase);";
 
+$queryklasa ="SELECT * FROM klasa WHERE Emri = '$klasa'";
+$klasa=mysqli_query($link, $queryklasa);
+$rowklasa = mysqli_fetch_array($klasa);
+$idklase = $rowklasa['ID'];
+
+  $sqlquery="SELECT * FROM `kursantet` WHERE Datakursit = '$dataKursit' AND Orari = '$orari' AND IdKursi IN (SELECT IdKursi FROM programijavor WHERE idklase =$idklase);";
   if($result = mysqli_query($link,$sqlquery))
       {
         if(mysqli_num_rows($result) != 0)
