@@ -1,0 +1,76 @@
+body{
+    background-color: lemonchiffon;
+    width: 98%;
+    height: 98%;
+}
+
+#form{
+text-align: center;
+width: 100%;
+
+
+}
+
+p{
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 100%;
+}
+
+#welcome{
+        text-align: center;
+        letter-spacing: 3px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-shadow: 2px 2px 5px red;
+        font-size: large;
+}
+
+#KKSH_logo{
+    margin-top: 3%;
+    margin-left: 40%;
+    width: 15%;
+    height: 15%;
+margin-bottom: 2%;
+}
+
+input{
+    width: 30%;
+    padding: 7px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    
+}
+
+#instruktori,#klasa{
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  
+}
+
+table, td,th {
+    border-collapse: collapse;
+    border: 3px solid red;
+    text-align: center;
+  }
+
+  td{
+      width: 10%;
+  }
+
+  table{
+      margin-left: 4%;
+  }
+
+  #dorpdown{
+      display: inline-flex
+  }
+
+  .form-select {
+      margin-left: 42%;
+  }
+
+#selecto{
+    margin-bottom: 1%;
+}

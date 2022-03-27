@@ -20,9 +20,8 @@ p{
 }
 
 body{
-    width: auto;
-    height: auto;
-    background-color: wheat;
+    background-color: #eeeee4;
+    width: 99%;
 }
 
 input{
@@ -34,7 +33,7 @@ input{
     
 }
 
-#rregjistro-button {
+/* #rregjistro-button {
     background-color: red;
     border: none;
     color: white;
@@ -44,31 +43,58 @@ input{
     cursor: pointer;
     border-radius: 4px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  }
+  } */
 
-  #dega,#orari{
+  #dega,#orari,#roli{
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
       height: 20%;
     }
 
   #emri{
-      display: inline-flex;
+      display: inline-flex; 
   }
 
   #datvendlindje{
       display: inline-flex;
+      
   }
 
   #mbiemri-txt{
       margin-left: 2%;
-      margin-right: 2%;
+     
   }
   #emri-txt{
-      margin-right: 2%;
-      margin-left: 2%;
+    margin-right: 2%;
   }
+  
 
   #atesia-txt,#vendbanim-txt,#datelindja-txt{
-      margin-right: 2%;
-      margin-left: 2%;
+    margin-right: 2%;
+    margin-left: 2%;
+  }
+
+  #txtHint{
+    text-align: center;
+    /* margin-left: 10%; */
+  }
+
+  table, td,th {
+    border-collapse: collapse;
+    border: 3px solid red;
+  }
+
+  table{
+    width: 80%;
+  }
+
+  th{
+    text-align: center;
+    text-transform: uppercase;
+  }
+  td{
+    text-align: center;
+  }
+
+  #top-page{
+      margin-top: 1%;
   }

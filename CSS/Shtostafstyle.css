@@ -1,0 +1,71 @@
+#hello-p{
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 2px 2px 5px red;
+    font-size: large;
+    font-size: 200%;
+}
+#KKSH_logo{
+position: center;;
+    width: 13%;
+    height: 13%;
+
+}
+
+p{
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 100%;
+}
+
+#Form{
+    width: 100%;
+    text-align: center;
+    
+}
+
+body{
+    width: auto;
+    height: auto;
+    background-color: wheat;
+}
+
+#rregjistro-button {
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 2%;
+  }
+
+
+  #dega,#roli{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 20%;
+  }
+
+  label {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ 
+  }
+  #tedhenapersonale{
+      margin-top: 3%;
+  }
+  #tedhenapersonale, #tedhenalogimi,#tedhenakontakti{
+      display: inline-flex;
+      margin-top: 3%;
+  }
+
+  input{
+
+    box-sizing: border-box;
+    border-radius: 6px;
+    
+    
+}
