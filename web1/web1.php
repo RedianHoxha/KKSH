@@ -28,7 +28,8 @@ if ($link === false) {
                         document.getElementById("txtHint").innerHTML = this.responseText;
                     }
                 };
-                xmlhttp.open("GET", `afishowebsakt.php?data=${str}&id=${city}`, true);
+               // xmlhttp.open("GET", `afishoklasatweb.php?data=${str}&id=${city}`, true);
+                xmlhttp.open("GET", `afishoweb2.php?data=${str}&id=${city}`, true);
                 xmlhttp.send();
             }
         }
@@ -47,7 +48,7 @@ if ($link === false) {
                         document.getElementById("txtHint").innerHTML = this.responseText;
                     }
                 };
-                xmlhttp.open("GET", `afishowebsakt.php?data=${str}&id=${city}`, true);
+                xmlhttp.open("GET", `afishoweb2.php?data=${str}&id=${city}`, true);
                 xmlhttp.send();
             }
         }
@@ -57,7 +58,7 @@ if ($link === false) {
          {
             event.preventDefault();
             $.ajax({
-               url:"rregjistroweb.php",
+               url:"rregjistrokursantet.php",
                method:"POST",
                data:$(this).serialize(),
                dataType:"json",
@@ -133,22 +134,22 @@ if ($link === false) {
             <p>Ju lutem plotësoni formën me të dhënat tuaja!</p>
         </div>
         <div id="form" class="shadow p-3 mb-5 bg-white rounded">
-            <form id="captcha_form" class="contact-form row g-3" action="rregjistroweb.php" method="POST">
+            <form id="captcha_form" class="contact-form row g-3" action="rregjistrokursantet.php" method="POST">
                 <div class="col-md-4 position-relative">
                     <label class="form-label">Emri</label>
-                    <input type="text" class="form-control" name="name" id="name"  require placeholder="Emri...">
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Emri...">
                     <span id="emri_error" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-4 position-relative">
                     <label for="validationTooltip02" class="form-label">Mbiemri</label>
-                    <input type="text" class="form-control" name="surname" id="surname"  require placeholder="Mbiemri...">
+                    <input type="text" class="form-control" name="surname" id="surname"  placeholder="Mbiemri...">
                     <span id="mbiemri_error" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-4 position-relative">
                     <label  class="form-label">Gjinia</label>
-                    <select id="gjinia" name="gjinia" require class="form-select" >
+                    <select id="gjinia" name="gjinia" class="form-select" >
                         <option selected disabled value="">-- Gjinia --</option>
                         <option value="M">Mashkull</option>
                         <option value="F">Femer</option>
@@ -158,41 +159,41 @@ if ($link === false) {
 
                 <div class="col-md-6 position-relative">
                     <label  class="form-label">ID</label>
-                    <input type="text" class="form-control" name="id" require placeholder="psh: J257489657P">
+                    <input type="text" class="form-control" name="id"  placeholder="psh: J257489657P">
                     <span id="personalid_error" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-6 position-relative">
                     <label  class="form-label">Datëlindja</label>
-                    <input type="date" class="form-control" name="bday" require placeholder="Datëlindja...">
+                    <input type="date" class="form-control" name="bday"  placeholder="Datëlindja...">
                     <span id="datelindje_error" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-6 position-relative">
                     <label class="form-label">Atësia</label>
-                    <input type="text" class="form-control" name="father" require  placeholder="Atësia...">
+                    <input type="text" class="form-control" name="father"   placeholder="Atësia...">
                     <span id="atesia_error" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-6 position-relative">
                     <label  class="form-label">E-mail</label>
-                    <input type="email" class="form-control" name="email"  placeholder="Email...">
+                    <input type="email" class="form-control" name="email" placeholder="Email...">
                     <span id="email_error" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-6 position-relative">
                     <label class="form-label">Numri i Telefonit</label>
-                    <input type="number" class="form-control" name="phone"  require placeholder="psh: 06xxxxxxxx">
+                    <input type="number" class="form-control" name="phone" pattern="^\\d{10}$"  placeholder="psh: 06xxxxxxxx">
                     <span id="tel_error" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 position-relative">
                     <label  class="form-label">Adresa Banimit</label>
-                    <input type="text" class="form-control" name="adress" require  placeholder="Adresa...">
+                    <input type="text" class="form-control" name="adress"  placeholder="Adresa...">
                     <span id="adresa_error" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 position-relative">
                     <label class="form-label">Banka</label>
-                    <select id="my_select_box" name="my_select_box" require class="form-select" >
+                    <select id="my_select_box" name="my_select_box" class="form-select" >
                         <option selected disabled value="">-- Zgjidh Bankën --</option>
                         <option value="../Images/credinsbank.jpeg">Credins Bank</option>
                         <option value="../Images/tiranabank.jpeg">Tirana Bank</option>
@@ -205,7 +206,7 @@ if ($link === false) {
 
                 <div class="col-md-6 position-relative">
                     <label  class="form-label">Referenca pagesës</label>
-                    <input type="text" class="form-control" name="paymentnumber" require  placeholder="Ref pageses">
+                    <input type="text" class="form-control" name="paymentnumber"   placeholder="Ref pageses">
                     <span id="referenca_error" class="text-danger"></span>
                 </div>
                 <div class="col-md-12 position-relative" id="popup" style="display: none;">
@@ -213,7 +214,7 @@ if ($link === false) {
                 </div>
                 <div class="col-md-6 position-relative">
                     <label  class="form-label">Qyteti</label>
-                    <select id="city" name="city" class="form-select" require onchange="showclassCity(this.value)" >
+                    <select id="city" name="city" class="form-select" onchange="showclassCity(this.value)" >
                         <option selected disabled value="">-- Zgjidh qytetin --</option>
                         <?php $sqlquery = "Select * from qyteti";
                         $qytetet = mysqli_query($link, $sqlquery);
@@ -225,7 +226,7 @@ if ($link === false) {
                 </div>
                 <div class="col-md-6 position-relative">
                     <label class="form-label">Data e Kursit</label>
-                    <input type="date" class="form-control" name="datakursit" id="datakursit" require onchange="showclass(this.value)" >
+                    <input type="date" class="form-control" name="datakursit" id="datakursit" onchange="showclass(this.value)" >
                     <span id="datakursit_error" class="text-danger"></span>
                 </div>
                 <div class="form-field col-lg-12">

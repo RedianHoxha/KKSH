@@ -23,11 +23,6 @@ $klasmesditnr = 0;
 $klaspasditeid = array();
 $klaspasditenr = 0;
 
-
-//$sqlklasa = "SELECT * FROM programijavor WHERE orari='9:00 - 13:00' AND  data='$dataZgjedhur' AND idklase IN (SELECT ID FROM klasa WHERE Qyteti = $cityId)";
-//$sqlklasa = "SELECT * FROM klasa WHERE Qyteti = $cityId;"
-//nuk duhet from klasa pasi ajo mung te ket 7 klasa por 3 bhetkurse so duhet ne programi javor aty shikojet
-//sa organizime jane per ate date dhe ate orar
 $sqlklasaparadite = "SELECT * FROM programijavor WHERE orari='9:00 - 13:00' AND  data='$dataZgjedhur' AND idklase IN (SELECT ID FROM klasa WHERE Qyteti = $cityId)";
 $resultklasaparadite = mysqli_query($link,$sqlklasaparadite);
 while($rowklasaparadite = mysqli_fetch_array($resultklasaparadite))
