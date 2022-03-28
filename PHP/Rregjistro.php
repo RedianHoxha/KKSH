@@ -2,9 +2,10 @@
 
 session_start();
 require_once('../php/extra_function.php');
+include('../Authenticate/dbconnection.php');
 $user=$_SESSION['user'];
 $iduseri = $_SESSION['UserID'];
-$link = mysqli_connect("localhost", "root", "", "kksh");
+//$link = mysqli_connect("localhost", "root", "", "kksh");
 
 $query = "select * from staf where ID = '$iduseri';";
 $kursantet=mysqli_query($link, $query);

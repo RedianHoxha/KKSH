@@ -1,6 +1,7 @@
 <?php 
     session_start();
     require_once('../php/extra_function.php');
+    include('../Authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
         echo "<a href='../html/homepage.html'>Click Here to Login</a>";
@@ -17,10 +18,10 @@
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
             $_SESSION['expire'] = $_SESSION['expire'] + (4 * 60);
-            $link = mysqli_connect("localhost", "root", "", "kksh");
+            //$link = mysqli_connect("localhost", "root", "", "kksh");
 			if($link === false)
 			{
-                    die("ERROR: Could not connect. " . mysqli_connect_error());
+                die("ERROR: Could not connect. " . mysqli_connect_error());
             }else
 			{
 				$query = "select * from staf where ID = '$iduseri';";
