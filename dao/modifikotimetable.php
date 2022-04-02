@@ -1,7 +1,7 @@
 <?php 
    //$link = mysqli_connect("localhost", "root", "", "kksh");
    require_once('../php/extra_function.php');
-   include('../Authenticate/dbconnection.php');
+   include('../authenticate/dbconnection.php');
    if($link === false){
    die("ERROR: Could not connect. " . mysqli_connect_error());
 }
@@ -12,7 +12,7 @@
     $data= test_input(mysqli_real_escape_string( $link,$_POST['datakursit']));
     $ora= test_input(mysqli_real_escape_string( $link,$_POST['orari']));
 
-    $queryshtoprogram ="UPDATE programijavor set idinstruktori = '$instruktori', orari = '$ora', data = '$data', idklase = '$klasa'  WHERE idkursi = '$idPlanifikimi';";
+    $queryshtoprogram ="UPDATE programijavor SET idinstruktori = '$instruktori', orari = '$ora', data = '$data', idklase = '$klasa'  WHERE idkursi = '$idPlanifikimi';";
 
     if($resultinsert = mysqli_query($link, $queryshtoprogram))
     {

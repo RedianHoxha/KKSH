@@ -1,6 +1,6 @@
 <?php
 require_once('../php/extra_function.php');
-include('../Authenticate/dbconnection.php');
+include('../authenticate/dbconnection.php');
     //$link = mysqli_connect("localhost", "root", "", "kksh");
     if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -244,12 +244,12 @@ if(isset($_POST["name"]))
     $url = $row['Adresa'];
     $idQyteti = $row['IDQyteti'];
 
-    $shtokursant = "insert into kursantet(PersonalID, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi, IdKursi, DataRregjistrimit, Gjinia)
-    values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere', '$idkursi', '$now', '$gjinia');";
+    $shtokursant = "INSERT INTO kursantet(PersonalID, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi, IdKursi, DataRregjistrimit, Gjinia)
+    VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere', '$idkursi', '$now', '$gjinia');";
             
     if($resultinsert = mysqli_query($link, $shtokursant)){
 
-        $quryshto = "insert into organizimkursantesh1(idkursi, idkursanti,statusi ) values ('$idkursi','$id', 'pabere');";
+        $quryshto = "INSERT INTO organizimkursantesh1(idkursi, idkursanti,statusi ) VALUES ('$idkursi','$id', 'pabere');";
         $resultorganizim = mysqli_query($link, $quryshto);
         if($resultorganizim == 1)
         {

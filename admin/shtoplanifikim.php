@@ -1,7 +1,7 @@
 <?php 
     session_start();
     require_once('../php/extra_function.php');
-    include('../Authenticate/dbconnection.php');
+    include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
         echo "<a href='../html/index.php'>Click Here to Login</a>";
@@ -24,7 +24,7 @@
                     die("ERROR: Could not connect. " . mysqli_connect_error());
             }else
 			{
-				$query = "select * from staf where ID = '$iduseri';";
+				$query = "SELECT * FROM  staf WHERE ID = '$iduseri';";
 				$kursantet=mysqli_query($link, $query);
 				$row = mysqli_fetch_array($kursantet);
                 $dega = $row['Degakupunon'];
@@ -42,7 +42,7 @@
 				}
                 else{
 
-                    $queryqyteti = "select * from qyteti where EmriDeges = '$dega';";
+                    $queryqyteti = "SELECT * FROM  qyteti WHERE EmriDeges = '$dega';";
                     $klasa=mysqli_query($link, $queryqyteti);
                     $row = mysqli_fetch_array($klasa);
                     $idqyteti = $row['IDQyteti'];
@@ -74,7 +74,7 @@
                     <select class="form-select" aria-label="Default select example" id="instruktori-input" name="instruktori" style="width:15%;">
                     <?php 
                         $roli = encryptValues("Instruktor");
-                        $sqlqueryinstruktori="Select * from staf where Degakupunon = '$dega' and Roli ='$roli'";
+                        $sqlqueryinstruktori="SELECT * FROM  staf WHERE Degakupunon = '$dega' and Roli ='$roli'";
                         $instruktoret=mysqli_query($link, $sqlqueryinstruktori);
                         while ($row = mysqli_fetch_array($instruktoret)) { 
                     ?>
@@ -87,7 +87,7 @@
                 <label for="klasa">Klasa:</label>
                     <select class="form-select" aria-label="Default select example" id="klasa-input" name="klasa" style="width:15%;">
                     <?php 
-                        $sqlklasa="Select * from klasa where Qyteti = '$idqyteti'";
+                        $sqlklasa="SELECT * FROM  klasa WHERE Qyteti = '$idqyteti'";
                         $klasa=mysqli_query($link, $sqlklasa);
                         while ($row = mysqli_fetch_array($klasa)) { 
                     ?>

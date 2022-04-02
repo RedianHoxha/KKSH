@@ -1,7 +1,7 @@
 
 <?php
 require_once('../php/extra_function.php');
-include('../Authenticate/dbconnection.php');
+include('../authenticate/dbconnection.php');
 //$link = mysqli_connect("localhost", "root", "", "kksh");
 if (!$link) {
   die('Could not connect: ' . mysqli_error($con));
@@ -33,7 +33,7 @@ mysqli_select_db($link,"ajax_demo");
     </thead>
   <tr>
   <?php 
-  $sqlquery="SELECT * FROM programijavor WHERE data = '$dataZgjedhur' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$cityId');";
+  $sqlquery="SELECT * FROM programijavor WHERE data = '$dataZgjedhur' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = '$cityId');";
 
   if($result = mysqli_query($link,$sqlquery))
       {
@@ -52,7 +52,7 @@ mysqli_select_db($link,"ajax_demo");
              $emriKlases = $rowKlasa['Emri'];
              $kapacitetiKlases = $rowKlasa['Kapaciteti'];
     
-             $kursanteneKurs = "select Count(organizimkursantesh1.idkursi) as Sasia from organizimkursantesh1 where organizimkursantesh1.statusi = 'pabere' and organizimkursantesh1.idkursi = '$idKursi';";
+             $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi = '$idKursi';";
              $resultKursante = mysqli_query($link,$kursanteneKurs);
              $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
     

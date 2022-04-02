@@ -2,7 +2,7 @@
 
     //$link = mysqli_connect("localhost", "root", "", "kksh");
     require_once('../php/extra_function.php');
-    include('../Authenticate/dbconnection.php');
+    include('../authenticate/dbconnection.php');
     if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
@@ -17,8 +17,8 @@
     $dega= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['dega'])));
 
 
-    $queryStaf = "insert into staf(ID,Emri,Mbiemri,Username,Password,Roli,Degakupunon,Telefoni)
-    values ( '$id', '$emri', '$mbiemri', '$username','$password', '$roli','$dega', '$tel');";
+    $queryStaf = "INSERT INTO staf(ID,Emri,Mbiemri,Username,Password,Roli,Degakupunon,Telefoni)
+    VALUES ( '$id', '$emri', '$mbiemri', '$username','$password', '$roli','$dega', '$tel');";
     
 
     if($resultinsert = mysqli_query($link, $queryStaf))

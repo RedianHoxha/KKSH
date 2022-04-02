@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once('../php/extra_function.php');
-    include('../Authenticate/dbconnection.php');
+    include('../authenticate/dbconnection.php');
     //$link = mysqli_connect("localhost", "root", "", "kksh");
 
     if($link === false){
@@ -12,7 +12,7 @@
 
     $idKlasoDelete = $_GET['id'];
 
-    $queryFshiKlase = "DELETE FROM klasa where ID = '$idKlasoDelete';";
+    $queryFshiKlase = "DELETE FROM klasa WHERE ID = '$idKlasoDelete';";
     if($runfshiKlase = mysqli_query($link, $queryFshiKlase)){
         
         header('location: ../admin/adminpageconfirm.php');

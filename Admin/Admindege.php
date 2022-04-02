@@ -1,7 +1,7 @@
 <?php 
     session_start();
     require_once('../php/extra_function.php');
-    include('../Authenticate/dbconnection.php');
+    include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
         echo "<a href='../html/index.php'>Click Here to Login</a>";
@@ -23,7 +23,7 @@
                die("ERROR: Could not connect. " . mysqli_connect_error());
             }else
 			{
-				$query = "select * from staf where ID = '$iduseri';";
+				$query = "SELECT * FROM staf WHERE ID = '$iduseri';";
                 $staf=mysqli_query($link, $query);
                 $row = mysqli_fetch_array($staf);
                 $dega = $row['Degakupunon'];
@@ -33,7 +33,7 @@
 				if($result == 0)
 				{
 
-                    $queryqyteti = "select * from qyteti where EmriDeges = '$dega';";
+                    $queryqyteti = "SELECT * FROM qyteti WHERE EmriDeges = '$dega';";
                     $klasa=mysqli_query($link, $queryqyteti);
                     $row = mysqli_fetch_array($klasa);
                     $idqyteti = $row['IDQyteti'];
@@ -127,7 +127,7 @@
             <input type="date" id="end" name="end">
             <label for="dega">Dega:</label>
             <select id="dega" name="dega" >
-                    <?php $sqlquery="Select * from qyteti";
+                    <?php $sqlquery="SELECT * FROM qyteti";
                         $qytetet=mysqli_query($link, $sqlquery);
                         while ($row = mysqli_fetch_array($qytetet)) { ?>
 
@@ -191,18 +191,18 @@
                     <?php 
                     $firstday = date('Y-m-d', strtotime("monday -1 week"));
                     $lastday = date('Y-m-d', strtotime("sunday 0 week"));
-                    $sqlquery="SELECT * FROM `programijavor` WHERE data BETWEEN '$firstday' AND '$lastday' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idqyteti')  ORDER BY data ASC;";
+                    $sqlquery="SELECT * FROM `programijavor` WHERE data BETWEEN '$firstday' AND '$lastday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = '$idqyteti')  ORDER BY data ASC;";
                     echo "<script>console.log('Debug Objects: " . $sqlquery .  "' );</script>";
                     $kursantet=mysqli_query($link, $sqlquery);
                     while ($row = mysqli_fetch_array($kursantet)) { 
 
                         $idKlase = $row['idklase'];
-                        $sqlKlasa = "SELECT * FROM klasa where ID = '$idKlase';";
+                        $sqlKlasa = "SELECT * FROM klasa WHERE ID = '$idKlase';";
                         $klasa = mysqli_query($link, $sqlKlasa);
                         $rowKlasa = mysqli_fetch_array($klasa);
                         
                         $idInstruktori = $row['idinstruktori'];
-                        $sqlInstruktori = "SELECT * FROM staf where ID =  '$idInstruktori';";
+                        $sqlInstruktori = "SELECT * FROM staf WHERE ID =  '$idInstruktori';";
                         $instruktori = mysqli_query($link, $sqlInstruktori);
                         $rowInstruktori = mysqli_fetch_array($instruktori);
                         ?> 

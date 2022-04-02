@@ -1,7 +1,7 @@
 <?php 
     session_start();
     require_once('../php/extra_function.php');
-    include('../Authenticate/dbconnection.php');
+    include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
         echo "<a href='../html/index.php'>Click Here to Login</a>";
@@ -24,7 +24,7 @@
                     die("ERROR: Could not connect. " . mysqli_connect_error());
             }else
 			{
-				$query = "select * from staf where ID = '$iduseri';";
+				$query = "SELECT * FROM  staf WHERE ID = '$iduseri';";
                 $staf=mysqli_query($link, $query);
                 $row = mysqli_fetch_array($staf);
                 $dega = $row['Degakupunon'];
@@ -106,7 +106,7 @@
 
                 <label for="dega">Qyteti:</label>
                 <select class="form-select" aria-label="Default select example" id="dega" name="dega" required>
-                <?php $sqlquery="Select * from qyteti";
+                <?php $sqlquery="SELECT * FROM  qyteti";
                     $qytetet=mysqli_query($link, $sqlquery);
                     while ($row = mysqli_fetch_array($qytetet)) { 
                         if(strcmp($row['EmriDeges'], $degaexistuse) === 0){

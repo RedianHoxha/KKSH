@@ -1,17 +1,17 @@
 <?php
 session_start();
 require_once('../php/extra_function.php');
-include('../Authenticate/dbconnection.php');
+include('../authenticate/dbconnection.php');
 $user=$_SESSION['user'];
 $iduseri = $_SESSION['UserID'];
 //$link = mysqli_connect("localhost", "root", "", "kksh");
 
-$query = "select * from staf where ID = '$iduseri';";
+$query = "SELECT * FROM  staf WHERE ID = '$iduseri';";
 $kursantet=mysqli_query($link, $query);
 $row = mysqli_fetch_array($kursantet);
 $degastafit = $row['Degakupunon'];
 
-$querydega = "select * from qyteti where EmriDeges = '$degastafit';";
+$querydega = "SELECT * FROM  qyteti WHERE EmriDeges = '$degastafit';";
 $dega=mysqli_query($link, $querydega);
 $rowdega = mysqli_fetch_array($dega);
 $idDeges = $rowdega['IDQyteti'];
@@ -28,20 +28,20 @@ $idkursi= test_input(mysqli_real_escape_string( $link,$_GET['id']));
     $tel= test_input(mysqli_real_escape_string( $link,$_POST['tel-txt']));
     $gjinia= test_input(mysqli_real_escape_string( $link,$_POST['gjinia']));
 
-      $querymerrtedhena = "Select * from programijavor where idkursi = '$idkursi';";
+      $querymerrtedhena = "SELECT * FROM  programijavor WHERE idkursi = '$idkursi';";
       $resulttedhenash = mysqli_query($link, $querymerrtedhena);
       $rowtedhena = mysqli_fetch_array($resulttedhenash);
       $idklase = $rowtedhena['idklase'];
       $data = $rowtedhena['data'];
       $orari = $rowtedhena['orari'];
 
-   $shtokursant = "insert into kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari,Statusi, IdKursi, DataRregjistrimit, Gjinia)
-    values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges', '$data','$orari','pabere','$idkursi', '$now', '$gjinia');";
+   $shtokursant = "INSERT INTO kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari,Statusi, IdKursi, DataRregjistrimit, Gjinia)
+    VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges', '$data','$orari','pabere','$idkursi', '$now', '$gjinia');";
    
     
     if($resultinsert = mysqli_query($link, $shtokursant))
     {
-      $queryshto = "insert into organizimkursantesh1 (idkursi, idkursanti,statusi ) values ('$idkursi','$id','pabere');";
+      $queryshto = "INSERT INTO organizimkursantesh1 (idkursi, idkursanti,statusi ) VALUES ('$idkursi','$id','pabere');";
       mysqli_query($link, $queryshto);
       // echo $shtokursant;
       // echo $queryshto;

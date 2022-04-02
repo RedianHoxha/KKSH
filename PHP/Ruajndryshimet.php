@@ -1,7 +1,7 @@
 <?php
     //$link = mysqli_connect("localhost", "root", "", "kksh");
     require_once('../php/extra_function.php');
-    include('../Authenticate/dbconnection.php');
+    include('../authenticate/dbconnection.php');
     if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
@@ -19,13 +19,13 @@
     $idkursi= test_input( mysqli_real_escape_string( $link,$_POST['select']));
 
 
-    $querymerrtedhena = "Select * from programijavor where idkursi = '$idkursi';";
+    $querymerrtedhena = "SELECT * FROM  programijavor WHERE idkursi = '$idkursi';";
     $resulttedhenash = mysqli_query($link, $querymerrtedhena);
     $rowtedhena = mysqli_fetch_array($resulttedhenash);
     $idklase = $rowtedhena['idklase'];
     $orari = $rowtedhena['orari'];
     
-    $updetorow = "update kursantet set PersonalId = '$id',  Datakursit = '$datakursit', Orari = '$orari', Telefoni = '$tel',Vendbanimi = '$vendbanim',Datelindja = '$datelindja',Atesia = '$atesia',Emri = '$emri', Mbiemri = '$mbiemri' where ID = '$idkursanti'";
+    $updetorow = "UPDATE kursantet SET PersonalId = '$id',  Datakursit = '$datakursit', Orari = '$orari', Telefoni = '$tel',Vendbanimi = '$vendbanim',Datelindja = '$datelindja',Atesia = '$atesia',Emri = '$emri', Mbiemri = '$mbiemri' WHERE ID = '$idkursanti'";
     if($runupdetin  =mysqli_query($link, $updetorow))
     {
         $selectexistorganizim = "SELECT * FROM `organizimkursantesh1` WHERE idkursanti='$id' AND statusi = 'pabere'";
@@ -36,7 +36,7 @@
         $querydeleteexistorganizim = "UPDATE `organizimkursantesh1`SET statusi='ndryshuar' WHERE idkursanti='$id' and idkursi = $idkursiexistuees";
 
         if(mysqli_query($link, $querydeleteexistorganizim)){
-            $quryshto = "insert into organizimkursantesh1 (idkursi, idkursanti,statusi ) values ('$idkursi','$id', 'pabere');";
+            $quryshto = "INSERT INTO organizimkursantesh1 (idkursi, idkursanti,statusi ) VALUES ('$idkursi','$id', 'pabere');";
             mysqli_query($link, $quryshto);
             //echo $quryshto;
             header('location: ../inputer/bejndryshime.php');

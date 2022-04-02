@@ -1,7 +1,7 @@
 <?php 
     session_start();
     require_once('../php/extra_function.php');
-    include('../Authenticate/dbconnection.php');
+    include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
         echo "<a href='../html/index.php'>Click Here to Login</a>";
@@ -24,12 +24,12 @@
                     die("ERROR: Could not connect. " . mysqli_connect_error());
             }else
 			{
-				$query = "select * from staf where ID = '$iduseri';";
+				$query = "SELECT * FROM  staf WHERE ID = '$iduseri';";
                 $kursantet=mysqli_query($link, $query);
                 $row = mysqli_fetch_array($kursantet);
                 $degastafit = $row['Degakupunon'];
 
-                $querydega = "select * from qyteti where EmriDeges = '$degastafit';";
+                $querydega = "SELECT * FROM  qyteti WHERE EmriDeges = '$degastafit';";
                 $dega=mysqli_query($link, $querydega);
                 $rowdega = mysqli_fetch_array($dega);
                 $idDeges = $rowdega['IDQyteti'];
@@ -49,7 +49,7 @@
                     
                     $idkursanti = $_GET['id'];
 
-                    $kursanti = "select * from kursantet where ID = ?;";
+                    $kursanti = "SELECT * FROM  kursantet WHERE ID = ?;";
                     $stmt = mysqli_stmt_init($link);
                     if(!mysqli_stmt_prepare($stmt,$kursanti))
                     {
@@ -171,14 +171,14 @@
                                         $idklaseExist= $rowKursi['idklase'];
                                         $orarikursitexistues = $rowKursi['orari'];
                                 
-                                    $sqlKlasa = "select * from klasa where ID= '$idklaseExist';";
+                                    $sqlKlasa = "SELECT * FROM  klasa WHERE ID= '$idklaseExist';";
                                     $resultKlasa = mysqli_query($link,$sqlKlasa);
                                     $rowKlasa = mysqli_fetch_array($resultKlasa);
                                     
                                     $emriKlases = $rowKlasa['Emri'];
                                     $kapacitetiKlases = $rowKlasa['Kapaciteti'];
                             
-                                    $kursanteneKurs = "select Count(organizimkursantesh1.idkursi) as Sasia from organizimkursantesh1 where organizimkursantesh1.statusi = 'pabere' and organizimkursantesh1.idkursi = '$idKursi';";
+                                    $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi = '$idKursi';";
                                     $resultKursante = mysqli_query($link,$kursanteneKurs);
                                     $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
                             

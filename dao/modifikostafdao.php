@@ -2,7 +2,7 @@
 
     //$link = mysqli_connect("localhost", "root", "", "kksh");
     require_once('../php/extra_function.php');
-    include('../Authenticate/dbconnection.php');
+    include('../authenticate/dbconnection.php');
     if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }    
@@ -18,13 +18,13 @@
     $tel= test_input(mysqli_real_escape_string( $link,$_POST['tel-txt']));
     $dega= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['dega'])));
 
-    $queryExistUser = "SELECT * FROM staf where UniqueId = $idUserToDelete";
+    $queryExistUser = "SELECT * FROM staf WHERE UniqueId = $idUserToDelete";
     if($resultExistUser = mysqli_query($link, $queryExistUser)){
         $existsUsers = mysqli_num_rows($resultExistUser);
 
         if($existsUsers == 0){
-          $queryStaf = "insert into staf(ID,Emri,Mbiemri,Username,Password,Roli,Degakupunon,Telefoni)
-          values ( '$id', '$emri', '$mbiemri', '$username','$password', '$roli','$dega', '$tel');";
+          $queryStaf = "INSERT INTO staf(ID,Emri,Mbiemri,Username,Password,Roli,Degakupunon,Telefoni)
+          VALUES ( '$id', '$emri', '$mbiemri', '$username','$password', '$roli','$dega', '$tel');";
         }else{
           $queryStaf="UPDATE `staf` SET `ID`='$id', `Emri`='$emri',`Mbiemri`='$mbiemri',`Username`='$username',
           `Password`='$password',`Roli`='$roli',`Degakupunon`='$dega',`Telefoni`='$tel' WHERE  UniqueId = $idUserToDelete";

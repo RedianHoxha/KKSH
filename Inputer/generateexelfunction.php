@@ -2,7 +2,7 @@
 <?php
 //$link = mysqli_connect("localhost", "root", "", "kksh");
 require_once('../php/extra_function.php');
-include('../Authenticate/dbconnection.php');
+include('../authenticate/dbconnection.php');
 if (!$link) {
   die('Could not connect: ' . mysqli_error($con));
 }
@@ -75,7 +75,7 @@ $idklase = $rowklasa['ID'];
       {
         echo "<script>
         alert('Something went wrong! Try again!');
-        window.location.href='webpage.php';
+        window.location.href='inputerpage.php';
         </script>";
       }
  ?>   

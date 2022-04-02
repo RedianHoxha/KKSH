@@ -1,7 +1,7 @@
 <?php
 
 require_once('../php/extra_function.php');
-include('../Authenticate/dbconnection.php');
+include('../authenticate/dbconnection.php');
 
 if($link === false){
    die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -10,7 +10,7 @@ if($link === false){
    $username= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['username'])));
    $password= encryptValues(mysqli_real_escape_string( $link,$_POST['password']));
 
-$queryuser ="select * from staf where Username= ? and Password= ?";
+$queryuser ="SELECT * FROM staf WHERE Username= ? and Password= ?";
 $stmt = mysqli_stmt_init($link);
 if(!mysqli_stmt_prepare($stmt,$queryuser))
 {
