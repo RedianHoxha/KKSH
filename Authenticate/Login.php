@@ -16,7 +16,7 @@ if(!mysqli_stmt_prepare($stmt,$queryuser))
 {
     echo "<script>
         alert('Retry');
-        window.location.href='../html/homepage.html';
+        window.location.href='../html/index.php';
         </script>";
 }
 else
@@ -56,14 +56,14 @@ else
             }
             else
             {
-                header('location: ../html/homepage.html');
+                header('location: ../html/index.php');
             }
         }
         else
         {
             echo "<script>
             alert('Login failed! Username or Password wrong');
-            window.location.href='../html/homepage.html';
+            window.location.href='../html/index.php';
             </script>";
         }
 }
