@@ -64,7 +64,7 @@ if($result = mysqli_query($link,$sqlquery))
             <tr>
                 <th>Emri Kursantit</th>
                 <th>Amza</th>
-                <th>Sr Deshmis</th>
+                <th>Nr. Seris Se Deshmis</th>
                 <th>Data</th>
                 <th>Orari</th>
             </tr>

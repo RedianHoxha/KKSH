@@ -114,7 +114,8 @@
         <?php 
         $firstday = date('Y-m-d', strtotime("monday -1 week"));
         $lastday = date('Y-m-d', strtotime("sunday 0 week"));
-        $sqlquery="SELECT * FROM programijavor WHERE data BETWEEN '$firstday' AND '$lastday' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges');";
+        $sqlquery="SELECT * FROM programijavor WHERE data >='$firstday' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges');";
+       // $sqlquery="SELECT * FROM programijavor WHERE data BETWEEN '$firstday' AND '$lastday' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges');";
 
         if($result = mysqli_query($link,$sqlquery))
         {

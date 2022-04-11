@@ -92,7 +92,7 @@
         <script lang="javascript" src="../gjenerofile/FileSaver.js"></script>
         <script>
             function generate() {
-                var qyteti =document.getElementById("dega").value;
+                var qyteti = '<?php echo decrypt($dega)?>';
                 var start =document.getElementById("start").value;
                 var end =document.getElementById("end").value;
                 var today = new Date();
@@ -125,23 +125,12 @@
             <input type="date" id="start" name="start">
             <label for="end">End:</label>
             <input type="date" id="end" name="end">
-            <label for="dega">Dega:</label>
-            <select id="dega" name="dega" >
-                    <?php $sqlquery="SELECT * FROM qyteti";
-                        $qytetet=mysqli_query($link, $sqlquery);
-                        while ($row = mysqli_fetch_array($qytetet)) { ?>
-
-                    <option value="<?php echo decrypt($row['EmriDeges']); ?>"><?php echo decrypt($row['EmriDeges']);?></option>
-                    <?php } ?>
-            </select>
             <button class="btn btn-success" id="button-a" onclick="generate()">Create Excel</button>                         
             <script>
                 function exportToExel(dataSource)
                 {
-                    var qyteti = document.getElementById("dega").value;
-                    console.log(qyteti);
+                    var qyteti ='<?php echo decrypt($dega)?>';
                     var headers = ["Emri","Atesia","Mbiemri","ID","Datelindja","Nr. Rregjistrit Amza","Nr. Serisë Dëshmisë."];
-                    console.log(dataSource);
                     var parseData  = JSON.parse(dataSource);
                     parseData.unshift(headers);
 
@@ -172,8 +161,6 @@
                     
                 }
             </script>
-
-            <!-- <button onclick="location.href = '../php';" id="myButton" >Gjenero file javore </button> -->
         </div>
     <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
 
@@ -190,9 +177,10 @@
                 <tr>
                     <?php 
                     $firstday = date('Y-m-d', strtotime("monday -1 week"));
-                    $lastday = date('Y-m-d', strtotime("sunday 0 week"));
-                    $sqlquery="SELECT * FROM `programijavor` WHERE data BETWEEN '$firstday' AND '$lastday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = '$idqyteti')  ORDER BY data ASC;";
-                    echo "<script>console.log('Debug Objects: " . $sqlquery .  "' );</script>";
+                    //$lastday = date('Y-m-d', strtotime("sunday 0 week"));
+                    $sqlquery="SELECT * FROM `programijavor` WHERE data >= '$firstday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti) ORDER BY data ASC";
+                    //$sqlquery="SELECT * FROM `programijavor` WHERE data BETWEEN '$firstday' AND '$lastday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti) ORDER BY data ASC";
+                    //echo "<script>console.log('Debug Objects: " . $sqlquery .  "' );</script>";
                     $kursantet=mysqli_query($link, $sqlquery);
                     while ($row = mysqli_fetch_array($kursantet)) { 
 

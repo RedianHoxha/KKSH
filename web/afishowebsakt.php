@@ -56,7 +56,6 @@ mysqli_select_db($link,"ajax_demo");
   <tr class="table-light">
     <th>Orari</th>
     <th>Data</th>
-    <th>Idkursi</th>
     <th>Zgjidh</th>
   </tr>
     </thead>
@@ -169,7 +168,6 @@ mysqli_select_db($link,"ajax_demo");
             ?>
                 <td class="text-left" style="text-align: center;">17:00 - 21:00</td>
                 <td class="text-left" style="text-align: center;"><?php echo $dataZgjedhur ?></td>
-                    <td class="text-left" style="text-align: center;"><?php echo $idKlase ?></td>
                 <td class="text-left " style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursimbasdit['idkursi'] ?>"required>Zgjidh</input></td>
               </tr>
               <?php 

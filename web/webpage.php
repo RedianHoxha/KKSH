@@ -195,11 +195,11 @@ if ($link === false) {
                     <label class="form-label">Banka</label>
                     <select id="my_select_box" name="my_select_box" require class="form-select" >
                         <option selected disabled value="">-- Zgjidh Bankën --</option>
-                        <option value="../Images/credinsbank.jpeg">Credins Bank</option>
-                        <option value="../Images/tiranabank.jpeg">Tirana Bank</option>
-                        <option value="../Images/bkt.jpeg">Banka Kombetare Tregtare</option>
-                        <option value="../Images/intesa.jpeg">Intesa San Paolo Bank</option>
-                        <option value="../Images/raiffeisen.jpeg">Raiffeisen Bank</option>
+                        <option value="../images/credinsbank.jpeg">Credins Bank</option>
+                        <option value="../images/tiranabank.jpeg">Tirana Bank</option>
+                        <option value="../images/bkt.jpeg">Banka Kombetare Tregtare</option>
+                        <option value="../images/intesa.jpeg">Intesa San Paolo Bank</option>
+                        <option value="../images/raiffeisen.jpeg">Raiffeisen Bank</option>
                     </select>
                     <span id="bank_error" class="text-danger"></span>
                 </div>

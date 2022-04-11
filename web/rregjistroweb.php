@@ -135,27 +135,26 @@ if(isset($_POST["name"]))
   {
     switch ($_POST["my_select_box"])
     {
-        case "../Images/credinsbank.jpeg":
+        case "../images/credinsbank.jpeg":
           $patternbank="/\d{15}-\d{3}$/";
           break;
 
-        case "../Images/tiranabank.jpegg":
+        case "../images/tiranabank.jpeg":
           $patternbank="/\d{15}$/";
           break;
 
-        case "../Images/bkt.jpeg":
+        case "../images/bkt.jpeg":
           $patternbank="/\d{3}[a-zA-Z]{4}\d{9}$/";
           break;
 
-        case "../Images/intesa.jpeg":
+        case "../images/intesa.jpeg":
           $patternbank="/[a-zA-Z]{3}\d{13}$/";
           break;
 
-        case "../Images/raiffeisen.jpeg":
+        case "../images/raiffeisen.jpeg":
           $patternbank="/\d{8}$/";
           break;
     }
-
     if(preg_match($patternbank, $_POST["paymentnumber"]))
     {
       $paymentnumber = test_input(mysqli_real_escape_string($link,$_POST["paymentnumber"]));
