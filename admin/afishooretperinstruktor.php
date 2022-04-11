@@ -1,6 +1,6 @@
 <?php
  require_once('../php/extra_function.php');
- include('../Authenticate/dbconnection.php');
+ include('../authenticate/dbconnection.php');
  if($link === false){
   die('Could not connect: ' . mysqli_error($con));
 }
@@ -97,7 +97,7 @@ if($result = mysqli_query($link,$sqlquery))
                 {
                     echo "<script>
                     alert('Something went wrong! Try again!');
-                    window.location.href='webpage.php';
+                    window.location.href='../html/index.php';
                     </script>";
                 }
             ?>   

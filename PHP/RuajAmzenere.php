@@ -1,7 +1,7 @@
 <?php
     //$link = mysqli_connect("localhost", "root", "", "kksh");
     require_once('../php/extra_function.php');
-    include('../Authenticate/dbconnection.php');
+    include('../authenticate/dbconnection.php');
     if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
@@ -11,11 +11,11 @@
     $amza= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['amza-txt'])));
     $seria= encryptValues(test_input( mysqli_real_escape_string( $link,$_POST['deshmi-txt'])));
 
-    $vendosamzen = "update kursantet set Amza= '$amza', NrSerisDeshmis = '$seria', Statusi= 'perfunduar' where ID = '$idkursanti'";
+    $vendosamzen = "UPDATE kursantet SET Amza= '$amza', NrSerisDeshmis = '$seria', Statusi= 'perfunduar' WHERE ID = '$idkursanti'";
     
     if($runupdetin  =mysqli_query($link, $vendosamzen))
     {
-        $quryupdetostatusinkursantit = "update organizimkursantesh1 set statusi = 'Perfunduar' where  idkursanti = '$id';";
+        $quryupdetostatusinkursantit = "UPDATE organizimkursantesh1 SET statusi = 'Perfunduar' WHERE  idkursanti = '$id';";
         mysqli_query($link, $quryupdetostatusinkursantit);
         header('location: ../confirm/confirmpage.php');
     }

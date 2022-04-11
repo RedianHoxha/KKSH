@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once('../php/extra_function.php');
-    include('../Authenticate/dbconnection.php');
+    include('../authenticate/dbconnection.php');
     //$link = mysqli_connect("localhost", "root", "", "kksh");
 
     if($link === false){
@@ -12,7 +12,7 @@
 
     $idDegeToDelete = $_GET['id'];
 
-    $queryFshiDege = "DELETE FROM qyteti where IDQyteti = '$idDegeToDelete';";
+    $queryFshiDege = "DELETE FROM qyteti WHERE IDQyteti = '$idDegeToDelete';";
     if($runfshiDege = mysqli_query($link, $queryFshiDege)){
         
         header('location: ../admin/adminpageconfirm.php');

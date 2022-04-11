@@ -1,6 +1,6 @@
 <?php
 require_once('../php/extra_function.php');
-include('../Authenticate/dbconnection.php');
+include('../authenticate/dbconnection.php');
 //$link = mysqli_connect("localhost", "root", "", "kksh");
 if ($link === false) {
     die("ERROR: Could not connect. " . mysqli_connect_error());

@@ -1,7 +1,7 @@
 <?php 
     session_start();
     require_once('../php/extra_function.php');
-    include('../Authenticate/dbconnection.php');
+    include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
         echo "<a href='../html/index.php'>Click Here to Login</a>";
@@ -24,7 +24,7 @@
                     die("ERROR: Could not connect. " . mysqli_connect_error());
             }else
 			{
-				$query = "select * from staf where ID = '$iduseri';";
+				$query = "SELECT * FROM  staf WHERE ID = '$iduseri';";
 				$kursantet=mysqli_query($link, $query);
 				$row = mysqli_fetch_array($kursantet);
                 $dega = $row['Degakupunon'];
@@ -113,12 +113,12 @@
                
                if($fjalakyc <> "")
                {
-                 $sqlquery="Select * from kursantet where Emri LIKE '%{$fjalakyc}%' or Mbiemri LIKE '%{$fjalakyc}%' or Atesia LIKE '%{$fjalakyc}%' or Vendbanimi LIKE '%{$fjalakyc}%' 
-                or PersonalId = '$fjalakyc'";
+                 $sqlquery="SELECT * FROM  kursantet WHERE Emri LIKE '%{$fjalakyc}%' OR Mbiemri LIKE '%{$fjalakyc}%' OR Atesia LIKE '%{$fjalakyc}%' OR Vendbanimi LIKE '%{$fjalakyc}%' 
+                OR PersonalId = '$fjalakyc'";
                }
                else
                {
-                $sqlquery="Select * from kursantet";
+                $sqlquery="SELECT * FROM kursantet";
                }
 
                  $kursantet=mysqli_query($link, $sqlquery);

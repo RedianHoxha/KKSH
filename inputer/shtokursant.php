@@ -1,7 +1,7 @@
 <?php 
     session_start();
     require_once('../php/extra_function.php');
-    include('../Authenticate/dbconnection.php');
+    include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
         echo "<a href='../html/index.php'>Click Here to Login</a>";
@@ -24,12 +24,12 @@
                     die("ERROR: Could not connect. " . mysqli_connect_error());
             }else
 			{
-				$query = "select * from staf where ID = '$iduseri';";
+				$query = "SELECT * FROM  staf WHERE ID = '$iduseri';";
                 $kursantet=mysqli_query($link, $query);
                 $row = mysqli_fetch_array($kursantet);
                 $degastafit = $row['Degakupunon'];
 
-                $querydega = "select * from qyteti where EmriDeges = '$degastafit';";
+                $querydega = "SELECT * FROM  qyteti WHERE EmriDeges = '$degastafit';";
                 $dega=mysqli_query($link, $querydega);
                 $rowdega = mysqli_fetch_array($dega);
                 $idDeges = $rowdega['IDQyteti'];
@@ -47,7 +47,7 @@
 				}
                 else{
                     $idkursi= test_input(mysqli_real_escape_string( $link,$_GET['id']));
-                    $querymerrtedhena = "Select * from programijavor where idkursi = '$idkursi';";
+                    $querymerrtedhena = "SELECT * FROM  programijavor WHERE idkursi = '$idkursi';";
                     $resulttedhenash = mysqli_query($link, $querymerrtedhena);
                     $rowtedhena = mysqli_fetch_array($resulttedhenash);
                     $orari = $rowtedhena['orari'];

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../php/extra_function.php');
-include('../Authenticate/dbconnection.php');
+include('../authenticate/dbconnection.php');
 if (!isset($_SESSION['user'])) {
     echo "Please Login again";
     echo "<a href='../html/index.php'>Click Here to Login</a>";
@@ -24,7 +24,7 @@ if (!isset($_SESSION['user'])) {
                 die("ERROR: Could not connect. " . mysqli_connect_error());
         }else
         {
-            $query = "select * from staf where ID = '$iduseri';";
+            $query = "SELECT * FROM  staf WHERE ID = '$iduseri';";
             $staf=mysqli_query($link, $query);
             $row = mysqli_fetch_array($staf);
             $dega = $row['Degakupunon'];
@@ -41,7 +41,7 @@ if (!isset($_SESSION['user'])) {
                 </script>";
             }
             else{
-                $queryqyteti = "select * from qyteti where EmriDeges = '$dega';";
+                $queryqyteti = "SELECT * FROM  qyteti WHERE EmriDeges = '$dega';";
                 $klasa=mysqli_query($link, $queryqyteti);
                 $row = mysqli_fetch_array($klasa);
                 $idqyteti = $row['IDQyteti'];
@@ -51,7 +51,7 @@ if (!isset($_SESSION['user'])) {
                 }
                 
                 $idPlanifikimi = $_GET['id'];
-                $planifikim  = "Select * from programijavor where idkursi = ?";
+                $planifikim  = "SELECT * FROM  programijavor WHERE idkursi = ?";
                 $stmt = mysqli_stmt_init($link);
                 if(!mysqli_stmt_prepare($stmt,$planifikim))
                 {
@@ -66,7 +66,7 @@ if (!isset($_SESSION['user'])) {
                     $idInstruktori = $row['idinstruktori'];
 
                     $idKlase = $row['idklase'];
-                    $sqlklasaExistuse="Select * from klasa where ID = '$idKlase'";
+                    $sqlklasaExistuse="SELECT * FROM  klasa WHERE ID = '$idKlase'";
                     $klasaExistuse=mysqli_query($link, $sqlklasaExistuse);
                     $rowklasaExistuse = mysqli_fetch_array($klasaExistuse);
                     $existKlasName = $rowklasaExistuse['Emri'];
@@ -116,7 +116,7 @@ if (!isset($_SESSION['user'])) {
                 <label for="klasa">Klasa:</label>
                 <select class="form-select" aria-label="Default select example" id="klasa" name="klasa" style="width:15%;" required>
                 <?php 
-                    $sqlklasa="Select * from klasa where Qyteti = '$idqyteti'";
+                    $sqlklasa="SELECT * FROM  klasa WHERE Qyteti = '$idqyteti'";
                     $klasa=mysqli_query($link, $sqlklasa);
                     while ($row = mysqli_fetch_array($klasa)) { 
                         if(strcmp($row['Emri'], $existKlasName) === 0)

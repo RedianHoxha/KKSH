@@ -20,7 +20,7 @@
             </div><br>
             <div class="wrap-input100">
                 <p id="password">Password</p>
-                <input class="input100" id="password-txt" type="password" name="password" placeholder="PassWord"
+                <input class="input100" id="password-txt" type="password" name="password" placeholder="Password"
                     autocomplete="off" required>
             </div><br>
             <div>

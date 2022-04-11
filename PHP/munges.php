@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once('../php/extra_function.php');
-    include('../Authenticate/dbconnection.php');
+    include('../authenticate/dbconnection.php');
     //$link = mysqli_connect("localhost", "root", "", "kksh");
 
     if($link === false){
@@ -9,7 +9,7 @@
     }
     $user=$_SESSION['user'];
     $iduseri = $_SESSION['UserID'];
-    $query = "select * from staf where ID = '$iduseri';";
+    $query = "SELECT * FROM  staf WHERE ID = '$iduseri';";
     $kursantet=mysqli_query($link, $query);
     $row = mysqli_fetch_array($kursantet);
     $roli = decrypt($row['Roli']);
@@ -21,7 +21,7 @@
 
     if($runupdetinorganizim  = mysqli_query($link, $fshikursantngaplanifikimi))
     {
-        $fshiKursant = "UPDATE kursantet SET Statusi='Munges' WHERE ID = '$idKursanti' and Statusi='pabere'";
+        $fshiKursant = "UPDATE kursantet SET Statusi='Munges' WHERE ID = '$idKursanti' AND Statusi='pabere'";
         if($runfshiorganizim = mysqli_query($link, $fshiKursant))
         {
             if(strcmp($roli,"Inputer") == 0)
