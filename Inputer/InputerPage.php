@@ -1,24 +1,23 @@
 <?php 
     session_start();
-    require_once('../php/extra_function.php');
+    require_once('../methods/extra_function.php');
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
-        echo "<a href='../html/index.php'>Click Here to Login</a>";
+        echo "<a href='../panelstaf/index.php'>Click Here to Login</a>";
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
 			session_destroy();
             echo "<script>
             alert('Session Ended');
-            window.location.href='../html/index.php';
+            window.location.href='../panelstaf/index.php';
             </script>";
 		}else
 		{
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
-            $_SESSION['expire'] = $_SESSION['expire'] + (5 * 60);
-            //$link = mysqli_connect("localhost", "root", "", "kksh");
+            $_SESSION['expire'] = $_SESSION['expire'] + (3 * 60);
 			if($link === false)
 			{
                 die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -42,7 +41,7 @@
                     session_destroy();
                     echo "<script>
                     alert('Session Ended');
-                    window.location.href='../html/index.php';
+                    window.location.href='../panelstaf/index.php';
                     </script>";
 				}
 			}
@@ -92,7 +91,7 @@
         <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
     </div>
     <div id="Form">
-            <form action="../php/rregjistro.php" method="POST">
+            <form action="../methods/rregjistro.php" method="POST">
                 <div id="hello">
                     <p id="hello-p">Welcome</p>
                 </div>

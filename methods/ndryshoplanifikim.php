@@ -4,14 +4,14 @@ require_once('../php/extra_function.php');
 include('../authenticate/dbconnection.php');
 if (!isset($_SESSION['user'])) {
     echo "Please Login again";
-    echo "<a href='../html/index.php'>Click Here to Login</a>";
+    echo "<a href='../panelstaf/index.php'>Click Here to Login</a>";
 }else{
     $now = time();
     if ($now > $_SESSION['expire']) {
         session_destroy();
         echo "<script>
         alert('Session Ended');
-        window.location.href='../html/index.php';
+        window.location.href='../panelstaf/index.php';
         </script>";
     }else
     {
@@ -37,7 +37,7 @@ if (!isset($_SESSION['user'])) {
                 session_destroy();
                 echo "<script>
                 alert('Session Ended');
-                window.location.href='../html/index.php';
+                window.location.href='../panelstaf/index.php';
                 </script>";
             }
             else{

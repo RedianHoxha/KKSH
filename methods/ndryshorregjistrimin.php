@@ -4,14 +4,14 @@
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
-        echo "<a href='../html/index.php'>Click Here to Login</a>";
+        echo "<a href='../panelstaf/index.php'>Click Here to Login</a>";
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
 			session_destroy();
             echo "<script>
             alert('Session Ended');
-            window.location.href='../html/index.php';
+            window.location.href='../panelstaf/index.php';
             </script>";
 		}else
 		{
@@ -42,7 +42,7 @@
                     session_destroy();
                     echo "<script>
                     alert('Session Ended');
-                    window.location.href='../html/index.php';
+                    window.location.href='../panelstaf/index.php';
                     </script>";
 				}
                 else{
@@ -194,7 +194,7 @@
                                     }else{
                                         echo "<script>
                                         alert('Something went wrong ouring filtering! Try again!');
-                                        window.location.href='../html/index.php';
+                                        window.location.href='../panelstaf/index.php';
                                         </script>";
                                     }
                                 }
@@ -209,7 +209,7 @@
                             {
                                 echo "<script>
                                 alert('Something went wrong! Try again!');
-                                window.location.href='../html/index.php';
+                                window.location.href='../panelstaf/index.php';
                                 </script>";
                             }
                         ?>   

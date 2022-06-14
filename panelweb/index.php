@@ -8,11 +8,11 @@
     <section class="get-in-touch">
         <div id="header" class="d-flex justify-content-around">
             <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="kksh_logo" class="p-2">
-            <p class="title p-2 ">Kryqi I Kuq Shqiptar</p>
+            <p class="title p-2 ">Kryqi i Kuq Shqiptar</p>
             <img src="../images/kksh_logo2.PNG" alt="Simply Easy Learning" id="kksh_logo100" class="p-2">
         </div>
         <div id="form" class="shadow p-3 mb-5 bg-white rounded">
-            <form id="captcha_form" class="contact-form row g-3"  action="../web/webpage.php">
+            <form id="captcha_form" class="contact-form row g-3"  action="../panelweb/webpage.php">
                 <div id="information">
                     <p class="text-center fs-5 fw-bolder">
                         Pershendetje<br>Sapo keni nisur proceduren per te planifikuar Trajnimin e Ndihmes se Pare per Patente.<br>

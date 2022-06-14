@@ -1,6 +1,6 @@
 <?php
 
-require_once('../php/extra_function.php');
+require_once('../methods/extra_function.php');
 include('../authenticate/dbconnection.php');
 
 if($link === false){
@@ -16,7 +16,7 @@ if(!mysqli_stmt_prepare($stmt,$queryuser))
 {
     echo "<script>
         alert('Retry');
-        window.location.href='../html/index.php';
+        window.location.href='../panelstaf/index.php';
         </script>";
 }
 else
@@ -56,14 +56,14 @@ else
             }
             else
             {
-                header('location: ../html/index.php');
+                header('location: ../panelstaf/index.php');
             }
         }
         else
         {
             echo "<script>
             alert('Login failed! Username or Password wrong');
-            window.location.href='../html/index.php';
+            window.location.href='../panelstaf/index.php';
             </script>";
         }
 }
