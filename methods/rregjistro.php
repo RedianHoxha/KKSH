@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once('../php/extra_function.php');
+require_once('../methods/extra_function.php');
 include('../authenticate/dbconnection.php');
 $user=$_SESSION['user'];
 $iduseri = $_SESSION['UserID'];

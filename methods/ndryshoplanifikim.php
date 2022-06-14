@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('../php/extra_function.php');
+require_once('../methods/extra_function.php');
 include('../authenticate/dbconnection.php');
 if (!isset($_SESSION['user'])) {
     echo "Please Login again";

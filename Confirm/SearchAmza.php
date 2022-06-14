@@ -93,10 +93,10 @@
         </script>
     </head>
     <body>
-    <div id="logout">
-        <button class="btn btn-secondary" onclick="location.href = 'ConfirmPage.php';" id="myButton" >Ktheu</button>
-        <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
-    </div>
+        <div id="logout">
+            <button class="btn btn-secondary" onclick="location.href = 'confirmpage.php';" id="myButton" >Ktheu</button>
+            <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
+        </div>
         <div id="search">
             <form action="searchamza.php" method="POST"> 
                 <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search">

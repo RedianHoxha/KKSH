@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    require_once('../php/extra_function.php');
+    require_once('../methods/extra_function.php');
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
@@ -113,7 +113,7 @@
                     <button class="btn btn-secondary" onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Ktheu</button>
             </div>
             <div id="Form">
-                <form action="../php/ruajndryshimet.php?id=<?php echo $idkursanti; ?>" method="POST">
+                <form action="../methods/extra_function.phpruajndryshimet.php?id=<?php echo $idkursanti; ?>" method="POST">
                     <div id="hello">
                         <p id="hello-p">Welcome :)</p>
                     </div>
