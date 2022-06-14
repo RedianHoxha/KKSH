@@ -31,6 +31,13 @@
 				$kursantet=mysqli_query($link, $query);
 				$row = mysqli_fetch_array($kursantet);
                 $dega = $row['Degakupunon'];
+
+                $sqldega = "SELECT * FROM qyteti WHERE EmriDeges = '$dega'";
+                $degaresult = mysqli_query($link, $sqldega);
+                $rowdega = mysqli_fetch_array($degaresult);
+                $degaid = $rowdega['IDQyteti'];
+
+
                 $roli = decrypt($row['Roli']);
                 $pageRole = "Confirmues";
                 $result = strcmp($roli, $pageRole);
@@ -117,7 +124,7 @@
                 <th>Action</th>
             </tr>
             <tr>
-               <?php $sqlquery="SELECT * FROM kursantet WHERE Statusi='pabere'";
+               <?php $sqlquery="SELECT * FROM kursantet WHERE Statusi='pabere' AND Dega = '$degaid'";
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { ?>
 

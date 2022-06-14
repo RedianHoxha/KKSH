@@ -33,6 +33,13 @@
 				$kursantet=mysqli_query($link, $query);
 				$row = mysqli_fetch_array($kursantet);
                 $dega = $row['Degakupunon'];
+
+                $sqldega = "SELECT * FROM qyteti WHERE EmriDeges = '$dega'";
+                $degaresult = mysqli_query($link, $sqldega);
+                $rowdega = mysqli_fetch_array($degaresult);
+                $degaid = $rowdega['IDQyteti'];
+
+
                 $roli = decrypt($row['Roli']);
                 $pageRole = "Confirmues";
                 $result = strcmp($roli, $pageRole);
@@ -119,11 +126,11 @@
                 <th>Edito</th>
             </tr>
             <tr>   
-               <?php  $sqlquery="SELECT * FROM  kursantet WHERE (Statusi='pabere' AND Emri LIKE '%{$fjalakyc}%') 
+               <?php  $sqlquery="SELECT * FROM  kursantet WHERE Dega = '$degaid' AND ((Statusi='pabere' AND Emri LIKE '%{$fjalakyc}%') 
                                     OR (Statusi='pabere' AND Mbiemri LIKE '%{$fjalakyc}%') 
                                     OR (Statusi='pabere' AND Atesia LIKE '%{$fjalakyc}%') 
                                     OR (Statusi='pabere' AND Vendbanimi LIKE '%{$fjalakyc}%') 
-                                    OR (Statusi='pabere' AND ID = '$fjalakyc')";
+                                    OR (Statusi='pabere' AND ID = '$fjalakyc'))";
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { ?>
 
