@@ -41,7 +41,7 @@ if($result = mysqli_query($link,$sqlquery))
         var numPages = rowsTotal / rowsShown;
         for (i = 0; i < numPages; i++) {
             var pageNum = i + 1;
-            $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+            $('#nav').append('<a href="#" class="btn" rel="' + i + '">' + pageNum + '</a> ');
         }
         $('#tabela-kursanteve tbody tr').hide();
         $('#tabela-kursanteve tbody tr').slice(0, rowsShown).show();

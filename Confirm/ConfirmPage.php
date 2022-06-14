@@ -4,7 +4,11 @@
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
-        echo "<a href='../panelstaf/index.php'>Click Here to Login</a>";
+        session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../panelstaf/index.php';
+            </script>";
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
@@ -13,8 +17,7 @@
             alert('Session Ended');
             window.location.href='../panelstaf/index.php';
             </script>";
-		}else
-		{
+		}else{
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
             $_SESSION['expire'] = $_SESSION['expire'] + (5 * 60);
@@ -66,7 +69,7 @@
             var numPages = rowsTotal / rowsShown;
             for (i = 0; i < numPages; i++) {
                 var pageNum = i + 1;
-                $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+                $('#nav').append('<a href="#" class="btn" rel="' + i + '">' + pageNum + '</a> ');
             }
             $('#tabela-kursanteve tbody tr').hide();
             $('#tabela-kursanteve tbody tr').slice(0, rowsShown).show();
@@ -87,13 +90,13 @@
         </script>
     </head>
     <body>
-    <div id="top-page">
+        <div id="top-page">
             <div id="top-page-left">
-            <form action="searchamza.php" method="POST"> 
-                <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search">
-                <button  class="btn btn-secondary" type="submit" id="search-button">Search</button>
-            </form>
-            <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
+                <form action="searchamza.php" method="POST"> 
+                    <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search">
+                    <button  class="btn btn-secondary" type="submit" id="search-button">Search</button>
+                    <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
+                </form>
             </div>
         </div>
         <table id="tabela-kursanteve" class="table table-striped table-bordered table-sm">

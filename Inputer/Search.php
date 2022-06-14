@@ -4,7 +4,12 @@
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
-        echo "<a href='../panelstaf/index.php'>Click Here to Login</a>";
+        session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../panelstaf/index.php';
+            </script>";
+        
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
@@ -62,7 +67,7 @@
             var numPages = rowsTotal / rowsShown;
             for (i = 0; i < numPages; i++) {
                 var pageNum = i + 1;
-                $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+                $('#nav').append('<a href="#" class="btn" rel="' + i + '">' + pageNum + '</a> ');
             }
             $('#tabela-kursanteve tbody tr').hide();
             $('#tabela-kursanteve tbody tr').slice(0, rowsShown).show();
@@ -86,7 +91,7 @@
         <div id="logout">
             <button class="btn btn-secondary" onclick="location.href = '../inputer/afishokurset.php';" id="myButton" >Shiko Kurset</button>
             <button class="btn btn-secondary" onclick="location.href = 'bejndryshime.php';" id="myButton" >Ktheu</button>
-             <button class="btn btn-secondary" onclick="location.href = '../inputer/gjeneroexel.php';" id="myButton" >Gjenero Excel</button>
+            <button class="btn btn-secondary" onclick="location.href = '../inputer/gjeneroexel.php';" id="myButton" >Gjenero Excel</button>
             <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
         </div>
         <div id="search">
@@ -113,12 +118,15 @@
                
                if($fjalakyc <> "")
                {
-                 $sqlquery="SELECT * FROM  kursantet WHERE Emri LIKE '%{$fjalakyc}%' OR Mbiemri LIKE '%{$fjalakyc}%' OR Atesia LIKE '%{$fjalakyc}%' OR Vendbanimi LIKE '%{$fjalakyc}%' 
-                OR PersonalId = '$fjalakyc'";
+                 $sqlquery="SELECT * FROM  kursantet WHERE (Statusi='pabere' AND Emri LIKE '%{$fjalakyc}%') 
+                            OR (Statusi='pabere' AND Mbiemri LIKE '%{$fjalakyc}%') 
+                            OR (Statusi='pabere' AND Atesia LIKE '%{$fjalakyc}%') 
+                            OR (Statusi='pabere' AND Vendbanimi LIKE '%{$fjalakyc}%') 
+                            OR (Statusi='pabere' AND ID = '$fjalakyc')";
                }
                else
                {
-                $sqlquery="SELECT * FROM kursantet";
+                $sqlquery="SELECT * FROM kursantet WHERE Statusi='pabere'";
                }
 
                  $kursantet=mysqli_query($link, $sqlquery);
