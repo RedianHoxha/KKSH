@@ -99,7 +99,7 @@ mysqli_select_db($link,"ajax_demo");
                 <?php
                 }}else{
             ?>
-              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk kurs ne orarin 9:00 - 13:00!!</td></tr>
+              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka kurs ne orarin 9:00 - 13:00!!</td></tr>
             <?php
         }
 
@@ -141,7 +141,7 @@ mysqli_select_db($link,"ajax_demo");
         }
     }else{
             ?>
-              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk kurs ne orarin 13:00 - 17:00!</td></tr>
+              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka kurs ne orarin 13:00 - 17:00!</td></tr>
             <?php
         }
 
@@ -183,7 +183,7 @@ mysqli_select_db($link,"ajax_demo");
         }
         }else{
             ?>
-              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk kurs ne orarin 17:00 - 21:00!</td></tr>
+              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka kurs ne orarin 17:00 - 21:00!</td></tr>
             <?php
         }
  ?>   

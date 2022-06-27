@@ -216,13 +216,13 @@ if(isset($_POST["name"]))
  }
  else
  {
-  $secret_key = '6LfwjbwdAAAAACdTuLJYmkk17zwmu0wdyoP1FTS4';
+    //$secret_key = '6LfwjbwdAAAAACdTuLJYmkk17zwmu0wdyoP1FTS4';
+  $secret_key = '6LcMN54gAAAAAOfXMkPOfJYgp22avIUd4YjuVfRE';
 
   $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret_key.'&response='.$_POST['g-recaptcha-response']);
 
   $response_data = json_decode($response);
-
-  if(!$response_data->success)
+  if($response_data->success)
   {
    $captcha_error = 'Captcha verification failed';
   }
@@ -243,10 +243,10 @@ if(isset($_POST["name"]))
     $url = $row['Adresa'];
     $idQyteti = $row['IDQyteti'];
 
-    $shtokursant = "INSERT INTO kursantet(PersonalID, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi, IdKursi, DataRregjistrimit, Gjinia)
-    VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere', '$idkursi', '$now', '$gjinia');";
-            
-    if($resultinsert = mysqli_query($link, $shtokursant)){
+    $shtokursant = "INSERT INTO kursantet(PersonalId, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi, IdKursi, DataRregjistrimit, Gjinia, Amza, NrSerisDeshmis)
+    VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere', '$idkursi', '$now', '$gjinia', '', '');";
+            $resultinsert = mysqli_query($link, $shtokursant) or die(mysqli_error($link));
+    if($resultinsert){
 
         $quryshto = "INSERT INTO organizimkursantesh1(idkursi, idkursanti,statusi ) VALUES ('$idkursi','$id', 'pabere');";
         $resultorganizim = mysqli_query($link, $quryshto);
@@ -262,13 +262,13 @@ if(isset($_POST["name"]))
         else
         {
           echo "<script>
-          alert('Something went reserving a chair! Try again!');
+          alert('Something went wrong during reserving a chair! Try again!');
           window.location.href='webpage.php';
           </script>";
         }
     }else{
         echo "<script>
-        alert('Something wentcreating user! Try again!');
+        alert('Something went wrong during creating user! Try again!');
         window.location.href='webpage.php';
         </script>";
     }

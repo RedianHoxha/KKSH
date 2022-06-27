@@ -27,6 +27,8 @@ $idkursi= test_input(mysqli_real_escape_string( $link,$_GET['id']));
     $vendbanim= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['vendbanim-txt'])));
     $tel= test_input(mysqli_real_escape_string( $link,$_POST['tel-txt']));
     $gjinia= test_input(mysqli_real_escape_string( $link,$_POST['gjinia']));
+    $paumentNumber = test_input(mysqli_real_escape_string( $link,$_POST['payment-txt']));
+    $email = test_input(mysqli_real_escape_string( $link,$_POST['email-txt']));
 
       $querymerrtedhena = "SELECT * FROM  programijavor WHERE idkursi = '$idkursi';";
       $resulttedhenash = mysqli_query($link, $querymerrtedhena);
@@ -35,18 +37,14 @@ $idkursi= test_input(mysqli_real_escape_string( $link,$_GET['id']));
       $data = $rowtedhena['data'];
       $orari = $rowtedhena['orari'];
 
-   $shtokursant = "INSERT INTO kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari,Statusi, IdKursi, DataRregjistrimit, Gjinia)
-    VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges', '$data','$orari','pabere','$idkursi', '$now', '$gjinia');";
-   
+   $shtokursant = "INSERT INTO kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari,Statusi, IdKursi, DataRregjistrimit, Gjinia, Amza, NrSerisDeshmis, BankPayment, Email)
+    VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges', '$data','$orari','pabere','$idkursi', '$now', '$gjinia','','', $paumentNumber, '$email');";
+    $resultinsert = mysqli_query($link, $shtokursant) or die(mysqli_error($link));
     
-    if($resultinsert = mysqli_query($link, $shtokursant))
+    if($resultinsert)
     {
       $queryshto = "INSERT INTO organizimkursantesh1 (idkursi, idkursanti,statusi ) VALUES ('$idkursi','$id','pabere');";
       mysqli_query($link, $queryshto);
-      // echo $shtokursant;
-      // echo $queryshto;
-      // echo $idkursi;
-      // echo $orari;
       header('location:../inputer/bejndryshime.php');
     }
     else

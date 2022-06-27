@@ -150,12 +150,25 @@
               <button  class="btn btn-success" onclick="location.href = 'shtostaf.php';" id="addbutton" >Shto Staf</button>
             </div>
             <div id="tabela">
-                <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+                
+                <table id="stafi" class="table table-bordered">  
+                    <tr>
+                        <th>Personale ID</th>
+                        <th>Emri</th>
+                        <th>Mbiemer</th>
+                        <th>Rol</th>
+                        <th>Dega</th>
+                        <th>Username</th>
+                        <th>Telefoni</th>
+                        <th>Edito</th>
+                    </tr>
+                    <tr>
+                    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
                 <script>
 
                     $(document).ready(function() {
                     $('#stafi').after('<div id="nav"></div>');
-                    var rowsShown = 9;
+                    var rowsShown = 5;
                     var rowsTotal = $('#stafi tbody tr').length;
                     var numPages = rowsTotal / rowsShown;
                     for (i = 0; i < numPages; i++) {
@@ -181,18 +194,6 @@
                     });
                 });
                 </script>
-                <table id="stafi" class="table table-bordered">  
-                    <tr>
-                        <th>Personale ID</th>
-                        <th>Emri</th>
-                        <th>Mbiemer</th>
-                        <th>Rol</th>
-                        <th>Dega</th>
-                        <th>Username</th>
-                        <th>Telefoni</th>
-                        <th>Edito</th>
-                    </tr>
-                    <tr>
                         <?php $sqlquery="SELECT * FROM staf";
                         $kursantet=mysqli_query($link, $sqlquery);
                         while ($row = mysqli_fetch_array($kursantet)) { ?> 

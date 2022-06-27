@@ -117,7 +117,15 @@
                 <p id="telefoni">Telefoni</p>
                 <input class="input100" id="tel-txt" type="number" 
                 name="tel-txt" placeholder="Telefoni" autocomplete="off" required>
-            </div><br>
+
+                <p>Email</p>
+                <input class="input100" id="email-txt" type="text" 
+                name="email-txt" placeholder="Email" autocomplete="off" required>
+        
+                <p>Numri i Pageses</p>
+                <input class="input100" id="payment-txt" type="text" 
+                name="payment-txt" placeholder="Numri i pageses" autocomplete="off" required>
+            </div>
             <div>
                 <p>Ju keni zgjedhur kursin ne date <?php echo $data ?>  ne oren  <?php echo $orari ?></p>
             </div>

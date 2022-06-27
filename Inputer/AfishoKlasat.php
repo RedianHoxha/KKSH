@@ -88,7 +88,7 @@ mysqli_select_db($link,"ajax_demo");
       {
         echo "<script>
         alert('Something went wrong! Try again!');
-        window.location.href='webpage.php';
+        window.location.href='bejndryshime.php';
         </script>";
       }
  ?>   

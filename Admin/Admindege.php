@@ -167,7 +167,7 @@
                 }
             </script>
         </div>
-    <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
+    <img src="../images/kkshlogo.png" alt="Simply Easy Learning" id="KKSH_logo">
 
     <div id="organisation_table">
         <div id="tabela">

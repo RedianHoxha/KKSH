@@ -90,7 +90,7 @@ if ($link === false) {
 
                         document.getElementById("txtHint").innerHTML = '';
                         grecaptcha.reset();
-                        if (window.confirm(`Rregjistrimi u krye me sukses!\nParaqituni në datën : ${data.datakursit} , Ora: ${data.orari} pranë zyrave të Kryqit të Kuq Shqiptar!\nDuhet të keni me vete :\n1->Mandatin e pageses\n2->Karteën e Identitetit\nKliko 'OK' për të parë vendodhjen në hartë`)) 
+                        if (window.confirm(`Rregjistrimi u krye me sukses!\nParaqituni në datën : ${data.datakursit} , Ora: ${data.orari} pranë zyrave të Kryqit të Kuq Shqiptar!\nDuhet të keni me vete ne diten e kursit:\n1->Mandatin e pageses\n2->Kartën e Identitetit\n3->Një fotografi për dokument\nKliko 'OK' për të parë vendodhjen në hartë`)) 
                         {
                            window.location.href=`${data.url}`;
                         };
@@ -126,9 +126,9 @@ if ($link === false) {
 <body>
     <section class="get-in-touch">
         <div id="header" class="d-flex justify-content-around">
-            <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="kksh_logo" class="p-2">
+            <img src="../images/kkshlogo.png" alt="Simply Easy Learning" id="kksh_logo" class="p-2">
             <p class="title p-2 ">Kryqi I Kuq Shqiptar</p>
-            <img src="../images/kksh_logo2.PNG" alt="Simply Easy Learning" id="kksh_logo100" class="p-2">
+            <img src="../images/kksh_logo2.png" alt="Simply Easy Learning" id="kksh_logo100" class="p-2">
         </div>
         <div class="d-flex justify-content-start">
             <p>Ju lutem plotësoni formën me të dhënat tuaja!</p>
@@ -159,7 +159,7 @@ if ($link === false) {
 
                 <div class="col-md-6 position-relative">
                     <label  class="form-label">ID</label>
-                    <input type="text" class="form-control" name="id" require placeholder="psh: J257489657P">
+                    <input type="text" class="form-control" name="id" require placeholder="J3XXXXXX7P">
                     <span id="personalid_error" class="text-danger"></span>
                 </div>
 
@@ -183,7 +183,7 @@ if ($link === false) {
 
                 <div class="col-md-6 position-relative">
                     <label class="form-label">Numri i Telefonit</label>
-                    <input type="number" class="form-control" name="phone"  require placeholder="psh: 06xxxxxxxx">
+                    <input type="number" class="form-control" name="phone"  require placeholder="06xxxxxxxx">
                     <span id="tel_error" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 position-relative">
@@ -234,7 +234,8 @@ if ($link === false) {
                     <span id="selected_error" class="text-danger"></span>
                 </div>
                 <div class="col-md-12 position-relative">
-                    <div class="g-recaptcha" data-sitekey="6LfwjbwdAAAAAIjvSq7c6CXVKuA3BRy5vs8TMAJX" style="text-align: -webkit-center" require></div>
+                    <!-- <div class="g-recaptcha" data-sitekey="6LfwjbwdAAAAAIjvSq7c6CXVKuA3BRy5vs8TMAJX" style="text-align: -webkit-center" require></div> -->
+                    <div class="g-recaptcha" data-sitekey="6LcMN54gAAAAADv1yfjX-RbsY89eb0sx2z0Y1s3g" style="text-align: -webkit-center" require></div>
                     <span id="captcha_error" class="text-danger"></span>
                 </div>
                 <div class="form-field col-md-12 text-center">

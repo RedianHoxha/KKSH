@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2022 at 12:07 AM
+-- Generation Time: Jun 23, 2022 at 04:38 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -17,16 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `kksh`
---
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `klasa`
 --
 
+DROP TABLE IF EXISTS `klasa`;
 CREATE TABLE `klasa` (
   `ID` int(11) NOT NULL,
   `Qyteti` int(11) NOT NULL,
@@ -39,11 +36,12 @@ CREATE TABLE `klasa` (
 --
 
 INSERT INTO `klasa` (`ID`, `Qyteti`, `Kapaciteti`, `Emri`) VALUES
-(43, 52, 12, 'n3FzGzLH'),
-(44, 52, 13, 'n3FzGzLE'),
-(45, 52, 12, 'n3FzGzLF'),
-(46, 52, 12, 'n3FzGzLC'),
-(49, 52, 12, 'n3FzGzLD');
+(51, 52, 10, 'n3FzGzLH'),
+(52, 52, 10, 'n3FzGzLE'),
+(53, 52, 10, 'n3FzGzLF'),
+(54, 52, 10, 'n3FzGzLC'),
+(55, 53, 10, 'kE9ZBDL1zao='),
+(56, 53, 10, 'kE9ZBDL1zak=');
 
 -- --------------------------------------------------------
 
@@ -51,6 +49,7 @@ INSERT INTO `klasa` (`ID`, `Qyteti`, `Kapaciteti`, `Emri`) VALUES
 -- Table structure for table `kursantet`
 --
 
+DROP TABLE IF EXISTS `kursantet`;
 CREATE TABLE `kursantet` (
   `PersonalId` varchar(100) NOT NULL,
   `Emri` varchar(250) NOT NULL,
@@ -73,10 +72,13 @@ CREATE TABLE `kursantet` (
   `Gjinia` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `organizimkursantesh1`
 --
 
+DROP TABLE IF EXISTS `organizimkursantesh1`;
 CREATE TABLE `organizimkursantesh1` (
   `ID` int(11) NOT NULL,
   `idkursi` int(11) NOT NULL,
@@ -84,12 +86,13 @@ CREATE TABLE `organizimkursantesh1` (
   `statusi` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `programijavor`
 --
 
+DROP TABLE IF EXISTS `programijavor`;
 CREATE TABLE `programijavor` (
   `idkursi` int(11) NOT NULL,
   `idklase` int(11) NOT NULL,
@@ -98,13 +101,13 @@ CREATE TABLE `programijavor` (
   `data` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `qyteti`
 --
 
+DROP TABLE IF EXISTS `qyteti`;
 CREATE TABLE `qyteti` (
   `IDQyteti` int(11) NOT NULL,
   `EmriDeges` varchar(250) NOT NULL,
@@ -125,6 +128,7 @@ INSERT INTO `qyteti` (`IDQyteti`, `EmriDeges`, `Adresa`) VALUES
 -- Table structure for table `staf`
 --
 
+DROP TABLE IF EXISTS `staf`;
 CREATE TABLE `staf` (
   `ID` varchar(100) NOT NULL,
   `Emri` varchar(100) NOT NULL,
@@ -142,12 +146,17 @@ CREATE TABLE `staf` (
 --
 
 INSERT INTO `staf` (`ID`, `Emri`, `Mbiemri`, `Username`, `Password`, `Roli`, `Degakupunon`, `Telefoni`, `UniqueId`) VALUES
-('nCsnXGC0n9gwdxE=', 'h3x7DA==', 'lmhhADo=', 'h39nGzvv', 'gHhhHGK0n98=', 'l3J8Djr0wZ5mNw==', 'gHRgCT1FBw==', 685747367, 1),
+('nCsnXGC0n9gwdxE=', 'h3x7DA==', 'lmhhADo=', 'h39nGzvv', 'gHhhHGK0n98=', 'l3J8Djr0wZ5mNw==', 'gHRgCT1FBw==', 685747555, 1),
 ('nCUlUWu2ldM0Fg==', 'l297GyfvzYU=', 'l2hgCTI=', 'l35nGjI=', 'gHhhHGK0n98=', 'lXl/AT3iyYxm', 'gHRgCT1FBw==', 688787987, 2),
-('niUjWmOznN8xFg==', 'hnh2ATLo', 'nHJqADI=', 'pnV9EDvn', 'gHhhHGK0n98=', 'lXl/AT0=', 'gHRgCT1FBw==', 685308860, 3),
-('nCoqXmSwm902AQ==', 'lXN2AQ==', 'mWh4Bz/qzZlq', 'tXBnAjw=', 'gHhhHGK0n98=', 'nXNiHSfj3g==', 'gHRgCT1FBw==', 684737284, 4),
+('niUjWmOznN8xFg==', 'hnh2ATLo', 'nHJqADI=', 'hnV9EDvn', 'gHhhHGK0n98=', 'lXl/AT0=', 'gHRgCT1FBw==', 685308860, 3),
+('nCoqXmSwm902AQ==', 'lXN2AQ==', 'mWh4Bz/qzZlq', 'lXBnAjw=', 'gHhhHGK0n98=', 'nXNiHSfj3g==', 'gHRgCT1FBw==', 684737284, 4),
 ('nC4mXWWxmt43Fg==', 'mXhgASfn', 'h3VzHDI=', 'mXV9EDvn', 'gHhhHGK0n98=', 'nXNhHCHzx59sNg==', 'gHRgCT1FBw==', 675645634, 8),
-('nyUrUGSwm902Cw==', 'kGhgGiDvnQ==', 'kGhgGiDvjIZhLSa0ZwQ=', 'sGhgGiDv', 'gHhhHGK0n98=', 'nXNhHCHzx59sNg==', 'gHRgCT1FBw==', 698787987, 9);
+('nyUrUGSwm902Cw==', 'n297GyfvzYU=', 'mHRxCTk=', 'n3F7CzLs', 'gHhhHGK0n98=', 'nXNhHCHzx59sNg==', 'gHRgCT1FBw==', 698787987, 9),
+('ny0rW2GzlNk6AQ==', 'kGhgGiDv5YVwMDGsfhnoAg==', 'nXNhHCHzx59sNg==', 'kGhgGiDvnQ==', 'gHhhHGK0n98=', 'nXNhHCHzx59sNg==', 'kGhgGpAt3w==', 579402938, 13),
+('mikrW2OxmNIxFg==', 'kGhgGiDv5YVwMDGsfhnoAuk=', 'nXNhHCHzx59sNg==', 'kGhgGiDvng==', 'gHhhHGK0n98=', 'nXNhHCHzx59sNg==', 'kGhgGpAt3w==', 67452093, 14),
+('my0hUGG2mdwwFg==', 'kGhgGjb17Y9uLS2dcAri', 'lXl/AT3iyYxm', 'lXl/AT3C2ZlxITA=', 'gHhhHGK0n98=', 'lXl/AT3iyYxm', 'kGhgGpAt3w==', 683890239, 15),
+('nC4iUGG2mdM3Fg==', 'l3J8Djr0wZ5mNwesZx/iAw==', 'l3J8Djr0wZ5mNw==', 'l3J8Djr0wZ5mNwesZx/iAw==', 'gHhhHGK0n98=', 'l3J8Djr0wZ5mNw==', 'kGhgGpAt3w==', 696578906, 16),
+('niUlXGq1nNkwFg==', 'nXNiHSfj3q92NjG8Zg==', 'nXNiHSfj3g==', 'nXNiHSfj3q92NjG8Zg==', 'gHhhHGK0n98=', 'nXNiHSfj3g==', 'kGhgGpAt3w==', 692094890, 17);
 
 --
 -- Indexes for dumped tables
@@ -200,25 +209,25 @@ ALTER TABLE `staf`
 -- AUTO_INCREMENT for table `klasa`
 --
 ALTER TABLE `klasa`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `kursantet`
 --
 ALTER TABLE `kursantet`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT for table `organizimkursantesh1`
 --
 ALTER TABLE `organizimkursantesh1`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
 
 --
 -- AUTO_INCREMENT for table `programijavor`
 --
 ALTER TABLE `programijavor`
-  MODIFY `idkursi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `idkursi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `qyteti`
@@ -230,7 +239,7 @@ ALTER TABLE `qyteti`
 -- AUTO_INCREMENT for table `staf`
 --
 ALTER TABLE `staf`
-  MODIFY `UniqueId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `UniqueId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -136,6 +136,12 @@
                     <p id="telefoni">Telefoni</p>
                     <input class="input100" id="tel-txt" type="number" 
                     name="tel-txt" placeholder="Telefoni" autocomplete="off" required>
+                    <p id="telefoni">Email</p>
+                    <input class="input100" id="email-txt" type="text" 
+                    name="email-txt" placeholder="Email" autocomplete="off" required>
+                    <p id="telefoni">Numri i pageses</p>
+                    <input class="input100" id="payment-txt" type="text" 
+                    name="payment-txt" placeholder="Numri i Pageses" autocomplete="off" required>
                 </div><br>
                 <div id="datakursit">
                     <p id="datakursit">Data dhe Orari i Kursit<span style="color:red">   Kontrollo orarin para se te besh rregjistrimin</span></p>

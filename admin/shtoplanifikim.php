@@ -70,7 +70,7 @@
 <button class="btn btn-info" onclick="location.href = '../admin/admindege.php';" id="myButton" > Ktheu</button>
 <button class="btn btn-info" onclick="location.href = 'shikooret.php';" id="addbutton" >Shiko Oret</button>
 <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button><br>
-    <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
+    <img src="../images/kkshlogo.png" alt="Simply Easy Learning" id="KKSH_logo">
     <p id="welcome">Welcome</p><br>
     <div id="form">
         <form action="../dao/rregjistrotimetable.php" method="POST">

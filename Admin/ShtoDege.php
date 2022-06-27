@@ -65,7 +65,7 @@
     <div id="Form">
             <form action="../dao/rregjistrodege.php" method="POST">
                 <div id="hello">
-                            <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
+                            <img src="../images/kkshlogo.png" alt="Simply Easy Learning" id="KKSH_logo">
                 </div>
                 <div id="tedhenapersonale">
                     <p id="emri">Emri Deges</p>
