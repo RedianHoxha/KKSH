@@ -284,7 +284,7 @@
                             $kursantet=mysqli_query($link, $sqlquery);
                             while ($row = mysqli_fetch_array($kursantet)) { ?> 
                         <td><?php echo decrypt($row['EmriDeges']); ?></td>
-                        <td><button class="btn btn-danger" onclick="location.href = '../dao/fshidege.php?id=<?php echo $row['IDqyteti'];?>'" >Fshi</button></td>
+                        <td><button class="btn btn-danger" onclick="location.href = '../dao/fshidege.php?id=<?php echo $row['IDQyteti'];?>'" >Fshi</button></td>
                         </tr> 
                         <?php } ?>
                     </table>

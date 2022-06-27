@@ -14,8 +14,8 @@
 
     $queryFshiDege = "DELETE FROM qyteti WHERE IDQyteti = '$idDegeToDelete';";
     $runfshiDege = mysqli_query($link, $queryFshiDege) or die(mysqli_error($link));
+    
     if($runfshiDege){
-        
         header('location: ../admin/adminpageconfirm.php');
     }
     else{
