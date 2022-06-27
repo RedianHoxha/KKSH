@@ -1,17 +1,22 @@
 <?php 
     session_start();
-    require_once('../php/extra_function.php');
+    require_once('../methods/extra_function.php');
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
-        echo "<a href='../html/index.php'>Click Here to Login</a>";
+        session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../panelstaf/index.php';
+            </script>";
+        
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
 			session_destroy();
             echo "<script>
             alert('Session Ended');
-            window.location.href='../html/index.php';
+            window.location.href='../panelstaf/index.php';
             </script>";
 		}else
 		{
@@ -37,7 +42,7 @@
                     session_destroy();
                     echo "<script>
                     alert('Session Ended');
-                    window.location.href='../html/index.php';
+                    window.location.href='../panelstaf/index.php';
                     </script>";
 				}
 			}
@@ -61,7 +66,7 @@
     <div id="Form">
         <form action="../dao/rregjistroklas.php" method="POST">
             <div id="hello">
-              <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
+              <img src="../images/kkshlogo.png" alt="Simply Easy Learning" id="KKSH_logo">
             </div>
             <div id="tedhenapersonale">
                 <p id="emri">Emri Klases</p>

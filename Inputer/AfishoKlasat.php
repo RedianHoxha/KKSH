@@ -1,7 +1,7 @@
 
 <?php
 //$link = mysqli_connect("localhost", "root", "", "kksh");
-require_once('../php/extra_function.php');
+require_once('../methods/extra_function.php');
 include('../authenticate/dbconnection.php');
 if (!$link) {
   die('Could not connect: ' . mysqli_error($con));
@@ -22,6 +22,7 @@ mysqli_select_db($link,"ajax_demo");
 <table id="tabela-kursanteve" class="table table-bordered" >
   <tr>
     <th>Emri Klases</th>
+    <th>Instruktori</th>
     <th>Te rregjistruar</th>
     <th>Kapaciteti</th>
     <th>Orari</th>
@@ -53,8 +54,21 @@ mysqli_select_db($link,"ajax_demo");
              $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
     
              $kursantet = $rowKasiKursantesh['Sasia'];
+
+             $sqlinstruktori = "SELECT * FROM programijavor WHERE idkursi = $idKursi ";
+             $resultinstruktor = mysqli_query($link,$sqlinstruktori);
+             $rowInstruktor = mysqli_fetch_array($resultinstruktor);
+             $idInstruktori = $rowInstruktor['idinstruktori'];
+
+             $sqlEmriInstruktori = "SELECT * FROM staf WHERE ID = '$idInstruktori'";
+             $resultinstruktorEmri = mysqli_query($link,$sqlEmriInstruktori);
+             $rowEmriInstruktor = mysqli_fetch_array($resultinstruktorEmri);
+             $emriInstruktori = $rowEmriInstruktor['Emri'];
+             $mbiemriInstruktori = $rowEmriInstruktor['Mbiemri'];
+
             ?>
                 <td class="text-left"><?php echo decrypt($emriKlases) ?></td>
+                <td class="text-left"><?php echo decrypt($emriInstruktori). " ". decrypt($mbiemriInstruktori) ?></td>
                 <td class="text-left"><?php echo $kursantet ?></td>
                 <td class="text-left"><?php echo $kapacitetiKlases ?></td>
                 <td class="text-left"><?php echo $orariKursit ?></td>
@@ -74,7 +88,7 @@ mysqli_select_db($link,"ajax_demo");
       {
         echo "<script>
         alert('Something went wrong! Try again!');
-        window.location.href='webpage.php';
+        window.location.href='bejndryshime.php';
         </script>";
       }
  ?>   

@@ -1,17 +1,26 @@
 <?php 
     session_start();
-    require_once('../php/extra_function.php');
+    require_once('../methods/extra_function.php');
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
-        echo "<a href='../html/index.php'>Click Here to Login</a>";
+        session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../panelstaf/index.php';
+            </script>";
+        session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../panelstaf/index.php';
+            </script>";
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
 			session_destroy();
             echo "<script>
             alert('Session Ended');
-            window.location.href='../html/index.php';
+            window.location.href='../panelstaf/index.php';
             </script>";
 		}else
 		{
@@ -37,7 +46,7 @@
                     session_destroy();
                     echo "<script>
                     alert('Session Ended');
-                    window.location.href='../html/index.php';
+                    window.location.href='../panelstaf/index.php';
                     </script>";
 				}
 			}
@@ -66,7 +75,7 @@
             var numPages = rowsTotal / rowsShown;
             for (i = 0; i < numPages; i++) {
                 var pageNum = i + 1;
-                $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+                $('#nav').append('<a href="#" class="btn" rel="' + i + '">' + pageNum + '</a> ');
             }
             $('#tabela-kursanteve tbody tr').hide();
             $('#tabela-kursanteve tbody tr').slice(0, rowsShown).show();
@@ -148,7 +157,7 @@
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
                 <td class="text-left"><?php echo $row['Orari']; ?></td>
                 <td class="text-left"><?php echo $name ?></td>
-                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../php/ndryshorregjistrimin.php?id=<?php echo $row['ID'];?>'">Ndrysho</button><button class="btn btn-danger" onclick="location.href = '../php/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button>
+                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../methods/ndryshorregjistrimin.php?id=<?php echo $row['ID'];?>'">Ndrysho</button><button class="btn btn-danger" onclick="location.href = '../methods/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button>
                 </td>
             </tr>
             <?php } ?>

@@ -1,5 +1,5 @@
 <?php
- require_once('../php/extra_function.php');
+ require_once('../methods/extra_function.php');
  include('../authenticate/dbconnection.php');
  if($link === false){
   die('Could not connect: ' . mysqli_error($con));
@@ -41,7 +41,7 @@ if($result = mysqli_query($link,$sqlquery))
         var numPages = rowsTotal / rowsShown;
         for (i = 0; i < numPages; i++) {
             var pageNum = i + 1;
-            $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+            $('#nav').append('<a href="#" class="btn" rel="' + i + '">' + pageNum + '</a> ');
         }
         $('#tabela-kursanteve tbody tr').hide();
         $('#tabela-kursanteve tbody tr').slice(0, rowsShown).show();
@@ -64,7 +64,7 @@ if($result = mysqli_query($link,$sqlquery))
             <tr>
                 <th>Emri Kursantit</th>
                 <th>Amza</th>
-                <th>Sr Deshmis</th>
+                <th>Nr. Seris Se Deshmis</th>
                 <th>Data</th>
                 <th>Orari</th>
             </tr>
@@ -97,7 +97,7 @@ if($result = mysqli_query($link,$sqlquery))
                 {
                     echo "<script>
                     alert('Something went wrong! Try again!');
-                    window.location.href='../html/index.php';
+                    window.location.href='../panelstaf/index.php';
                     </script>";
                 }
             ?>   

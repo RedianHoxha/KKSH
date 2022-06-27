@@ -1,17 +1,21 @@
 <?php 
     session_start();
-    require_once('../php/extra_function.php');
+    require_once('../methods/extra_function.php');
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
-        echo "<a href='../html/index.php'>Click Here to Login</a>";
+        session_destroy();
+        echo "<script>
+        alert('Session Ended');
+        window.location.href='../panelstaf/index.php';
+        </script>";
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
 			session_destroy();
             echo "<script>
             alert('Session Ended');
-            window.location.href='../html/index.php';
+            window.location.href='../panelstaf/index.php';
             </script>";
 		}else
 		{
@@ -36,7 +40,7 @@
                     session_destroy();
                     echo "<script>
                     alert('Session Ended');
-                    window.location.href='../html/index.php';
+                    window.location.href='../panelstaf/index.php';
                     </script>";
 				}
 			}
@@ -95,7 +99,8 @@
                     <option value="<?php echo decrypt($row['EmriDeges']); ?>"><?php echo decrypt($row['EmriDeges']);?></option>
                     <?php } ?>
             </select>
-            <button class="btn btn-success" id="button-a" onclick="generate()">Create Excel</button>          
+            <button class="btn btn-success" id="button-a" onclick="generate()">Gjenero Excel</button>   
+            <button class="btn btn-success" id="button-a" onclick="location.href = 'adminarkiva.php';">Arkiva</button>         
             <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>          
             <script>
                 function exportToExel(dataSource)
@@ -145,17 +150,32 @@
               <button  class="btn btn-success" onclick="location.href = 'shtostaf.php';" id="addbutton" >Shto Staf</button>
             </div>
             <div id="tabela">
-                <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+                
+                <table id="stafi" class="table table-bordered">  
+                    <tr>
+                        <th>Personale ID</th>
+                        <th>Emri</th>
+                        <th>Mbiemer</th>
+                        <th>Rol</th>
+                        <th>Dega</th>
+                        <th>Username</th>
+                        <th>Telefoni</th>
+                        <th>Edito</th>
+                    </tr>
+                    <tr>
+                    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
                 <script>
 
                     $(document).ready(function() {
                     $('#stafi').after('<div id="nav"></div>');
-                    var rowsShown = 9;
+                    var rowsShown = 5;
                     var rowsTotal = $('#stafi tbody tr').length;
                     var numPages = rowsTotal / rowsShown;
                     for (i = 0; i < numPages; i++) {
                         var pageNum = i + 1;
-                        $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+                        // var r= $('<input type="button" value="new button"/>');
+                        $('#nav').append('<a href="#" class="btn" rel="' + i + '">' + pageNum + '</a> ');
+                        //$('#nav').append(r);
                     }
                     $('#stafi tbody tr').hide();
                     $('#stafi tbody tr').slice(0, rowsShown).show();
@@ -174,18 +194,6 @@
                     });
                 });
                 </script>
-                <table id="stafi" class="table table-bordered">  
-                    <tr>
-                        <th>Personale ID</th>
-                        <th>Emri</th>
-                        <th>Mbiemer</th>
-                        <th>Rol</th>
-                        <th>Dega</th>
-                        <th>Username</th>
-                        <th>Telefoni</th>
-                        <th>Edito</th>
-                    </tr>
-                    <tr>
                         <?php $sqlquery="SELECT * FROM staf";
                         $kursantet=mysqli_query($link, $sqlquery);
                         while ($row = mysqli_fetch_array($kursantet)) { ?> 
@@ -196,7 +204,7 @@
                         <td><?php echo decrypt($row['Degakupunon']); ?></td>
                         <td><?php echo decrypt($row['Username']); ?></td>
                         <td><?php echo $row['Telefoni']; ?></td>
-                        <td class="text-left"><button  class="btn btn-info" onclick="location.href = '../php/modifikostaf.php?id=<?php echo $row['UniqueId'];?>'" >Modifiko</button><button  class="btn btn-danger" onclick="location.href = '../php/fshiuser.php?id=<?php echo $row['UniqueId'];?>'" >Fshi</button></td>
+                        <td class="text-left"><button  class="btn btn-info" onclick="location.href = '../methods/modifikostaf.php?id=<?php echo $row['UniqueId'];?>'" >Modifiko</button><button  class="btn btn-danger" onclick="location.href = '../methods/fshiuser.php?id=<?php echo $row['UniqueId'];?>'" >Fshi</button></td>
                     </tr> 
                     <?php } ?>
                 </table>

@@ -1,17 +1,22 @@
 <?php 
     session_start();
-    require_once('../php/extra_function.php');
+    require_once('../methods/extra_function.php');
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
-        echo "<a href='../html/index.php'>Click Here to Login</a>";
+        session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../panelstaf/index.php';
+            </script>";
+        
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
 			session_destroy();
             echo "<script>
             alert('Session Ended');
-            window.location.href='../html/index.php';
+            window.location.href='../panelstaf/index.php';
             </script>";
 		}else
 		{
@@ -37,7 +42,7 @@
                     session_destroy();
                     echo "<script>
                     alert('Session Ended');
-                    window.location.href='../html/index.php';
+                    window.location.href='../panelstaf/index.php';
                     </script>";
 				}
                 else{
@@ -65,7 +70,7 @@
 <button class="btn btn-info" onclick="location.href = '../admin/admindege.php';" id="myButton" > Ktheu</button>
 <button class="btn btn-info" onclick="location.href = 'shikooret.php';" id="addbutton" >Shiko Oret</button>
 <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button><br>
-    <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
+    <img src="../images/kkshlogo.png" alt="Simply Easy Learning" id="KKSH_logo">
     <p id="welcome">Welcome</p><br>
     <div id="form">
         <form action="../dao/rregjistrotimetable.php" method="POST">

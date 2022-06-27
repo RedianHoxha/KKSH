@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once('../php/extra_function.php');
+require_once('../methods/extra_function.php');
 include('../authenticate/dbconnection.php');
 $user=$_SESSION['user'];
 $iduseri = $_SESSION['UserID'];
@@ -29,6 +29,8 @@ $now = date('Y-m-d');
     $datakursit= test_input( mysqli_real_escape_string( $link,$_POST['datakursit']));
     $idkursi= test_input( mysqli_real_escape_string( $link,$_POST['select']));
     $gjinia= test_input( mysqli_real_escape_string( $link,$_POST['gjinia']));
+    $paymentNumber = test_input( mysqli_real_escape_string( $link,$_POST['payment-txt']));
+    $email = test_input( mysqli_real_escape_string( $link,$_POST['email-txt']));
 
       $querymerrtedhena = "SELECT * FROM  programijavor WHERE idkursi = '$idkursi';";
       $resulttedhenash = mysqli_query($link, $querymerrtedhena);
@@ -36,17 +38,15 @@ $now = date('Y-m-d');
       $idklase = $rowtedhena['idklase'];
       $orari = $rowtedhena['orari'];
 
-   $shtokursant = "INSERT INTO kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari,Statusi, IdKursi, DataRregjistrimit, Gjinia)
-    VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges', '$datakursit','$orari','pabere', '$idkursi', '$now', '$gjinia');";
-   
+   $shtokursant = "INSERT INTO kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari,Statusi, IdKursi, DataRregjistrimit, Gjinia, BankPayment,Amza, NrSerisDeshmis, Email)
+    VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges', '$datakursit','$orari','pabere', '$idkursi', '$now', '$gjinia',$paymentNumber,'','', '$email');";
+       $resultinsert = mysqli_query($link, $shtokursant) or die(mysqli_error($link));
+
     
-    if($resultinsert = mysqli_query($link, $shtokursant))
+    if($resultinsert)
     {
        $queryshto = "INSERT INTO organizimkursantesh1 (idkursi, idkursanti,statusi ) VALUES ('$idkursi','$id','pabere');";
        mysqli_query($link, $queryshto);
-       echo $datelindja;
-       echo $shtokursant;
-       echo $queryshto;
        header('location:../inputer/inputerpage.php');
     }
     else

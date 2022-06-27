@@ -1,5 +1,5 @@
 <?php
-require_once('../php/extra_function.php');
+require_once('../methods/extra_function.php');
 include('../authenticate/dbconnection.php');
     //$link = mysqli_connect("localhost", "root", "", "kksh");
     if($link === false){
@@ -135,27 +135,26 @@ if(isset($_POST["name"]))
   {
     switch ($_POST["my_select_box"])
     {
-        case "../Images/credinsbank.jpeg":
+        case "../images/credinsbank.jpeg":
           $patternbank="/\d{15}-\d{3}$/";
           break;
 
-        case "../Images/tiranabank.jpegg":
+        case "../images/tiranabank.jpeg":
           $patternbank="/\d{15}$/";
           break;
 
-        case "../Images/bkt.jpeg":
+        case "../images/bkt.jpeg":
           $patternbank="/\d{3}[a-zA-Z]{4}\d{9}$/";
           break;
 
-        case "../Images/intesa.jpeg":
+        case "../images/intesa.jpeg":
           $patternbank="/[a-zA-Z]{3}\d{13}$/";
           break;
 
-        case "../Images/raiffeisen.jpeg":
+        case "../images/raiffeisen.jpeg":
           $patternbank="/\d{8}$/";
           break;
     }
-
     if(preg_match($patternbank, $_POST["paymentnumber"]))
     {
       $paymentnumber = test_input(mysqli_real_escape_string($link,$_POST["paymentnumber"]));
@@ -217,13 +216,13 @@ if(isset($_POST["name"]))
  }
  else
  {
-  $secret_key = '6LfwjbwdAAAAACdTuLJYmkk17zwmu0wdyoP1FTS4';
+    //$secret_key = '6LfwjbwdAAAAACdTuLJYmkk17zwmu0wdyoP1FTS4';
+  $secret_key = '6LcMN54gAAAAAOfXMkPOfJYgp22avIUd4YjuVfRE';
 
   $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret_key.'&response='.$_POST['g-recaptcha-response']);
 
   $response_data = json_decode($response);
-
-  if(!$response_data->success)
+  if($response_data->success)
   {
    $captcha_error = 'Captcha verification failed';
   }
@@ -244,12 +243,12 @@ if(isset($_POST["name"]))
     $url = $row['Adresa'];
     $idQyteti = $row['IDQyteti'];
 
-    $shtokursant = "insert into kursantet(PersonalID, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi, IdKursi, DataRregjistrimit, Gjinia)
-    values ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere', '$idkursi', '$now', '$gjinia');";
-            
-    if($resultinsert = mysqli_query($link, $shtokursant)){
+    $shtokursant = "INSERT INTO kursantet(PersonalId, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi, IdKursi, DataRregjistrimit, Gjinia, Amza, NrSerisDeshmis)
+    VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere', '$idkursi', '$now', '$gjinia', '', '');";
+            $resultinsert = mysqli_query($link, $shtokursant) or die(mysqli_error($link));
+    if($resultinsert){
 
-        $quryshto = "insert into organizimkursantesh1(idkursi, idkursanti,statusi ) values ('$idkursi','$id', 'pabere');";
+        $quryshto = "INSERT INTO organizimkursantesh1(idkursi, idkursanti,statusi ) VALUES ('$idkursi','$id', 'pabere');";
         $resultorganizim = mysqli_query($link, $quryshto);
         if($resultorganizim == 1)
         {
@@ -263,13 +262,13 @@ if(isset($_POST["name"]))
         else
         {
           echo "<script>
-          alert('Something went reserving a chair! Try again!');
+          alert('Something went wrong during reserving a chair! Try again!');
           window.location.href='webpage.php';
           </script>";
         }
     }else{
         echo "<script>
-        alert('Something wentcreating user! Try again!');
+        alert('Something went wrong during creating user! Try again!');
         window.location.href='webpage.php';
         </script>";
     }

@@ -1,24 +1,28 @@
 <?php 
     session_start();
-    require_once('../php/extra_function.php');
+    require_once('../methods/extra_function.php');
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
-        echo "<a href='../html/index.php'>Click Here to Login</a>";
+        session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../panelstaf/index.php';
+            </script>";
+        
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
 			session_destroy();
             echo "<script>
             alert('Session Ended');
-            window.location.href='../html/index.php';
+            window.location.href='../panelstaf/index.php';
             </script>";
 		}else
 		{
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
-            $_SESSION['expire'] = $_SESSION['expire'] + (5 * 60);
-            //$link = mysqli_connect("localhost", "root", "", "kksh");
+            $_SESSION['expire'] = $_SESSION['expire'] + (3 * 60);
 			if($link === false)
 			{
                 die("ERROR: Could not connect. " . mysqli_connect_error());
@@ -42,7 +46,7 @@
                     session_destroy();
                     echo "<script>
                     alert('Session Ended');
-                    window.location.href='../html/index.php';
+                    window.location.href='../panelstaf/index.php';
                     </script>";
 				}
 			}
@@ -92,7 +96,7 @@
         <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
     </div>
     <div id="Form">
-            <form action="../php/rregjistro.php" method="POST">
+            <form action="../methods/rregjistro.php" method="POST">
                 <div id="hello">
                     <p id="hello-p">Welcome</p>
                 </div>
@@ -132,6 +136,12 @@
                     <p id="telefoni">Telefoni</p>
                     <input class="input100" id="tel-txt" type="number" 
                     name="tel-txt" placeholder="Telefoni" autocomplete="off" required>
+                    <p id="telefoni">Email</p>
+                    <input class="input100" id="email-txt" type="text" 
+                    name="email-txt" placeholder="Email" autocomplete="off" required>
+                    <p id="telefoni">Numri i pageses</p>
+                    <input class="input100" id="payment-txt" type="text" 
+                    name="payment-txt" placeholder="Numri i Pageses" autocomplete="off" required>
                 </div><br>
                 <div id="datakursit">
                     <p id="datakursit">Data dhe Orari i Kursit<span style="color:red">   Kontrollo orarin para se te besh rregjistrimin</span></p>

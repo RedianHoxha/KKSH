@@ -1,17 +1,22 @@
 <?php 
     session_start();
-    require_once('../php/extra_function.php');
+    require_once('../methods/extra_function.php');
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
-        echo "<a href='../html/index.php'>Click Here to Login</a>";
+        session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../panelstaf/index.php';
+            </script>";
+        
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
 			session_destroy();
             echo "<script>
             alert('Session Ended');
-            window.location.href='../html/index.php';
+            window.location.href='../panelstaf/index.php';
             </script>";
 		}else
 		{
@@ -42,7 +47,7 @@
                     session_destroy();
                     echo "<script>
                     alert('Session Ended');
-                    window.location.href='../html/index.php';
+                    window.location.href='../panelstaf/index.php';
                     </script>";
 				}
                 else{
@@ -108,7 +113,7 @@
                     <button class="btn btn-secondary" onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Ktheu</button>
             </div>
             <div id="Form">
-                <form action="../php/ruajndryshimet.php?id=<?php echo $idkursanti; ?>" method="POST">
+                <form action="../methods/extra_function.phpruajndryshimet.php?id=<?php echo $idkursanti; ?>" method="POST">
                     <div id="hello">
                         <p id="hello-p">Welcome :)</p>
                     </div>
@@ -194,7 +199,7 @@
                                     }else{
                                         echo "<script>
                                         alert('Something went wrong ouring filtering! Try again!');
-                                        window.location.href='../html/index.php';
+                                        window.location.href='../panelstaf/index.php';
                                         </script>";
                                     }
                                 }
@@ -209,7 +214,7 @@
                             {
                                 echo "<script>
                                 alert('Something went wrong! Try again!');
-                                window.location.href='../html/index.php';
+                                window.location.href='../panelstaf/index.php';
                                 </script>";
                             }
                         ?>   

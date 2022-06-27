@@ -1,20 +1,23 @@
 <?php 
     session_start();
-    require_once('../php/extra_function.php');
+    require_once('../methods/extra_function.php');
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
-        echo "<a href='../html/index.php'>Click Here to Login</a>";
+        session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../panelstaf/index.php';
+            </script>";
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
 			session_destroy();
             echo "<script>
             alert('Session Ended');
-            window.location.href='../html/index.php';
+            window.location.href='../panelstaf/index.php';
             </script>";
-		}else
-		{
+		}else{
 			$user=$_SESSION['user'];
             $iduseri = $_SESSION['UserID'];
             $_SESSION['expire'] = $_SESSION['expire'] + (5 * 60);
@@ -28,6 +31,13 @@
 				$kursantet=mysqli_query($link, $query);
 				$row = mysqli_fetch_array($kursantet);
                 $dega = $row['Degakupunon'];
+
+                $sqldega = "SELECT * FROM qyteti WHERE EmriDeges = '$dega'";
+                $degaresult = mysqli_query($link, $sqldega);
+                $rowdega = mysqli_fetch_array($degaresult);
+                $degaid = $rowdega['IDQyteti'];
+
+
                 $roli = decrypt($row['Roli']);
                 $pageRole = "Confirmues";
                 $result = strcmp($roli, $pageRole);
@@ -37,7 +47,7 @@
                     session_destroy();
                     echo "<script>
                     alert('Session Ended');
-                    window.location.href='../html/index.php';
+                    window.location.href='../panelstaf/index.php';
                     </script>";
 				}
 			}
@@ -66,7 +76,7 @@
             var numPages = rowsTotal / rowsShown;
             for (i = 0; i < numPages; i++) {
                 var pageNum = i + 1;
-                $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+                $('#nav').append('<a href="#" class="btn" rel="' + i + '">' + pageNum + '</a> ');
             }
             $('#tabela-kursanteve tbody tr').hide();
             $('#tabela-kursanteve tbody tr').slice(0, rowsShown).show();
@@ -87,13 +97,16 @@
         </script>
     </head>
     <body>
-    <div id="top-page">
+        <div id="top-page">
+            <div id="logout">
+                <button class="btn btn-secondary" onclick="location.href = 'arkiva.php';" id="myButton" >Arkiva</button>
+                <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
+            </div>
             <div id="top-page-left">
-            <form action="searchamza.php" method="POST"> 
-                <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search">
-                <button  class="btn btn-secondary" type="submit" id="search-button">Search</button>
-            </form>
-            <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
+                <form action="searchamza.php" method="POST"> 
+                    <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search">
+                    <button  class="btn btn-secondary" type="submit" id="search-button">Search</button>
+                </form>
             </div>
         </div>
         <table id="tabela-kursanteve" class="table table-striped table-bordered table-sm">
@@ -111,7 +124,7 @@
                 <th>Action</th>
             </tr>
             <tr>
-               <?php $sqlquery="SELECT * FROM kursantet WHERE Statusi='pabere'";
+               <?php $sqlquery="SELECT * FROM kursantet WHERE Statusi='pabere' AND Dega = '$degaid'";
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { ?>
 
@@ -125,7 +138,7 @@
                 <td class="text-left"><?php echo decrypt($row['Amza']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['NrSerisDeshmis']); ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
-                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../php/ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button><button class="btn btn-secondary" onclick="location.href = '../php/munges.php?id=<?php echo $row['ID'];?>'" >Mungoi</button><button class="btn btn-danger" onclick="location.href = '../php/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
+                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../methods/ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button><button class="btn btn-secondary" onclick="location.href = '../methods/munges.php?id=<?php echo $row['ID'];?>'" >Mungoi</button><button class="btn btn-danger" onclick="location.href = '../methods/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
             </tr>
             <?php } ?>
         </table>      

@@ -1,17 +1,22 @@
 <?php 
     session_start();
-    require_once('../php/extra_function.php');
+    require_once('../methods/extra_function.php');
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
-        echo "<a href='../html/index.php'>Click Here to Login</a>";
+        session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../panelstaf/index.php';
+            </script>";
+        
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
 			session_destroy();
             echo "<script>
             alert('Session Ended');
-            window.location.href='../html/index.php';
+            window.location.href='../panelstaf/index.php';
             </script>";
 		}else
 		{
@@ -43,7 +48,7 @@
                     session_destroy();
                     echo "<script>
                     alert('Session Ended');
-                    window.location.href='../html/index.php';
+                    window.location.href='../panelstaf/index.php';
                     </script>";
 				}
 			}
@@ -68,7 +73,7 @@
             var numPages = rowsTotal / rowsShown;
             for (i = 0; i < numPages; i++) {
                 var pageNum = i + 1;
-                $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+                $('#nav').append('<a href="#" class="btn" rel="' + i + '">' + pageNum + '</a> ');
             }
             $('#organizim_javor tbody tr').hide();
             $('#organizim_javor tbody tr').slice(0, rowsShown).show();
@@ -92,7 +97,7 @@
         <script lang="javascript" src="../gjenerofile/FileSaver.js"></script>
         <script>
             function generate() {
-                var qyteti =document.getElementById("dega").value;
+                var qyteti = '<?php echo decrypt($dega)?>';
                 var start =document.getElementById("start").value;
                 var end =document.getElementById("end").value;
                 var today = new Date();
@@ -125,23 +130,12 @@
             <input type="date" id="start" name="start">
             <label for="end">End:</label>
             <input type="date" id="end" name="end">
-            <label for="dega">Dega:</label>
-            <select id="dega" name="dega" >
-                    <?php $sqlquery="SELECT * FROM qyteti";
-                        $qytetet=mysqli_query($link, $sqlquery);
-                        while ($row = mysqli_fetch_array($qytetet)) { ?>
-
-                    <option value="<?php echo decrypt($row['EmriDeges']); ?>"><?php echo decrypt($row['EmriDeges']);?></option>
-                    <?php } ?>
-            </select>
             <button class="btn btn-success" id="button-a" onclick="generate()">Create Excel</button>                         
             <script>
                 function exportToExel(dataSource)
                 {
-                    var qyteti = document.getElementById("dega").value;
-                    console.log(qyteti);
+                    var qyteti ='<?php echo decrypt($dega)?>';
                     var headers = ["Emri","Atesia","Mbiemri","ID","Datelindja","Nr. Rregjistrit Amza","Nr. Serisë Dëshmisë."];
-                    console.log(dataSource);
                     var parseData  = JSON.parse(dataSource);
                     parseData.unshift(headers);
 
@@ -172,10 +166,8 @@
                     
                 }
             </script>
-
-            <!-- <button onclick="location.href = '../php';" id="myButton" >Gjenero file javore </button> -->
         </div>
-    <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
+    <img src="../images/kkshlogo.png" alt="Simply Easy Learning" id="KKSH_logo">
 
     <div id="organisation_table">
         <div id="tabela">
@@ -190,9 +182,10 @@
                 <tr>
                     <?php 
                     $firstday = date('Y-m-d', strtotime("monday -1 week"));
-                    $lastday = date('Y-m-d', strtotime("sunday 0 week"));
-                    $sqlquery="SELECT * FROM `programijavor` WHERE data BETWEEN '$firstday' AND '$lastday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = '$idqyteti')  ORDER BY data ASC;";
-                    echo "<script>console.log('Debug Objects: " . $sqlquery .  "' );</script>";
+                    //$lastday = date('Y-m-d', strtotime("sunday 0 week"));
+                    $sqlquery="SELECT * FROM `programijavor` WHERE data >= '$firstday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti) ORDER BY data ASC";
+                    //$sqlquery="SELECT * FROM `programijavor` WHERE data BETWEEN '$firstday' AND '$lastday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti) ORDER BY data ASC";
+                    //echo "<script>console.log('Debug Objects: " . $sqlquery .  "' );</script>";
                     $kursantet=mysqli_query($link, $sqlquery);
                     while ($row = mysqli_fetch_array($kursantet)) { 
 
@@ -211,7 +204,7 @@
                     <td><?php echo decrypt($rowInstruktori['Emri']);?>  <?php echo decrypt($rowInstruktori['Mbiemri']); ?></td>
                     <td><?php echo $row['orari']; ?></td>
                     <td><?php echo $row['data']; ?></td>
-                    <td class="text-left"><button onclick="location.href = '../php/ndryshoplanifikim.php?id=<?php echo $row['idkursi'];?>'" >Modifiko</button></td>
+                    <td class="text-left"><button onclick="location.href = '../methods/ndryshoplanifikim.php?id=<?php echo $row['idkursi'];?>'" >Modifiko</button></td>
                 </tr> 
                 <?php } ?>
             </table>

@@ -1,17 +1,22 @@
 <?php 
     session_start();
-    require_once('../php/extra_function.php');
+    require_once('../methods/extra_function.php');
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
-        echo "<a href='../html/index.php'>Click Here to Login</a>";
+        session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../panelstaf/index.php';
+            </script>";
+        
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
 			session_destroy();
             echo "<script>
             alert('Session Ended');
-            window.location.href='../html/index.php';
+            window.location.href='../panelstaf/index.php';
             </script>";
 		}else
 		{
@@ -42,7 +47,7 @@
                     session_destroy();
                     echo "<script>
                     alert('Session Ended');
-                    window.location.href='../html/index.php';
+                    window.location.href='../panelstaf/index.php';
                     </script>";
 				}
                 else{
@@ -72,7 +77,7 @@
         <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
     </div>
     <div id="Form">
-        <form action="../php/rregjistrokursant1.php?id=<?php echo $idkursi;?>" method="POST">
+        <form action="../methods/rregjistrokursant1.php?id=<?php echo $idkursi;?>" method="POST">
             <div id="hello">
                 <p id="hello-p">Welcome :)</p>
             </div>
@@ -112,7 +117,15 @@
                 <p id="telefoni">Telefoni</p>
                 <input class="input100" id="tel-txt" type="number" 
                 name="tel-txt" placeholder="Telefoni" autocomplete="off" required>
-            </div><br>
+
+                <p>Email</p>
+                <input class="input100" id="email-txt" type="text" 
+                name="email-txt" placeholder="Email" autocomplete="off" required>
+        
+                <p>Numri i Pageses</p>
+                <input class="input100" id="payment-txt" type="text" 
+                name="payment-txt" placeholder="Numri i pageses" autocomplete="off" required>
+            </div>
             <div>
                 <p>Ju keni zgjedhur kursin ne date <?php echo $data ?>  ne oren  <?php echo $orari ?></p>
             </div>

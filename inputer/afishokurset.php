@@ -1,17 +1,22 @@
 <?php 
     session_start();
-    require_once('../php/extra_function.php');
+    require_once('../methods/extra_function.php');
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
-        echo "<a href='../html/index.php'>Click Here to Login</a>";
+        session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../panelstaf/index.php';
+            </script>";
+        
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
 			session_destroy();
             echo "<script>
             alert('Session Ended');
-            window.location.href='../html/index.php';
+            window.location.href='../panelstaf/index.php';
             </script>";
 		}else
 		{
@@ -42,7 +47,7 @@
                     session_destroy();
                     echo "<script>
                     alert('Session Ended');
-                    window.location.href='../html/index.php';
+                    window.location.href='../panelstaf/index.php';
                     </script>";
 				}
 			}
@@ -73,7 +78,7 @@
             var numPages = rowsTotal / rowsShown;
             for (i = 0; i < numPages; i++) {
                 var pageNum = i + 1;
-                $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+                $('#nav').append('<a href="#"  class="btn" rel="' + i + '">' + pageNum + '</a> ');
             }
             $('#tabela-kursanteve tbody tr').hide();
             $('#tabela-kursanteve tbody tr').slice(0, rowsShown).show();
@@ -114,7 +119,8 @@
         <?php 
         $firstday = date('Y-m-d', strtotime("monday -1 week"));
         $lastday = date('Y-m-d', strtotime("sunday 0 week"));
-        $sqlquery="SELECT * FROM programijavor WHERE data BETWEEN '$firstday' AND '$lastday' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges');";
+        $sqlquery="SELECT * FROM programijavor WHERE data >='$firstday' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges');";
+       // $sqlquery="SELECT * FROM programijavor WHERE data BETWEEN '$firstday' AND '$lastday' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges');";
 
         if($result = mysqli_query($link,$sqlquery))
         {

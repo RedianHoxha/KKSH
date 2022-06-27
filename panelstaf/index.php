@@ -10,9 +10,9 @@
 
 <body>
 
-    <img src="../images/kkshlogo.PNG" alt="Simply Easy Learning" id="KKSH_logo">
+    <img src="../images/kkshlogo.png" alt="Simply Easy Learning" id="KKSH_logo">
     <div id="form">
-        <form action="../Authenticate/Login.php" method="POST">
+        <form action="../authenticate/login.php" method="POST">
             <div class="wrap-input100">
                 <p id="username">Username</p>
                 <input class="input100" id="username-txt" type="text" name="username" placeholder="Username"

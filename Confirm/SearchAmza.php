@@ -1,17 +1,22 @@
 <?php 
     session_start();
-    require_once('../php/extra_function.php');
+    require_once('../methods/extra_function.php');
     include('../authenticate/dbconnection.php');
     if (!isset($_SESSION['user'])) {
         echo "Please Login again";
-        echo "<a href='../html/index.php'>Click Here to Login</a>";
+        session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../panelstaf/index.php';
+            </script>";
+        
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
 			session_destroy();
             echo "<script>
             alert('Session Ended');
-            window.location.href='../html/index.php';
+            window.location.href='../panelstaf/index.php';
             </script>";
 		}else
 		{
@@ -28,6 +33,13 @@
 				$kursantet=mysqli_query($link, $query);
 				$row = mysqli_fetch_array($kursantet);
                 $dega = $row['Degakupunon'];
+
+                $sqldega = "SELECT * FROM qyteti WHERE EmriDeges = '$dega'";
+                $degaresult = mysqli_query($link, $sqldega);
+                $rowdega = mysqli_fetch_array($degaresult);
+                $degaid = $rowdega['IDQyteti'];
+
+
                 $roli = decrypt($row['Roli']);
                 $pageRole = "Confirmues";
                 $result = strcmp($roli, $pageRole);
@@ -37,7 +49,7 @@
                     session_destroy();
                     echo "<script>
                     alert('Session Ended');
-                    window.location.href='../html/index.php';
+                    window.location.href='../panelstaf/index.php';
                     </script>";
 				}
 				$fjalakyc= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['search'])));
@@ -67,7 +79,7 @@
             var numPages = rowsTotal / rowsShown;
             for (i = 0; i < numPages; i++) {
                 var pageNum = i + 1;
-                $('#nav').append('<a href="#" rel="' + i + '">' + pageNum + '</a> ');
+                $('#nav').append('<a href="#" class="btn" rel="' + i + '">' + pageNum + '</a> ');
             }
             $('#tabela-kursanteve tbody tr').hide();
             $('#tabela-kursanteve tbody tr').slice(0, rowsShown).show();
@@ -88,10 +100,10 @@
         </script>
     </head>
     <body>
-    <div id="logout">
-        <button class="btn btn-secondary" onclick="location.href = 'ConfirmPage.php';" id="myButton" >Ktheu</button>
-        <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
-    </div>
+        <div id="logout">
+            <button class="btn btn-secondary" onclick="location.href = 'confirmpage.php';" id="myButton" >Ktheu</button>
+            <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
+        </div>
         <div id="search">
             <form action="searchamza.php" method="POST"> 
                 <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search">
@@ -114,8 +126,11 @@
                 <th>Edito</th>
             </tr>
             <tr>   
-               <?php  $sqlquery="SELECT * FROM  kursantet WHERE Emri LIKE '%{$fjalakyc}%' OR Mbiemri LIKE '%{$fjalakyc}%' OR Atesia LIKE '%{$fjalakyc}%' OR Vendbanimi LIKE '%{$fjalakyc}%' 
-               OR ID = '$fjalakyc'";
+               <?php  $sqlquery="SELECT * FROM  kursantet WHERE Dega = '$degaid' AND ((Statusi='pabere' AND Emri LIKE '%{$fjalakyc}%') 
+                                    OR (Statusi='pabere' AND Mbiemri LIKE '%{$fjalakyc}%') 
+                                    OR (Statusi='pabere' AND Atesia LIKE '%{$fjalakyc}%') 
+                                    OR (Statusi='pabere' AND Vendbanimi LIKE '%{$fjalakyc}%') 
+                                    OR (Statusi='pabere' AND ID = '$fjalakyc'))";
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { ?>
 
@@ -130,7 +145,7 @@
                 <td class="text-left"><?php echo decrypt($row['Amza']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['NrSerisDeshmis']); ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
-                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../php/ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button><button class="btn btn-secondary" onclick="location.href = '../php/munges.php?id=<?php echo $row['ID'];?>'" >Mungoi</button><button class="btn btn-danger" onclick="location.href = '../php/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
+                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../methods/ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button><button class="btn btn-secondary" onclick="location.href = '../methods/munges.php?id=<?php echo $row['ID'];?>'" >Mungoi</button><button class="btn btn-danger" onclick="location.href = '../methods/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
             </tr>
             <?php } ?>
         </table>

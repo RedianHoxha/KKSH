@@ -1,24 +1,19 @@
 
 <?php
-
-require_once('../php/extra_function.php');
+require_once('../methods/extra_function.php');
 include('../authenticate/dbconnection.php');
-
 //$link = mysqli_connect("localhost", "root", "", "kksh");
 if (!$link) {
   die('Could not connect: ' . mysqli_error($con));
 }
+
 $dataZgjedhur = $_GET['data'];
 $city = $_GET['id'];
 
 $sqlqyeti = "SELECT * FROM qyteti WHERE EmriDeges = '$city';";
-if($resultqyteti = mysqli_query($link,$sqlqyeti)){
-  $rowqyteti = mysqli_fetch_array($resultqyteti);
-  $cityId = $rowqyteti['IDQyteti'];
-}else{
-  $cityId = 0;
-}
-
+$resultqyteti = mysqli_query($link,$sqlqyeti);
+$rowqyteti = mysqli_fetch_array($resultqyteti);
+$cityId = $rowqyteti['IDQyteti'];
 
 $klasparaditeid = array();
 $klasparaditenrnr = 0;
@@ -37,14 +32,14 @@ while($rowklasaparadite = mysqli_fetch_array($resultklasaparadite))
       $klasparaditenrnr += 1;
     }
 
-$sqlklasamesdit = "SELECT * FROM programijavor WHERE orari='9:00 - 13:00' AND  data='$dataZgjedhur' AND idklase IN (SELECT ID FROM klasa WHERE Qyteti = $cityId)";
+$sqlklasamesdit = "SELECT * FROM programijavor WHERE orari='13:00 - 17:00' AND  data='$dataZgjedhur' AND idklase IN (SELECT ID FROM klasa WHERE Qyteti = $cityId)";
 $resultklasamesdit = mysqli_query($link,$sqlklasamesdit);
 while($rowklasamesdit = mysqli_fetch_array($resultklasamesdit))
     {
       $klasmesditid[$klasmesditnr] = $rowklasamesdit['idklase'];
       $klasmesditnr += 1;
     }
-$sqlklasapasdite = "SELECT * FROM programijavor WHERE orari='9:00 - 13:00' AND  data='$dataZgjedhur' AND idklase IN (SELECT ID FROM klasa WHERE Qyteti = $cityId)";
+$sqlklasapasdite = "SELECT * FROM programijavor WHERE orari='17:00 - 21:00' AND  data='$dataZgjedhur' AND idklase IN (SELECT ID FROM klasa WHERE Qyteti = $cityId)";
 $resultklasapasdite = mysqli_query($link,$sqlklasapasdite);
 while($rowklasapasdite = mysqli_fetch_array($resultklasapasdite))
     {
@@ -67,22 +62,19 @@ mysqli_select_db($link,"ajax_demo");
   <tr>
   <?php 
  
-    $sqlquery="SELECT COUNT(*) FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00')";
- 
-    if($result = mysqli_query($link,$sqlquery)){
-
+    $sqlquery="SELECT * FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00')";
+    if($klasparaditenrnr>0){
+      $result = mysqli_query($link,$sqlquery);
             $max = $klasparaditenrnr * 12;
-            if(mysqli_num_rows($result) < $max){
-
             $registered = mysqli_num_rows($result);
+            if( $registered< $max){
             $mbetje = $registered / 12;
 
-                if($mbetje <= 1 ){
+                if($mbetje < 1 ){
                     $idKlase = $klasparaditeid[0];
-                }else if($mbetje > 1 && $mbetje <= 2){
+                }else if($mbetje >= 1 && $mbetje < 2){
                     $idKlase = $klasparaditeid[1];
-                }
-                else{
+                }else{
                     $idKlase = $klasparaditeid[2];
                 }
 
@@ -107,20 +99,21 @@ mysqli_select_db($link,"ajax_demo");
                 <?php
                 }}else{
             ?>
-              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk kurs ne orarin 9:00 - 13:00!!</td></tr>
+              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka kurs ne orarin 9:00 - 13:00!!</td></tr>
             <?php
         }
 
-        $sqlquerymesdit="SELECT COUNT(*) FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00')";
-        if($resultmesdit = mysqli_query($link,$sqlquerymesdit)){
+        $sqlquerymesdit="SELECT * FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00')";
+        if($klasmesditnr>0){
+          $resultmesdit = mysqli_query($link,$sqlquerymesdit);
           $max = $klasmesditnr * 12;
         if(mysqli_num_rows($resultmesdit) < $max){
 
             $registered = mysqli_num_rows($result);
             $mbetje = $registered / 12;
-            if($mbetje <= 1 ){
+            if($mbetje < 1 ){
                 $idKlase = $klasmesditid[0];
-            }else if($mbetje > 1 && $mbetje <= 2){
+            }else if($mbetje >= 1 && $mbetje < 2){
                 $idKlase = $klasmesditid[1];
             }
             else{
@@ -148,21 +141,21 @@ mysqli_select_db($link,"ajax_demo");
         }
     }else{
             ?>
-              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk kurs ne orarin 13:00 - 17:00!</td></tr>
+              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka kurs ne orarin 13:00 - 17:00!</td></tr>
             <?php
         }
 
-        $sqlquerymbasdite="SELECT COUNT(*) FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00')";
-        if($resultbasdite = mysqli_query($link,$sqlquerymbasdite)){
-
+        $sqlquerymbasdite="SELECT * FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00')";
+        if($klaspasditenr>0){
+          $resultbasdite = mysqli_query($link,$sqlquerymbasdite);
           $max = $klaspasditenr * 12;
         if(mysqli_num_rows($resultbasdite) < $max){
 
             $registered = mysqli_num_rows($result);
             $mbetje = $registered / 12;
-            if($mbetje <= 1 ){
+            if($mbetje < 1 ){
                 $idKlase = $klaspasditeid[0];
-            }else if($mbetje > 1 && $mbetje <= 2){
+            }else if($mbetje >= 1 && $mbetje < 2){
                 $idKlase = $klaspasditeid[1];
             }
             else{
@@ -190,18 +183,9 @@ mysqli_select_db($link,"ajax_demo");
         }
         }else{
             ?>
-              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk kurs ne orarin 17:00 - 21:00!</td></tr>
+              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka kurs ne orarin 17:00 - 21:00!</td></tr>
             <?php
         }
-
-      // }   
-    //   else 
-    //   {
-    //     echo "<script>
-    //     alert('Something went wrong! Try again!');
-    //     window.location.href='webpage.php';
-    //     </script>";
-    //   }
  ?>   
 </table>
 </body>
