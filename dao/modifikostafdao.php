@@ -30,7 +30,6 @@
           `Password`='$password',`Roli`='$roli',`Degakupunon`='$dega',`Telefoni`='$tel' WHERE  UniqueId = $idUserToDelete";
         }
 
-        echo $queryStaf;
         if($resultinsert = mysqli_query($link, $queryStaf))
         {
            header('location:../admin/adminpageconfirm.php');
@@ -38,7 +37,7 @@
         else
         {
           echo "<script>
-          alert('Something went wrong1! Try agaoin');
+          alert('Something went wrong1! Try again');
           window.location.href='../admin/adminpageconfirm.php';
           </script>";
         }

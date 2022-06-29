@@ -7,6 +7,11 @@ include('../authenticate/dbconnection.php');
     }
 
     $now = date('Y-m-d');
+    $min  = 1;
+    $max  = 15;
+    $num1 = rand( $min, $max );
+    $num2 = rand( $min, $max );
+    $sum  = $num1 + $num2;
 
 if(isset($_POST["name"]))
 {
@@ -24,6 +29,8 @@ if(isset($_POST["name"]))
     $gjinia='';
     $idkursi='';
     $bank='';
+    $quizresult='';
+    $hiddensum='';
 
     $emri_error='';
     $mbiemri_error='';
@@ -39,7 +46,7 @@ if(isset($_POST["name"]))
     $datakursit_error='';
     $select_error='';
     $bank_error='';
-    $captcha_error='';
+    $question_error='';
     
   $patternId = "/[A-Z]\d{8}[A-Z]$/";
   $patternbank="";
@@ -201,6 +208,16 @@ if(isset($_POST["name"]))
   $gjinia = test_input(mysqli_real_escape_string( $link,$_POST['gjinia']));
  }
 
+ if(empty($_POST["quiz"])){
+  $question_error = 'Please fill the boxh with sum of the numbers!';
+ }else{
+  $quizresult = test_input( mysqli_real_escape_string( $link,$_POST['quiz']));
+  $hiddensum  = test_input( mysqli_real_escape_string( $link,$_POST['hiddensum']));
+   if($quizresult != $hiddensum){
+    $question_error = 'Your answer is incorrect';
+   }
+ }
+
  if(empty($_POST["select"]))
  {
   $select_error = 'Choose Course';
@@ -210,25 +227,12 @@ if(isset($_POST["name"]))
   $idkursi = test_input( mysqli_real_escape_string( $link,$_POST['select']));
  }
 
- if(empty($_POST['g-recaptcha-response']))
- {
-  $captcha_error = 'Captcha is required';
- }
- else
- {
-    //$secret_key = '6LfwjbwdAAAAACdTuLJYmkk17zwmu0wdyoP1FTS4';
-  $secret_key = '6LcMN54gAAAAAOfXMkPOfJYgp22avIUd4YjuVfRE';
 
-  $response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret_key.'&response='.$_POST['g-recaptcha-response']);
 
-  $response_data = json_decode($response);
-  if($response_data->success)
-  {
-   $captcha_error = 'Captcha verification failed';
-  }
- }
-
- if($emri_error == '' && $mbiemri_error == '' && $gjinia_error == '' && $personalid_error == ''&&  $datelindje_error == ''&& $atesia_error == ''&& $email_error == ''&& $tel_error == '' && $adresa_error == ''&& $referenca_error == ''&& $qyteti_error == ''&& $datakursit_error == ''  && $select_error == '' && $captcha_error == '')
+ if($emri_error == '' && $mbiemri_error == '' && $gjinia_error == '' && $personalid_error == ''&&  
+    $datelindje_error == ''&& $atesia_error == ''&& $email_error == ''&& $tel_error == '' && 
+    $adresa_error == ''&& $referenca_error == ''&& $qyteti_error == ''&& 
+    $datakursit_error == ''  && $select_error == '' && $question_error == '')
  {
 
     $querymerrtedhena = "SELECT * FROM programijavor WHERE idkursi = $idkursi;";
@@ -291,10 +295,11 @@ if(isset($_POST["name"]))
     'datakursit_error' => $datakursit_error,
     'selected_error'  => $select_error,
     'bank_error'  => $bank_error,
-    'captcha_error'  => $captcha_error
+    'question_error' => $question_error
   );
  }
  echo json_encode($data);
 }
+
 
 ?>
