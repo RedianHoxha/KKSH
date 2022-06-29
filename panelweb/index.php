@@ -11,13 +11,20 @@
             <p class="title p-2 ">Kryqi i Kuq Shqiptar</p>
             <img src="../images/kksh_logo2.png" alt="Simply Easy Learning" id="kksh_logo100" class="p-2">
         </div>
-        <div id="form" class="shadow p-3 mb-5 bg-white rounded">
+        <div id="form" class="shadow p-1 mb-7 bg-white rounded">
             <form id="captcha_form" class="contact-form row g-3"  action="../panelweb/webpage.php">
-                <div id="information">z
-                    <p class="text-center fs-5 fw-bolder">
-                        Pershendetje<br>Sapo keni nisur proceduren per te planifikuar Trajnimin e Ndihmes se Pare per Patente.<br>
-                        Para se te vazhdoni me zgjedhjen e orarit dhe plotesimin e te dhenave personale duhet qe ju te keni paguar kete trajnim prane bankave (Raifaisen , OTP, BKT etc)<br>
-                        Kursi eshte i organizuar ne dy dite njera pas tjetres. Secila dite eshte nga 4 ore.
+                <div id="information">
+                    <p class="text-center fs-6 fw-bolder">
+                        
+                        <div class="text-center fs-5 fw-bolder">Përshëndetje!<br></div>
+                        <div class="text-center fs-6 fw-bolder"> Sapo keni nisur proçedurën për të prenotuar Trajnimin e Ndihmës së Parë për  Kandidatët e Rinj Drejtues Automjeti. <br>
+                        Para se të vazhdoni me përzgjedhjen e orarit dhe plotësimin e të dhënave personale, ju informojmë se:</div><br>
+                        <div class="text-center fs-6 fw-bolder">
+                            <div>- Për të mundësuar planifikimin online duhet të keni kryer një pagesë me vlerën 2000 lekë (të reja) pranë çdo <br> filiali të bankave: Raiffeisen, Credins apo Tirana Bank.</div>
+                            <div>- Trajnimi i ndihmës së parë përmban një program prej 8 orë teori dhe praktikë, që zhvillohet në dy ditë të njëpasnjëshme (4 orë/ditë).</div>
+                            <div>- Nevojitet dokumenti i identifikimit.</div>
+                            <div>- 1 (një) Foto për dokument.</div>
+                        </div>
                     </p>
 
                 </div>

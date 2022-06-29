@@ -3,11 +3,9 @@ body {
 }
 
 .get-in-touch {
-    max-width: 70%;
+    max-width: 80%;
     margin: auto;
     margin-top: 2%;
-    /* background-color: grey;
-    opacity:0.6; */
 }
 
 .get-in-touch .title {
@@ -22,6 +20,11 @@ body {
     background: linear-gradient(to right, #f4524d 0%, #fa2323 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
+}
+
+.title{
+    font-family: "Times New Roman", Times, serif;
+
 }
 
 .contact-form .form-field {
@@ -82,16 +85,6 @@ body {
 }
 
 
-/*table, td,th {*/
-
-
-/*  border-collapse: collapse;*/
-
-
-/*  border: 3px solid #fa2323;*/
-
-
-/*}*/
 
 table {
     width: 100%;
@@ -108,17 +101,6 @@ td {
 }
 
 
-/*#header{*/
-
-
-/* display: inline-flex;*/
-
-
-/* margin-left: 1%;*/
-
-
-/*}*/
-
 #kksh_logo {
     width: 10%;
     height: 10%
@@ -129,23 +111,9 @@ td {
     height: 13%;
 }
 
-
-/*#kksh_logo_right{*/
-
-
-/*  width: 10%;*/
-
-
-/*  height: 10%;*/
-
-
-/*  margin-left: 3%;*/
-
-
-/*  margin-right: 3%;*/
-
-
-/*}*/
+.needs{
+    text-align: left;
+}
 
 .btn-custom {
     padding: 15px 45px;
@@ -164,8 +132,3 @@ select:hover {
     margin-left: 24%;
 }
 
-
-/* html {
-  background: url('https://cdn.bitdegree.org/learn/soap-colorful-color-fruit-68525.jpeg') no-repeat center fixed;
-  background-size: cover;
-} */
