@@ -42,6 +42,9 @@
                     $klasa=mysqli_query($link, $queryqyteti);
                     $row = mysqli_fetch_array($klasa);
                     $idqyteti = $row['IDQyteti'];
+
+                    $fjalakyc= test_input(mysqli_real_escape_string( $link,$_POST['search']));
+
 				}
 				else
 				{
@@ -188,9 +191,14 @@
                     <?php 
                     $firstday = date('Y-m-d', strtotime("monday -1 week"));
                     //$lastday = date('Y-m-d', strtotime("sunday 0 week"));
-                    $sqlquery="SELECT * FROM `programijavor` WHERE data >= '$firstday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti) ORDER BY data ASC";
+                    if($fjalakyc == ''){
+                        $sqlquery="SELECT * FROM `programijavor` WHERE data >= '$firstday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti) ORDER BY data ASC";
+                    }else{
+                        $sqlquery="SELECT * FROM `programijavor` WHERE (data = '$fjalakyc' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti))
+                                                                    OR (orari ='$fjalakyc' AND idklase in (SELECT id FROM klasa WHERE  qyteti = $idqyteti))";
+                    }
+                   
                     //$sqlquery="SELECT * FROM `programijavor` WHERE data BETWEEN '$firstday' AND '$lastday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti) ORDER BY data ASC";
-                    //echo "<script>console.log('Debug Objects: " . $sqlquery .  "' );</script>";
                     $kursantet=mysqli_query($link, $sqlquery);
                     while ($row = mysqli_fetch_array($kursantet)) { 
 

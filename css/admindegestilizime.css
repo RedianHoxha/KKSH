@@ -55,12 +55,13 @@ table, td,th {
     text-align: center;
   }
 
-  td{
-      width: 10%;
-  }
 
   table{
-      margin-left: 4%;
+      margin-left: 3%;
+  }
+
+  #organizim_javor{
+    width: 90% !important;
   }
 
   #dorpdown{
