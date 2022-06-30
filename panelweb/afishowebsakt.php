@@ -39,6 +39,7 @@ while($rowklasamesdit = mysqli_fetch_array($resultklasamesdit))
       $klasmesditid[$klasmesditnr] = $rowklasamesdit['idklase'];
       $klasmesditnr += 1;
     }
+
 $sqlklasapasdite = "SELECT * FROM programijavor WHERE orari='17:00 - 21:00' AND  data='$dataZgjedhur' AND idklase IN (SELECT ID FROM klasa WHERE Qyteti = $cityId)";
 $resultklasapasdite = mysqli_query($link,$sqlklasapasdite);
 while($rowklasapasdite = mysqli_fetch_array($resultklasapasdite))
@@ -85,7 +86,7 @@ mysqli_select_db($link,"ajax_demo");
                 ?>
                     <td class="text-left" style="text-align: center;">9:00 - 13:00</td>
                     <td class="text-left" style="text-align: center;"><?php echo $dataZgjedhur ?></td>
-                    <td class="text-left " style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursi['idkursi'] ?>"required>Zgjidh</input></td>
+                    <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursi['idkursi'] ?>"required>Zgjidh</input></td>
                 </tr>
                 <?php 
                 }else{
