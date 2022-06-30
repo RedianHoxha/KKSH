@@ -104,7 +104,7 @@
                 <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button></br>
             </div>
             <div id="top-page-right">
-            <form action="Search.php" method="POST"> 
+            <form action="search.php" method="POST"> 
                 <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search">
                 <button class="btn btn-secondary" type="submit" id="search-button">Search</button>
             </form>
