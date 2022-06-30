@@ -108,7 +108,7 @@
         </div>
         <div id="top-page-right">
             <form action="searchcourse.php" method="POST"> 
-                <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search">
+                <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search Course">
                 <button class="btn btn-secondary" type="submit" id="search-button">Search</button>
             </form>
             </div>
