@@ -30,15 +30,15 @@
             }else
 			{
 				$query = "SELECT * FROM  staf WHERE ID = '$iduseri';";
-                $kursantet=mysqli_query($link, $query);
-                $row = mysqli_fetch_array($kursantet);
-                $degastafit = $row['Degakupunon'];
+				$kursantet=mysqli_query($link, $query);
+				$row = mysqli_fetch_array($kursantet);
+                $dega = $row['Degakupunon'];
 
-                $querydega = "SELECT * FROM qyteti WHERE EmriDeges = '$degastafit';";
+                $querydega = "SELECT * FROM qyteti WHERE EmriDeges = '$dega';";
                 $dega=mysqli_query($link, $querydega);
                 $rowdega = mysqli_fetch_array($dega);
                 $idDeges = $rowdega['IDQyteti'];
-                
+
                 $roli = decrypt($row['Roli']);
                 $pageRole = "Inputer";
                 $result = strcmp($roli, $pageRole);
@@ -51,12 +51,12 @@
                     window.location.href='../panelstaf/index.php';
                     </script>";
 				}
+				
+				$fjalakyc= test_input(mysqli_real_escape_string( $link,$_POST['search']));
 			}
 		}
     }
 ?>
-
-
 <!DOCTYPE html>
     <head>
         <title>Kryqi i Kuq Shqiptar</title>
@@ -65,12 +65,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>       
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script>
-            // $(document).ready(function(){
-            //     $("button").click(function(){
-            //         var rowCount = $('#tabela-kursanteve tbody tr').length;
-            //         alert(rowCount); // Outputs: 4
-            //     });
-            // });
 
             $(document).ready(function() {
             $('#tabela-kursanteve').after('<div id="nav"></div>');
@@ -79,7 +73,7 @@
             var numPages = rowsTotal / rowsShown;
             for (i = 0; i < numPages; i++) {
                 var pageNum = i + 1;
-                $('#nav').append('<a href="#"  class="btn" rel="' + i + '">' + pageNum + '</a> ');
+                $('#nav').append('<a href="#" class="btn" rel="' + i + '">' + pageNum + '</a> ');
             }
             $('#tabela-kursanteve tbody tr').hide();
             $('#tabela-kursanteve tbody tr').slice(0, rowsShown).show();
@@ -101,33 +95,37 @@
     </head>
     <body>
         <div id="logout">
-            <button class="btn btn-secondary" onclick="location.href = 'inputerpage.php';" id="myButton" >Ktheu</button>
-            <button class="btn btn-secondary" onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Bej ndryshime</button>
+            <button class="btn btn-secondary" onclick="location.href = 'inputerpage.php';" id="myButton" >Rregjistro Kursant</button>
+            <button class="btn btn-secondary" onclick="location.href = 'bejndryshime.php';" id="myButton" >Ktheu</button>
             <button class="btn btn-secondary" onclick="location.href = '../inputer/gjeneroexel.php';" id="myButton" >Gjenero Excel</button>
             <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
         </div>
-        <div id="top-page-right">
+        <div id="search">
             <form action="searchcourse.php" method="POST"> 
-                <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search">
+                <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search Course" >
                 <button class="btn btn-secondary" type="submit" id="search-button">Search</button>
             </form>
-            </div>
+        </div>
         <table id="tabela-kursanteve" class="table table-bordered">
-        <tr>
-            <th>Emri Klases</th>
-            <th>Instruktori</th>
-            <th>Te rregjistruar</th>
-            <th>Kapaciteti</th>
-            <th>Data</th>
-            <th>Orari</th>
-            <th>Zgjidh</th>
-        </tr>
-        <tr>
+            <tr>
+                <th>Emri Klases</th>
+                <th>Instruktori</th>
+                <th>Te rregjistruar</th>
+                <th>Kapaciteti</th>
+                <th>Data</th>
+                <th>Orari</th>
+                <th>Zgjidh</th>
+            </tr>
+            <tr>
         <?php 
         $firstday = date('Y-m-d', strtotime("monday -1 week"));
-        $lastday = date('Y-m-d', strtotime("sunday 0 week"));
-        $sqlquery="SELECT * FROM programijavor WHERE data >='$firstday' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges');";
-       // $sqlquery="SELECT * FROM programijavor WHERE data BETWEEN '$firstday' AND '$lastday' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges');";
+        //$lastday = date('Y-m-d', strtotime("sunday 0 week"));
+        if($fjalakyc == ''){
+            $sqlquery="SELECT * FROM programijavor WHERE data >='$firstday' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges');";
+        }else{
+            $sqlquery="SELECT * FROM programijavor WHERE (data ='$fjalakyc' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges')) 
+                                                    OR   (orari ='$fjalakyc' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges'));";
+        }
 
         if($result = mysqli_query($link,$sqlquery))
         {
