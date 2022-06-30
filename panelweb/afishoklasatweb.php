@@ -42,15 +42,12 @@ mysqli_select_db($link,"ajax_demo");
 
 if($isSunday){
   $sqlklasadiele = "SELECT * FROM programijavor WHERE orari='09:00 - 15:00' AND  data='$dataZgjedhur' AND idklase IN (SELECT ID FROM klasa WHERE Qyteti = $cityId)";
-  echo $sqlklasadiele;
   $resultklasadiele = mysqli_query($link,$sqlklasadiele);
   while($rowklasadiele = mysqli_fetch_array($resultklasadiele))
       {
         $klasdiele[$klasdieleenr] = $rowklasadiele['idklase'];
         $klasdieleenr += 1;
       }
-
-      echo $klasdieleenr;
 }else{
   $sqlklasaparadite = "SELECT * FROM programijavor WHERE orari='9:00 - 13:00' AND  data='$dataZgjedhur' AND idklase IN (SELECT ID FROM klasa WHERE Qyteti = $cityId)";
   $resultklasaparadite = mysqli_query($link,$sqlklasaparadite);
@@ -229,9 +226,7 @@ if($isSunday){
           if(mysqli_num_rows($resultdiele) < $max){
 
               $registered = mysqli_num_rows($resultdiele);
-              echo $registered ."tes";
               $mbetje = $registered / 12;
-              echo $mbetje . "testtt";
               if($mbetje < 1 ){
                   $idKlase = $klasdiele[0];
               }else if($mbetje >= 1 && $mbetje < 2){
@@ -241,8 +236,6 @@ if($isSunday){
               } else{
                   $idKlase = $klasdiele[3];
               }
-              echo $idKlase . "Idklase";
-              echo $klasdiele[0] ."Testststststst" .$klasdiele[1];
                   $selectidkursidiele = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '09:00 - 15:00'";
                   $resultkursidiele = mysqli_query($link,$selectidkursidiele);
                     $rowkursidiele= mysqli_fetch_array($resultkursidiele);
