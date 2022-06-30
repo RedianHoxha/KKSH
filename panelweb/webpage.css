@@ -132,3 +132,11 @@ select:hover {
     margin-left: 24%;
 }
 
+
+.questionQuiz{
+    margin-left: 30% !important;
+}
+
+.rowquestion{
+    text-align: center !important;
+}

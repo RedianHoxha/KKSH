@@ -48,7 +48,7 @@ if(isset($_POST["name"]))
     $bank_error='';
     $question_error='';
     
-  $patternId = "/[A-Z]\d{8}[A-Z]$/";
+  $patternId = "/[a-zA-Z]\d{8}[a-zA-Z]$/";
   $patternbank="";
 
  if(empty($_POST["name"]))
@@ -241,11 +241,23 @@ if(isset($_POST["name"]))
     $idklase = $rowtedhena['idklase'];
     $orari = $rowtedhena['orari'];
 
+  $sqlgetnameofclass="SELECT * FROM klasa WHERE ID = '$idklase'";
+  $resultemriklases = mysqli_query($link, $sqlgetnameofclass);
+  $rowemriklases = mysqli_fetch_array($resultemriklases);
+  $emriklases = decrypt($rowemriklases['Emri']);
+
+
+
     $sqlurlqyteti = "SELECT * FROM `qyteti` where EmriDeges = '$qyteti';";
     $resultsqlurlqyteti = mysqli_query($link, $sqlurlqyteti);
     $row = mysqli_fetch_array($resultsqlurlqyteti);
-    $url = $row['Adresa'];
     $idQyteti = $row['IDQyteti'];
+
+    if($emriklases === 'KlasaD'){
+      $url = 'https://goo.gl/maps/HSvocghFuFUKqVGaA';
+    }else{
+      $url = $row['Adresa'];
+    }
 
     $shtokursant = "INSERT INTO kursantet(PersonalId, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi, IdKursi, DataRregjistrimit, Gjinia, Amza, NrSerisDeshmis)
     VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere', '$idkursi', '$now', '$gjinia', '', '');";

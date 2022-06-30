@@ -29,7 +29,8 @@ if ($link === false) {
                         document.getElementById("txtHint").innerHTML = this.responseText;
                     }
                 };
-                xmlhttp.open("GET", `afishowebsakt.php?data=${str}&id=${city}`, true);
+                //xmlhttp.open("GET", `afishowebsakt.php?data=${str}&id=${city}`, true);
+                xmlhttp.open("GET", `afishoklasatweb.php?data=${str}&id=${city}`, true);
                 xmlhttp.send();
             }
         }
@@ -48,7 +49,8 @@ if ($link === false) {
                         document.getElementById("txtHint").innerHTML = this.responseText;
                     }
                 };
-                xmlhttp.open("GET", `afishowebsakt.php?data=${str}&id=${city}`, true);
+                // xmlhttp.open("GET", `afishowebsakt.php?data=${str}&id=${city}`, true);
+                xmlhttp.open("GET", `afishoklasatweb.php?data=${str}&id=${city}`, true);
                 xmlhttp.send();
             }
         }
@@ -86,10 +88,10 @@ if ($link === false) {
                         $('#bank_error').text('');
                         $('#datakursit_error').text('');
                         $('#question_error').text('');
-                        
+
 
                         document.getElementById("txtHint").innerHTML = '';
-                        if (window.confirm(`Rregjistrimi u krye me sukses!\nParaqituni në datën : ${data.datakursit} , Ora: ${data.orari} pranë zyrave të Kryqit të Kuq Shqiptar!\nDuhet të keni me vete ne diten e kursit:\n1->Mandatin e pageses\n2->Kartën e Identitetit\n3->Një fotografi për dokument\nKliko 'OK' për të parë vendodhjen në hartë`)) 
+                        if (window.confirm(`Rregjistrimi u krye me sukses!\nParaqituni në datën : ${data.datakursit} , Ora: ${data.orari} pranë zyrave të Kryqit të Kuq Shqiptar!\nDuhet të keni me vete ne diten e kursit:\n1->Mandatin e pageses\n2->Kartën e Identitetit\n3->Një fotografi për dokument\nKliko 'OK' për të parë vendodhjen në hartë`))
                         {
                            window.location.href=`${data.url}`;
                         };
@@ -231,14 +233,18 @@ if ($link === false) {
                     <div id="txtHint"></div>
                     <span id="selected_error" class="text-danger"></span>
                 </div>
-                <div class="col-md-8"> 
-                    <label class="form-label"> Ju lutem plotesoni me rezultatin e sakte!
-                        <?php echo $num1 . '+' . $num2; ?>=?<span style="color:#ff0000">*</span>
-                    </label>
-                    <input type="number" class="form-control" name="quiz"  require placeholder="Sum">
-                    <input type="hidden" name="hiddensum" value=<?php echo $sum?>>
-                    <span id="question_error" class="text-danger"></span>
-                </div> 
+                <div class="row rowquestion">
+                    <div class="col-md-6">
+                        <label class="form-label questionQuiz"> Ju lutem plotesoni me rezultatin e sakte!
+                            <?php echo $num1 . '+' . $num2; ?>=?<span style="color:#ff0000">*</span>
+                        </label>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="number" class="form-control" name="quiz"  require placeholder="Shuma">
+                        <input type="hidden" name="hiddensum" value=<?php echo $sum?>>
+                        <span id="question_error" class="text-danger"></span>
+                    </div>
+                </div>
                 <div class="form-field col-md-12 text-center">
                     <input class="submit-btn" type="submit" name="Submit" id="Submit" value="Submit">
                 </div>
