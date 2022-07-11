@@ -9,7 +9,11 @@
             alert('Session Ended');
             window.location.href='../panelstaf/index.php';
             </script>";
-        
+        session_destroy();
+            echo "<script>
+            alert('Session Ended');
+            window.location.href='../panelstaf/index.php';
+            </script>";
     }else{
         $now = time();
 		if ($now > $_SESSION['expire']) {
@@ -30,17 +34,11 @@
             }else
 			{
 				$query = "SELECT * FROM  staf WHERE ID = '$iduseri';";
-				$kursantet=mysqli_query($link, $query);
-				$row = mysqli_fetch_array($kursantet);
+                $staf=mysqli_query($link, $query);
+                $row = mysqli_fetch_array($staf);
                 $dega = $row['Degakupunon'];
-
-                $sqldega = "SELECT * FROM qyteti WHERE EmriDeges = '$dega'";
-                $degaresult = mysqli_query($link, $sqldega);
-                $rowdega = mysqli_fetch_array($degaresult);
-                $degaid = $rowdega['IDQyteti'];
-
                 $roli = decrypt($row['Roli']);
-                $pageRole = "Confirmues";
+                $pageRole = "Inputer";
                 $result = strcmp($roli, $pageRole);
 
 				if($result != 0)
@@ -51,7 +49,6 @@
                     window.location.href='../panelstaf/index.php';
                     </script>";
 				}
-				$fjalakyc= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['search'])));
 			}
 		}
     }
@@ -99,15 +96,19 @@
         </script>
     </head>
     <body>
-        <div id="logout">
-            <button class="btn btn-secondary" onclick="location.href = 'confirmpage.php';" id="myButton" >Ploteso Amzen</button>
-            <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
-        </div>
-        <div id="search">
-            <form action="searcharkiva.php" method="POST"> 
+        <div id="top-page">
+            <div id="top-page-left">
+                <button class="btn btn-success" onclick="location.href = 'inputerpage.php';" id="myButton" >Rregjistro kursantet te ri</button>
+                <button class="btn btn-secondary" onclick="location.href = '../inputer/afishokurset.php';" id="myButton" >Shiko Kurset</button>
+                <button class="btn btn-secondary" onclick="location.href = '../inputer/gjeneroexel.php';" id="myButton" >Gjenero Excel</button>
+                <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button></br>
+            </div>
+            <div id="top-page-right">
+            <form action="search.php" method="POST"> 
                 <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search">
                 <button class="btn btn-secondary" type="submit" id="search-button">Search</button>
             </form>
+            </div>
         </div>
         <table id="tabela-kursanteve" class="table table-bordered">
             <tr>
@@ -118,21 +119,13 @@
                 <th>Vendbanimi</th>
                 <th>Telefoni</th>
                 <th>Datelindja</th>
-                <th>Statusi</th>
-                <th>Amza</th>
-                <th>Nr Serie</th>
-                <th>Data</th>
+                <th>Edito</th>
             </tr>
-            <tr>   
-               <?php  $sqlquery="SELECT * FROM  kursantet WHERE  Dega = '$degaid' AND (Statusi NOT IN ('pabere') AND Emri LIKE '%{$fjalakyc}%') 
-                                    OR (Statusi NOT IN ('pabere') AND Mbiemri LIKE '%{$fjalakyc}%') 
-                                    OR (Statusi NOT IN ('pabere') AND Atesia LIKE '%{$fjalakyc}%') 
-                                    OR (Statusi NOT IN ('pabere') AND Amza LIKE '%{$fjalakyc}%') 
-                                    OR (Statusi NOT IN ('pabere') AND NrSerisDeshmis LIKE '%{$fjalakyc}%')  
-                                    OR (Statusi NOT IN ('pabere') AND PersonalId = '$fjalakyc')";
+            <tr>
+               <?php $sqlquery="SELECT * FROM kursantet WHERE Statusi = 'Munges'";
                  $kursantet=mysqli_query($link, $sqlquery);
-                 while ($row = mysqli_fetch_array($kursantet)) { ?>
-
+                 while ($row = mysqli_fetch_array($kursantet)) { 
+                        ?>
                 <td class="text-left"><?php echo decrypt($row['PersonalId']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['Emri']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['Mbiemri']); ?></td>
@@ -140,11 +133,9 @@
                 <td class="text-left"><?php echo decrypt($row['Vendbanimi']); ?></td>
                 <td class="text-left"><?php echo $row['Telefoni']; ?></td>
                 <td class="text-left"><?php echo $row['Datelindja']; ?></td>
-                <td class="text-left"><?php echo $row['Statusi']; ?></td>
-                <td class="text-left"><?php echo decrypt($row['Amza']); ?></td>
-                <td class="text-left"><?php echo decrypt($row['NrSerisDeshmis']); ?></td>
-                <td class="text-left"><?php echo $row['Datakursit']; ?></td>
-             </tr>
+                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../methods/riaktivizo.php?id=<?php echo $row['ID'];?>'">Riaktivizo</button>
+                </td>
+            </tr>
             <?php } ?>
         </table>
     </body>

@@ -110,115 +110,49 @@
     <body>
         <div id="fullbody">
             <div id="top-page-left">
-                    <button class="btn btn-secondary" onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Ktheu</button>
+                    <button class="btn btn-secondary" onclick="location.href = '../inputer/arkiva.php';" id="myButton" >Ktheu</button>
             </div>
             <div id="Form">
-                <form action="../methods/ruajndryshimet.php?id=<?php echo $idkursanti; ?>" method="POST">
+                <form action="../methods/ruajriaktivizimin.php?id=<?php echo $idkursanti; ?>" method="POST">
                     <div id="hello">
                         <p id="hello-p">Welcome :)</p>
                     </div>
                     <div id="emri">
                         <p id="emri">Emri</p>
                         <input class="input100" id="emri-txt" type="text" 
-                        name="emri-txt" value="<?php echo decrypt($row['Emri']); ?>" required ><br>
+                        name="emri-txt" value="<?php echo decrypt($row['Emri']); ?>" readonly ><br>
 
                         <p id="atesia">Atesia</p>
                         <input class="input100" id="atesia-txt" type="text" 
-                        name="atesia-txt" value="<?php echo  decrypt($row['Atesia']); ?>" required>
+                        name="atesia-txt" value="<?php echo  decrypt($row['Atesia']); ?>" readonly>
 
                         <p id="mbiemri">Mbiemri</p>
                         <input class="input100" id="mbiemri-txt" type="text" 
-                        name="mbiemri-txt" value="<?php echo  decrypt($row['Mbiemri']); ?>" required><br>
+                        name="mbiemri-txt" value="<?php echo  decrypt($row['Mbiemri']); ?>" readonly><br>
                     </div>
                     <div id="id">
                         <p id="id">ID Personale</p>
                         <input class="input100" id="id-txt" type="text" 
-                        name="id-txt" value="<?php echo  decrypt($row['PersonalId']); ?>" required>
+                        name="id-txt" value="<?php echo  decrypt($row['PersonalId']); ?>" readonly>
                     </div><br>
                     <div id="datvendlindje">
                         <p id="datelindja">Datelindja</p>
-                        <input class="input100" id="datelindja-txt" type="date" name="datelindja-txt" value="<?php echo  $row['Datelindja']; ?>" required>
+                        <input class="input100" id="datelindja-txt" type="date" name="datelindja-txt" value="<?php echo  $row['Datelindja']; ?>" readonly>
 
                         <p id="vendbanim">Venbanim</p>
                         <input class="input100" id="vendbanim-txt" type="text" 
-                        name="vendbanim-txt" value="<?php echo  decrypt($row['Vendbanimi']); ?>" required>
+                        name="vendbanim-txt" value="<?php echo  decrypt($row['Vendbanimi']); ?>" readonly>
                     </div>
                     <div id="tel">
                         <p id="telefoni">Telefoni</p>
                         <input class="input100" id="tel-txt" type="number" 
-                        name="tel-txt" value="<?php echo  $row['Telefoni']; ?>" required >
+                        name="tel-txt" value="<?php echo  $row['Telefoni']; ?>" readonly >
                     </div><br>
                     <div id="datakursit">
                     <p id="datakursit">Data dhe Orari i Kursit<span style="color:red">   Kontrollo orarin para se te besh rregjistrimin</span></p>
-                    <input class="input100" id="datakursit" type="date" value="<?php echo $data?>" name="datakursit" onchange="showclass(this.value, <?php echo $idDeges?>)"><br>
+                    <input class="input100" id="datakursit" type="date"  name="datakursit" onchange="showclass(this.value, <?php echo $idDeges?>)"><br>
                     <div id="txtHint">
-                    <table id="tabela-kursanteve" class="table table-bordered" >
-                        <tr>
-                            <th>Emri Klases</th>
-                            <th>Te rregjistruar</th>
-                            <th>Kapaciteti</th>
-                            <th>Orari</th>
-                            <th>Zgjidh</th>
-                        </tr>
-                        <tr>
-                        <?php 
-                        $sqlquery="SELECT * FROM organizimkursantesh1 WHERE idkursanti='$idpersonalekursanti' AND statusi='pabere'";
-                        if($result = mysqli_query($link,$sqlquery))
-                            {
-                                if(mysqli_num_rows($result) != 0)
-                                {
-                                    $row = mysqli_fetch_array($result);
-                                    $idKursi = $row['idkursi'];
-                            
-                                    $queryKursi="SELECT * FROM programijavor  WHERE idkursi='$idKursi'";
-                                    if($resultKursi = mysqli_query($link,$queryKursi)){
-                                        $rowKursi = mysqli_fetch_array($resultKursi);
-                                        $idklaseExist= $rowKursi['idklase'];
-                                        $orarikursitexistues = $rowKursi['orari'];
-                                
-                                    $sqlKlasa = "SELECT * FROM  klasa WHERE ID= '$idklaseExist';";
-                                    $resultKlasa = mysqli_query($link,$sqlKlasa);
-                                    $rowKlasa = mysqli_fetch_array($resultKlasa);
-                                    
-                                    $emriKlases = $rowKlasa['Emri'];
-                                    $kapacitetiKlases = $rowKlasa['Kapaciteti'];
-                            
-                                    $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi = '$idKursi';";
-                                    $resultKursante = mysqli_query($link,$kursanteneKurs);
-                                    $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
-                            
-                                    $kursantet = $rowKasiKursantesh['Sasia'];
-                                    ?>
-                                        <td class="text-left"><?php echo decrypt($emriKlases) ?></td>
-                                        <td class="text-left"><?php echo $kursantet ?></td>
-                                        <td class="text-left"><?php echo $kapacitetiKlases ?></td>
-                                        <td class="text-left"><?php echo $orarikursitexistues ?></td>
-                                        <td class="text-left"><input type="radio" name="select" checked="checked" value="<?php echo $idKursi ?>">Choose</radio></td>
-                                    </tr>
-                                    <?php 
-                                    }else{
-                                        echo "<script>
-                                        alert('Something went wrong ouring filtering! Try again!');
-                                        window.location.href='../panelstaf/index.php';
-                                        </script>";
-                                    }
-                                }
-                                else
-                                {
-                                ?>
-                                    <td class="text-left" colspan="7" style="text-align:center">Per daten qe ju keni zgjedhur nuk ka vende te lira! Ju lutem zgjidhni nje date tjeter</td> </tr>
-                                    <?php
-                                }
-                            }   
-                            else 
-                            {
-                                echo "<script>
-                                alert('Something went wrong! Try again!');
-                                window.location.href='../panelstaf/index.php';
-                                </script>";
-                            }
-                        ?>   
-                        </table>
+                    
                     </div>
                     </div>
                     <div>

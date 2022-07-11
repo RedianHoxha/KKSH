@@ -16,9 +16,13 @@
 
     $idKursanti = $_GET['id'];
 
+    $getIduser = "SELECT * FROM kursantet WHERE ID = '$idKursanti'";
+    $resultuser = mysqli_query($link, $getIduser);
+    $rowUser = mysqli_fetch_array($resultuser);
+    $idpersonalekursanti = $rowUser['PersonalId'];
 
-    $fshikursantngaplanifikimi = "DELETE FROM organizimkursantesh1 where idkursanti = '$idKursanti'";
 
+    $fshikursantngaplanifikimi = "UPDATE organizimkursantesh1  SET statusi = 'Munges' where idkursanti = '$idpersonalekursanti'";
     if($runupdetinorganizim  = mysqli_query($link, $fshikursantngaplanifikimi))
     {
         $fshiKursant = "UPDATE kursantet SET Statusi='Munges' WHERE ID = '$idKursanti' AND Statusi='pabere'";
