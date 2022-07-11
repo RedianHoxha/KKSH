@@ -122,7 +122,7 @@
                             OR (Statusi='pabere' AND Mbiemri LIKE '%{$fjalakyc}%') 
                             OR (Statusi='pabere' AND Atesia LIKE '%{$fjalakyc}%') 
                             OR (Statusi='pabere' AND Vendbanimi LIKE '%{$fjalakyc}%') 
-                            OR (Statusi='pabere' AND ID = '$fjalakyc')";
+                            OR (Statusi='pabere' AND PersonalId = '$fjalakyc')";
                }
                else
                {

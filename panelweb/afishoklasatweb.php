@@ -10,14 +10,21 @@ if (!$link) {
 $dataZgjedhur = $_GET['data'];
 $city = $_GET['id'];
 $isSunday;
+$isWrongDate;
 
 $timestamp = strtotime($dataZgjedhur);
 $weekday= date("l", $timestamp );
 $normalized_weekday = strtolower($weekday);
-if ($normalized_weekday == "sunday") {
+if($normalized_weekday == "sunday"){
   $isSunday = true;
 } else {
   $isSunday = false;
+}
+
+if($normalized_weekday == "tuesday" || $normalized_weekday == "thursday"){
+  $isWrongDate = true;
+}else{
+  $isWrongDate = false;
 }
 
 $sqlqyeti = "SELECT * FROM qyteti WHERE EmriDeges = '$city';";
@@ -89,9 +96,11 @@ if($isSunday){
   <tr>
   <?php 
  if(!$isSunday){
+  
+  if(!$isWrongDate){
     $sqlquery="SELECT * FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00')";
     if($klasparaditenrnr>0){
-      $result = mysqli_query($link,$sqlquery);
+            $result = mysqli_query($link,$sqlquery);
             $max = $klasparaditenrnr * 12;
             $registered = mysqli_num_rows($result);
             if( $registered< $max){
@@ -119,16 +128,16 @@ if($isSunday){
                 <?php 
                 }else{
                     ?>
-                    <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka kurs ne orarin 9:00 - 13:00!</td></tr>
+                    <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs në orarin 9:00 - 13:00!</td></tr>
                     <?php
                 }}
                 else{
                 ?>
-                <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka vende te lira ne orarin 9:00 - 13:00!</td></tr>
+                <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka vende të lira në orarin 9:00 - 13:00!</td></tr>
                 <?php
                 }}else{
             ?>
-              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka kurs ne orarin 9:00 - 13:00!!</td></tr>
+              <td class="text-left" colspan="3" style="text-align: center">Për datën qe ju keni zgjedhur nuk ka kurs në orarin 9:00 - 13:00!</td></tr>
             <?php
         }
 
@@ -161,17 +170,17 @@ if($isSunday){
                 <?php 
               }else{
                 ?>
-                <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka kurs ne orarin 13:00 - 17:00!</td></tr>
+                <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs në orarin 13:00 - 17:00!</td></tr>
                 <?php
               }}
         else{
             ?>
-              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka vende te lira ne orarin 13:00 - 17:00!</td></tr>
+              <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka vende të lira në orarin 13:00 - 17:00!</td></tr>
             <?php
         }
     }else{
             ?>
-              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka kurs ne orarin 13:00 - 17:00!</td></tr>
+              <td class="text-left" colspan="3" style="text-align: center">Për datën qe ju keni zgjedhur nuk ka kurs në orarin 13:00 - 17:00!</td></tr>
             <?php
         }
 
@@ -204,18 +213,23 @@ if($isSunday){
               <?php 
                 }else{
                     ?>
-                    <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka kurs ne orarin 13:00 - 17:00!</td></tr>
+                    <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs në orarin 13:00 - 17:00!</td></tr>
                     <?php
                 }}
         else{
             ?>
-              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka vende te lira ne orarin 17:00 - 21:00!</td></tr>
+              <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka vende të lira në orarin 17:00 - 21:00!</td></tr>
             <?php
         }
         }else{
             ?>
-              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka kurs ne orarin 17:00 - 21:00!</td></tr>
+              <td class="text-left" colspan="3" style="text-align: center">Për datën qe ju keni zgjedhur nuk ka kurs në orarin 17:00 - 21:00!</td></tr>
             <?php
+        }
+        }else{
+          ?>
+          <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs! Kursi organizohet në këto ditë të javës: 'E Hënë', 'E Mërkurë', 'E Premte', 'E Djelë'</td></tr>
+        <?php
         }
       }else{
 
@@ -248,17 +262,17 @@ if($isSunday){
                     <?php 
                 }else{
                     ?>
-                    <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka kurs ne orarin 09:00 - 15:00!</td></tr>
+                    <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs në orarin 09:00 - 15:00!</td></tr>
                     <?php
                 }}
         else{
             ?>
-              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka vende te lira ne orarin 09:00 - 15:00!</td></tr>
+              <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka vende të lira në orarin 09:00 - 15:00!</td></tr>
             <?php
         }
     }else{
             ?>
-              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka kurs!</td></tr>
+              <td class="text-left" colspan="3" style="text-align: center">Per daten qe ju keni zgjedhur nuk ka kurs në orarin 09:00 - 15:00!</td></tr>
             <?php
         }
       }

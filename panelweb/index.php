@@ -22,6 +22,7 @@
                         <div class="text-center fs-6 fw-bolder">
                             <div>- Për të mundësuar planifikimin online duhet të keni kryer një pagesë me vlerën 2000 lekë (të reja) pranë çdo <br> filiali të bankave: Raiffeisen, Credins apo Tirana Bank.</div>
                             <div>- Trajnimi i ndihmës së parë përmban një program prej 8 orë teori dhe praktikë, që zhvillohet në dy ditë të njëpasnjëshme (4 orë/ditë).</div>
+                            <div>- Kryesisht ditët në të cilat ju mund të rregjistroheni janë 'E Hënë', 'E Mërkurë', 'E Premte', 'E Djelë'.</div>
                             <div>- Nevojitet dokumenti i identifikimit.</div>
                             <div>- 1 (një) Foto për dokument.</div>
                         </div>
