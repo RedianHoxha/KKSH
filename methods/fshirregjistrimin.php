@@ -16,17 +16,21 @@
 
     $idKursanti = $_GET['id'];
 
-
-    $fshikursantngaplanifikimi = "DELETE FROM organizimkursantesh1 where idkursanti = '$idKursanti'";
+    $fshikursantngaplanifikimi = "UPDATE organizimkursantesh1  SET statusi = 'Fshire' where idkursanti = '$idKursanti'";
 
     if($runupdetinorganizim  = mysqli_query($link, $fshikursantngaplanifikimi))
     {
-        $fshiKursant = "DELETE FROM kursantet  where ID = '$idKursanti'";
+        $getUser = "SELECT * FROM kursantet WHERE PersonalId = '$idKursanti'";
+        $kursanti = mysqli_query($link, $getUser);
+        $rowKursant = mysqli_fetch_array($kursanti);
+        $kursantId = $rowKursant['ID'];
+
+        $fshiKursant = "DELETE FROM kursantet  where ID = '$kursantId'";
         if($runfshiorganizim = mysqli_query($link, $fshiKursant))
         {
             if(strcmp($roli,"Inputer") == 0)
             {
-                 header('location: ../inputer/bejndryshime.php');
+                header('location: ../inputer/bejndryshime.php');
             }
             else if(strcmp($roli,"Confirmues") == 0)
             {

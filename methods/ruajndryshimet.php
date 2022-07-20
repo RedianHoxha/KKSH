@@ -25,23 +25,44 @@
     $idklase = $rowtedhena['idklase'];
     $orari = $rowtedhena['orari'];
     
-    $updetorow = "UPDATE kursantet SET PersonalId = '$id',  Datakursit = '$datakursit', Orari = '$orari', Telefoni = '$tel',Vendbanimi = '$vendbanim',Datelindja = '$datelindja',Atesia = '$atesia',Emri = '$emri', Mbiemri = '$mbiemri' WHERE ID = '$idkursanti'";
-    if($runupdetin  =mysqli_query($link, $updetorow))
+    $updetorow = "UPDATE kursantet SET PersonalId = '$id',  Datakursit = '$datakursit', Orari = '$orari',
+     Telefoni = '$tel',Vendbanimi = '$vendbanim',Datelindja = '$datelindja',Atesia = '$atesia',Emri = '$emri', 
+     Mbiemri = '$mbiemri' WHERE ID = '$idkursanti'";
+
+    if($runupdetin=mysqli_query($link, $updetorow))
     {
         $selectexistorganizim = "SELECT * FROM `organizimkursantesh1` WHERE idkursanti='$id' AND statusi = 'pabere'";
         $resulttedhenashexistorganizim = mysqli_query($link, $selectexistorganizim);
-        $rowtedhenaexistonperson = mysqli_fetch_array($resulttedhenashexistorganizim);
-        $idkursiexistuees =  $rowtedhenaexistonperson['idkursi'];
+        $userExist = mysqli_num_rows($resulttedhenashexistorganizim);
+        if($userExist){
+            $rowtedhenaexistonperson = mysqli_fetch_array($resulttedhenashexistorganizim);
+            $idkursiexistuees =  $rowtedhenaexistonperson['idkursi'];
+            
+        }else{
+            $selectexistorganizimndryshuar = "SELECT * FROM `organizimkursantesh1` WHERE idkursanti='$id' AND statusi = 'ndryshuar'";
+            $resulttedhenashexistorganizimndryshuar = mysqli_query($link, $selectexistorganizimndryshuar);
+            $userExistndryshuar = mysqli_num_rows($resulttedhenashexistorganizimndryshuar);
+            if($userExistndryshuar){
+                $rowtedhenaexistonpersonndryshuar = mysqli_fetch_array($resulttedhenashexistorganizimndryshuar);
+                $idkursiexistuees =  $rowtedhenaexistonpersonndryshuar['idkursi'];
+            }else{
+                echo "Nuk ka fare";
+            }
+        }
+
+        // echo $idkursiexistuees;
+        
 
         $querydeleteexistorganizim = "UPDATE `organizimkursantesh1`SET statusi='ndryshuar' WHERE idkursanti='$id' and idkursi = $idkursiexistuees";
         if(mysqli_query($link, $querydeleteexistorganizim)){
             $quryshto = "INSERT INTO organizimkursantesh1 (idkursi, idkursanti,statusi ) VALUES ('$idkursi','$id', 'pabere');";
+            // echo $quryshto;
             mysqli_query($link, $quryshto);
             //echo $quryshto;
             header('location: ../inputer/bejndryshime.php');
         }
         else{
-            // echo 'Posht';
+            //  echo 'Posht';
             echo "<script>
             alert('Something went wrong douring delete first registration for this person! Try again!');
             window.location.href='../inputer/inputerpage.php';

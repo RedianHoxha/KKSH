@@ -125,12 +125,15 @@
                 <th>Edito</th>
             </tr>
             <tr>
-               <?php $sqlquery="SELECT * FROM kursantet WHERE Statusi = 'pabere'";
+               <?php 
+                $sqlquery="SELECT * FROM kursantet WHERE Statusi = 'pabere'";
+                //$sqlquery="SELECT * FROM kursantet WHERE Statusi = 'ndryshuar'";
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { 
                      
                     $idkursnti = $row['PersonalId'];
-                    $kursi = "SELECT * FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursanti='$idkursnti'";
+                    //$kursi = "SELECT * FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursanti='$idkursnti'";
+                    $kursi = "SELECT * FROM organizimkursantesh1 WHERE  idkursanti='$idkursnti'";
                     $kursiresult =mysqli_query($link, $kursi);
                     $rowkursi = mysqli_fetch_array($kursiresult);
 
@@ -157,7 +160,7 @@
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
                 <td class="text-left"><?php echo $row['Orari']; ?></td>
                 <td class="text-left"><?php echo $name ?></td>
-                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../methods/ndryshorregjistrimin.php?id=<?php echo $row['ID'];?>'">Ndrysho</button><button class="btn btn-danger" onclick="location.href = '../methods/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button>
+                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../methods/ndryshorregjistrimin.php?id=<?php echo $row['ID'];?>'">Ndrysho</button><button class="btn btn-danger" onclick="location.href = '../methods/fshirregjistrimin.php?id=<?php echo $row['PersonalId'];?>'" >Fshi</button>
                 </td>
             </tr>
             <?php } ?>

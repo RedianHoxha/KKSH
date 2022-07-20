@@ -57,7 +57,7 @@ if(isset($_POST["name"]))
  }
  else
  {
-  $emri = encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['name']))));
+  $emri = encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['name'])));
  }
 
  if(empty($_POST["surname"]))
@@ -66,7 +66,7 @@ if(isset($_POST["name"]))
  }
  else
  {
-  $mbiemri = encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['surname']))));
+  $mbiemri = encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['surname'])));
  }
 
  if(empty($_POST["bday"]))
@@ -84,7 +84,7 @@ if(isset($_POST["name"]))
  }
  else
  {
-  $atesia = encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['father']))));
+  $atesia = encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['father'])));
  }
 
  if(empty($_POST["id"]))
@@ -94,16 +94,7 @@ if(isset($_POST["name"]))
  else
  {
    if(preg_match($patternId, $_POST["id"])){
-    $idgetfromuser = test_input( mysqli_real_escape_string( $link,$_POST['id']));
-    $idcapital = strtoupper($idgetfromuser);
-    $id = encryptValues($idcapital);
-
-    $checkIfExist = "SELECT * FROM kursantet WHERE PersonalId = '$id' AND statusi = 'pabere';";
-    $resultofexist = mysqli_query($link, $checkIfExist);
-    $rowexist = mysqli_num_rows($resultofexist);
-    if($rowexist){
-      $personalid_error = 'Your Id is used before! Call at 042228199/0672063455 to fix your problem!';
-    }
+    $id = encryptValues(test_input( mysqli_real_escape_string( $link,$_POST['id'])));
    }else{
     $personalid_error = 'Invalid Personal Id';
    }
@@ -173,14 +164,7 @@ if(isset($_POST["name"]))
     }
     if(preg_match($patternbank, $_POST["paymentnumber"]))
     {
-      $paymentnumber = strtoupper(test_input(mysqli_real_escape_string($link,$_POST["paymentnumber"])));
-      $checkifthispaymentexist = "SELECT * FROM kursantet WHERE BankPayment = '$paymentnumber'";
-      $resultofexistpayment = mysqli_query($link, $checkifthispaymentexist);
-      $paymentexist = mysqli_num_rows($resultofexistpayment);
-      if($paymentexist){
-        $referenca_error = 'This Payment Number is used before!';
-      }
-
+      $paymentnumber = test_input(mysqli_real_escape_string($link,$_POST["paymentnumber"]));
     }else{
       $referenca_error = 'Invalid Payment Number';
     }
@@ -194,7 +178,7 @@ if(isset($_POST["name"]))
  }
  else
  {
-  $vendbanim = encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['adress']))));
+  $vendbanim = encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['adress'])));
  }
  
  if(empty($_POST["city"]))

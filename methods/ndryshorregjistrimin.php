@@ -193,7 +193,7 @@
                                         <td class="text-left"><?php echo $kursantet ?></td>
                                         <td class="text-left"><?php echo $kapacitetiKlases ?></td>
                                         <td class="text-left"><?php echo $orarikursitexistues ?></td>
-                                        <td class="text-left"><input type="radio" name="select" checked="checked" value="<?php echo $idKursi ?>">Choose</radio></td>
+                                        <td class="text-left"><input type="radio" id="select" name="select" checked="checked"  value="<?php echo $idKursi ?>" required>Choose</td>
                                     </tr>
                                     <?php 
                                     }else{

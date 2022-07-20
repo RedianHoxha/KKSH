@@ -111,8 +111,8 @@ if($isSunday){
                     $idKlase = $klasparaditeid[1];
                 }else if($registered >= 25 && $registered < 37){
                     $idKlase = $klasparaditeid[2];
-                }else if($registered >= 37 && $registered < 49){
-                  $idKlase = $klasparaditeid[3];
+                }else{
+                    $idKlase = $klasparaditeid[3];
                 }
 
                 $selectidkursi = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '9:00 - 13:00'";
@@ -154,8 +154,8 @@ if($isSunday){
                 $idKlase = $klasmesditid[1];
             }else if($registered >= 25 && $registered < 37){
                 $idKlase = $klasmesditid[2];
-            }else if($registered >= 37 && $registered < 49){
-              $idKlase = $klasmesditid[3];
+            }else{
+                $idKlase = $klasmesditid[3];
             }
               $selectidkursidrek = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '13:00 - 17:00'";
               $resultkursidrek = mysqli_query($link,$selectidkursidrek);
@@ -187,20 +187,18 @@ if($isSunday){
         if($klaspasditenr>0){
           $resultbasdite = mysqli_query($link,$sqlquerymbasdite);
           $max = $klaspasditenr * 12;
-         
-          $registered = mysqli_num_rows($resultbasdite);
-          if($registered < $max){
+        if(mysqli_num_rows($resultbasdite) < $max){
 
-            
+            $registered = mysqli_num_rows($resultbasdite);
             $mbetje = $registered / 12;
             if($registered < 13 ){
                 $idKlase = $klaspasditeid[0];
             }else if($registered >= 13 && $registered < 25){
                 $idKlase = $klaspasditeid[1];
-            }else if($registered >= 25 && $registered < 37){
+            }else if($registered >= 25 && $mbetje < 37){
                 $idKlase = $klaspasditeid[2];
-            }else if($registered >= 37 && $registered < 49){
-              $idKlase = $klaspasditeid[3];
+            }else{
+                $idKlase = $klaspasditeid[3];
             }
                 $selectidkursimbasdit = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '17:00 - 21:00'";
                 $resultkursimbasdi = mysqli_query($link,$selectidkursimbasdit);

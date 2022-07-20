@@ -10,7 +10,7 @@
     // $emri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['emri-txt'])));
     // $mbiemri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['mbiemri-txt'])));
     // $atesia= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['atesia-txt'])));
-     $id= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['id-txt'])));
+     $id= encryptValues(strtoupper(test_input(mysqli_real_escape_string( $link,$_POST['id-txt']))));
     // $datelindja= test_input(mysqli_real_escape_string( $link,$_POST['datelindja-txt']));
     // $vendbanim= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['vendbanim-txt'])));
     // $tel = test_input(mysqli_real_escape_string( $link,$_POST['tel-txt']));

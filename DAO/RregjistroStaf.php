@@ -7,12 +7,12 @@
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
 
-    $emri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['emri-txt'])));
-    $mbiemri= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['mbiemri-txt'])));
-    $id= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['id-txt'])));
-    $username= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['username-txt'])));
+    $emri= encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['emri-txt']))));
+    $mbiemri= encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['mbiemri-txt']))));
+    $id= encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['id-txt']))));
+    $username= encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['username-txt']))));
     $password= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['password-txt'])));
-    $roli= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['roli'])));
+    $roli= encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['roli']))));
     $tel= test_input(mysqli_real_escape_string( $link,$_POST['tel-txt']));
     $dega= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['dega'])));
 

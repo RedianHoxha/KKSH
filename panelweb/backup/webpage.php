@@ -198,6 +198,7 @@ if ($link === false) {
                         <option value="../images/credinsbank.jpeg">Credins Bank</option>
                         <option value="../images/tiranabank.jpeg">Tirana Bank</option>
                         <option value="../images/bkt.jpeg">Banka Kombetare Tregtare</option>
+                        <option value="../images/intesa.jpeg">Intesa San Paolo Bank</option>
                         <option value="../images/raiffeisen.jpeg">Raiffeisen Bank</option>
                     </select>
                     <span id="bank_error" class="text-danger"></span>

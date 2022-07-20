@@ -51,7 +51,9 @@
                     window.location.href='../panelstaf/index.php';
                     </script>";
 				}
-				$fjalakyc= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['search'])));
+                $fjala = ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['search'])));
+                $fjalaifid = encryptValues(strtoupper($fjala));
+				$fjalakyc= encryptValues($fjala);
 			}
 		}
     }
@@ -129,7 +131,7 @@
                                     OR (Statusi NOT IN ('pabere') AND Atesia LIKE '%{$fjalakyc}%') 
                                     OR (Statusi NOT IN ('pabere') AND Amza LIKE '%{$fjalakyc}%') 
                                     OR (Statusi NOT IN ('pabere') AND NrSerisDeshmis LIKE '%{$fjalakyc}%')  
-                                    OR (Statusi NOT IN ('pabere') AND PersonalId = '$fjalakyc')";
+                                    OR (Statusi NOT IN ('pabere') AND PersonalId = '$fjalaifid')";
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { ?>
 

@@ -45,7 +45,7 @@
                     window.location.href='../panelstaf/index.php';
                     </script>";
 				}
-				$fjalakyc= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['search'])));
+				$fjalakyc= encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['search']))));
 			}
 		}
     }
