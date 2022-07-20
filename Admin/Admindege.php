@@ -178,6 +178,7 @@
         <div id="tabela">
             <table id="organizim_javor" class="table table-bordered">  
                 <tr>
+                    <th>Id Kursi</th>
                     <th>Klasa</th>
                     <th>Instruktori</th>
                     <th>Orari</th>
@@ -204,7 +205,7 @@
                         $instruktori = mysqli_query($link, $sqlInstruktori);
                         $rowInstruktori = mysqli_fetch_array($instruktori);
                         ?> 
-
+                    <td><?php echo $row['idkursi']; ?></td>
                     <td><?php echo decrypt($rowKlasa['Emri']); ?></td>
                     <td><?php echo decrypt($rowInstruktori['Emri']);?>  <?php echo decrypt($rowInstruktori['Mbiemri']); ?></td>
                     <td><?php echo $row['orari']; ?></td>

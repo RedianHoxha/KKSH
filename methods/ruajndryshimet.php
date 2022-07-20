@@ -27,7 +27,7 @@
     
     $updetorow = "UPDATE kursantet SET PersonalId = '$id',  Datakursit = '$datakursit', Orari = '$orari',
      Telefoni = '$tel',Vendbanimi = '$vendbanim',Datelindja = '$datelindja',Atesia = '$atesia',Emri = '$emri', 
-     Mbiemri = '$mbiemri' WHERE ID = '$idkursanti'";
+     Mbiemri = '$mbiemri' , IdKursi = '$idkursi' WHERE ID = '$idkursanti'";
 
     if($runupdetin=mysqli_query($link, $updetorow))
     {
