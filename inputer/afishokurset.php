@@ -165,7 +165,7 @@
                         <td class="text-left"><?php echo $emriInstruktorit  ?></td>
                         <td class="text-left"><?php echo $kursantet ?></td>
                         <td class="text-left"><?php echo $kapacitetiKlases ?></td>
-                        <td class="text-left"><?php echo $dataKursit ?></td>
+                        <td class="text-left"><?php echo date('d/m/Y',strtotime($dataKursit)) ?></td>
                         <td class="text-left"><?php echo $orariKursit ?></td>
                         <td class="text-left"><button class="btn btn-success"onclick="location.href = 'shtokursant.php?id=<?php echo $idKursi;?>'">Zgjidh</button></td>
                     </tr>

@@ -128,11 +128,12 @@
                 </div><br>
                 <div id="datvendlindje">
                     <p id="datelindja">Datelindja</p>
-                    <input class="input100" id="datelindja-txt" type="date" name="datelindja-txt" required>
+                    <input class="input100" id="datelindja-txt" type="date" name="datelindja-txt" placeholder="dd-mm-yyyy" min="1997-01-01" max="2030-12-31" required>
                     <p id="vendbanim">Venbanim</p>
                     <input class="input100" id="vendbanim-txt" type="text" 
                     name="vendbanim-txt" placeholder="Adresa ku banon" autocomplete="off" required>
                 </div>
+                
                 <div id="tel">
                     <p id="telefoni">Telefoni</p>
                     <input class="input100" id="tel-txt" type="number" 

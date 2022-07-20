@@ -208,7 +208,7 @@
                     <td><?php echo decrypt($rowKlasa['Emri']); ?></td>
                     <td><?php echo decrypt($rowInstruktori['Emri']);?>  <?php echo decrypt($rowInstruktori['Mbiemri']); ?></td>
                     <td><?php echo $row['orari']; ?></td>
-                    <td><?php echo $row['data']; ?></td>
+                    <td><?php echo date('d/m/Y',strtotime($row['data'])); ?></td>
                     <td class="text-left"><button onclick="location.href = '../methods/ndryshoplanifikim.php?id=<?php echo $row['idkursi'];?>'" >Modifiko</button></td>
                 </tr> 
                 <?php } ?>
