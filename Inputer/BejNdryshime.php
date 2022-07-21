@@ -126,7 +126,7 @@
             </tr>
             <tr>
                <?php 
-                 $sqlquery="SELECT * FROM kursantet WHERE Statusi = 'pabere'";
+                 $sqlquery="SELECT * FROM kursantet WHERE Statusi = 'pabere' ORDER BY DataRregjistrimit DESC";
                 //$sqlquery="SELECT * FROM kursantet WHERE Statusi = 'ndryshuar'";
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { 

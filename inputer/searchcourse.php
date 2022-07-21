@@ -120,10 +120,12 @@
         <?php 
         $firstday = date('Y-m-d', strtotime("monday -1 week"));
         //$lastday = date('Y-m-d', strtotime("sunday 0 week"));
+        $date = str_replace('/', '-', $fjalakyc);
+        $newdate = date('Y-m-d', strtotime($date));
         if($fjalakyc == ''){
             $sqlquery="SELECT * FROM programijavor WHERE data >='$firstday' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges');";
         }else{
-            $sqlquery="SELECT * FROM programijavor WHERE (data ='$fjalakyc' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges')) 
+            $sqlquery="SELECT * FROM programijavor WHERE (data ='$newdate' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges')) 
                                                     OR   (orari ='$fjalakyc' AND idklase in (SELECT id FROM klasa WHERE  qyteti = '$idDeges'));";
         }
 
@@ -162,7 +164,7 @@
                         <td class="text-left"><?php echo $emriInstruktorit  ?></td>
                         <td class="text-left"><?php echo $kursantet ?></td>
                         <td class="text-left"><?php echo $kapacitetiKlases ?></td>
-                        <td class="text-left"><?php echo $dataKursit ?></td>
+                        <td class="text-left"><?php echo date('d/m/Y',strtotime($dataKursit)) ?></td>
                         <td class="text-left"><?php echo $orariKursit ?></td>
                         <td class="text-left"><button class="btn btn-success"onclick="location.href = 'shtokursant.php?id=<?php echo $idKursi;?>'">Zgjidh</button></td>
                     </tr>

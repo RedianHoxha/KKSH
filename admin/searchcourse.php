@@ -191,10 +191,12 @@
                     <?php 
                     $firstday = date('Y-m-d', strtotime("monday -1 week"));
                     //$lastday = date('Y-m-d', strtotime("sunday 0 week"));
+                    $date = str_replace('/', '-', $fjalakyc);
+                    $newdate = date('Y-m-d', strtotime($date));
                     if($fjalakyc == ''){
                         $sqlquery="SELECT * FROM `programijavor` WHERE data >= '$firstday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti) ORDER BY data ASC";
                     }else{
-                        $sqlquery="SELECT * FROM `programijavor` WHERE (data = '$fjalakyc' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti))
+                        $sqlquery="SELECT * FROM `programijavor` WHERE (data = '$newdate' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti))
                                                                     OR (orari ='$fjalakyc' AND idklase in (SELECT id FROM klasa WHERE  qyteti = $idqyteti))";
                     }
                    
@@ -216,7 +218,7 @@
                     <td><?php echo decrypt($rowKlasa['Emri']); ?></td>
                     <td><?php echo decrypt($rowInstruktori['Emri']);?>  <?php echo decrypt($rowInstruktori['Mbiemri']); ?></td>
                     <td><?php echo $row['orari']; ?></td>
-                    <td><?php echo $row['data']; ?></td>
+                    <td><?php echo date('d/m/Y',strtotime($row['data'])); ?></td>
                     <td class="text-left"><button onclick="location.href = '../methods/ndryshoplanifikim.php?id=<?php echo $row['idkursi'];?>'" >Modifiko</button></td>
                 </tr> 
                 <?php } ?>
