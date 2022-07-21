@@ -15,7 +15,7 @@ $isWrongDate;
 $timestamp = strtotime($dataZgjedhur);
 $weekday= date("l", $timestamp );
 $normalized_weekday = strtolower($weekday);
-if($normalized_weekday == "sunday"){
+if($normalized_weekday == "sunday" || $normalized_weekday == "saturday"){
   $isSunday = true;
 } else {
   $isSunday = false;

@@ -257,12 +257,10 @@ if(isset($_POST["name"]))
     $idklase = $rowtedhena['idklase'];
     $orari = $rowtedhena['orari'];
 
-  $sqlgetnameofclass="SELECT * FROM klasa WHERE ID = '$idklase'";
-  $resultemriklases = mysqli_query($link, $sqlgetnameofclass);
-  $rowemriklases = mysqli_fetch_array($resultemriklases);
-  $emriklases = decrypt($rowemriklases['Emri']);
-
-
+    $sqlgetnameofclass="SELECT * FROM klasa WHERE ID = '$idklase'";
+    $resultemriklases = mysqli_query($link, $sqlgetnameofclass);
+    $rowemriklases = mysqli_fetch_array($resultemriklases);
+    $emriklases = decrypt($rowemriklases['Emri']);
 
     $sqlurlqyteti = "SELECT * FROM `qyteti` where EmriDeges = '$qyteti';";
     $resultsqlurlqyteti = mysqli_query($link, $sqlurlqyteti);
