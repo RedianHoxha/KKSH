@@ -39,22 +39,30 @@ $now = date('Y-m-d');
       $idklase = $rowtedhena['idklase'];
       $orari = $rowtedhena['orari'];
 
-   $shtokursant = "INSERT INTO kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari,Statusi, IdKursi, DataRregjistrimit, Gjinia, BankPayment,Amza, NrSerisDeshmis, Email)
-    VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges', '$datakursit','$orari','pabere', '$idkursi', '$now', '$gjinia',$paymentNumber,'','', '$email');";
-       $resultinsert = mysqli_query($link, $shtokursant) or die(mysqli_error($link));
-
-    
-    if($resultinsert)
-    {
-       $queryshto = "INSERT INTO organizimkursantesh1 (idkursi, idkursanti,statusi ) VALUES ('$idkursi','$id','pabere');";
-       mysqli_query($link, $queryshto);
-       header('location:../inputer/inputerpage.php');
-    }
-    else
-    {
-      echo "<script>
-      alert('Something went wrong! Try again!');
-      window.location.href='../inputer/inputerpage.php';
-      </script>";
-    } 
+      $checkifexist="SELECT * FROM kursantet WHERE PersonalId = '$id' and Statusi = 'pabere'";
+      $resultifexist = mysqli_query($link, $checkifexist);
+      $userexist = mysqli_num_rows($resultifexist);
+      if($userexist){
+         echo '<script>
+           alert("Ky person eshte rregjistruar ne nje kurs tjeter ne ditet ne vijim!\n Modifiko planifikimin ekzistues");
+           window.location.href="../inputer/bejndryshime.php";
+           </script>';
+      }else{
+         $shtokursant = "INSERT INTO kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari,Statusi, IdKursi, DataRregjistrimit, Gjinia, BankPayment,Amza, NrSerisDeshmis, Email)
+         VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges', '$datakursit','$orari','pabere', '$idkursi', '$now', '$gjinia',$paymentNumber,'','', '$email');";
+         $resultinsert = mysqli_query($link, $shtokursant) or die(mysqli_error($link));
+         if($resultinsert)
+         {
+            $queryshto = "INSERT INTO organizimkursantesh1 (idkursi, idkursanti,statusi ) VALUES ('$idkursi','$id','pabere');";
+            mysqli_query($link, $queryshto);
+            header('location:../inputer/inputerpage.php');
+         }
+         else
+         {
+           echo '<script>
+           alert("Something went wrong! Try again!");
+           window.location.href="../inputer/inputerpage.php";
+           </script>';
+         } 
+      }
 ?>
