@@ -27,8 +27,9 @@ $idkursi= test_input(mysqli_real_escape_string( $link,$_GET['id']));
     $vendbanim= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['vendbanim-txt'])));
     $tel= test_input(mysqli_real_escape_string( $link,$_POST['tel-txt']));
     $gjinia= test_input(mysqli_real_escape_string( $link,$_POST['gjinia']));
-    $paumentNumber = test_input(mysqli_real_escape_string( $link,$_POST['payment-txt']));
-    $email = test_input(mysqli_real_escape_string( $link,$_POST['email-txt']));
+
+    $paumentNumber = '11';
+    $email = 'testemail@gmail.com';
 
       $querymerrtedhena = "SELECT * FROM  programijavor WHERE idkursi = '$idkursi';";
       $resulttedhenash = mysqli_query($link, $querymerrtedhena);

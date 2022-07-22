@@ -29,8 +29,9 @@ $now = date('Y-m-d');
     $datakursit= test_input( mysqli_real_escape_string( $link,$_POST['datakursit']));
     $idkursi= test_input( mysqli_real_escape_string( $link,$_POST['select']));
     $gjinia= test_input( mysqli_real_escape_string( $link,$_POST['gjinia']));
-    $paymentNumber = test_input( mysqli_real_escape_string( $link,$_POST['payment-txt']));
-    $email = test_input( mysqli_real_escape_string( $link,$_POST['email-txt']));
+
+    $paymentNumber = '11';
+    $email = 'testemail@gmail.com';
 
       $querymerrtedhena = "SELECT * FROM  programijavor WHERE idkursi = '$idkursi';";
       $resulttedhenash = mysqli_query($link, $querymerrtedhena);
