@@ -114,6 +114,7 @@
                 <th>Data</th>
                 <th>Orari</th>
                 <th>Instruktori</th>
+                <th>Klasa</th>
                 <th>Edito</th>
             </tr>
             <tr>
@@ -153,6 +154,11 @@
                     $rowinstruktoriname = mysqli_fetch_array($instruktoriname);
                     $name = decrypt($rowinstruktoriname['Emri']).' '.decrypt($rowinstruktoriname['Mbiemri']);
 
+                    $idklase = $rowinstruktori['idklase'];
+
+                    $queryklasa = "SELECT * FROM klasa WHERE ID = $idklase;";
+                    $klasaresult = mysqli_query($link, $queryklasa);
+                    $rowklasa = mysqli_fetch_array($klasaresult);
                     ?>
                 <td class="text-left"><?php echo decrypt($row['PersonalId']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['Emri']); ?></td>
@@ -164,6 +170,7 @@
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
                 <td class="text-left"><?php echo $row['Orari']; ?></td>
                 <td class="text-left"><?php echo $name ?></td>
+                <td class="text-left"><?php echo decrypt($rowklasa['Emri']) ?></td>
                 <td class="text-left"><button class="btn btn-success" onclick="location.href = '../methods/ndryshorregjistrimin.php?id=<?php echo $row['ID'];?>'" >Ndrysho</button><button class="btn btn-danger" onclick="location.href = '../methods/fshirregjistrimin.php?id=<?php echo $row['PersonalId'];?>'" >Fshi</button></td>
             </tr>
             <?php } ?>

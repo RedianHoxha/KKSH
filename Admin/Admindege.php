@@ -189,7 +189,7 @@
                     <?php 
                     $firstday = date('Y-m-d', strtotime("monday -1 week"));
                     //$lastday = date('Y-m-d', strtotime("sunday 0 week"));
-                    $sqlquery="SELECT * FROM `programijavor` WHERE data >= '$firstday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti) ORDER BY data ASC";
+                    $sqlquery="SELECT * FROM `programijavor` WHERE data >= '$firstday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti) ORDER BY data ASC, orari ASC";
                     //$sqlquery="SELECT * FROM `programijavor` WHERE data BETWEEN '$firstday' AND '$lastday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti) ORDER BY data ASC";
                     //echo "<script>console.log('Debug Objects: " . $sqlquery .  "' );</script>";
                     $kursantet=mysqli_query($link, $sqlquery);

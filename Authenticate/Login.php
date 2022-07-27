@@ -50,9 +50,9 @@ else
             {
                 header('location: ../admin/admindege.php');
             }
-            else if(decrypt($row['Roli']) == "webrole")
+            else if(decrypt($row['Roli']) == "Financa")
             {
-                header('location: ../web/webpage.html');
+                header('location: ../financa/afishokursantet.php');
             }
             else
             {

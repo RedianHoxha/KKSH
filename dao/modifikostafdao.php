@@ -14,7 +14,7 @@
     $id= encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['id-txt']))));
     $username= encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['username-txt']))));
     $password= encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['password-txt']))));
-    $roli= encryptValues(tucfirst(est_input(mysqli_real_escape_string( $link,$_POST['roli']))));
+    $roli= encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['roli']))));
     $tel= ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['tel-txt'])));
     $dega= encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['dega']))));
 

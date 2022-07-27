@@ -153,22 +153,27 @@ if(isset($_POST["name"]))
     {
         case "../images/credinsbank.jpeg":
           $patternbank="/\d{15}-\d{3}$/";
+          $bankName = "credins";
           break;
 
         case "../images/tiranabank.jpeg":
           $patternbank="/\d{15}$/";
+          $bankName = "tirana";
           break;
 
         case "../images/bkt.jpeg":
           $patternbank="/\d{3}[a-zA-Z]{4}\d{9}$/";
+          $bankName = "bkt";
           break;
 
         case "../images/intesa.jpeg":
           $patternbank="/[a-zA-Z]{3}\d{13}$/";
+          $bankName = "intesa";
           break;
 
         case "../images/raiffeisen.jpeg":
           $patternbank="/\d{8}$/";
+          $bankName = "raiffeisen";
           break;
     }
     if(preg_match($patternbank, $_POST["paymentnumber"]))
@@ -273,8 +278,8 @@ if(isset($_POST["name"]))
       $url = $row['Adresa'];
     }
 
-    $shtokursant = "INSERT INTO kursantet(PersonalId, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi, IdKursi, DataRregjistrimit, Gjinia, Amza, NrSerisDeshmis)
-    VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere', '$idkursi', '$now', '$gjinia', '', '');";
+    $shtokursant = "INSERT INTO kursantet(PersonalId, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi, IdKursi, DataRregjistrimit, Gjinia, Amza, NrSerisDeshmis, BankName)
+    VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere', '$idkursi', '$now', '$gjinia', '', '', '$bankName');";
             $resultinsert = mysqli_query($link, $shtokursant) or die(mysqli_error($link));
     if($resultinsert){
 
