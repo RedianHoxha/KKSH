@@ -39,7 +39,7 @@
 
 
                 $roli = decrypt($row['Roli']);
-                $pageRole = "Confirmues";
+                $pageRole = "Financa";
                 $result = strcmp($roli, $pageRole);
 
 				if($result != 0)
@@ -78,7 +78,7 @@
                             document.getElementById("txtHint").innerHTML = this.responseText;
                         }
                     };
-                    xmlhttp.open("GET", `afishokursantetperklase.php?data=${data}&klasa=${klasa}&orari=${orari}`, true);
+                    xmlhttp.open("GET", `afishokursantetperklas.php?data=${data}&klasa=${klasa}&orari=${orari}`, true);
                     xmlhttp.send();
                 }
             }
@@ -87,8 +87,7 @@
     <body>
     <div id="top-page">
             <div id="logout">
-                <button class="btn btn-secondary" onclick="location.href = 'arkiva.php';" id="myButton" >Arkiva</button>
-                <button class="btn btn-secondary" onclick="location.href = 'confirmpageold.php';" id="myButton" >Search</button>
+                <button class="btn btn-secondary" onclick="location.href = 'afishokursantet.php';" id="myButton" >Ktheu</button>
                 <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
             </div>
     </div>

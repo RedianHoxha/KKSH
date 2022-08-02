@@ -44,6 +44,7 @@
                     </script>";
 				}else{
                     $fjala = test_input(mysqli_real_escape_string( $link,$_POST['search']));
+                    $fjalakyc = encrypt($fjala);
                 }
 			}
 		}
@@ -90,11 +91,12 @@
 <body></br>
     <div id="add_button">
         <!-- <button class="btn btn-info" onclick="location.href = 'shtokolone.php';" id="addbutton" >Shto kolonen e bankes</button> -->
+        <button class="btn btn-secondary" onclick="location.href = 'financapage.php';" id="myButton" >Klasat</button>
         <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button><br>
     </div></br>
     <div id="top-page-right">
             <form action="searchpayment.php" method="POST"> 
-                <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search">
+                <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Id, Emer, Mbiemr, Reference">
                 <button class="btn btn-secondary" type="submit" id="search-button">Search</button>
             </form>
             </div></br>
@@ -105,6 +107,7 @@
                     <th>Mbiemri</th>
                     <th>Atesia</th>
                     <th>ID Personale</th>
+                    <th>Banka</th>
                     <th>Referenca e Pageses</th>
                     <th>Data Rregjistrimit</th>
                     <th>Data e kursit</th>
@@ -117,11 +120,16 @@
                     $firstday = date('Y-m-d');
                     //$lastday = date('Y-m-d', strtotime("sunday 0 week"));
                     if($fjala <> ""){
-                        $sqlquery="SELECT * FROM kursantet WHERE statusi='pabere' AND Datakursit >= '$firstday' AND BankName LIKE '%{$fjala}%'";
+                        $sqlquery="SELECT * FROM kursantet WHERE ((Statusi='pabere' AND Datakursit >= '$firstday' AND BankName LIKE '%{$fjala}%')
+                                                            OR (Statusi='pabere' AND Datakursit >= '$firstday' AND Emri LIKE '%{$fjalakyc}%')
+                                                            OR (Statusi='pabere' AND Datakursit >= '$firstday' AND PersonalId = '$fjalakyc')
+                                                            OR (Statusi='pabere' AND Datakursit >= '$firstday' AND BankPayment LIKE '%{$fjala}%')
+                                                            OR (Statusi='pabere' AND Datakursit >= '$firstday' AND Mbiemri LIKE '%{$fjalakyc}%'))";
                     }else{
                         $sqlquery="SELECT * FROM kursantet WHERE statusi='pabere' AND Datakursit >= '$firstday'";
                     }
-                    $kursantet=mysqli_query($link, $sqlquery);
+                    echo $sqlquery;
+                    $kursantet=mysqli_query($link, $sqlquery) or die(mysqli_error($link));;
                     while ($row = mysqli_fetch_array($kursantet)) { 
 
                         $idkursi = $row['IdKursi'];
@@ -144,6 +152,7 @@
                     <td><?php echo decrypt($row['Mbiemri']); ?></td>
                     <td><?php echo decrypt($row['Atesia']); ?></td>
                     <td><?php echo decrypt($row['PersonalId']); ?></td>
+                    <td><?php echo $row['BankName']; ?></td>
                     <td><?php echo $row['BankPayment']; ?></td>
                     <td><?php echo date('d/m/Y',strtotime($row['DataRregjistrimit'])); ?></td>
                     <td><?php echo date('d/m/Y',strtotime($rowkursi['data'])); ?></td>

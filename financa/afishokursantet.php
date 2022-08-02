@@ -88,11 +88,12 @@
 <body></br>
     <div id="add_button">
         <!-- <button class="btn btn-info" onclick="location.href = 'shtokolone.php';" id="addbutton" >Shto kolonen e bankes</button>  -->
+        <button class="btn btn-secondary" onclick="location.href = 'financapage.php';" id="myButton" >Klasat</button>
         <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button><br>
     </div></br>
     <div id="top-page-right">
             <form action="searchpayment.php" method="POST"> 
-                <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search">
+                <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Id, Emer, Mbiemr, Reference">
                 <button class="btn btn-secondary" type="submit" id="search-button">Search</button>
             </form>
             </div></br>
@@ -103,6 +104,7 @@
                     <th>Mbiemri</th>
                     <th>Atesia</th>
                     <th>ID Personale</th>
+                    <th>Banka</th>
                     <th>Referenca e Pageses</th>
                     <th>Data Rregjistrimit</th>
                     <th>Data e kursit</th>
@@ -138,6 +140,7 @@
                     <td><?php echo decrypt($row['Mbiemri']); ?></td>
                     <td><?php echo decrypt($row['Atesia']); ?></td>
                     <td><?php echo decrypt($row['PersonalId']); ?></td>
+                    <td><?php echo $row['BankName']; ?></td>
                     <td><?php echo $row['BankPayment']; ?></td>
                     <td><?php echo $row['DataRregjistrimit']; ?></td>
                     <td><?php echo date('d/m/Y',strtotime($rowkursi['data'])); ?></td>

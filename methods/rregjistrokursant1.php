@@ -48,8 +48,8 @@ $idkursi= test_input(mysqli_real_escape_string( $link,$_GET['id']));
            window.location.href='../inputer/bejndryshime.php';
            </script>";
       }else{
-        $shtokursant = "INSERT INTO kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari,Statusi, IdKursi, DataRregjistrimit, Gjinia, Amza, NrSerisDeshmis, BankPayment, Email)
-        VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges', '$data','$orari','pabere','$idkursi', '$now', '$gjinia','','', $paumentNumber, '$email');";
+        $shtokursant = "INSERT INTO kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Datakursit,Orari,Statusi, IdKursi, DataRregjistrimit, Gjinia, Amza, NrSerisDeshmis, BankPayment, BankName, Email)
+        VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges', '$data','$orari','pabere','$idkursi', '$now', '$gjinia','','', $paumentNumber,'Sporteli', '$email');";
         $resultinsert = mysqli_query($link, $shtokursant) or die(mysqli_error($link));
         
         if($resultinsert)
