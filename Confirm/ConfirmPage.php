@@ -88,6 +88,7 @@
     <div id="top-page">
             <div id="logout">
                 <button class="btn btn-secondary" onclick="location.href = 'arkiva.php';" id="myButton" >Arkiva</button>
+                <button class="btn btn-secondary" onclick="location.href = 'shtokursantpakurs.php';" id="myButton" >Rregjistro Kursant</button>
                 <button class="btn btn-secondary" onclick="location.href = 'confirmpageold.php';" id="myButton" >Search</button>
                 <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
             </div>
