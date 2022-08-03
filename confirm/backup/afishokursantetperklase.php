@@ -19,7 +19,6 @@ mysqli_select_db($link,"ajax_demo");
 
 </head>
 <body>
-    <div>
         <table id="tabela-kursanteve" class="table table-striped table-bordered table-sm">
             <tr>
                 <th>ID</th>
@@ -32,6 +31,7 @@ mysqli_select_db($link,"ajax_demo");
                 <th>Amza</th>
                 <th>Nr Serie</th>
                 <th>Data</th>
+                <th>Action</th>
             </tr>
             <tr>
                 <?php 
@@ -46,19 +46,16 @@ mysqli_select_db($link,"ajax_demo");
                     <td class="text-left"><?php echo decrypt($row['PersonalId']); ?></td>
                     <td class="text-left"><?php echo decrypt($row['Emri']); ?></td>
                     <td class="text-left"><?php echo decrypt($row['Mbiemri']); ?></td>
-                    <td class="text-left" ><?php echo decrypt($row['Atesia']); ?></td>
+                    <td class="text-left"><?php echo decrypt($row['Atesia']); ?></td>
                     <td class="text-left"><?php echo decrypt($row['Vendbanimi']); ?></td>
                     <td class="text-left"><?php echo $row['Telefoni']; ?></td>
                     <td class="text-left"><?php echo $row['Datelindja']; ?></td>
-                    <td class="text-left" contenteditable="true"><?php echo decrypt($row['Amza']); ?></td>
-                    <td class="text-left" contenteditable="true"><?php echo decrypt($row['NrSerisDeshmis']); ?></td>
+                    <td class="text-left"><?php echo decrypt($row['Amza']); ?></td>
+                    <td class="text-left"><?php echo decrypt($row['NrSerisDeshmis']); ?></td>
                     <td class="text-left"><?php echo $row['Datakursit']; ?></td>
-                </tr>
+                    <td class="text-left"><button class="btn btn-success" onclick="location.href = '../methods/ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button><button class="btn btn-secondary" onclick="location.href = '../methods/munges.php?id=<?php echo $row['ID'];?>'" >Mungoi</button><button class="btn btn-danger" onclick="location.href = '../methods/fshirregjistrimin.php?id=<?php echo $row['PersonalId'];?>'" >Fshi</button></td>
+            </tr>
             <?php } ?>
-        </table>    
-    </div>  
-    <div>
-        <button class="btn btn-secondary" onclick=saveTable() id="myButton" >Save Table</button>
-    </div>
-</body>
+        </table>        
+    </body>
 </html>

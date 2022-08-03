@@ -82,33 +82,6 @@
                     xmlhttp.send();
                 }
             }
-
-    function saveTable() {
-        var table = document.getElementById("tabela-kursanteve");
-        var rows = table.getElementsByTagName("tr");
-        var tableLength = table.rows.length;
-        var i;
-        if(tableLength == 1) {
-            alert("Nuk ka Asnje rresht per tu rregjistruar");
-            return;
-        } else {
-            for(i=1;i<tableLength; i++){
-                var idkursanti = table.rows[i].cells[0].innerHTML;
-                var amza = table.rows[i].cells[7].innerHTML;
-                var nrseris = table.rows[i].cells[8].innerHTML;
-                
-                var xmlhttp = new XMLHttpRequest();
-                    xmlhttp.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {
-                            document.getElementById("txtHint").innerHTML = this.responseText;
-                        }
-                    };
-                xmlhttp.open("GET", `ruajamzen.php?id=${idkursanti}&amza=${amza}&seri=${nrseris}`, true);
-                xmlhttp.send();
-            }
-        }
-    }
-
         </script>
     </head>
     <body>
@@ -148,7 +121,9 @@
         </div>
     </div>
     <div>
-        <div id="txtHint"></div>
+        <div id="txtHint">
+        </div>
     </div>
+
     </body>
 </html>
