@@ -10,10 +10,16 @@ $idkusanti = encryptValues($_GET['id']);
 $amza = encryptValues($_GET['amza']);
 $seri = encryptValues($_GET['seri']);
 
+$statusi = 'perfunduar';
 
-$vendosamzen = "UPDATE kursantet SET Amza= '$amza', NrSerisDeshmis = '$seri', Statusi= 'perfunduar' WHERE PersonalId = '$idkusanti' and Statusi = 'pabere'";
+if($amza == '' && $seri == ''){
+    $statusi = 'Munges';
+}
+
+
+$vendosamzen = "UPDATE kursantet SET Amza= '$amza', NrSerisDeshmis = '$seri', Statusi= '$statusi' WHERE PersonalId = '$idkusanti' and Statusi = 'pabere'";
 if($runupdetin = mysqli_query($link, $vendosamzen)){
-    $quryupdetostatusinkursantit = "UPDATE organizimkursantesh1 SET statusi = 'Perfunduar' WHERE  idkursanti = '$idkusanti' and statusi = 'pabere';";
+    $quryupdetostatusinkursantit = "UPDATE organizimkursantesh1 SET statusi = '$statusi' WHERE  idkursanti = '$idkusanti' and statusi = 'pabere';";
     if(mysqli_query($link, $quryupdetostatusinkursantit)){
         echo "Me sukses ";
     }else{
