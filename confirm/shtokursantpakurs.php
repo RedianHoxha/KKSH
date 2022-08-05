@@ -94,18 +94,13 @@
                     <input class="input100" id="vendbanim-txt" type="text" 
                     name="vendbanim-txt"   placeholder="Vendbanimi" required>
                 </div>
-                <div id="tel">
-                    <p id="telefoni">Telefoni</p>
-                    <input class="input100" id="tel-txt" type="text" 
-                    name="tel-txt"  placeholder="06xxxxxxxx" required>
-                </div><br>
                 <div id="amza">
-                    <p id="amza">Amza (09-989-01)</p>
+                    <p id="amza">Amza </p>
                     <input class="input100" id="amza-txt" type="text" 
                     name="amza-txt" placeholder="Amza" autocomplete="off" required>
                 </div>
                 <div id="deshmi">
-                    <p id="deshmi">Nr i Seris se Deshmise (070001)</p>
+                    <p id="deshmi">Nr i Serise se Deshmise</p>
                     <input class="input100" id="deshmi-txt" type="text" 
                     name="deshmi-txt" placeholder="Nr Seris se Deshmis" autocomplete="off" required>
                 </div><br>

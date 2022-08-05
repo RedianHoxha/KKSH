@@ -24,10 +24,10 @@ $now = date('Y-m-d');
     $id= encryptValues(strtoupper(test_input( mysqli_real_escape_string( $link,$_POST['id-txt']))));
     $datelindja= test_input(mysqli_real_escape_string( $link,$_POST['datelindja-txt']));
     $vendbanim= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['vendbanim-txt'])));
-    $tel= test_input(mysqli_real_escape_string( $link,$_POST['tel-txt']));
     $amza= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['amza-txt'])));
     $seria= encryptValues(test_input( mysqli_real_escape_string( $link,$_POST['deshmi-txt'])));
 
+    $tel='1';
     $paymentNumber = '11';
     $email = 'testemail@gmail.com';
 

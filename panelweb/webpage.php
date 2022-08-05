@@ -79,7 +79,6 @@ if ($link === false) {
                         $('#personalid_error').text('');
                         $('#datelindje_error').text('');
                         $('#atesia_error').text('');
-                        $('#email_error').text('');
                         $('#tel_error').text('');
                         $('#adresa_error').text('');
                         $('#referenca_error').text('');
@@ -102,7 +101,6 @@ if ($link === false) {
                         $('#personalid_error').text(data.personalid_error);
                         $('#datelindje_error').text(data.datelindje_error);
                         $('#atesia_error').text(data.atesia_error);
-                        $('#email_error').text(data.email_error);
                         $('#tel_error').text(data.tel_error);
                         $('#adresa_error').text(data.adresa_error);
                         $('#referenca_error').text(data.referenca_error);
@@ -170,15 +168,14 @@ if ($link === false) {
                 </div>
 
                 <div class="col-md-6 position-relative">
-                    <label class="form-label">Atësia</label><span style="color:#ff0000">*</span>
-                    <input type="text" class="form-control" name="father" require  placeholder="Atësia...">
+                    <label class="form-label">Emri i Babait</label><span style="color:#ff0000">*</span>
+                    <input type="text" class="form-control" name="father" require  placeholder="EMri i Babait...">
                     <span id="atesia_error" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-6 position-relative">
-                    <label  class="form-label">E-mail</label><span style="color:#ff0000">*</span>
+                    <label  class="form-label">E-mail</label>
                     <input type="email" class="form-control" name="email"  placeholder="Email...">
-                    <span id="email_error" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-6 position-relative">
