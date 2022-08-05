@@ -169,7 +169,7 @@ if ($link === false) {
 
                 <div class="col-md-6 position-relative">
                     <label class="form-label">Emri i Babait</label><span style="color:#ff0000">*</span>
-                    <input type="text" class="form-control" name="father" require  placeholder="EMri i Babait...">
+                    <input type="text" class="form-control" name="father" require  placeholder="Emri i Babait...">
                     <span id="atesia_error" class="text-danger"></span>
                 </div>
 

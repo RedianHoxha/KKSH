@@ -229,7 +229,7 @@ if($isSunday){
         }
         }else{
           ?>
-          <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs! Kursi organizohet në këto ditë të javës: 'E Hënë', 'E Mërkurë', 'E Premte', 'E Djelë'</td></tr>
+          <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs! Kursi organizohet në këto ditë të javës: 'E Hënë', 'E Mërkurë', 'E Premte', 'E Shtunë', 'E Djelë'</td></tr>
         <?php
         }
       }else{
