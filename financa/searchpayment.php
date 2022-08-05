@@ -44,7 +44,7 @@
                     </script>";
 				}else{
                     $fjala = test_input(mysqli_real_escape_string( $link,$_POST['search']));
-                    $fjalakyc = encrypt($fjala);
+                    $fjalakyc = encryptValues($fjala);
                 }
 			}
 		}
@@ -128,7 +128,7 @@
                     }else{
                         $sqlquery="SELECT * FROM kursantet WHERE statusi='pabere' AND Datakursit >= '$firstday'";
                     }
-                    echo $sqlquery;
+                    // echo $sqlquery;
                     $kursantet=mysqli_query($link, $sqlquery) or die(mysqli_error($link));;
                     while ($row = mysqli_fetch_array($kursantet)) { 
 
