@@ -118,7 +118,6 @@
                 <tr>
                     <?php 
                     $firstday = date('Y-m-d');
-                    //$lastday = date('Y-m-d', strtotime("sunday 0 week"));
                     if($fjala <> ""){
                         $sqlquery="SELECT * FROM kursantet WHERE ((Statusi='pabere' AND Datakursit >= '$firstday' AND BankName LIKE '%{$fjala}%')
                                                             OR (Statusi='pabere' AND Datakursit >= '$firstday' AND Emri LIKE '%{$fjalakyc}%')
@@ -128,7 +127,6 @@
                     }else{
                         $sqlquery="SELECT * FROM kursantet WHERE statusi='pabere' AND Datakursit >= '$firstday'";
                     }
-                    // echo $sqlquery;
                     $kursantet=mysqli_query($link, $sqlquery) or die(mysqli_error($link));;
                     while ($row = mysqli_fetch_array($kursantet)) { 
 

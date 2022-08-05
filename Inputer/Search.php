@@ -138,7 +138,7 @@
 
                     $idkursnti = $row['PersonalId'];
                     //$kursi = "SELECT * FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursanti='$idkursnti'";
-                    $kursi = "SELECT * FROM organizimkursantesh1 WHERE  idkursanti='$idkursnti'";
+                    $kursi = "SELECT * FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursanti='$idkursnti'";
                     $kursiresult =mysqli_query($link, $kursi);
                     $rowkursi = mysqli_fetch_array($kursiresult);
 
