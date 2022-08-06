@@ -68,7 +68,7 @@
 
             $(document).ready(function() {
             $('#tabela-kursanteve').after('<div id="nav"></div>');
-            var rowsShown = 12;
+            var rowsShown = 13;
             var rowsTotal = $('#tabela-kursanteve tbody tr').length;
             var numPages = rowsTotal / rowsShown;
             for (i = 0; i < numPages; i++) {

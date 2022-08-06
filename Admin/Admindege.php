@@ -183,6 +183,7 @@
                     <th>Instruktori</th>
                     <th>Orari</th>
                     <th>Data</th>
+                    <th>Te Rregjistruar</th>
                     <th>Action</th>
                 </tr>
                 <tr>
@@ -204,13 +205,22 @@
                         $sqlInstruktori = "SELECT * FROM staf WHERE ID =  '$idInstruktori';";
                         $instruktori = mysqli_query($link, $sqlInstruktori);
                         $rowInstruktori = mysqli_fetch_array($instruktori);
+
+                        $idkursi =  $row['idkursi'];
+
+                        $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi = '$idkursi';";
+                        $resultKursante = mysqli_query($link, $kursanteneKurs);
+                        $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                
+                        $kursantetGjetur = $rowKasiKursantesh['Sasia'];
                         ?> 
-                    <td><?php echo $row['idkursi']; ?></td>
+                    <td><?php echo $idkursi ?></td>
                     <td><?php echo decrypt($rowKlasa['Emri']); ?></td>
                     <td><?php echo decrypt($rowInstruktori['Emri']);?>  <?php echo decrypt($rowInstruktori['Mbiemri']); ?></td>
                     <td><?php echo $row['orari']; ?></td>
                     <td><?php echo date('d/m/Y',strtotime($row['data'])); ?></td>
-                    <td class="text-left"><button onclick="location.href = '../methods/ndryshoplanifikim.php?id=<?php echo $row['idkursi'];?>'" >Modifiko</button></td>
+                    <td><?php echo $kursantetGjetur ?></td>
+                    <td class="text-left"><button class="btn btn-secondary" onclick="location.href = '../methods/ndryshoplanifikim.php?id=<?php echo $row['idkursi'];?>'" >Modifiko</button><button class="btn btn-danger" onclick="location.href = '../methods/fshiplanifikim.php?id=<?php echo $row['idkursi'];?>'" >Fshi</button></td>
                 </tr> 
                 <?php } ?>
             </table>

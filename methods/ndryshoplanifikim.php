@@ -96,7 +96,7 @@ if (!isset($_SESSION['user'])) {
     
 <button class="btn btn-info" onclick="location.href = '../admin/admindege.php';" id="myButton" > Ktheu</button>
 <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button><br>
-<img src="../images/kkshlogo.png" alt="Simply Easy Learning" id="KKSH_logo">
+
     <div id="form">
         <form action="../dao/modifikotimetable.php?edit=<?php echo $idPlanifikimi ?>" method="POST">
             <div id="instruktori">
