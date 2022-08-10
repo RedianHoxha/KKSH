@@ -56,28 +56,21 @@ if (!isset($_SESSION['user'])) {
                 }
                 
                 $idPlanifikimi = $_GET['id'];
-                $planifikim  = "SELECT * FROM  programijavor WHERE idkursi = ?";
-                $stmt = mysqli_stmt_init($link);
-                if(!mysqli_stmt_prepare($stmt,$planifikim))
-                {
-                    echo  'Prove e deshtuar';
-                }
-                else
-                {
-                    mysqli_stmt_bind_param($stmt, "s" ,$idPlanifikimi);
-                    mysqli_stmt_execute($stmt);
-                    $result = mysqli_stmt_get_result($stmt);
-                    $row =mysqli_fetch_assoc($result);
-                    $idInstruktori = $row['idinstruktori'];
-
-                    $idKlase = $row['idklase'];
+                $planifikim  = "SELECT * FROM  programijavor WHERE idkursi = '$idPlanifikimi'";
+                $resultplanifikim = mysqli_query($link, $planifikim);
+                if($resultplanifikim){
+                    $rowplanifikim = mysqli_fetch_array($resultplanifikim);
+                    $idInstruktori = $rowplanifikim['idinstruktori'];
+                    $idKlase = $rowplanifikim['idklase'];
                     $sqlklasaExistuse="SELECT * FROM  klasa WHERE ID = '$idKlase'";
                     $klasaExistuse=mysqli_query($link, $sqlklasaExistuse);
                     $rowklasaExistuse = mysqli_fetch_array($klasaExistuse);
                     $existKlasName = $rowklasaExistuse['Emri'];
-
-                    $idOrarikursit = $row['data'];
-                    $orari = $row['orari'];
+    
+                    $idOrarikursit = $rowplanifikim['data'];
+                    $orari = $rowplanifikim['orari'];
+                }else{
+                    echo "Something went wrong during getting info for this planifikim";
                 }
             }
         }

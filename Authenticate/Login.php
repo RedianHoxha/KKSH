@@ -10,22 +10,10 @@ if($link === false){
    $username= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['username'])));
    $password= encryptValues(mysqli_real_escape_string( $link,$_POST['password']));
 
-$queryuser ="SELECT * FROM staf WHERE Username= ? and Password= ?";
-$stmt = mysqli_stmt_init($link);
-if(!mysqli_stmt_prepare($stmt,$queryuser))
-{
-    echo "<script>
-        alert('Retry');
-        window.location.href='../panelstaf/index.php';
-        </script>";
-}
-else
-{
-    mysqli_stmt_bind_param($stmt, "ss" ,$username, $password);
+    $queryuser ="SELECT * FROM staf WHERE Username = '$username'  and Password= '$password'";
+    $result = mysqli_query($link, $queryuser);
+    $row = mysqli_fetch_array($result);
     
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        $row =mysqli_fetch_assoc($result);
         if(mysqli_num_rows($result) > 0)
         {
            session_start();
@@ -66,5 +54,4 @@ else
             window.location.href='../panelstaf/index.php';
             </script>";
         }
-}
 ?>

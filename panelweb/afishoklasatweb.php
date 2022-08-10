@@ -2,7 +2,6 @@
 <?php
 require_once('../methods/extra_function.php');
 include('../authenticate/dbconnection.php');
-//$link = mysqli_connect("localhost", "root", "", "kksh");
 if (!$link) {
   die('Could not connect: ' . mysqli_error($con));
 }
@@ -96,7 +95,6 @@ if($isSunday){
   <tr>
   <?php 
  if(!$isSunday){
-  
   if(!$isWrongDate){
     $sqlquery="SELECT * FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00')";
     if($klasparaditenrnr>0){
@@ -104,15 +102,64 @@ if($isSunday){
             $max = $klasparaditenrnr * 12;
             $registered = mysqli_num_rows($result);
             if( $registered < $max){
-            $mbetje = $registered / 12;
                 if($registered < 13 ){
                     $idKlase = $klasparaditeid[0];
                 }else if($registered >= 13 && $registered < 25){
                     $idKlase = $klasparaditeid[1];
+
+                    $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[0]');";
+                    $resultKursante = mysqli_query($link, $kursanteneKurs);
+                    $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                    $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+                    if($kursantetGjetur < 13){
+                      $idKlase = $klasparaditeid[0];
+                    }
+
                 }else if($registered >= 25 && $registered < 37){
                     $idKlase = $klasparaditeid[2];
+                    $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[0]');";
+                    $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                    $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                    $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                    if($kursantetGjeturpare < 13){
+                      $idKlase = $klasparaditeid[0];
+                    }else{
+
+                    $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[1]');";
+                    $resultKursante = mysqli_query($link, $kursanteneKurs);
+                    $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                    $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+                    if($kursantetGjetur < 13){
+                      $idKlase = $klasparaditeid[1];
+                    }
+                  }
+
                 }else if($registered >= 37 && $registered < 49){
                   $idKlase = $klasparaditeid[3];
+                  $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[0]');";
+                    $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                    $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                    $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                    if($kursantetGjeturpare < 13){
+                      $idKlase = $klasparaditeid[0];
+                    }else{
+
+                    $kursanteneKursdyte = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[1]');";
+                    $resultKursantedyte = mysqli_query($link, $kursanteneKursdyte);
+                    $rowKasiKursanteshdyte = mysqli_fetch_array($resultKursantedyte);
+                    $kursantetGjeturdyte = $rowKasiKursanteshdyte['Sasia'];
+                    if($kursantetGjeturdyte < 13){
+                      $idKlase = $klasparaditeid[1];
+                    }else{
+                      $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[2]');";
+                      $resultKursante = mysqli_query($link, $kursanteneKurs);
+                      $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                      $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+                      if($kursantetGjetur < 13){
+                        $idKlase = $klasparaditeid[2];
+                      }
+                    }
+                  }
                 }
 
                 $selectidkursi = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '9:00 - 13:00'";
@@ -145,18 +192,66 @@ if($isSunday){
           $resultmesdit = mysqli_query($link,$sqlquerymesdit);
           $max = $klasmesditnr * 12;
         if(mysqli_num_rows($resultmesdit) < $max){
-
             $registered = mysqli_num_rows($resultmesdit);
-            $mbetje = $registered / 12;
             if($registered < 13 ){
-                $idKlase = $klasmesditid[0];
+              $idKlase = $klasmesditid[0];
             }else if($registered >= 13 && $registered < 25){
-                $idKlase = $klasmesditid[1];
-            }else if($registered >= 25 && $registered < 37){
-                $idKlase = $klasmesditid[2];
-            }else if($registered >= 37 && $registered < 49){
-              $idKlase = $klasmesditid[3];
-            }
+              $idKlase = $klasmesditid[1];
+            
+              $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[0]');";
+              $resultKursante = mysqli_query($link, $kursanteneKurs);
+              $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+              $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+              if($kursantetGjetur < 13){
+                $idKlase = $klasmesditid[0];
+              }
+        
+              }else if($registered >= 25 && $registered < 37){
+                  $idKlase = $klasmesditid[2];
+                  $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[0]');";
+                  $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                  $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                  $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                  if($kursantetGjeturpare < 13){
+                    $idKlase = $klasmesditid[0];
+                  }else{
+
+                  $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[1]');";
+                  $resultKursante = mysqli_query($link, $kursanteneKurs);
+                  $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                  $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+                  if($kursantetGjetur < 13){
+                    $idKlase = $klasmesditid[1];
+                  }
+                }
+
+              }else if($registered >= 37 && $registered < 49){
+                $idKlase = $klasmesditid[3];
+                $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[0]');";
+                  $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                  $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                  $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                  if($kursantetGjeturpare < 13){
+                    $idKlase = $klasmesditid[0];
+                  }else{
+
+                  $kursanteneKursdyte = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[1]');";
+                  $resultKursantedyte = mysqli_query($link, $kursanteneKursdyte);
+                  $rowKasiKursanteshdyte = mysqli_fetch_array($resultKursantedyte);
+                  $kursantetGjeturdyte = $rowKasiKursanteshdyte['Sasia'];
+                  if($kursantetGjeturdyte < 13){
+                    $idKlase = $klasmesditid[1];
+                  }else{
+                    $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[2]');";
+                    $resultKursante = mysqli_query($link, $kursanteneKurs);
+                    $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                    $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+                    if($kursantetGjetur < 13){
+                      $idKlase = $klasmesditid[2];
+                    }
+                  }
+                }
+              }
               $selectidkursidrek = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '13:00 - 17:00'";
               $resultkursidrek = mysqli_query($link,$selectidkursidrek);
               $rowkursidrek= mysqli_fetch_array($resultkursidrek);
@@ -187,21 +282,67 @@ if($isSunday){
         if($klaspasditenr>0){
           $resultbasdite = mysqli_query($link,$sqlquerymbasdite);
           $max = $klaspasditenr * 12;
-         
           $registered = mysqli_num_rows($resultbasdite);
           if($registered < $max){
-
-            
-            $mbetje = $registered / 12;
             if($registered < 13 ){
-                $idKlase = $klaspasditeid[0];
+              $idKlase = $klaspasditeid[0];
             }else if($registered >= 13 && $registered < 25){
-                $idKlase = $klaspasditeid[1];
-            }else if($registered >= 25 && $registered < 37){
-                $idKlase = $klaspasditeid[2];
-            }else if($registered >= 37 && $registered < 49){
-              $idKlase = $klaspasditeid[3];
-            }
+              $idKlase = $klaspasditeid[1];
+
+              $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[0]');";
+              $resultKursante = mysqli_query($link, $kursanteneKurs);
+              $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+              $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+              if($kursantetGjetur < 13){
+                $idKlase = $klaspasditeid[0];
+              }
+
+                }else if($registered >= 25 && $registered < 37){
+                    $idKlase = $klaspasditeid[2];
+                    $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[0]');";
+                    $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                    $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                    $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                    if($kursantetGjeturpare < 13){
+                      $idKlase = $klaspasditeid[0];
+                    }else{
+
+                    $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[1]');";
+                    $resultKursante = mysqli_query($link, $kursanteneKurs);
+                    $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                    $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+                    if($kursantetGjetur < 13){
+                      $idKlase = $klaspasditeid[1];
+                    }
+                  }
+
+                }else if($registered >= 37 && $registered < 49){
+                  $idKlase = $klaspasditeid[3];
+                  $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[0]');";
+                    $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                    $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                    $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                    if($kursantetGjeturpare < 13){
+                      $idKlase = $klaspasditeid[0];
+                    }else{
+
+                    $kursanteneKursdyte = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[1]');";
+                    $resultKursantedyte = mysqli_query($link, $kursanteneKursdyte);
+                    $rowKasiKursanteshdyte = mysqli_fetch_array($resultKursantedyte);
+                    $kursantetGjeturdyte = $rowKasiKursanteshdyte['Sasia'];
+                    if($kursantetGjeturdyte < 13){
+                      $idKlase = $klaspasditeid[1];
+                    }else{
+                      $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[2]');";
+                      $resultKursante = mysqli_query($link, $kursanteneKurs);
+                      $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                      $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+                      if($kursantetGjetur < 13){
+                        $idKlase = $klaspasditeid[2];
+                      }
+                    }
+                  }
+                }
                 $selectidkursimbasdit = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '17:00 - 21:00'";
                 $resultkursimbasdi = mysqli_query($link,$selectidkursimbasdit);
                 $rowkursimbasdit= mysqli_fetch_array($resultkursimbasdi);
@@ -240,17 +381,65 @@ if($isSunday){
             $max = $klasdieleenr * 12;
           if(mysqli_num_rows($resultdiele) < $max){
 
-              $registered = mysqli_num_rows($resultdiele);
-              $mbetje = $registered / 12;
-              if($registered < 13 ){
-                  $idKlase = $klasdiele[0];
-              }else if($registered >= 13 && $registered < 25){
-                  $idKlase = $klasdiele[1];
-              }else if($registered >= 25 && $registered < 37){
-                $idKlase = $klasdiele[2];
-              } else if($registered >= 37 && $registered < 49){
-                  $idKlase = $klasdiele[3];
+            $registered = mysqli_num_rows($resultdiele);
+            if($registered < 13 ){
+              $idKlase = $klasdiele[0];
+            }else if($registered >= 13 && $registered < 25){
+              $idKlase = $klasdiele[1];
+              $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[0]');";
+              $resultKursante = mysqli_query($link, $kursanteneKurs);
+              $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+              $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+              if($kursantetGjetur < 13){
+                $idKlase = $klasdiele[0];
               }
+
+                }else if($registered >= 25 && $registered < 37){
+                      $idKlase = $klasdiele[2];
+                      $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[0]');";
+                      $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                      $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                      $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                      if($kursantetGjeturpare < 13){
+                        $idKlase = $klasdiele[0];
+                      }else{
+
+                      $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[1]');";
+                      $resultKursante = mysqli_query($link, $kursanteneKurs);
+                      $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                      $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+                      if($kursantetGjetur < 13){
+                        $idKlase = $klasdiele[1];
+                      }
+                    }
+
+                  }else if($registered >= 37 && $registered < 49){
+                    $idKlase = $klasdiele[3];
+                    $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[0]');";
+                      $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                      $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                      $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                      if($kursantetGjeturpare < 13){
+                        $idKlase = $klasdiele[0];
+                      }else{
+
+                      $kursanteneKursdyte = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[1]');";
+                      $resultKursantedyte = mysqli_query($link, $kursanteneKursdyte);
+                      $rowKasiKursanteshdyte = mysqli_fetch_array($resultKursantedyte);
+                      $kursantetGjeturdyte = $rowKasiKursanteshdyte['Sasia'];
+                      if($kursantetGjeturdyte < 13){
+                        $idKlase = $klasdiele[1];
+                      }else{
+                        $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[2]');";
+                        $resultKursante = mysqli_query($link, $kursanteneKurs);
+                        $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                        $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+                        if($kursantetGjetur < 13){
+                          $idKlase = $klasdiele[2];
+                        }
+                      }
+                    }
+                  }
                   $selectidkursidiele = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '09:00 - 15:00'";
                   $resultkursidiele = mysqli_query($link,$selectidkursidiele);
                     $rowkursidiele= mysqli_fetch_array($resultkursidiele);

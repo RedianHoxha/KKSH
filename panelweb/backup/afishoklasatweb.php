@@ -15,7 +15,7 @@ $isWrongDate;
 $timestamp = strtotime($dataZgjedhur);
 $weekday= date("l", $timestamp );
 $normalized_weekday = strtolower($weekday);
-if($normalized_weekday == "sunday"){
+if($normalized_weekday == "sunday" || $normalized_weekday == "saturday"){
   $isSunday = true;
 } else {
   $isSunday = false;
@@ -103,17 +103,16 @@ if($isSunday){
             $result = mysqli_query($link,$sqlquery);
             $max = $klasparaditenrnr * 12;
             $registered = mysqli_num_rows($result);
-            if( $registered< $max){
+            if( $registered < $max){
             $mbetje = $registered / 12;
-
-                if($mbetje < 1 ){
+                if($registered < 13 ){
                     $idKlase = $klasparaditeid[0];
-                }else if($mbetje >= 1 && $mbetje < 2){
+                }else if($registered >= 13 && $registered < 25){
                     $idKlase = $klasparaditeid[1];
-                }else if($mbetje >= 2 && $mbetje < 3){
+                }else if($registered >= 25 && $registered < 37){
                     $idKlase = $klasparaditeid[2];
-                }else{
-                    $idKlase = $klasparaditeid[3];
+                }else if($registered >= 37 && $registered < 49){
+                  $idKlase = $klasparaditeid[3];
                 }
 
                 $selectidkursi = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '9:00 - 13:00'";
@@ -149,14 +148,14 @@ if($isSunday){
 
             $registered = mysqli_num_rows($resultmesdit);
             $mbetje = $registered / 12;
-            if($mbetje < 1 ){
+            if($registered < 13 ){
                 $idKlase = $klasmesditid[0];
-            }else if($mbetje >= 1 && $mbetje < 2){
+            }else if($registered >= 13 && $registered < 25){
                 $idKlase = $klasmesditid[1];
-            }else if($mbetje >= 2 && $mbetje < 3){
+            }else if($registered >= 25 && $registered < 37){
                 $idKlase = $klasmesditid[2];
-            }else{
-                $idKlase = $klasmesditid[3];
+            }else if($registered >= 37 && $registered < 49){
+              $idKlase = $klasmesditid[3];
             }
               $selectidkursidrek = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '13:00 - 17:00'";
               $resultkursidrek = mysqli_query($link,$selectidkursidrek);
@@ -188,18 +187,20 @@ if($isSunday){
         if($klaspasditenr>0){
           $resultbasdite = mysqli_query($link,$sqlquerymbasdite);
           $max = $klaspasditenr * 12;
-        if(mysqli_num_rows($resultbasdite) < $max){
+         
+          $registered = mysqli_num_rows($resultbasdite);
+          if($registered < $max){
 
-            $registered = mysqli_num_rows($resultbasdite);
+            
             $mbetje = $registered / 12;
-            if($mbetje < 1 ){
+            if($registered < 13 ){
                 $idKlase = $klaspasditeid[0];
-            }else if($mbetje >= 1 && $mbetje < 2){
+            }else if($registered >= 13 && $registered < 25){
                 $idKlase = $klaspasditeid[1];
-            }else if($mbetje >= 2 && $mbetje < 3){
+            }else if($registered >= 25 && $registered < 37){
                 $idKlase = $klaspasditeid[2];
-            }else{
-                $idKlase = $klaspasditeid[3];
+            }else if($registered >= 37 && $registered < 49){
+              $idKlase = $klaspasditeid[3];
             }
                 $selectidkursimbasdit = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '17:00 - 21:00'";
                 $resultkursimbasdi = mysqli_query($link,$selectidkursimbasdit);
@@ -228,7 +229,7 @@ if($isSunday){
         }
         }else{
           ?>
-          <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs! Kursi organizohet në këto ditë të javës: 'E Hënë', 'E Mërkurë', 'E Premte', 'E Djelë'</td></tr>
+          <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs! Kursi organizohet në këto ditë të javës: 'E Hënë', 'E Mërkurë', 'E Premte', 'E Shtunë', 'E Djelë'</td></tr>
         <?php
         }
       }else{
@@ -241,13 +242,13 @@ if($isSunday){
 
               $registered = mysqli_num_rows($resultdiele);
               $mbetje = $registered / 12;
-              if($mbetje < 1 ){
+              if($registered < 13 ){
                   $idKlase = $klasdiele[0];
-              }else if($mbetje >= 1 && $mbetje < 2){
+              }else if($registered >= 13 && $registered < 25){
                   $idKlase = $klasdiele[1];
-              }else if($mbetje >= 2 && $mbetje < 3){
+              }else if($registered >= 25 && $registered < 37){
                 $idKlase = $klasdiele[2];
-              } else{
+              } else if($registered >= 37 && $registered < 49){
                   $idKlase = $klasdiele[3];
               }
                   $selectidkursidiele = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '09:00 - 15:00'";
@@ -257,7 +258,7 @@ if($isSunday){
                     ?>
                         <td class="text-left" style="text-align: center;">09:00 - 15:00</td>
                         <td class="text-left" style="text-align: center;"><?php echo $dataZgjedhur ?></td>
-                        <td class="text-left " style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursidiele['idkursi'] ?>"required>Zgjidh<?php echo $rowkursidiele['idkursi'] ?></input></td>
+                        <td class="text-left " style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursidiele['idkursi'] ?>"required>Zgjidh</input></td>
                     </tr>
                     <?php 
                 }else{
