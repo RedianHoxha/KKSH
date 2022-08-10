@@ -40,7 +40,7 @@ $klasa=mysqli_query($link, $queryklasa);
 $rowklasa = mysqli_fetch_array($klasa);
 $idklase = $rowklasa['ID'];
 
-  $sqlquery="SELECT * FROM `kursantet` WHERE Datakursit = '$dataKursit' AND Orari = '$orari' AND IdKursi IN (SELECT IdKursi FROM programijavor WHERE idklase =$idklase);";
+  $sqlquery="SELECT * FROM `kursantet` WHERE Datakursit = '$dataKursit' AND Orari = '$orari' AND Statusi = 'pabere' AND IdKursi IN (SELECT IdKursi FROM programijavor WHERE idklase =$idklase);";
   if($result = mysqli_query($link,$sqlquery))
       {
         if(mysqli_num_rows($result) != 0)
@@ -50,7 +50,7 @@ $idklase = $rowklasa['ID'];
           {
             ?>
                 <td class="text-left"><?php echo $nrRendor ?></td>
-                <td class="text-left"><?php echo $row['DataRregjistrimit'] ?></td>
+                <td class="text-left"><?php echo date('d/m/Y',strtotime($row['DataRregjistrimit'])) ?></td>
                 <td class="text-left"><?php echo 'A' ?></td>
                 <td class="text-left"><?php echo decrypt($row['Emri']) ?></td>
                 <td class="text-left"><?php echo decrypt($row['Mbiemri']) ?></td>

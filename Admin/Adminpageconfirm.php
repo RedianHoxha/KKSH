@@ -100,8 +100,11 @@
                     <?php } ?>
             </select>
             <button class="btn btn-success" id="button-a" onclick="generate()">Gjenero Excel</button>   
-            <button class="btn btn-success" id="button-a" onclick="location.href = 'adminarkiva.php';">Arkiva</button>     
-            <!-- <button class="btn btn-success" id="button-a" onclick="location.href = 'fshirecords.php';">Fshi</button>      -->
+            <button class="btn btn-success" id="button-a" onclick="location.href = 'adminarkiva.php';">Arkiva</button>    
+             <!--<button class="btn btn-success" id="button-a" onclick="location.href = 'uploadfoton.php';">Test Foton</button>  
+             <button class="btn btn-success" id="button-a" onclick="location.href = 'retrive.php';">Fshi2</button>
+             <button class="btn btn-success" id="button-a" onclick="location.href = 'proceduraperliveshtimikolones/addcolumn.php';">Shto Kolonen </button>
+             <button class="btn btn-success" id="button-a" onclick="location.href = 'modifikostatus.php';">Fshi</button> -->
             <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>          
             <script>
                 function exportToExel(dataSource)

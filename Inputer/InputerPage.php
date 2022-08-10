@@ -128,21 +128,16 @@
                 </div><br>
                 <div id="datvendlindje">
                     <p id="datelindja">Datelindja</p>
-                    <input class="input100" id="datelindja-txt" type="date" name="datelindja-txt" required>
+                    <input class="input100" id="datelindja-txt" type="date" name="datelindja-txt" placeholder="dd-mm-yyyy"  required>
                     <p id="vendbanim">Venbanim</p>
                     <input class="input100" id="vendbanim-txt" type="text" 
                     name="vendbanim-txt" placeholder="Adresa ku banon" autocomplete="off" required>
                 </div>
+                
                 <div id="tel">
                     <p id="telefoni">Telefoni</p>
                     <input class="input100" id="tel-txt" type="number" 
                     name="tel-txt" placeholder="Telefoni" autocomplete="off" required>
-                    <p id="telefoni">Email</p>
-                    <input class="input100" id="email-txt" type="text" 
-                    name="email-txt" placeholder="Email" autocomplete="off" required>
-                    <p id="telefoni">Numri i pageses</p>
-                    <input class="input100" id="payment-txt" type="text" 
-                    name="payment-txt" placeholder="Numri i Pageses" autocomplete="off" required>
                 </div><br>
                 <div id="datakursit">
                     <p id="datakursit">Data dhe Orari i Kursit<span style="color:red">   Kontrollo orarin para se te besh rregjistrimin</span></p>

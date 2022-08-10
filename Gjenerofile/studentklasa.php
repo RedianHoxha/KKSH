@@ -27,12 +27,12 @@ while ($array = mysqli_fetch_row($resultinsert)) {
    $jsonDataCopy[] = $array;
 
    $jsonDataCopy[0] = $increment;
-   $jsonDataCopy[1] = $array[0];
+   $jsonDataCopy[1] = date('d/m/Y',strtotime($array[0]));
    $jsonDataCopy[2] = "A";
    $jsonDataCopy[3] = decrypt($array[1]);
    $jsonDataCopy[4] = decrypt($array[2]);
    $jsonDataCopy[5] = decrypt($array[3]);
-   $jsonDataCopy[6] = $array[4];
+   $jsonDataCopy[6] = date('d/m/Y',strtotime($array[4]));
    $jsonDataCopy[7] = $array[5];
    $jsonDataCopy[8] = decrypt($array[6]);
    $jsonDataCopy[9] = decrypt($array[7]);

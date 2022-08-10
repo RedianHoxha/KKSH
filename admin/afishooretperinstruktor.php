@@ -80,7 +80,7 @@ if($result = mysqli_query($link,$sqlquery))
                             <td class="text-left"><?php echo $emriPersonit ?></td>
                             <td class="text-left"><?php echo decrypt($row['Amza']) ?></td>
                             <td class="text-left"><?php echo decrypt($row['NrSerisDeshmis']) ?></td>
-                            <td class="text-left"><?php echo $row['Datakursit']?></td>
+                            <td class="text-left"><?php echo date('d/m/Y',strtotime($row['Datakursit']))?></td>
                             <td class="text-left"><?php echo $row['Orari']?></td>
                         </tr>
                         <?php 

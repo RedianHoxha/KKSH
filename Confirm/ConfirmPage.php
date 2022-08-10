@@ -62,87 +62,93 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>                
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script>
-            // $(document).ready(function(){
-            //     $("button").click(function(){
-            //         var rowCount = $('#tabela-kursanteve tbody tr').length;
-            //         alert(rowCount); // Outputs: 4
-            //     });
-            // });
-
-            $(document).ready(function() {
-            $('#tabela-kursanteve').after('<div id="nav"></div>');
-            var rowsShown = 12;
-            var rowsTotal = $('#tabela-kursanteve tbody tr').length;
-            var numPages = rowsTotal / rowsShown;
-            for (i = 0; i < numPages; i++) {
-                var pageNum = i + 1;
-                $('#nav').append('<a href="#" class="btn" rel="' + i + '">' + pageNum + '</a> ');
+            function showklasCoursant() {
+                var klasa = document.getElementById("klasa").value;
+                var data = document.getElementById("data").value;
+                var orari = document.getElementById("orari").value;
+                document.getElementById("txtHint").innerHTML = klasa;
+                //var data = klasa.toString();
+                if (klasa == "") {
+                    document.getElementById("txtHint").innerHTML = "";
+                    return;
+                } else {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("txtHint").innerHTML = this.responseText;
+                        }
+                    };
+                    xmlhttp.open("GET", `afishokursantetperklase.php?data=${data}&klasa=${klasa}&orari=${orari}`, true);
+                    xmlhttp.send();
+                }
             }
-            $('#tabela-kursanteve tbody tr').hide();
-            $('#tabela-kursanteve tbody tr').slice(0, rowsShown).show();
-            $('#nav a:first').addClass('active');
-            $('#nav a').bind('click', function() {
 
-                $('#nav a').removeClass('active');
-                $(this).addClass('active');
-                var currPage = $(this).attr('rel');
-                var startItem = currPage * rowsShown;
-                var endItem = startItem + rowsShown;
-                $('#tabela-kursanteve tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
-                css('display', 'table-row').animate({
-                opacity: 1
-                }, 300);
-            });
-        });
+    function saveTable() {
+        var table = document.getElementById("tabela-kursanteve");
+        var rows = table.getElementsByTagName("tr");
+        var tableLength = table.rows.length;
+        var i;
+        if(tableLength == 1) {
+            alert("Nuk ka Asnje rresht per tu rregjistruar");
+            return;
+        } else {
+            for(i=1;i<tableLength; i++){
+                var idkursanti = table.rows[i].cells[0].innerHTML;
+                var amza = table.rows[i].cells[7].innerHTML;
+                var nrseris = table.rows[i].cells[8].innerHTML;
+                
+                var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            document.getElementById("txtHint").innerHTML = this.responseText;
+                        }
+                    };
+                xmlhttp.open("GET", `ruajamzen.php?id=${idkursanti}&amza=${amza}&seri=${nrseris}`, true);
+                xmlhttp.send();
+            }
+        }
+    }
+
         </script>
     </head>
     <body>
-        <div id="top-page">
+    <div id="top-page">
             <div id="logout">
                 <button class="btn btn-secondary" onclick="location.href = 'arkiva.php';" id="myButton" >Arkiva</button>
+                <button class="btn btn-secondary" onclick="location.href = 'shtokursantpakurs.php';" id="myButton" >Rregjistro Kursant</button>
+                <button class="btn btn-secondary" onclick="location.href = 'confirmpageold.php';" id="myButton" >Search</button>
                 <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
             </div>
-            <div id="top-page-left">
-                <form action="searchamza.php" method="POST"> 
-                    <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search">
-                    <button  class="btn btn-secondary" type="submit" id="search-button">Search</button>
-                </form>
-            </div>
-        </div>
-        <table id="tabela-kursanteve" class="table table-striped table-bordered table-sm">
-            <tr>
-                <th>ID</th>
-                <th>Emri</th>
-                <th>Mbiemri</th>
-                <th>Atesia</th>
-                <th>Vendbanimi</th>
-                <th>Telefoni</th>
-                <th>Datelindja</th>
-                <th>Amza</th>
-                <th>Nr Serie</th>
-                <th>Data</th>
-                <th>Action</th>
-            </tr>
-            <tr>
-               <?php $sqlquery="SELECT * FROM kursantet WHERE Statusi='pabere' AND Dega = '$degaid'";
-                 $kursantet=mysqli_query($link, $sqlquery);
-                 while ($row = mysqli_fetch_array($kursantet)) { ?>
-
-                <td class="text-left"><?php echo decrypt($row['PersonalId']); ?></td>
-                <td class="text-left"><?php echo decrypt($row['Emri']); ?></td>
-                <td class="text-left"><?php echo decrypt($row['Mbiemri']); ?></td>
-                <td class="text-left"><?php echo decrypt($row['Atesia']); ?></td>
-                <td class="text-left"><?php echo decrypt($row['Vendbanimi']); ?></td>
-                <td class="text-left"><?php echo $row['Telefoni']; ?></td>
-                <td class="text-left"><?php echo $row['Datelindja']; ?></td>
-                <td class="text-left"><?php echo decrypt($row['Amza']); ?></td>
-                <td class="text-left"><?php echo decrypt($row['NrSerisDeshmis']); ?></td>
-                <td class="text-left"><?php echo $row['Datakursit']; ?></td>
-                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../methods/ndryshoamzen.php?id=<?php echo $row['ID'];?>'" >Ploteso Amzen</button><button class="btn btn-secondary" onclick="location.href = '../methods/munges.php?id=<?php echo $row['ID'];?>'" >Mungoi</button><button class="btn btn-danger" onclick="location.href = '../methods/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
-            </tr>
+    </div>
+    <div id="selection-criteria">
+        <div class="form-field col-lg-3 ">
+            <label for="klasa">Zgjidh Klasen:</label></br>
+            <select class="form-select" aria-label="Klasa" id="klasa" name="klasa" onchange=showklasCoursant()>
+            <?php 
+                $sqlquery="SELECT * FROM klasa WHERE Qyteti = '$degaid'";
+                $qytetet=mysqli_query($link, $sqlquery);
+                while ($row = mysqli_fetch_array($qytetet)) { 
+                    $emriKlases = $row['Emri'];
+                    ?>
+                <option value="<?php echo decrypt($emriKlases) ?>"><?php echo decrypt($emriKlases) ?></option>
             <?php } ?>
-        </table>      
-       
+            </select>
+        </div>
+        <div class="form-field col-lg-6 ">
+            <label for="data">Data e kursit:</label></br>
+            <input type="date" id="data" name="data" onchange=showklasCoursant()></br>
+        
+            <label for="orari">Orari</label>
+            <select class="form-select" aria-label="Default select example" onchange=showklasCoursant() id="orari" name="orari" style="width:30%;" required>
+                <option value="9:00 - 13:00">9:00 - 13:00</option>
+                <option value="13:00 - 17:00">13:00 - 17:00</option>
+                <option value="17:00 - 21:00">17:00 - 21:00</option>
+                <option value="09:00 - 15:00">09:00 - 15:00</option>
+            </select>
+        </div>
+    </div>
+    <div>
+        <div id="txtHint"></div>
+    </div>
     </body>
-    
 </html>

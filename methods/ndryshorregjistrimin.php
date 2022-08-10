@@ -54,20 +54,15 @@
                     
                     $idkursanti = $_GET['id'];
 
-                    $kursanti = "SELECT * FROM  kursantet WHERE ID = ?;";
-                    $stmt = mysqli_stmt_init($link);
-                    if(!mysqli_stmt_prepare($stmt,$kursanti))
-                    {
-                        echo  'Prove e deshtuar';
-                    }
-                    else
-                    {
-                        mysqli_stmt_bind_param($stmt, "s" ,$idkursanti);
-                        mysqli_stmt_execute($stmt);
-                        $result = mysqli_stmt_get_result($stmt);
-                        $row =mysqli_fetch_assoc($result);
+                    $kursanti = "SELECT * FROM  kursantet WHERE ID = '$idkursanti';";
+                    $resultKursant = mysqli_query($link, $kursanti);
+                    if($resultKursant){
+                        $row = mysqli_fetch_array($resultKursant);
                         $data = $row['Datakursit'];
                         $idpersonalekursanti = $row['PersonalId'];
+
+                    }else{
+                        echo "Something went wrong during getting info for this person";
                     }
                 }
 			}
@@ -193,7 +188,7 @@
                                         <td class="text-left"><?php echo $kursantet ?></td>
                                         <td class="text-left"><?php echo $kapacitetiKlases ?></td>
                                         <td class="text-left"><?php echo $orarikursitexistues ?></td>
-                                        <td class="text-left"><input type="radio" name="select" checked="checked" value="<?php echo $idKursi ?>">Choose</radio></td>
+                                        <td class="text-left"><input type="radio" id="select" name="select" checked="checked"  value="<?php echo $idKursi ?>" required>Choose</td>
                                     </tr>
                                     <?php 
                                     }else{

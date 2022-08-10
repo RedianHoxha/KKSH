@@ -96,6 +96,7 @@
                     <option value="Admindege">Admin Dege</option>
                     <option value="Instruktor">Instruktor</option>
                     <option value="Admin">Admin</option>
+                    <option value="Financa">Financa</option>
                 </select>
             </div><br><br>
             <div id="tedhenakontakti">

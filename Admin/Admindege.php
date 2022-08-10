@@ -178,17 +178,20 @@
         <div id="tabela">
             <table id="organizim_javor" class="table table-bordered">  
                 <tr>
+                    <th>Id Kursi</th>
                     <th>Klasa</th>
                     <th>Instruktori</th>
                     <th>Orari</th>
                     <th>Data</th>
+                    <th>Te Rregjistruar</th>
                     <th>Action</th>
                 </tr>
                 <tr>
                     <?php 
-                    $firstday = date('Y-m-d', strtotime("monday -1 week"));
+                    //$firstday = date('Y-m-d', strtotime("monday -1 week"));
+                    $firstday = date('Y-m-d');
                     //$lastday = date('Y-m-d', strtotime("sunday 0 week"));
-                    $sqlquery="SELECT * FROM `programijavor` WHERE data >= '$firstday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti) ORDER BY data ASC";
+                    $sqlquery="SELECT * FROM `programijavor` WHERE data >= '$firstday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti) ORDER BY data ASC, orari ASC";
                     //$sqlquery="SELECT * FROM `programijavor` WHERE data BETWEEN '$firstday' AND '$lastday' AND idklase IN (SELECT id FROM klasa WHERE  qyteti = $idqyteti) ORDER BY data ASC";
                     //echo "<script>console.log('Debug Objects: " . $sqlquery .  "' );</script>";
                     $kursantet=mysqli_query($link, $sqlquery);
@@ -203,13 +206,22 @@
                         $sqlInstruktori = "SELECT * FROM staf WHERE ID =  '$idInstruktori';";
                         $instruktori = mysqli_query($link, $sqlInstruktori);
                         $rowInstruktori = mysqli_fetch_array($instruktori);
-                        ?> 
 
+                        $idkursi =  $row['idkursi'];
+
+                        $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi = '$idkursi';";
+                        $resultKursante = mysqli_query($link, $kursanteneKurs);
+                        $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                
+                        $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+                        ?> 
+                    <td><?php echo $idkursi ?></td>
                     <td><?php echo decrypt($rowKlasa['Emri']); ?></td>
                     <td><?php echo decrypt($rowInstruktori['Emri']);?>  <?php echo decrypt($rowInstruktori['Mbiemri']); ?></td>
                     <td><?php echo $row['orari']; ?></td>
-                    <td><?php echo $row['data']; ?></td>
-                    <td class="text-left"><button onclick="location.href = '../methods/ndryshoplanifikim.php?id=<?php echo $row['idkursi'];?>'" >Modifiko</button></td>
+                    <td><?php echo date('d/m/Y',strtotime($row['data'])); ?></td>
+                    <td><?php echo $kursantetGjetur ?></td>
+                    <td class="text-left"><button class="btn btn-secondary" onclick="location.href = '../methods/ndryshoplanifikim.php?id=<?php echo $row['idkursi'];?>'" >Modifiko</button><button class="btn btn-danger" onclick="location.href = '../methods/fshiplanifikim.php?id=<?php echo $row['idkursi'];?>'" >Fshi</button></td>
                 </tr> 
                 <?php } ?>
             </table>

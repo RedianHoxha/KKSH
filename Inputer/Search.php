@@ -46,7 +46,9 @@
                     </script>";
 				}
 				
-				$fjalakyc= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['search'])));
+				$fjala = ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['search'])));
+                $fjalaifid = encryptValues(strtoupper($fjala));
+				$fjalakyc= encryptValues($fjala);
 			}
 		}
     }
@@ -111,6 +113,8 @@
                 <th>Datelindja</th>
                 <th>Data</th>
                 <th>Orari</th>
+                <th>Instruktori</th>
+                <th>Klasa</th>
                 <th>Edito</th>
             </tr>
             <tr>
@@ -121,17 +125,41 @@
                  $sqlquery="SELECT * FROM  kursantet WHERE (Statusi='pabere' AND Emri LIKE '%{$fjalakyc}%') 
                             OR (Statusi='pabere' AND Mbiemri LIKE '%{$fjalakyc}%') 
                             OR (Statusi='pabere' AND Atesia LIKE '%{$fjalakyc}%') 
-                            OR (Statusi='pabere' AND Vendbanimi LIKE '%{$fjalakyc}%') 
-                            OR (Statusi='pabere' AND PersonalId = '$fjalakyc')";
+                            OR (Statusi='pabere' AND PersonalId = '$fjalaifid')";
                }
                else
                {
-                $sqlquery="SELECT * FROM kursantet WHERE Statusi='pabere'";
+                $today = date('Y-m-d');
+                $sqlquery="SELECT * FROM kursantet WHERE Statusi='pabere' AND Datakursit >='$today'";
                }
 
                  $kursantet=mysqli_query($link, $sqlquery);
-                 while ($row = mysqli_fetch_array($kursantet)) { ?>
+                 while ($row = mysqli_fetch_array($kursantet)) { 
 
+                    $idkursnti = $row['PersonalId'];
+                    //$kursi = "SELECT * FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursanti='$idkursnti'";
+                    $kursi = "SELECT * FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursanti='$idkursnti'";
+                    $kursiresult =mysqli_query($link, $kursi);
+                    $rowkursi = mysqli_fetch_array($kursiresult);
+
+                    $idkursi = $rowkursi['idkursi'];
+                    $instruktori = "SELECT * FROM programijavor WHERE idkursi='$idkursi'";
+                    $instruktoriresult =mysqli_query($link, $instruktori);
+                    $rowinstruktori = mysqli_fetch_array($instruktoriresult);
+
+                    $idinstruktori = $rowinstruktori['idinstruktori'];
+
+                    $instructorname = "SELECT * FROM staf where ID='$idinstruktori'";
+                    $instruktoriname =mysqli_query($link, $instructorname);
+                    $rowinstruktoriname = mysqli_fetch_array($instruktoriname);
+                    $name = decrypt($rowinstruktoriname['Emri']).' '.decrypt($rowinstruktoriname['Mbiemri']);
+
+                    $idklase = $rowinstruktori['idklase'];
+
+                    $queryklasa = "SELECT * FROM klasa WHERE ID = $idklase;";
+                    $klasaresult = mysqli_query($link, $queryklasa);
+                    $rowklasa = mysqli_fetch_array($klasaresult);
+                    ?>
                 <td class="text-left"><?php echo decrypt($row['PersonalId']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['Emri']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['Mbiemri']); ?></td>
@@ -141,8 +169,9 @@
                 <td class="text-left"><?php echo $row['Datelindja']; ?></td>
                 <td class="text-left"><?php echo $row['Datakursit']; ?></td>
                 <td class="text-left"><?php echo $row['Orari']; ?></td>
-
-                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../methods/ndryshorregjistrimin.php?id=<?php echo $row['ID'];?>'" >Ndrysho</button><button class="btn btn-danger" onclick="location.href = '../methods/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
+                <td class="text-left"><?php echo $name ?></td>
+                <td class="text-left"><?php echo decrypt($rowklasa['Emri']) ?></td>
+                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../methods/ndryshorregjistrimin.php?id=<?php echo $row['ID'];?>'" >Ndrysho</button><button class="btn btn-danger" onclick="location.href = '../methods/fshirregjistrimin.php?id=<?php echo $row['PersonalId'];?>'" >Fshi</button></td>
             </tr>
             <?php } ?>
         </table>
