@@ -201,7 +201,7 @@ if(isset($_POST["name"]))
  }
  else
  {
-  $datakursit = test_input( mysqli_real_escape_string( $link,$_POST['datakursit']));
+  $datakursituserit = test_input( mysqli_real_escape_string( $link,$_POST['datakursit']));
  }
 
  if(empty($_POST["gjinia"]))
@@ -245,6 +245,7 @@ if(isset($_POST["name"]))
     $rowtedhena = mysqli_fetch_array($resulttedhenash);
     $idklase = $rowtedhena['idklase'];
     $orari = $rowtedhena['orari'];
+    $datakursit = $rowtedhena['data'];
 
     $sqlgetnameofclass="SELECT * FROM klasa WHERE ID = '$idklase'";
     $resultemriklases = mysqli_query($link, $sqlgetnameofclass);
@@ -264,7 +265,7 @@ if(isset($_POST["name"]))
 
     $shtokursant = "INSERT INTO kursantet(PersonalId, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi, IdKursi, DataRregjistrimit, Gjinia, Amza, NrSerisDeshmis, BankName)
     VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere', '$idkursi', '$now', '$gjinia', '', '', '$bankName');";
-            $resultinsert = mysqli_query($link, $shtokursant) or die(mysqli_error($link));
+    $resultinsert = mysqli_query($link, $shtokursant) or die(mysqli_error($link));
     if($resultinsert){
 
         $quryshto = "INSERT INTO organizimkursantesh1(idkursi, idkursanti,statusi ) VALUES ('$idkursi','$id', 'pabere');";

@@ -114,7 +114,7 @@
                 </tr>
                 <tr>
                     <?php 
-                    $firstday = date('Y-m-d', strtotime("monday -1 week"));
+                    $firstday = date('Y-m-d');
                     //$lastday = date('Y-m-d', strtotime("sunday 0 week"));
                     $sqlquery="SELECT * FROM kursantet WHERE statusi='pabere' AND Datakursit >= '$firstday';";
                     $kursantet=mysqli_query($link, $sqlquery);
