@@ -222,7 +222,7 @@ if ($link === false) {
                 </div>
                 <div class="col-md-6 position-relative">
                     <label class="form-label">Data e Kursit</label><span style="color:#ff0000">*</span>
-                    <input type="date" class="form-control" name="datakursit" id="datakursit" require onchange="showclass(this.value)" >
+                    <input type="date" class="form-control" name="datakursit" id="datakursit" min="<?php echo date('Y-m-d')?>" require onchange="showclass(this.value)" >
                     <span id="datakursit_error" class="text-danger"></span>
                 </div>
                 <div class="form-field col-lg-12">

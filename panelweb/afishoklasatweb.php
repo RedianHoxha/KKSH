@@ -200,7 +200,7 @@ if (!$isSunday)
                 {
 ?>
                     <td class="text-left" style="text-align: center;">9:00 - 13:00</td>
-                    <td class="text-left" style="text-align: center;"><?php echo $dataZgjedhur ?></td>
+                    <td class="text-left" style="text-align: center;"><?php echo date('d/m/Y',strtotime($dataZgjedhur)) ?></td>
                     <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursi['idkursi'] ?>"required>Zgjidh</input></td>
                 </tr>
                 <?php
@@ -243,7 +243,7 @@ if (!$isSunday)
 
 ?>
                           <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                          <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo $datakursitgjetur ?></td>
+                          <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
                           <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
                         </tr>
                         <?php
@@ -295,7 +295,7 @@ if (!$isSunday)
 
 ?>
                         <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                        <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo $datakursitgjetur ?></td>
+                        <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
                         <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
                       </tr>
                       <?php
@@ -411,7 +411,7 @@ if (!$isSunday)
                 {
 ?>
                     <td class="text-left" style="text-align: center;">13:00 - 17:00</td>
-                    <td class="text-left" style="text-align: center;"><?php echo $dataZgjedhur ?></td>
+                    <td class="text-left" style="text-align: center;"><?php echo date('d/m/Y',strtotime($dataZgjedhur)) ?></td>
                     <td class="text-left " style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursidrek['idkursi'] ?>"required>Zgjidh</input></td>
                 </tr>
                 <?php
@@ -453,7 +453,7 @@ if (!$isSunday)
 
 ?>
                             <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                            <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo $datakursitgjetur ?></td>
+                            <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
                             <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
                           </tr>
                           <?php
@@ -505,7 +505,7 @@ if (!$isSunday)
 
 ?>
                     <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                    <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo $datakursitgjetur ?></td>
+                    <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
                     <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
                   </tr>
                   <?php
@@ -620,7 +620,7 @@ if (!$isSunday)
                 {
 ?>
                 <td class="text-left" style="text-align: center;">17:00 - 21:00</td>
-                <td class="text-left" style="text-align: center;"><?php echo $dataZgjedhur ?></td>
+                <td class="text-left" style="text-align: center;"><?php echo date('d/m/Y',strtotime($dataZgjedhur)) ?></td>
                 <td class="text-left " style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursimbasdit['idkursi'] ?>"required>Zgjidh</input></td>
               </tr>
               <?php
@@ -662,7 +662,7 @@ if (!$isSunday)
 
 ?>
                       <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                      <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo $datakursitgjetur ?></td>
+                      <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
                       <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
                     </tr>
                     <?php
@@ -714,7 +714,7 @@ if (!$isSunday)
 
 ?>
                       <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                      <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo $datakursitgjetur ?></td>
+                      <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
                       <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
                     </tr>
                     <?php
@@ -770,7 +770,7 @@ if (!$isSunday)
 
 ?>
                     <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                    <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është :  <?php echo $datakursitgjetur ?></td>
+                    <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është :  <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
                     <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
                   </tr>
                   <?php
@@ -890,7 +890,7 @@ else
             {
 ?>
                     <td class="text-left" style="text-align: center;">09:00 - 15:00</td>
-                    <td class="text-left" style="text-align: center;"><?php echo $dataZgjedhur ?></td>
+                    <td class="text-left" style="text-align: center;"><?php echo date('d/m/Y',strtotime($dataZgjedhur)) ?></td>
                     <td class="text-left " style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursidiele['idkursi'] ?>"required>Zgjidh</input></td>
                 </tr>
                 <?php
@@ -932,7 +932,7 @@ else
 
 ?>
                       <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                      <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo $datakursitgjetur ?></td>
+                      <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të liraaa është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
                       <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
                     </tr>
                     <?php
@@ -985,7 +985,7 @@ else
 
 ?>
                         <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                        <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo $datakursitgjetur ?></td>
+                        <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
                         <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
                       </tr>
                       <?php
