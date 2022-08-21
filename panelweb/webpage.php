@@ -125,7 +125,7 @@ if ($link === false) {
     <section class="get-in-touch">
         <div id="header" class="d-flex justify-content-around">
             <img src="../images/kkshlogo.png" alt="Simply Easy Learning" id="kksh_logo" class="p-2">
-            <p class="title p-2 ">Kryqi I Kuq Shqiptar</p>
+            <p class="title p-2 ">Kryqi i Kuq Shqiptar</p>
             <img src="../images/kksh_logo2.png" alt="Simply Easy Learning" id="kksh_logo100" class="p-2">
         </div>
         <div class="d-flex justify-content-start">
@@ -222,7 +222,7 @@ if ($link === false) {
                 </div>
                 <div class="col-md-6 position-relative">
                     <label class="form-label">Data e Kursit</label><span style="color:#ff0000">*</span>
-                    <input type="date" class="form-control" name="datakursit" id="datakursit" require onchange="showclass(this.value)" >
+                    <input type="date" class="form-control" name="datakursit" id="datakursit" min="<?php echo date('Y-m-d')?>" require onchange="showclass(this.value)" >
                     <span id="datakursit_error" class="text-danger"></span>
                 </div>
                 <div class="form-field col-lg-12">

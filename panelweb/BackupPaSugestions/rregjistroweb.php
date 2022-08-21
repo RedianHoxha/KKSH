@@ -38,7 +38,6 @@ if(isset($_POST["name"]))
     $personalid_error='';
     $datelindje_error='';
     $atesia_error='';
-    $email_error='';
     $tel_error='';
     $adresa_error='';
     $referenca_error='';
@@ -53,25 +52,25 @@ if(isset($_POST["name"]))
 
  if(empty($_POST["name"]))
  {
-  $emri_error = 'First name is required';
+  $emri_error = 'Emri është i detyruar';
  }
  else
  {
-  $emri = encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['name'])));
+  $emri = encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['name']))));
  }
 
  if(empty($_POST["surname"]))
  {
-  $mbiemri_error = 'Last name is required';
+  $mbiemri_error = 'Mbiemri është i detyruar';
  }
  else
  {
-  $mbiemri = encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['surname'])));
+  $mbiemri = encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['surname']))));
  }
 
  if(empty($_POST["bday"]))
  {
-  $datelindje_error = 'Birthday is required';
+  $datelindje_error = 'Datëlindja është e detyruar';
  }
  else
  {
@@ -80,93 +79,99 @@ if(isset($_POST["name"]))
 
  if(empty($_POST["father"]))
  {
-  $atesia_error = 'Your father name is required';
+  $atesia_error = 'Emri i babait është i detyruar';
  }
  else
  {
-  $atesia = encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['father'])));
+  $atesia = encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['father']))));
  }
 
  if(empty($_POST["id"]))
  {
-  $personalid_error = 'Personal Id is required';
+  $personalid_error = 'ID Personale është e detyruar';
  }
  else
  {
    if(preg_match($patternId, $_POST["id"])){
-    $id = encryptValues(test_input( mysqli_real_escape_string( $link,$_POST['id'])));
+    $idgetfromuser = test_input( mysqli_real_escape_string( $link,$_POST['id']));
+    $idcapital = strtoupper($idgetfromuser);
+    $id = encryptValues($idcapital);
+
+    $checkIfExist = "SELECT * FROM kursantet WHERE PersonalId = '$id' AND statusi = 'pabere';";
+    $resultofexist = mysqli_query($link, $checkIfExist);
+    $rowexist = mysqli_num_rows($resultofexist);
+    if($rowexist){
+      $personalid_error = 'ID Personale e juaja është përdorur me parë! Telefono në 042228199/0672063455 për të zgjidhur problemin tuaj!';
+    }
    }else{
-    $personalid_error = 'Invalid Personal Id';
+    $personalid_error = 'ID nuk është e saktë';
    }
  }
 
- if(empty($_POST["email"]))
- {
-  $email_error = 'Email is required';
- }
- else
- {
-  if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))
-  {
-   $email_error = 'Invalid Email';
-  }
-  else
-  {
-   $email =  encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['email'])));
-  }
- }
 
  if(empty($_POST["phone"]))
  {
-  $tel_error = 'Phone Number is required';
+  $tel_error = 'Numri i telefonit është i detyruar';
  }
  else
  {
    if(strlen($_POST["phone"])== 10){
     $tel = test_input(mysqli_real_escape_string( $link,$_POST['phone']));
    }else{
-    $tel_error = 'Invalid Phone Number';
+    $tel_error = 'Numri i telefonit nuk është i saktë';
    }
  }
 
 
  if(empty($_POST["my_select_box"])){
-  $bank_error = 'Choose a Bank to see Reference Number Format';
-  $referenca_error = 'Payment Number is required';
+  $bank_error = 'Zgjidhni bankën në të cilen keni kryer pagesën';
+  $referenca_error = 'Numri i pageses është i detyruar';
  }else{
   if(empty($_POST["paymentnumber"]))
   {
-   $referenca_error = 'Payment Number is required';
+   $referenca_error = 'Numri i pagesës është i detyruar';
   }
   else
   {
     switch ($_POST["my_select_box"])
     {
         case "../images/credinsbank.jpeg":
-          $patternbank="/\d{15}-\d{3}$/";
+          $patternbank="/\d{15}$/";
+          $bankName = "credins";
           break;
 
         case "../images/tiranabank.jpeg":
           $patternbank="/\d{15}$/";
+          $bankName = "tirana";
           break;
 
         case "../images/bkt.jpeg":
           $patternbank="/\d{3}[a-zA-Z]{4}\d{9}$/";
+          $bankName = "bkt";
           break;
 
         case "../images/intesa.jpeg":
           $patternbank="/[a-zA-Z]{3}\d{13}$/";
+          $bankName = "intesa";
           break;
 
         case "../images/raiffeisen.jpeg":
           $patternbank="/\d{8}$/";
+          $bankName = "raiffeisen";
           break;
     }
     if(preg_match($patternbank, $_POST["paymentnumber"]))
     {
-      $paymentnumber = test_input(mysqli_real_escape_string($link,$_POST["paymentnumber"]));
+      $paymentnumber = strtoupper(test_input(mysqli_real_escape_string($link,$_POST["paymentnumber"])));
+      $checkifthispaymentexist = "SELECT * FROM kursantet WHERE BankPayment = '$paymentnumber'";
+      $resultofexistpayment = mysqli_query($link, $checkifthispaymentexist);
+      $paymentexist = mysqli_num_rows($resultofexistpayment);
+      if($paymentexist){
+        $referenca_error = 'Kjo pagesë është përdorur më parë!';
+      }
+
     }else{
-      $referenca_error = 'Invalid Payment Number';
+      $referenca_error = 'Numri i pagesës nuk është i saktë';
     }
   }
  }
@@ -174,16 +179,16 @@ if(isset($_POST["name"]))
 
  if(empty($_POST["adress"]))
  {
-  $adresa_error = 'Address is required';
+  $adresa_error = 'Adresa është e detyruar';
  }
  else
  {
-  $vendbanim = encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['adress'])));
+  $vendbanim = encryptValues(ucfirst(test_input(mysqli_real_escape_string( $link,$_POST['adress']))));
  }
  
  if(empty($_POST["city"]))
  {
-  $qyteti_error = 'City is required';
+  $qyteti_error = 'Qyteti është i detyruar';
  }
  else
  {
@@ -192,7 +197,7 @@ if(isset($_POST["name"]))
 
  if(empty($_POST["datakursit"]))
  {
-  $datakursit_error = 'Data of Course is required';
+  $datakursit_error = 'Zgjidhni datën e kursit';
  }
  else
  {
@@ -201,7 +206,7 @@ if(isset($_POST["name"]))
 
  if(empty($_POST["gjinia"]))
  {
-  $gjinia_error = 'Gender is required';
+  $gjinia_error = 'Gjinia është e detyruar';
  }
  else
  {
@@ -209,18 +214,18 @@ if(isset($_POST["name"]))
  }
 
  if(empty($_POST["quiz"])){
-  $question_error = 'Please fill the boxh with sum of the numbers!';
+  $question_error = 'Plotësoni kutinë me rezultatin e saktë!';
  }else{
   $quizresult = test_input( mysqli_real_escape_string( $link,$_POST['quiz']));
   $hiddensum  = test_input( mysqli_real_escape_string( $link,$_POST['hiddensum']));
    if($quizresult != $hiddensum){
-    $question_error = 'Your answer is incorrect';
+    $question_error = 'Përgjigja juaj është e gabuar';
    }
  }
 
  if(empty($_POST["select"]))
  {
-  $select_error = 'Choose Course';
+  $select_error = 'Zgjidh Kursin';
  }
  else
  {
@@ -230,7 +235,7 @@ if(isset($_POST["name"]))
 
 
  if($emri_error == '' && $mbiemri_error == '' && $gjinia_error == '' && $personalid_error == ''&&  
-    $datelindje_error == ''&& $atesia_error == ''&& $email_error == ''&& $tel_error == '' && 
+    $datelindje_error == ''&& $atesia_error == ''&& $tel_error == '' && 
     $adresa_error == ''&& $referenca_error == ''&& $qyteti_error == ''&& 
     $datakursit_error == ''  && $select_error == '' && $question_error == '')
  {
@@ -241,12 +246,10 @@ if(isset($_POST["name"]))
     $idklase = $rowtedhena['idklase'];
     $orari = $rowtedhena['orari'];
 
-  $sqlgetnameofclass="SELECT * FROM klasa WHERE ID = '$idklase'";
-  $resultemriklases = mysqli_query($link, $sqlgetnameofclass);
-  $rowemriklases = mysqli_fetch_array($resultemriklases);
-  $emriklases = decrypt($rowemriklases['Emri']);
-
-
+    $sqlgetnameofclass="SELECT * FROM klasa WHERE ID = '$idklase'";
+    $resultemriklases = mysqli_query($link, $sqlgetnameofclass);
+    $rowemriklases = mysqli_fetch_array($resultemriklases);
+    $emriklases = decrypt($rowemriklases['Emri']);
 
     $sqlurlqyteti = "SELECT * FROM `qyteti` where EmriDeges = '$qyteti';";
     $resultsqlurlqyteti = mysqli_query($link, $sqlurlqyteti);
@@ -259,8 +262,8 @@ if(isset($_POST["name"]))
       $url = $row['Adresa'];
     }
 
-    $shtokursant = "INSERT INTO kursantet(PersonalId, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi, IdKursi, DataRregjistrimit, Gjinia, Amza, NrSerisDeshmis)
-    VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere', '$idkursi', '$now', '$gjinia', '', '');";
+    $shtokursant = "INSERT INTO kursantet(PersonalId, Emri, Mbiemri, Atesia, Datelindja, Vendbanimi,Telefoni, Dega, Datakursit, Orari, Email, BankPayment, Statusi, IdKursi, DataRregjistrimit, Gjinia, Amza, NrSerisDeshmis, BankName)
+    VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idQyteti', '$datakursit','$orari','$email','$paymentnumber','pabere', '$idkursi', '$now', '$gjinia', '', '', '$bankName');";
             $resultinsert = mysqli_query($link, $shtokursant) or die(mysqli_error($link));
     if($resultinsert){
 
@@ -299,7 +302,6 @@ if(isset($_POST["name"]))
     'personalid_error' => $personalid_error,
     'datelindje_error' => $datelindje_error,
     'atesia_error' => $atesia_error,
-    'email_error' => $email_error,
     'tel_error' => $tel_error,
     'adresa_error' => $adresa_error,
     'referenca_error' => $referenca_error,

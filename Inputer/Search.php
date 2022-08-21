@@ -159,6 +159,7 @@
                     $queryklasa = "SELECT * FROM klasa WHERE ID = $idklase;";
                     $klasaresult = mysqli_query($link, $queryklasa);
                     $rowklasa = mysqli_fetch_array($klasaresult);
+                    
                     ?>
                 <td class="text-left"><?php echo decrypt($row['PersonalId']); ?></td>
                 <td class="text-left"><?php echo decrypt($row['Emri']); ?></td>
