@@ -8,6 +8,8 @@ if (!$link)
 
 $dataZgjedhur = $_GET['data'];
 $city = $_GET['id'];
+$today = date('Y-m-d');
+$isEarlierThanToday;
 $isSunday;
 $isWrongDate;
 
@@ -30,6 +32,12 @@ if ($normalized_weekday == "tuesday" || $normalized_weekday == "thursday")
 else
 {
     $isWrongDate = false;
+}
+
+if($dataZgjedhur < $today){
+    $isEarlierThanToday = false;
+}else{
+    $isEarlierThanToday = true;
 }
 
 $sqlqyeti = "SELECT * FROM qyteti WHERE EmriDeges = '$city';";
@@ -101,120 +109,173 @@ else
   </thead>
   <tr>
   <?php
-if (!$isSunday)
-{
-    if (!$isWrongDate)
+if($isEarlierThanToday){
+   if (!$isSunday)
     {
-        $sqlquery = "SELECT * FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00')";
-        if ($klasparaditenrnr > 0)
+        if (!$isWrongDate)
         {
-
-            $result = mysqli_query($link, $sqlquery);
-            $max = $klasparaditenrnr * 12;
-            $registered = mysqli_num_rows($result);
-            if ($registered < $max)
+            $sqlquery = "SELECT * FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00')";
+            if ($klasparaditenrnr > 0)
             {
-                if ($registered < 13)
-                {
-                    $idKlase = $klasparaditeid[0];
-                }
-                else if ($registered >= 13 && $registered < 25)
-                {
-                    $idKlase = $klasparaditeid[1];
 
-                    $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[0]');";
-                    $resultKursante = mysqli_query($link, $kursanteneKurs);
-                    $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
-                    $kursantetGjetur = $rowKasiKursantesh['Sasia'];
-                    if ($kursantetGjetur < 13)
+                $result = mysqli_query($link, $sqlquery);
+                $max = $klasparaditenrnr * 12;
+                $registered = mysqli_num_rows($result);
+                if ($registered < $max)
+                {
+                    if ($registered < 13)
                     {
                         $idKlase = $klasparaditeid[0];
                     }
-
-                }
-                else if ($registered >= 25 && $registered < 37)
-                {
-                    $idKlase = $klasparaditeid[2];
-                    $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[0]');";
-                    $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
-                    $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
-                    $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
-                    if ($kursantetGjeturpare < 13)
+                    else if ($registered >= 13 && $registered < 25)
                     {
-                        $idKlase = $klasparaditeid[0];
-                    }
-                    else
-                    {
+                        $idKlase = $klasparaditeid[1];
 
-                        $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[1]');";
+                        $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[0]');";
                         $resultKursante = mysqli_query($link, $kursanteneKurs);
                         $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
                         $kursantetGjetur = $rowKasiKursantesh['Sasia'];
                         if ($kursantetGjetur < 13)
                         {
-                            $idKlase = $klasparaditeid[1];
+                            $idKlase = $klasparaditeid[0];
                         }
-                    }
 
-                }
-                else if ($registered >= 37 && $registered < 49)
-                {
-                    $idKlase = $klasparaditeid[3];
-                    $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[0]');";
-                    $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
-                    $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
-                    $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
-                    if ($kursantetGjeturpare < 13)
-                    {
-                        $idKlase = $klasparaditeid[0];
                     }
-                    else
+                    else if ($registered >= 25 && $registered < 37)
                     {
-
-                        $kursanteneKursdyte = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[1]');";
-                        $resultKursantedyte = mysqli_query($link, $kursanteneKursdyte);
-                        $rowKasiKursanteshdyte = mysqli_fetch_array($resultKursantedyte);
-                        $kursantetGjeturdyte = $rowKasiKursanteshdyte['Sasia'];
-                        if ($kursantetGjeturdyte < 13)
+                        $idKlase = $klasparaditeid[2];
+                        $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[0]');";
+                        $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                        $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                        $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                        if ($kursantetGjeturpare < 13)
                         {
-                            $idKlase = $klasparaditeid[1];
+                            $idKlase = $klasparaditeid[0];
                         }
                         else
                         {
-                            $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[2]');";
+
+                            $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[1]');";
                             $resultKursante = mysqli_query($link, $kursanteneKurs);
                             $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
                             $kursantetGjetur = $rowKasiKursantesh['Sasia'];
                             if ($kursantetGjetur < 13)
                             {
-                                $idKlase = $klasparaditeid[2];
+                                $idKlase = $klasparaditeid[1];
+                            }
+                        }
+
+                    }
+                    else if ($registered >= 37 && $registered < 49)
+                    {
+                        $idKlase = $klasparaditeid[3];
+                        $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[0]');";
+                        $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                        $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                        $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                        if ($kursantetGjeturpare < 13)
+                        {
+                            $idKlase = $klasparaditeid[0];
+                        }
+                        else
+                        {
+
+                            $kursanteneKursdyte = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[1]');";
+                            $resultKursantedyte = mysqli_query($link, $kursanteneKursdyte);
+                            $rowKasiKursanteshdyte = mysqli_fetch_array($resultKursantedyte);
+                            $kursantetGjeturdyte = $rowKasiKursanteshdyte['Sasia'];
+                            if ($kursantetGjeturdyte < 13)
+                            {
+                                $idKlase = $klasparaditeid[1];
+                            }
+                            else
+                            {
+                                $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '9:00 - 13:00' AND idklase = '$klasparaditeid[2]');";
+                                $resultKursante = mysqli_query($link, $kursanteneKurs);
+                                $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                                $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+                                if ($kursantetGjetur < 13)
+                                {
+                                    $idKlase = $klasparaditeid[2];
+                                }
                             }
                         }
                     }
-                }
 
-                $selectidkursi = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '9:00 - 13:00'";
-                $resultkursi = mysqli_query($link, $selectidkursi);
-                $rowkursi = mysqli_fetch_array($resultkursi);
-                if ($rowkursi > 0)
-                {
-?>
-                    <td class="text-left" style="text-align: center;">9:00 - 13:00</td>
-                    <td class="text-left" style="text-align: center;"><?php echo date('d/m/Y',strtotime($dataZgjedhur)) ?></td>
-                    <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursi['idkursi'] ?>"required>Zgjidh</input></td>
-                </tr>
-                <?php
+                    $selectidkursi = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '9:00 - 13:00'";
+                    $resultkursi = mysqli_query($link, $selectidkursi);
+                    $rowkursi = mysqli_fetch_array($resultkursi);
+                    if ($rowkursi > 0)
+                    {
+    ?>
+                        <td class="text-left" style="text-align: center;">9:00 - 13:00</td>
+                        <td class="text-left" style="text-align: center;"><?php echo date('d/m/Y',strtotime($dataZgjedhur)) ?></td>
+                        <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursi['idkursi'] ?>"required>Zgjidh</input></td>
+                    </tr>
+                    <?php
+                    }
+                    else
+                    {
+    ?>
+                        <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs në orarin 9:00 - 13:00!</td></tr>
+                        <?php
+                    }
                 }
                 else
                 {
-?>
-                    <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs në orarin 9:00 - 13:00!</td></tr>
-                    <?php
+
+                    $futureDate = date('Y-m-d', strtotime('+3 days', strtotime($dataZgjedhur)));
+                    $testdate = date('Y-m-d', strtotime('+1 days', strtotime($dataZgjedhur)));
+                    $selectpredictCourses = "SELECT idkursi FROM `programijavor` WHERE orari = '9:00 - 13:00' AND data BETWEEN '$testdate' AND '$futureDate' ORDER BY data";
+                    $resultpredictionCourses = mysqli_query($link, $selectpredictCourses);
+                    $row = mysqli_num_rows($resultpredictionCourses);
+                    if ($row > 0)
+                    {
+                        $gjetur = 0;
+                        while ($row = mysqli_fetch_array($resultpredictionCourses))
+                        {
+                            $idkursitmoment = $row['idkursi'];
+                            $selectexistkursantperkurs = "SELECT COUNT(*) AS Totali FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursi = $idkursitmoment";
+                            $resultexistkursantperkurs = mysqli_query($link, $selectexistkursantperkurs);
+                            $rowexistkursantperkurs = mysqli_fetch_array($resultexistkursantperkurs);
+                            $totali = $rowexistkursantperkurs['Totali'];
+                            if ($totali < 12)
+                            {
+
+                                $gjetur = 1;
+                                $getdateklase = "SELECT * FROM programijavor WHERE idkursi = $idkursitmoment";
+                                $resultdatakursit = mysqli_query($link, $getdateklase);
+                                $rowKkursigjetur = mysqli_fetch_array($resultdatakursit);
+
+                                $datakursitgjetur = $rowKkursigjetur['data'];
+                                $orari = $rowKkursigjetur['orari'];
+
+    ?>
+                            <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
+                            <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
+                            <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
+                            </tr>
+                            <?php
+                                break;
+                            }
+                        }
+                        if ($gjetur != 1)
+                        {
+    ?>
+                            <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
+                            <?php
+                        }
+                    }
+                    else
+                    {
+    ?>
+                        <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 09:00 - 13:00!</td></tr>
+                        <?php
+                    }
                 }
             }
             else
             {
-
                 $futureDate = date('Y-m-d', strtotime('+3 days', strtotime($dataZgjedhur)));
                 $testdate = date('Y-m-d', strtotime('+1 days', strtotime($dataZgjedhur)));
                 $selectpredictCourses = "SELECT idkursi FROM `programijavor` WHERE orari = '9:00 - 13:00' AND data BETWEEN '$testdate' AND '$futureDate' ORDER BY data";
@@ -241,10 +302,10 @@ if (!$isSunday)
                             $datakursitgjetur = $rowKkursigjetur['data'];
                             $orari = $rowKkursigjetur['orari'];
 
-?>
-                          <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                          <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
-                          <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
+    ?>
+                            <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
+                            <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
+                            <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
                         </tr>
                         <?php
                             break;
@@ -252,175 +313,175 @@ if (!$isSunday)
                     }
                     if ($gjetur != 1)
                     {
-?>
-                          <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
+    ?>
+                            <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
                         <?php
                     }
                 }
                 else
                 {
-?>
-                      <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 09:00 - 13:00!</td></tr>
-                      <?php
+    ?>
+                    <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 09:00 - 13:00!</td></tr>
+                    <?php
                 }
-            }
-        }
-        else
-        {
-            $futureDate = date('Y-m-d', strtotime('+3 days', strtotime($dataZgjedhur)));
-            $testdate = date('Y-m-d', strtotime('+1 days', strtotime($dataZgjedhur)));
-            $selectpredictCourses = "SELECT idkursi FROM `programijavor` WHERE orari = '9:00 - 13:00' AND data BETWEEN '$testdate' AND '$futureDate' ORDER BY data";
-            $resultpredictionCourses = mysqli_query($link, $selectpredictCourses);
-            $row = mysqli_num_rows($resultpredictionCourses);
-            if ($row > 0)
-            {
-                $gjetur = 0;
-                while ($row = mysqli_fetch_array($resultpredictionCourses))
-                {
-                    $idkursitmoment = $row['idkursi'];
-                    $selectexistkursantperkurs = "SELECT COUNT(*) AS Totali FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursi = $idkursitmoment";
-                    $resultexistkursantperkurs = mysqli_query($link, $selectexistkursantperkurs);
-                    $rowexistkursantperkurs = mysqli_fetch_array($resultexistkursantperkurs);
-                    $totali = $rowexistkursantperkurs['Totali'];
-                    if ($totali < 12)
-                    {
 
-                        $gjetur = 1;
-                        $getdateklase = "SELECT * FROM programijavor WHERE idkursi = $idkursitmoment";
-                        $resultdatakursit = mysqli_query($link, $getdateklase);
-                        $rowKkursigjetur = mysqli_fetch_array($resultdatakursit);
-
-                        $datakursitgjetur = $rowKkursigjetur['data'];
-                        $orari = $rowKkursigjetur['orari'];
-
-?>
-                        <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                        <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
-                        <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
-                      </tr>
-                      <?php
-                        break;
-                    }
-                }
-                if ($gjetur != 1)
-                {
-?>
-                        <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
-                      <?php
-                }
-            }
-            else
-            {
-?>
-                  <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 09:00 - 13:00!</td></tr>
-                  <?php
             }
 
-        }
-
-        $sqlquerymesdit = "SELECT * FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00')";
-        if ($klasmesditnr > 0)
-        {
-            $resultmesdit = mysqli_query($link, $sqlquerymesdit);
-            $max = $klasmesditnr * 12;
-            if (mysqli_num_rows($resultmesdit) < $max)
+            $sqlquerymesdit = "SELECT * FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00')";
+            if ($klasmesditnr > 0)
             {
-                $registered = mysqli_num_rows($resultmesdit);
-                if ($registered < 13)
+                $resultmesdit = mysqli_query($link, $sqlquerymesdit);
+                $max = $klasmesditnr * 12;
+                if (mysqli_num_rows($resultmesdit) < $max)
                 {
-                    $idKlase = $klasmesditid[0];
-                }
-                else if ($registered >= 13 && $registered < 25)
-                {
-                    $idKlase = $klasmesditid[1];
-
-                    $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[0]');";
-                    $resultKursante = mysqli_query($link, $kursanteneKurs);
-                    $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
-                    $kursantetGjetur = $rowKasiKursantesh['Sasia'];
-                    if ($kursantetGjetur < 13)
+                    $registered = mysqli_num_rows($resultmesdit);
+                    if ($registered < 13)
                     {
                         $idKlase = $klasmesditid[0];
                     }
-
-                }
-                else if ($registered >= 25 && $registered < 37)
-                {
-                    $idKlase = $klasmesditid[2];
-                    $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[0]');";
-                    $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
-                    $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
-                    $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
-                    if ($kursantetGjeturpare < 13)
+                    else if ($registered >= 13 && $registered < 25)
                     {
-                        $idKlase = $klasmesditid[0];
-                    }
-                    else
-                    {
+                        $idKlase = $klasmesditid[1];
 
-                        $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[1]');";
+                        $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[0]');";
                         $resultKursante = mysqli_query($link, $kursanteneKurs);
                         $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
                         $kursantetGjetur = $rowKasiKursantesh['Sasia'];
                         if ($kursantetGjetur < 13)
                         {
-                            $idKlase = $klasmesditid[1];
+                            $idKlase = $klasmesditid[0];
                         }
-                    }
 
-                }
-                else if ($registered >= 37 && $registered < 49)
-                {
-                    $idKlase = $klasmesditid[3];
-                    $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[0]');";
-                    $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
-                    $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
-                    $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
-                    if ($kursantetGjeturpare < 13)
-                    {
-                        $idKlase = $klasmesditid[0];
                     }
-                    else
+                    else if ($registered >= 25 && $registered < 37)
                     {
-
-                        $kursanteneKursdyte = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[1]');";
-                        $resultKursantedyte = mysqli_query($link, $kursanteneKursdyte);
-                        $rowKasiKursanteshdyte = mysqli_fetch_array($resultKursantedyte);
-                        $kursantetGjeturdyte = $rowKasiKursanteshdyte['Sasia'];
-                        if ($kursantetGjeturdyte < 13)
+                        $idKlase = $klasmesditid[2];
+                        $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[0]');";
+                        $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                        $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                        $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                        if ($kursantetGjeturpare < 13)
                         {
-                            $idKlase = $klasmesditid[1];
+                            $idKlase = $klasmesditid[0];
                         }
                         else
                         {
-                            $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[2]');";
+
+                            $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[1]');";
                             $resultKursante = mysqli_query($link, $kursanteneKurs);
                             $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
                             $kursantetGjetur = $rowKasiKursantesh['Sasia'];
                             if ($kursantetGjetur < 13)
                             {
-                                $idKlase = $klasmesditid[2];
+                                $idKlase = $klasmesditid[1];
+                            }
+                        }
+
+                    }
+                    else if ($registered >= 37 && $registered < 49)
+                    {
+                        $idKlase = $klasmesditid[3];
+                        $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[0]');";
+                        $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                        $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                        $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                        if ($kursantetGjeturpare < 13)
+                        {
+                            $idKlase = $klasmesditid[0];
+                        }
+                        else
+                        {
+
+                            $kursanteneKursdyte = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[1]');";
+                            $resultKursantedyte = mysqli_query($link, $kursanteneKursdyte);
+                            $rowKasiKursanteshdyte = mysqli_fetch_array($resultKursantedyte);
+                            $kursantetGjeturdyte = $rowKasiKursanteshdyte['Sasia'];
+                            if ($kursantetGjeturdyte < 13)
+                            {
+                                $idKlase = $klasmesditid[1];
+                            }
+                            else
+                            {
+                                $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '13:00 - 17:00' AND idklase = '$klasmesditid[2]');";
+                                $resultKursante = mysqli_query($link, $kursanteneKurs);
+                                $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                                $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+                                if ($kursantetGjetur < 13)
+                                {
+                                    $idKlase = $klasmesditid[2];
+                                }
                             }
                         }
                     }
-                }
-                $selectidkursidrek = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '13:00 - 17:00'";
-                $resultkursidrek = mysqli_query($link, $selectidkursidrek);
-                $rowkursidrek = mysqli_fetch_array($resultkursidrek);
-                if ($rowkursidrek > 0)
-                {
-?>
-                    <td class="text-left" style="text-align: center;">13:00 - 17:00</td>
-                    <td class="text-left" style="text-align: center;"><?php echo date('d/m/Y',strtotime($dataZgjedhur)) ?></td>
-                    <td class="text-left " style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursidrek['idkursi'] ?>"required>Zgjidh</input></td>
-                </tr>
-                <?php
+                    $selectidkursidrek = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '13:00 - 17:00'";
+                    $resultkursidrek = mysqli_query($link, $selectidkursidrek);
+                    $rowkursidrek = mysqli_fetch_array($resultkursidrek);
+                    if ($rowkursidrek > 0)
+                    {
+    ?>
+                        <td class="text-left" style="text-align: center;">13:00 - 17:00</td>
+                        <td class="text-left" style="text-align: center;"><?php echo date('d/m/Y',strtotime($dataZgjedhur)) ?></td>
+                        <td class="text-left " style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursidrek['idkursi'] ?>"required>Zgjidh</input></td>
+                    </tr>
+                    <?php
+                    }
+                    else
+                    {
+    ?>
+                    <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs në orarin 13:00 - 17:00!</td></tr>
+                    <?php
+                    }
                 }
                 else
                 {
-?>
-                <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs në orarin 13:00 - 17:00!</td></tr>
-                <?php
+                    $futureDate = date('Y-m-d', strtotime('+3 days', strtotime($dataZgjedhur)));
+                    $testdate = date('Y-m-d', strtotime('+1 days', strtotime($dataZgjedhur)));
+                    $selectpredictCourses = "SELECT idkursi FROM `programijavor` WHERE orari = '13:00 - 17:00' AND data BETWEEN '$testdate' AND '$futureDate' ORDER BY data";
+                    $resultpredictionCourses = mysqli_query($link, $selectpredictCourses);
+                    $row = mysqli_num_rows($resultpredictionCourses);
+                    if ($row > 0)
+                    {
+                        $gjetur = 0;
+                        while ($row = mysqli_fetch_array($resultpredictionCourses))
+                        {
+                            $idkursitmoment = $row['idkursi'];
+                            $selectexistkursantperkurs = "SELECT COUNT(*) AS Totali FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursi = $idkursitmoment";
+                            $resultexistkursantperkurs = mysqli_query($link, $selectexistkursantperkurs);
+                            $rowexistkursantperkurs = mysqli_fetch_array($resultexistkursantperkurs);
+                            $totali = $rowexistkursantperkurs['Totali'];
+                            if ($totali < 12)
+                            {
+
+                                $gjetur = 1;
+                                $getdateklase = "SELECT * FROM programijavor WHERE idkursi = $idkursitmoment";
+                                $resultdatakursit = mysqli_query($link, $getdateklase);
+                                $rowKkursigjetur = mysqli_fetch_array($resultdatakursit);
+
+                                $datakursitgjetur = $rowKkursigjetur['data'];
+                                $orari = $rowKkursigjetur['orari'];
+
+    ?>
+                                <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
+                                <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
+                                <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
+                            </tr>
+                            <?php
+                                break;
+                            }
+                        }
+                        if ($gjetur != 1)
+                        {
+    ?>
+                                <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
+                            <?php
+                        }
+                    }
+                    else
+                    {
+    ?>
+                                <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 13:00 - 17:00!</td></tr>
+                                <?php
+                    }
                 }
             }
             else
@@ -451,185 +512,185 @@ if (!$isSunday)
                             $datakursitgjetur = $rowKkursigjetur['data'];
                             $orari = $rowKkursigjetur['orari'];
 
-?>
-                            <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                            <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
-                            <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
-                          </tr>
-                          <?php
+    ?>
+                        <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
+                        <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
+                        <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
+                    </tr>
+                    <?php
                             break;
                         }
                     }
                     if ($gjetur != 1)
                     {
-?>
-                            <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
-                          <?php
+    ?>
+                        <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
+                    <?php
                     }
                 }
                 else
                 {
-?>
-                            <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 13:00 - 17:00!</td></tr>
-                            <?php
+    ?>
+                <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 13:00 - 17:00!</td></tr>
+                <?php
                 }
             }
-        }
-        else
-        {
-            $futureDate = date('Y-m-d', strtotime('+3 days', strtotime($dataZgjedhur)));
-            $testdate = date('Y-m-d', strtotime('+1 days', strtotime($dataZgjedhur)));
-            $selectpredictCourses = "SELECT idkursi FROM `programijavor` WHERE orari = '13:00 - 17:00' AND data BETWEEN '$testdate' AND '$futureDate' ORDER BY data";
-            $resultpredictionCourses = mysqli_query($link, $selectpredictCourses);
-            $row = mysqli_num_rows($resultpredictionCourses);
-            if ($row > 0)
+
+            $sqlquerymbasdite = "SELECT * FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00')";
+            if ($klaspasditenr > 0)
             {
-                $gjetur = 0;
-                while ($row = mysqli_fetch_array($resultpredictionCourses))
+                $resultbasdite = mysqli_query($link, $sqlquerymbasdite);
+                $max = $klaspasditenr * 12;
+                $registered = mysqli_num_rows($resultbasdite);
+                if ($registered < $max)
                 {
-                    $idkursitmoment = $row['idkursi'];
-                    $selectexistkursantperkurs = "SELECT COUNT(*) AS Totali FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursi = $idkursitmoment";
-                    $resultexistkursantperkurs = mysqli_query($link, $selectexistkursantperkurs);
-                    $rowexistkursantperkurs = mysqli_fetch_array($resultexistkursantperkurs);
-                    $totali = $rowexistkursantperkurs['Totali'];
-                    if ($totali < 12)
-                    {
-
-                        $gjetur = 1;
-                        $getdateklase = "SELECT * FROM programijavor WHERE idkursi = $idkursitmoment";
-                        $resultdatakursit = mysqli_query($link, $getdateklase);
-                        $rowKkursigjetur = mysqli_fetch_array($resultdatakursit);
-
-                        $datakursitgjetur = $rowKkursigjetur['data'];
-                        $orari = $rowKkursigjetur['orari'];
-
-?>
-                    <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                    <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
-                    <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
-                  </tr>
-                  <?php
-                        break;
-                    }
-                }
-                if ($gjetur != 1)
-                {
-?>
-                    <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
-                  <?php
-                }
-            }
-            else
-            {
-?>
-              <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 13:00 - 17:00!</td></tr>
-              <?php
-            }
-        }
-
-        $sqlquerymbasdite = "SELECT * FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00')";
-        if ($klaspasditenr > 0)
-        {
-            $resultbasdite = mysqli_query($link, $sqlquerymbasdite);
-            $max = $klaspasditenr * 12;
-            $registered = mysqli_num_rows($resultbasdite);
-            if ($registered < $max)
-            {
-                if ($registered < 13)
-                {
-                    $idKlase = $klaspasditeid[0];
-                }
-                else if ($registered >= 13 && $registered < 25)
-                {
-                    $idKlase = $klaspasditeid[1];
-
-                    $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[0]');";
-                    $resultKursante = mysqli_query($link, $kursanteneKurs);
-                    $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
-                    $kursantetGjetur = $rowKasiKursantesh['Sasia'];
-                    if ($kursantetGjetur < 13)
+                    if ($registered < 13)
                     {
                         $idKlase = $klaspasditeid[0];
                     }
-
-                }
-                else if ($registered >= 25 && $registered < 37)
-                {
-                    $idKlase = $klaspasditeid[2];
-                    $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[0]');";
-                    $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
-                    $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
-                    $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
-                    if ($kursantetGjeturpare < 13)
+                    else if ($registered >= 13 && $registered < 25)
                     {
-                        $idKlase = $klaspasditeid[0];
-                    }
-                    else
-                    {
+                        $idKlase = $klaspasditeid[1];
 
-                        $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[1]');";
+                        $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[0]');";
                         $resultKursante = mysqli_query($link, $kursanteneKurs);
                         $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
                         $kursantetGjetur = $rowKasiKursantesh['Sasia'];
                         if ($kursantetGjetur < 13)
                         {
-                            $idKlase = $klaspasditeid[1];
+                            $idKlase = $klaspasditeid[0];
                         }
-                    }
 
-                }
-                else if ($registered >= 37 && $registered < 49)
-                {
-                    $idKlase = $klaspasditeid[3];
-                    $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[0]');";
-                    $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
-                    $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
-                    $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
-                    if ($kursantetGjeturpare < 13)
-                    {
-                        $idKlase = $klaspasditeid[0];
                     }
-                    else
+                    else if ($registered >= 25 && $registered < 37)
                     {
-
-                        $kursanteneKursdyte = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[1]');";
-                        $resultKursantedyte = mysqli_query($link, $kursanteneKursdyte);
-                        $rowKasiKursanteshdyte = mysqli_fetch_array($resultKursantedyte);
-                        $kursantetGjeturdyte = $rowKasiKursanteshdyte['Sasia'];
-                        if ($kursantetGjeturdyte < 13)
+                        $idKlase = $klaspasditeid[2];
+                        $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[0]');";
+                        $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                        $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                        $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                        if ($kursantetGjeturpare < 13)
                         {
-                            $idKlase = $klaspasditeid[1];
+                            $idKlase = $klaspasditeid[0];
                         }
                         else
                         {
-                            $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[2]');";
+
+                            $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[1]');";
                             $resultKursante = mysqli_query($link, $kursanteneKurs);
                             $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
                             $kursantetGjetur = $rowKasiKursantesh['Sasia'];
                             if ($kursantetGjetur < 13)
                             {
-                                $idKlase = $klaspasditeid[2];
+                                $idKlase = $klaspasditeid[1];
+                            }
+                        }
+
+                    }
+                    else if ($registered >= 37 && $registered < 49)
+                    {
+                        $idKlase = $klaspasditeid[3];
+                        $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[0]');";
+                        $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                        $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                        $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                        if ($kursantetGjeturpare < 13)
+                        {
+                            $idKlase = $klaspasditeid[0];
+                        }
+                        else
+                        {
+
+                            $kursanteneKursdyte = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[1]');";
+                            $resultKursantedyte = mysqli_query($link, $kursanteneKursdyte);
+                            $rowKasiKursanteshdyte = mysqli_fetch_array($resultKursantedyte);
+                            $kursantetGjeturdyte = $rowKasiKursanteshdyte['Sasia'];
+                            if ($kursantetGjeturdyte < 13)
+                            {
+                                $idKlase = $klaspasditeid[1];
+                            }
+                            else
+                            {
+                                $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '17:00 - 21:00' AND idklase = '$klaspasditeid[2]');";
+                                $resultKursante = mysqli_query($link, $kursanteneKurs);
+                                $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                                $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+                                if ($kursantetGjetur < 13)
+                                {
+                                    $idKlase = $klaspasditeid[2];
+                                }
                             }
                         }
                     }
-                }
-                $selectidkursimbasdit = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '17:00 - 21:00'";
-                $resultkursimbasdi = mysqli_query($link, $selectidkursimbasdit);
-                $rowkursimbasdit = mysqli_fetch_array($resultkursimbasdi);
-                if ($rowkursimbasdit > 0)
-                {
-?>
-                <td class="text-left" style="text-align: center;">17:00 - 21:00</td>
-                <td class="text-left" style="text-align: center;"><?php echo date('d/m/Y',strtotime($dataZgjedhur)) ?></td>
-                <td class="text-left " style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursimbasdit['idkursi'] ?>"required>Zgjidh</input></td>
-              </tr>
-              <?php
+                    $selectidkursimbasdit = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '17:00 - 21:00'";
+                    $resultkursimbasdi = mysqli_query($link, $selectidkursimbasdit);
+                    $rowkursimbasdit = mysqli_fetch_array($resultkursimbasdi);
+                    if ($rowkursimbasdit > 0)
+                    {
+    ?>
+                    <td class="text-left" style="text-align: center;">17:00 - 21:00</td>
+                    <td class="text-left" style="text-align: center;"><?php echo date('d/m/Y',strtotime($dataZgjedhur)) ?></td>
+                    <td class="text-left " style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursimbasdit['idkursi'] ?>"required>Zgjidh</input></td>
+                </tr>
+                <?php
+                    }
+                    else
+                    {
+    ?>
+                        <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs në orarin 13:00 - 17:00!</td></tr>
+                        <?php
+                    }
                 }
                 else
                 {
-?>
-                    <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs në orarin 13:00 - 17:00!</td></tr>
+                    $futureDate = date('Y-m-d', strtotime('+3 days', strtotime($dataZgjedhur)));
+                    $testdate = date('Y-m-d', strtotime('+1 days', strtotime($dataZgjedhur)));
+                    $selectpredictCourses = "SELECT idkursi FROM `programijavor` WHERE orari = '17:00 - 21:00' AND data BETWEEN '$testdate' AND '$futureDate' ORDER BY data";
+                    $resultpredictionCourses = mysqli_query($link, $selectpredictCourses);
+                    $row = mysqli_num_rows($resultpredictionCourses);
+                    if ($row > 0)
+                    {
+                        $gjetur = 0;
+                        while ($row = mysqli_fetch_array($resultpredictionCourses))
+                        {
+                            $idkursitmoment = $row['idkursi'];
+                            $selectexistkursantperkurs = "SELECT COUNT(*) AS Totali FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursi = $idkursitmoment";
+                            $resultexistkursantperkurs = mysqli_query($link, $selectexistkursantperkurs);
+                            $rowexistkursantperkurs = mysqli_fetch_array($resultexistkursantperkurs);
+                            $totali = $rowexistkursantperkurs['Totali'];
+                            if ($totali < 12)
+                            {
+
+                                $gjetur = 1;
+                                $getdateklase = "SELECT * FROM programijavor WHERE idkursi = $idkursitmoment";
+                                $resultdatakursit = mysqli_query($link, $getdateklase);
+                                $rowKkursigjetur = mysqli_fetch_array($resultdatakursit);
+
+                                $datakursitgjetur = $rowKkursigjetur['data'];
+                                $orari = $rowKkursigjetur['orari'];
+
+    ?>
+                        <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
+                        <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
+                        <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
+                        </tr>
+                        <?php
+                                break;
+                            }
+                        }
+                        if ($gjetur != 1)
+                        {
+    ?>
+                        <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
+                        <?php
+                        }
+                    }
+                    else
+                    {
+    ?>
+                    <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 17:00 - 21:00!</td></tr>
                     <?php
+                    }
                 }
             }
             else
@@ -660,251 +721,37 @@ if (!$isSunday)
                             $datakursitgjetur = $rowKkursigjetur['data'];
                             $orari = $rowKkursigjetur['orari'];
 
-?>
-                      <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                      <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
-                      <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
-                    </tr>
-                    <?php
+    ?>
+                        <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
+                        <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
+                        <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
+                        </tr>
+                        <?php
                             break;
                         }
                     }
                     if ($gjetur != 1)
                     {
-?>
-                      <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
-                    <?php
+    ?>
+                        <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
+                        <?php
                     }
                 }
                 else
                 {
-?>
-                <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 17:00 - 21:00!</td></tr>
-                <?php
+    ?>
+                    <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 17:00 - 21:00!</td></tr>
+                    <?php
                 }
             }
+
         }
         else
         {
+    ?>
+            <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs! Kursi organizohet në këto ditë të javës: 'E Hënë', 'E Mërkurë', 'E Premte', 'E Shtunë', 'E Djelë'</td></tr>
+            <?php
             $futureDate = date('Y-m-d', strtotime('+3 days', strtotime($dataZgjedhur)));
-            $testdate = date('Y-m-d', strtotime('+1 days', strtotime($dataZgjedhur)));
-            $selectpredictCourses = "SELECT idkursi FROM `programijavor` WHERE orari = '17:00 - 21:00' AND data BETWEEN '$testdate' AND '$futureDate' ORDER BY data";
-            $resultpredictionCourses = mysqli_query($link, $selectpredictCourses);
-            $row = mysqli_num_rows($resultpredictionCourses);
-            if ($row > 0)
-            {
-                $gjetur = 0;
-                while ($row = mysqli_fetch_array($resultpredictionCourses))
-                {
-                    $idkursitmoment = $row['idkursi'];
-                    $selectexistkursantperkurs = "SELECT COUNT(*) AS Totali FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursi = $idkursitmoment";
-                    $resultexistkursantperkurs = mysqli_query($link, $selectexistkursantperkurs);
-                    $rowexistkursantperkurs = mysqli_fetch_array($resultexistkursantperkurs);
-                    $totali = $rowexistkursantperkurs['Totali'];
-                    if ($totali < 12)
-                    {
-
-                        $gjetur = 1;
-                        $getdateklase = "SELECT * FROM programijavor WHERE idkursi = $idkursitmoment";
-                        $resultdatakursit = mysqli_query($link, $getdateklase);
-                        $rowKkursigjetur = mysqli_fetch_array($resultdatakursit);
-
-                        $datakursitgjetur = $rowKkursigjetur['data'];
-                        $orari = $rowKkursigjetur['orari'];
-
-?>
-                      <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                      <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
-                      <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
-                    </tr>
-                    <?php
-                        break;
-                    }
-                }
-                if ($gjetur != 1)
-                {
-?>
-                      <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
-                    <?php
-                }
-            }
-            else
-            {
-?>
-                <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 17:00 - 21:00!</td></tr>
-                <?php
-            }
-        }
-
-    }
-    else
-    {
-?>
-          <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs! Kursi organizohet në këto ditë të javës: 'E Hënë', 'E Mërkurë', 'E Premte', 'E Shtunë', 'E Djelë'</td></tr>
-        <?php
-        $futureDate = date('Y-m-d', strtotime('+3 days', strtotime($dataZgjedhur)));
-        $testdate = date('Y-m-d', strtotime('+1 days', strtotime($dataZgjedhur)));
-        $selectpredictCourses = "SELECT idkursi FROM `programijavor` WHERE data BETWEEN '$testdate' AND '$futureDate' ORDER BY data";
-        $resultpredictionCourses = mysqli_query($link, $selectpredictCourses);
-        $row = mysqli_num_rows($resultpredictionCourses);
-        if ($row > 0)
-        {
-            $gjetur = 0;
-            while ($row = mysqli_fetch_array($resultpredictionCourses))
-            {
-                $idkursitmoment = $row['idkursi'];
-                $selectexistkursantperkurs = "SELECT COUNT(*) AS Totali FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursi = $idkursitmoment";
-                $resultexistkursantperkurs = mysqli_query($link, $selectexistkursantperkurs);
-                $rowexistkursantperkurs = mysqli_fetch_array($resultexistkursantperkurs);
-                $totali = $rowexistkursantperkurs['Totali'];
-                if ($totali < 12)
-                {
-
-                    $gjetur = 1;
-                    $getdateklase = "SELECT * FROM programijavor WHERE idkursi = $idkursitmoment";
-                    $resultdatakursit = mysqli_query($link, $getdateklase);
-                    $rowKkursigjetur = mysqli_fetch_array($resultdatakursit);
-
-                    $datakursitgjetur = $rowKkursigjetur['data'];
-                    $orari = $rowKkursigjetur['orari'];
-
-?>
-                    <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                    <td class="text-left" style="text-align: center;">Data më e afert për klasa të lira është :  <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
-                    <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
-                  </tr>
-                  <?php
-                    break;
-                }
-            }
-            if ($gjetur != 1)
-            {
-?>
-                    <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
-                  <?php
-            }
-        }
-        else
-        {
-?>
-              <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs!</td></tr>
-              <?php
-        }
-    }
-}
-else
-{
-
-    $sqlquerydiele = "SELECT * FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari ='09:00 - 15:00')";
-    if ($klasdieleenr > 0)
-    {
-        $resultdiele = mysqli_query($link, $sqlquerydiele);
-        $max = $klasdieleenr * 12;
-        if (mysqli_num_rows($resultdiele) < $max)
-        {
-
-            $registered = mysqli_num_rows($resultdiele);
-            if ($registered < 13)
-            {
-                $idKlase = $klasdiele[0];
-            }
-            else if ($registered >= 13 && $registered < 25)
-            {
-
-                $idKlase = $klasdiele[1];
-                $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[0]');";
-                $resultKursante = mysqli_query($link, $kursanteneKurs);
-                $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
-                $kursantetGjetur = $rowKasiKursantesh['Sasia'];
-
-                if ($kursantetGjetur < 13)
-                {
-                    $idKlase = $klasdiele[0];
-                }
-
-            }
-            else if ($registered >= 25 && $registered < 37)
-            {
-                $idKlase = $klasdiele[2];
-                $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[0]');";
-                $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
-                $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
-                $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
-                if ($kursantetGjeturpare < 13)
-                {
-                    $idKlase = $klasdiele[0];
-                }
-                else
-                {
-
-                    $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[1]');";
-                    $resultKursante = mysqli_query($link, $kursanteneKurs);
-                    $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
-                    $kursantetGjetur = $rowKasiKursantesh['Sasia'];
-                    if ($kursantetGjetur < 13)
-                    {
-                        $idKlase = $klasdiele[1];
-                    }
-                }
-
-            }
-            else if ($registered >= 37 && $registered < 49)
-            {
-                $idKlase = $klasdiele[3];
-                $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[0]');";
-                $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
-                $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
-                $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
-                if ($kursantetGjeturpare < 13)
-                {
-                    $idKlase = $klasdiele[0];
-                }
-                else
-                {
-                    $kursanteneKursdyte = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[1]');";
-                    $resultKursantedyte = mysqli_query($link, $kursanteneKursdyte);
-                    $rowKasiKursanteshdyte = mysqli_fetch_array($resultKursantedyte);
-                    $kursantetGjeturdyte = $rowKasiKursanteshdyte['Sasia'];
-                    if ($kursantetGjeturdyte < 13)
-                    {
-                        $idKlase = $klasdiele[1];
-                    }
-                    else
-                    {
-                        $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[2]');";
-                        $resultKursante = mysqli_query($link, $kursanteneKurs);
-                        $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
-                        $kursantetGjetur = $rowKasiKursantesh['Sasia'];
-                        if ($kursantetGjetur < 13)
-                        {
-                            $idKlase = $klasdiele[2];
-                        }
-                    }
-                }
-            }
-
-            $selectidkursidiele = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '09:00 - 15:00'";
-            $resultkursidiele = mysqli_query($link, $selectidkursidiele);
-            $rowkursidiele = mysqli_fetch_array($resultkursidiele);
-            if ($rowkursidiele > 0)
-            {
-?>
-                    <td class="text-left" style="text-align: center;">09:00 - 15:00</td>
-                    <td class="text-left" style="text-align: center;"><?php echo date('d/m/Y',strtotime($dataZgjedhur)) ?></td>
-                    <td class="text-left " style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursidiele['idkursi'] ?>"required>Zgjidh</input></td>
-                </tr>
-                <?php
-            }
-            else
-            {
-?>
-                <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs në orarin 09:00 - 15:00!</td></tr>
-                <?php
-            }
-        }
-        else
-        {
-            $futureDate = date('Y-m-d', strtotime('+7 days', strtotime($dataZgjedhur)));
             $testdate = date('Y-m-d', strtotime('+1 days', strtotime($dataZgjedhur)));
             $selectpredictCourses = "SELECT idkursi FROM `programijavor` WHERE data BETWEEN '$testdate' AND '$futureDate' ORDER BY data";
             $resultpredictionCourses = mysqli_query($link, $selectpredictCourses);
@@ -930,10 +777,10 @@ else
                         $datakursitgjetur = $rowKkursigjetur['data'];
                         $orari = $rowKkursigjetur['orari'];
 
-?>
-                      <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                      <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
-                      <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
+    ?>
+                        <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
+                        <td class="text-left" style="text-align: center;">Data më e afert për klasa të lira është :  <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
+                        <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
                     </tr>
                     <?php
                         break;
@@ -941,72 +788,239 @@ else
                 }
                 if ($gjetur != 1)
                 {
-?>
-                      <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
+    ?>
+                        <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
                     <?php
                 }
             }
             else
             {
-?>
-                <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 09:00 - 15:00!</td></tr>
+    ?>
+                <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs!</td></tr>
                 <?php
             }
-
         }
     }
     else
     {
-        $futureDate = date('Y-m-d', strtotime('+7 days', strtotime($dataZgjedhur)));
-        $testdate = date('Y-m-d', strtotime('+1 days', strtotime($dataZgjedhur)));
-        $selectpredictCourses = "SELECT idkursi FROM `programijavor` WHERE data BETWEEN '$testdate' AND '$futureDate' ORDER BY data";
-        $resultpredictionCourses = mysqli_query($link, $selectpredictCourses);
-        $row = mysqli_num_rows($resultpredictionCourses);
-        if ($row > 0)
+
+        $sqlquerydiele = "SELECT * FROM organizimkursantesh1 WHERE statusi ='pabere' AND idkursi IN (SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari ='09:00 - 15:00')";
+        if ($klasdieleenr > 0)
         {
-            $gjetur = 0;
-            while ($row = mysqli_fetch_array($resultpredictionCourses))
+            $resultdiele = mysqli_query($link, $sqlquerydiele);
+            $max = $klasdieleenr * 12;
+            if (mysqli_num_rows($resultdiele) < $max)
             {
 
-                $idkursitmoment = $row['idkursi'];
-                $selectexistkursantperkurs = "SELECT COUNT(*) AS Totali FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursi = $idkursitmoment";
-                $resultexistkursantperkurs = mysqli_query($link, $selectexistkursantperkurs);
-                $rowexistkursantperkurs = mysqli_fetch_array($resultexistkursantperkurs);
-                $totali = $rowexistkursantperkurs['Totali'];
-                if ($totali < 12)
+                $registered = mysqli_num_rows($resultdiele);
+                if ($registered < 13)
                 {
-                    $gjetur = 1;
-                    $getdateklase = "SELECT * FROM programijavor WHERE idkursi = $idkursitmoment";
-                    $resultdatakursit = mysqli_query($link, $getdateklase);
-                    $rowKkursigjetur = mysqli_fetch_array($resultdatakursit);
+                    $idKlase = $klasdiele[0];
+                }
+                else if ($registered >= 13 && $registered < 25)
+                {
 
-                    $datakursitgjetur = $rowKkursigjetur['data'];
-                    $orari = $rowKkursigjetur['orari'];
+                    $idKlase = $klasdiele[1];
+                    $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[0]');";
+                    $resultKursante = mysqli_query($link, $kursanteneKurs);
+                    $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                    $kursantetGjetur = $rowKasiKursantesh['Sasia'];
 
-?>
+                    if ($kursantetGjetur < 13)
+                    {
+                        $idKlase = $klasdiele[0];
+                    }
+
+                }
+                else if ($registered >= 25 && $registered < 37)
+                {
+                    $idKlase = $klasdiele[2];
+                    $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[0]');";
+                    $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                    $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                    $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                    if ($kursantetGjeturpare < 13)
+                    {
+                        $idKlase = $klasdiele[0];
+                    }
+                    else
+                    {
+
+                        $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[1]');";
+                        $resultKursante = mysqli_query($link, $kursanteneKurs);
+                        $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                        $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+                        if ($kursantetGjetur < 13)
+                        {
+                            $idKlase = $klasdiele[1];
+                        }
+                    }
+
+                }
+                else if ($registered >= 37 && $registered < 49)
+                {
+                    $idKlase = $klasdiele[3];
+                    $kursanteneKurspare = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[0]');";
+                    $resultKursantepare = mysqli_query($link, $kursanteneKurspare);
+                    $rowKasiKursanteshpare = mysqli_fetch_array($resultKursantepare);
+                    $kursantetGjeturpare = $rowKasiKursanteshpare['Sasia'];
+                    if ($kursantetGjeturpare < 13)
+                    {
+                        $idKlase = $klasdiele[0];
+                    }
+                    else
+                    {
+                        $kursanteneKursdyte = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[1]');";
+                        $resultKursantedyte = mysqli_query($link, $kursanteneKursdyte);
+                        $rowKasiKursanteshdyte = mysqli_fetch_array($resultKursantedyte);
+                        $kursantetGjeturdyte = $rowKasiKursanteshdyte['Sasia'];
+                        if ($kursantetGjeturdyte < 13)
+                        {
+                            $idKlase = $klasdiele[1];
+                        }
+                        else
+                        {
+                            $kursanteneKurs = "SELECT COUNT(organizimkursantesh1.idkursi) AS Sasia FROM  organizimkursantesh1 WHERE organizimkursantesh1.statusi = 'pabere' AND organizimkursantesh1.idkursi IN( SELECT idkursi FROM programijavor WHERE data = '$dataZgjedhur' AND orari = '09:00 - 15:00' AND idklase = '$klasdiele[2]');";
+                            $resultKursante = mysqli_query($link, $kursanteneKurs);
+                            $rowKasiKursantesh = mysqli_fetch_array($resultKursante);
+                            $kursantetGjetur = $rowKasiKursantesh['Sasia'];
+                            if ($kursantetGjetur < 13)
+                            {
+                                $idKlase = $klasdiele[2];
+                            }
+                        }
+                    }
+                }
+
+                $selectidkursidiele = "SELECT idkursi FROM programijavor WHERE idklase = $idKlase AND data = '$dataZgjedhur' AND orari = '09:00 - 15:00'";
+                $resultkursidiele = mysqli_query($link, $selectidkursidiele);
+                $rowkursidiele = mysqli_fetch_array($resultkursidiele);
+                if ($rowkursidiele > 0)
+                {
+    ?>
+                        <td class="text-left" style="text-align: center;">09:00 - 15:00</td>
+                        <td class="text-left" style="text-align: center;"><?php echo date('d/m/Y',strtotime($dataZgjedhur)) ?></td>
+                        <td class="text-left " style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowkursidiele['idkursi'] ?>"required>Zgjidh</input></td>
+                    </tr>
+                    <?php
+                }
+                else
+                {
+    ?>
+                    <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs në orarin 09:00 - 15:00!</td></tr>
+                    <?php
+                }
+            }
+            else
+            {
+                $futureDate = date('Y-m-d', strtotime('+7 days', strtotime($dataZgjedhur)));
+                $testdate = date('Y-m-d', strtotime('+1 days', strtotime($dataZgjedhur)));
+                $selectpredictCourses = "SELECT idkursi FROM `programijavor` WHERE data BETWEEN '$testdate' AND '$futureDate' ORDER BY data";
+                $resultpredictionCourses = mysqli_query($link, $selectpredictCourses);
+                $row = mysqli_num_rows($resultpredictionCourses);
+                if ($row > 0)
+                {
+                    $gjetur = 0;
+                    while ($row = mysqli_fetch_array($resultpredictionCourses))
+                    {
+                        $idkursitmoment = $row['idkursi'];
+                        $selectexistkursantperkurs = "SELECT COUNT(*) AS Totali FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursi = $idkursitmoment";
+                        $resultexistkursantperkurs = mysqli_query($link, $selectexistkursantperkurs);
+                        $rowexistkursantperkurs = mysqli_fetch_array($resultexistkursantperkurs);
+                        $totali = $rowexistkursantperkurs['Totali'];
+                        if ($totali < 12)
+                        {
+
+                            $gjetur = 1;
+                            $getdateklase = "SELECT * FROM programijavor WHERE idkursi = $idkursitmoment";
+                            $resultdatakursit = mysqli_query($link, $getdateklase);
+                            $rowKkursigjetur = mysqli_fetch_array($resultdatakursit);
+
+                            $datakursitgjetur = $rowKkursigjetur['data'];
+                            $orari = $rowKkursigjetur['orari'];
+
+    ?>
                         <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
                         <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
                         <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
-                      </tr>
-                      <?php
-                    break;
-                }
-            }
-
-            if ($gjetur != 1)
-            {
-?>
+                        </tr>
+                        <?php
+                            break;
+                        }
+                    }
+                    if ($gjetur != 1)
+                    {
+    ?>
                         <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
-                      <?php
+                        <?php
+                    }
+                }
+                else
+                {
+    ?>
+                    <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 09:00 - 15:00!</td></tr>
+                    <?php
+                }
+
             }
         }
         else
         {
-?>
-                    <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 09:00 - 15:00!</td></tr>
-                    <?php
+            $futureDate = date('Y-m-d', strtotime('+7 days', strtotime($dataZgjedhur)));
+            $testdate = date('Y-m-d', strtotime('+1 days', strtotime($dataZgjedhur)));
+            $selectpredictCourses = "SELECT idkursi FROM `programijavor` WHERE data BETWEEN '$testdate' AND '$futureDate' ORDER BY data";
+            $resultpredictionCourses = mysqli_query($link, $selectpredictCourses);
+            $row = mysqli_num_rows($resultpredictionCourses);
+            if ($row > 0)
+            {
+                $gjetur = 0;
+                while ($row = mysqli_fetch_array($resultpredictionCourses))
+                {
+
+                    $idkursitmoment = $row['idkursi'];
+                    $selectexistkursantperkurs = "SELECT COUNT(*) AS Totali FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursi = $idkursitmoment";
+                    $resultexistkursantperkurs = mysqli_query($link, $selectexistkursantperkurs);
+                    $rowexistkursantperkurs = mysqli_fetch_array($resultexistkursantperkurs);
+                    $totali = $rowexistkursantperkurs['Totali'];
+                    if ($totali < 12)
+                    {
+                        $gjetur = 1;
+                        $getdateklase = "SELECT * FROM programijavor WHERE idkursi = $idkursitmoment";
+                        $resultdatakursit = mysqli_query($link, $getdateklase);
+                        $rowKkursigjetur = mysqli_fetch_array($resultdatakursit);
+
+                        $datakursitgjetur = $rowKkursigjetur['data'];
+                        $orari = $rowKkursigjetur['orari'];
+
+    ?>
+                            <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
+                            <td class="text-left" style="text-align: center;">Në datën qe ju keni zgjedhur nuk ka vende të lira pasi klasat janë mbushur.  Data më e afert për klasa të lira është : <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
+                            <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
+                        </tr>
+                        <?php
+                        break;
+                    }
+                }
+
+                if ($gjetur != 1)
+                {
+    ?>
+                            <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
+                        <?php
+                }
+            }
+            else
+            {
+    ?>
+                        <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs në orarin 09:00 - 15:00!</td></tr>
+                        <?php
+            }
         }
     }
+}else{
+    ?>
+        <td class="text-left" colspan="3" style="text-align: center">Data që ju keni zgjedhur nuk është e saktë. Kurset organizohen nga sot e ne vazhdim. Ju Faleminderit!</td></tr>
+    <?php
 }
 ?>   
 </table>
