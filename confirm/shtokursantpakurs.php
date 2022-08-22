@@ -94,6 +94,11 @@
                     <input class="input100" id="vendbanim-txt" type="text" 
                     name="vendbanim-txt"   placeholder="Vendbanimi" required>
                 </div>
+                <div>
+
+                <p id="dataKursit">Data Kursit</p>
+                    <input class="input100" id="dataKursit" type="date" name="dataKursit" required >
+                </div>
                 <div id="amza">
                     <p id="amza">Amza </p>
                     <input class="input100" id="amza-txt" type="text" 

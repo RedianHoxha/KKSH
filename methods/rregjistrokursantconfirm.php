@@ -26,6 +26,7 @@ $now = date('Y-m-d');
     $vendbanim= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['vendbanim-txt'])));
     $amza= encryptValues(test_input(mysqli_real_escape_string( $link,$_POST['amza-txt'])));
     $seria= encryptValues(test_input( mysqli_real_escape_string( $link,$_POST['deshmi-txt'])));
+    $dataKursit = test_input( mysqli_real_escape_string( $link,$_POST['dataKursit']));
 
     $tel='1';
     $paymentNumber = '11';
@@ -41,8 +42,8 @@ $now = date('Y-m-d');
            window.location.href="../inputer/bejndryshime.php";
            </script>';
       }else{
-         $shtokursant = "INSERT INTO kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Statusi,  DataRregjistrimit, Gjinia, BankPayment, BankName ,Amza, NrSerisDeshmis, Email)
-         VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges','perfunduar',  '$now', '$gjinia',$paymentNumber,'Sporteliiiiiiiii','$amza','$seria', '$email');";
+         $shtokursant = "INSERT INTO kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Statusi,  DataRregjistrimit, Gjinia, BankPayment, BankName ,Amza, NrSerisDeshmis, Email, DataKursit, Orari, IdKursi)
+         VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges','perfunduar',  '$now', '$gjinia',$paymentNumber,'Sporteli','$amza','$seria', '$email', '$dataKursit', 'IshTrajnuar', -1 );";
          $resultinsert = mysqli_query($link, $shtokursant) or die(mysqli_error($link));
          if($resultinsert)
          {
