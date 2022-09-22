@@ -12,7 +12,11 @@ mysqli_select_db($link,"ajax_demo");
 $firstdaymonth = date('Y-' . $muaji . '-01');
 $lastdaymonth = date("Y-m-t", strtotime($firstdaymonth));
 
-$sqlquery="SELECT Emri, Mbiemri, Amza, NrSerisDeshmis, Orari, Datakursit FROM kursantet WHERE Statusi = 'perfunduar' AND Datakursit BETWEEN '$firstdaymonth' AND '$lastdaymonth' AND PersonalId IN (SELECT idkursanti FROM organizimkursantesh1 WHERE idkursi IN (SELECT idkursi FROM programijavor WHERE idinstruktori = '$idInstruktori'))";
+$sqlquery="SELECT Emri, Mbiemri, Amza, NrSerisDeshmis, Orari, Datakursit FROM kursantet
+                     WHERE Statusi = 'perfunduar' AND Datakursit BETWEEN '$firstdaymonth' 
+                     AND '$lastdaymonth' AND 
+                        PersonalId IN (SELECT idkursanti FROM organizimkursantesh1 WHERE idkursi IN 
+                            (SELECT idkursi FROM programijavor WHERE idinstruktori = '$idInstruktori'))";
 
 if($result = mysqli_query($link,$sqlquery))
     {

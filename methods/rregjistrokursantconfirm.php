@@ -43,7 +43,7 @@ $now = date('Y-m-d');
            </script>';
       }else{
          $shtokursant = "INSERT INTO kursantet(PersonalId,Emri,Mbiemri,Atesia,Datelindja,Vendbanimi,Telefoni,Dega,Statusi,  DataRregjistrimit, Gjinia, BankPayment, BankName ,Amza, NrSerisDeshmis, Email, DataKursit, Orari, IdKursi)
-         VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges','perfunduar',  '$now', '$gjinia',$paymentNumber,'Sporteli','$amza','$seria', '$email', '$dataKursit', 'IshTrajnuar', -1 );";
+         VALUES ( '$id', '$emri', '$mbiemri', '$atesia','$datelindja', '$vendbanim', '$tel' , '$idDeges','perfunduar',  '$now', '$gjinia',$paymentNumber,'Sporteli','$amza','$seria', '$email', '$dataKursit', 'IshTrajnuar', -1);";
          $resultinsert = mysqli_query($link, $shtokursant) or die(mysqli_error($link));
          if($resultinsert)
          {

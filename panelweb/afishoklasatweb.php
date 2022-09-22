@@ -751,54 +751,6 @@ if($isEarlierThanToday){
     ?>
             <td class="text-left" colspan="3" style="text-align: center">Për datën që ju keni zgjedhur nuk ka kurs! Kursi organizohet në këto ditë të javës: 'E Hënë', 'E Mërkurë', 'E Premte', 'E Shtunë', 'E Djelë'</td></tr>
             <?php
-            $futureDate = date('Y-m-d', strtotime('+3 days', strtotime($dataZgjedhur)));
-            $testdate = date('Y-m-d', strtotime('+1 days', strtotime($dataZgjedhur)));
-            $selectpredictCourses = "SELECT idkursi FROM `programijavor` WHERE data BETWEEN '$testdate' AND '$futureDate' ORDER BY data";
-            $resultpredictionCourses = mysqli_query($link, $selectpredictCourses);
-            $row = mysqli_num_rows($resultpredictionCourses);
-            if ($row > 0)
-            {
-                $gjetur = 0;
-                while ($row = mysqli_fetch_array($resultpredictionCourses))
-                {
-                    $idkursitmoment = $row['idkursi'];
-                    $selectexistkursantperkurs = "SELECT COUNT(*) AS Totali FROM organizimkursantesh1 WHERE statusi='pabere' AND idkursi = $idkursitmoment";
-                    $resultexistkursantperkurs = mysqli_query($link, $selectexistkursantperkurs);
-                    $rowexistkursantperkurs = mysqli_fetch_array($resultexistkursantperkurs);
-                    $totali = $rowexistkursantperkurs['Totali'];
-                    if ($totali < 12)
-                    {
-
-                        $gjetur = 1;
-                        $getdateklase = "SELECT * FROM programijavor WHERE idkursi = $idkursitmoment";
-                        $resultdatakursit = mysqli_query($link, $getdateklase);
-                        $rowKkursigjetur = mysqli_fetch_array($resultdatakursit);
-
-                        $datakursitgjetur = $rowKkursigjetur['data'];
-                        $orari = $rowKkursigjetur['orari'];
-
-    ?>
-                        <td class="text-left" style="text-align: center;"><?php echo $orari ?></td>
-                        <td class="text-left" style="text-align: center;">Data më e afert për klasa të lira është :  <?php echo date('d/m/Y',strtotime($datakursitgjetur)) ?></td>
-                        <td class="text-left" style="text-align: center;"><input type="radio"  id="select" name="select" value="<?php echo $rowKkursigjetur['idkursi'] ?>"required>Zgjidh</input></td>
-                    </tr>
-                    <?php
-                        break;
-                    }
-                }
-                if ($gjetur != 1)
-                {
-    ?>
-                        <td class="text-left" colspan="3" style="text-align: center">Në datën qe ju keni zgjedhur dhe në 3 ditët në vazhdim nuk ka vende të lira!</td></tr>
-                    <?php
-                }
-            }
-            else
-            {
-    ?>
-                <td class="text-left" colspan="3" style="text-align: center">Në datën që ju keni zgjedhur dhe në 3 ditët në vazhdim nuk është planifikuar kurs!</td></tr>
-                <?php
-            }
         }
     }
     else
