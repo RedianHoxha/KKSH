@@ -114,7 +114,8 @@
 <body>
     <div id="top-page">
         <button class="btn btn-secondary" onclick="location.href = '../inputer/afishokurset.php';" id="myButton" >Shiko Kurset</button>
-        <button class="btn btn-secondary" onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Bej ndryshime</button>
+        <button class="btn btn-secondary" onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Bej Ndryshime</button>
+        <button class="btn btn-secondary" onclick="location.href = '../inputer/arkiva.php';" id="myButton" >Mungesat</button>
         <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button>
     </div>
     <div id="bottom-page">

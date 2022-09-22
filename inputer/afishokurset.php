@@ -101,8 +101,9 @@
     </head>
     <body>
         <div id="logout">
-            <button class="btn btn-secondary" onclick="location.href = 'inputerpage.php';" id="myButton" >Ktheu</button>
-            <button class="btn btn-secondary" onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Bej ndryshime</button>
+            <button class="btn btn-secondary" onclick="location.href = 'inputerpage.php';" id="myButton" >Rregjistro Kursant</button>
+            <button class="btn btn-secondary" onclick="location.href = '../inputer/bejndryshime.php';" id="myButton" >Bej Ndryshime</button>
+        <button class="btn btn-secondary" onclick="location.href = '../inputer/arkiva.php';" id="myButton" >Mungesat</button>
             <button class="btn btn-secondary" onclick="location.href = '../inputer/gjeneroexel.php';" id="myButton" >Gjenero Excel</button>
             <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" >Dil <?php echo decrypt($user) ?></button>
         </div>

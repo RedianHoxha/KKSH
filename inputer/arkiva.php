@@ -104,7 +104,7 @@
                 <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button></br>
             </div>
             <div id="top-page-right">
-            <form action="search.php" method="POST"> 
+            <form action="arkivasearch.php" method="POST"> 
                 <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Search">
                 <button class="btn btn-secondary" type="submit" id="search-button">Search</button>
             </form>
@@ -122,7 +122,8 @@
                 <th>Edito</th>
             </tr>
             <tr>
-               <?php $sqlquery="SELECT * FROM kursantet WHERE Statusi = 'Munges'";
+               <?php
+                $sqlquery="SELECT * FROM kursantet WHERE Statusi = 'Munges'";
                  $kursantet=mysqli_query($link, $sqlquery);
                  while ($row = mysqli_fetch_array($kursantet)) { 
                         ?>
