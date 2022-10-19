@@ -16,16 +16,17 @@
 
     $idKursanti = $_GET['id'];
 
-    $fshikursantngaplanifikimi = "UPDATE organizimkursantesh1  SET statusi = 'Fshire' where idkursanti = '$idKursanti'";
+    $getInformationForKursant = "SELECT * FROM kursantet WHERE ID = '$idKursanti'";
+    $runGetInformationForKursant = mysqli_query($link, $getInformationForKursant);
+    $informationForKursant = mysqli_fetch_array($runGetInformationForKursant);
+    $personalId = $informationForKursant['PersonalId'];
+
+    $fshikursantngaplanifikimi = "UPDATE organizimkursantesh1  SET statusi = 'Fshire' where idkursanti = '$personalId' AND statusi = 'pabere'";
 
     if($runupdetinorganizim  = mysqli_query($link, $fshikursantngaplanifikimi))
     {
-        $getUser = "SELECT * FROM kursantet WHERE PersonalId = '$idKursanti'";
-        $kursanti = mysqli_query($link, $getUser);
-        $rowKursant = mysqli_fetch_array($kursanti);
-        $kursantId = $rowKursant['ID'];
 
-        $fshiKursant = "DELETE FROM kursantet  where ID = '$kursantId'";
+        $fshiKursant = "DELETE FROM kursantet  where ID = '$idKursanti'";
         if($runfshiorganizim = mysqli_query($link, $fshiKursant))
         {
             if(strcmp($roli,"Inputer") == 0)

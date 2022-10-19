@@ -172,7 +172,7 @@
                 <td class="text-left"><?php echo $row['Orari']; ?></td>
                 <td class="text-left"><?php echo $name ?></td>
                 <td class="text-left"><?php echo decrypt($rowklasa['Emri']) ?></td>
-                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../methods/ndryshorregjistrimin.php?id=<?php echo $row['ID'];?>'" >Ndrysho</button><button class="btn btn-danger" onclick="location.href = '../methods/fshirregjistrimin.php?id=<?php echo $row['PersonalId'];?>'" >Fshi</button></td>
+                <td class="text-left"><button class="btn btn-success" onclick="location.href = '../methods/ndryshorregjistrimin.php?id=<?php echo $row['ID'];?>'" >Ndrysho</button><button class="btn btn-danger" onclick="location.href = '../methods/fshirregjistrimin.php?id=<?php echo $row['ID'];?>'" >Fshi</button></td>
             </tr>
             <?php } ?>
         </table>
