@@ -1,142 +1,141 @@
 body {
-    background-color: #eeeee4;
+  background-color: #eeeee4;
 }
 
 .get-in-touch {
-    max-width: 80%;
-    margin: auto;
-    margin-top: 2%;
+  max-width: 80%;
+  margin: auto;
+  margin-top: 2%;
 }
 
 .get-in-touch .title {
-    text-align: center;
-    letter-spacing: 2%;
-    font-size: 3.2em;
-    padding-bottom: 2%;
-    color: #fa2323;
-    background: #fa2323;
-    background: -moz-linear-gradient(left, #f4524d 0%, #fa2323 100%) !important;
-    background: -webkit-linear-gradient(left, #f4524d 0%, #fa2323 100%) !important;
-    background: linear-gradient(to right, #f4524d 0%, #fa2323 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
+  text-align: center;
+  letter-spacing: 2%;
+  font-size: 3.2em;
+  padding-bottom: 2%;
+  color: #fa2323;
+  background: #fa2323;
+  background: -moz-linear-gradient(left, #f4524d 0%, #fa2323 100%) !important;
+  background: -webkit-linear-gradient(
+    left,
+    #f4524d 0%,
+    #fa2323 100%
+  ) !important;
+  background: linear-gradient(to right, #f4524d 0%, #fa2323 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 }
 
-.title{
-    font-family: "Times New Roman", Times, serif;
-
+.title {
+  font-family: "Times New Roman", Times, serif;
 }
 
 .contact-form .form-field {
-    position: relative;
-    margin: 3% 0;
+  position: relative;
+  margin: 3% 0;
 }
 
 .contact-form .input-text {
-    display: block;
-    width: 100%;
-    height: 150%;
-    border-width: 0 0 2% 0;
-    border-color: #fa2323;
-    font-size: 70%;
-    font-weight: 400;
-    border-radius: 16%;
+  display: block;
+  width: 100%;
+  height: 150%;
+  border-width: 0 0 2% 0;
+  border-color: #fa2323;
+  font-size: 70%;
+  font-weight: 400;
+  border-radius: 16%;
 }
 
 .contact-form .input-text:focus {
-    outline: none;
+  outline: none;
 }
 
-.contact-form .input-text:focus+.label,
-.contact-form .input-text.not-empty+.label {
-    -webkit-transform: translateY(-24%);
-    transform: translateY(-24%);
+.contact-form .input-text:focus + .label,
+.contact-form .input-text.not-empty + .label {
+  -webkit-transform: translateY(-24%);
+  transform: translateY(-24%);
 }
 
 .contact-form .label {
-    position: absolute;
-    left: 5%;
-    bottom: 100%;
-    font-size: 90%;
-    line-height: 50%;
-    font-weight: 400;
-    color: #fa2323;
-    cursor: text;
-    transition: -webkit-transform .2s ease-in-out;
-    transition: transform .2s ease-in-out;
-    transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+  position: absolute;
+  left: 5%;
+  bottom: 100%;
+  font-size: 90%;
+  line-height: 50%;
+  font-weight: 400;
+  color: #fa2323;
+  cursor: text;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
 }
 
 .contact-form .submit-btn {
-    display: inline-block;
-    background-color: #e90024;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2%;
-    padding: 1% 1%;
-    border: none;
-    width: 40%;
-    cursor: pointer;
-    border-radius: 25px;
+  display: inline-block;
+  background-color: #e90024;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2%;
+  padding: 1% 1%;
+  border: none;
+  width: 40%;
+  cursor: pointer;
+  border-radius: 25px;
 }
 
 #txtHint {
-    text-align: center;
+  text-align: center;
 }
 
-
-
 table {
-    width: 100%;
+  width: 100%;
 }
 
 th,
 td {
-    text-align: center;
-    text-transform: uppercase;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 #dega {
-    width: 100%;
+  width: 100%;
 }
 
-
 #kksh_logo {
-    width: 10%;
-    height: 10%
+  width: 10%;
+  height: 10%;
 }
 
 #kksh_logo100 {
-    width: 13%;
-    height: 13%;
+  width: 13%;
+  height: 13%;
 }
 
-.needs{
-    text-align: left;
+.needs {
+  text-align: left;
 }
 
 .btn-custom {
-    padding: 15px 45px;
-    box-shadow: 6px 5px 11px 0px grey;
+  padding: 15px 45px;
+  box-shadow: 6px 5px 11px 0px grey;
 }
 
 input:hover,
 select:hover {
-    box-shadow: 4px 3px 7px 0px grey;
-    cursor: pointer;
+  box-shadow: 4px 3px 7px 0px grey;
+  cursor: pointer;
 }
 
 #my_changing_image {
-    width: 52%;
-    height: 250px;
-    margin-left: 24%;
+  width: 52%;
+  height: 250px;
+  margin-left: 24%;
 }
 
-
-.questionQuiz{
-    margin-left: 30% !important;
+.questionQuiz {
+  margin-left: 30% !important;
 }
 
-.rowquestion{
-    text-align: center !important;
+.rowquestion {
+  text-align: center !important;
 }
