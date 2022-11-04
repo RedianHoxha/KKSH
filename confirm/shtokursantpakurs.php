@@ -96,7 +96,6 @@ if (!isset($_SESSION['user'])) {
                     required>
             </div>
             <div>
-
                 <p id="dataKursit">Data Kursit</p>
                 <input class="input100" id="dataKursit" type="date" name="dataKursit" required>
             </div>
