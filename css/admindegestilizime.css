@@ -1,77 +1,76 @@
-body{
-    background-color: lemonchiffon;
-    width: 98%;
-    height: 98%;
+body {
+  background-color: lemonchiffon;
+  width: 98%;
+  height: 98%;
 }
 
-#form{
-text-align: center;
-width: 100%;
-margin-top: 10%;
-
+#form {
+  text-align: center;
+  width: 100%;
+  margin-top: 10%;
 }
 
-p{
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 100%;
+p {
+  text-align: center;
+  text-decoration: none;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 100%;
 }
 
-#welcome{
-        text-align: center;
-        letter-spacing: 3px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        text-shadow: 2px 2px 5px red;
-        font-size: large;
+#welcome {
+  text-align: center;
+  letter-spacing: 3px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-shadow: 2px 2px 5px red;
+  font-size: large;
 }
 
-#KKSH_logo{
-    margin-top: 3%;
-    margin-left: 40%;
-    width: 15%;
-    height: 15%;
-margin-bottom: 2%;
+#KKSH_logo {
+  margin-top: 3%;
+  margin-left: 40%;
+  width: 15%;
+  height: 15%;
+  margin-bottom: 2%;
 }
 
-input{
-    width: 30%;
-    padding: 7px 10px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border-radius: 6px;
-    
+input {
+  width: 30%;
+  padding: 7px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 6px;
 }
 
-#instruktori,#klasa{
-
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  
+#instruktori,
+#klasa {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-left: 5%;
 }
 
-table, td,th {
-    border-collapse: collapse;
-    border: 3px solid red;
-    text-align: center;
-  }
+table,
+td,
+th {
+  border-collapse: collapse;
+  border: 3px solid red;
+  text-align: center;
+}
 
+table {
+  margin-left: 3%;
+}
 
-  table{
-      margin-left: 3%;
-  }
+#organizim_javor {
+  width: 90% !important;
+}
 
-  #organizim_javor{
-    width: 90% !important;
-  }
+#dorpdown {
+  display: inline-flex;
+}
 
-  #dorpdown{
-      display: inline-flex
-  }
+.form-select {
+  margin-left: 42%;
+}
 
-  .form-select {
-      margin-left: 42%;
-  }
-
-#selecto{
-    margin-bottom: 1%;
+#selecto {
+  margin-bottom: 1%;
 }
