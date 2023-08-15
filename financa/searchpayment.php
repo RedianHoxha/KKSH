@@ -52,20 +52,16 @@
 ?>
 
 <!DOCTYPE html>
-
 <head>
     <title>Kryqi i Kuq Shqiptar</title>
     <link rel="stylesheet" type="text/css" href="../css/admindegestilizime.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
 
-        $(document).ready(function () {
+            $(document).ready(function() {
             $('#organizim_javor').after('<div id="nav"></div>');
             var rowsShown = 12;
             var rowsTotal = $('#organizim_javor tbody tr').length;
@@ -77,7 +73,7 @@
             $('#organizim_javor tbody tr').hide();
             $('#organizim_javor tbody tr').slice(0, rowsShown).show();
             $('#nav a:first').addClass('active');
-            $('#nav a').bind('click', function () {
+            $('#nav a').bind('click', function() {
 
                 $('#nav a').removeClass('active');
                 $(this).addClass('active');
@@ -85,47 +81,44 @@
                 var startItem = currPage * rowsShown;
                 var endItem = startItem + rowsShown;
                 $('#organizim_javor tbody tr').css('opacity', '0.0').hide().slice(startItem, endItem).
-                    css('display', 'table-row').animate({
-                        opacity: 1
-                    }, 300);
+                css('display', 'table-row').animate({
+                opacity: 1
+                }, 300);
             });
         });
-    </script>
+        </script>
 </head>
-
 <body></br>
     <div id="add_button">
         <!-- <button class="btn btn-info" onclick="location.href = 'shtokolone.php';" id="addbutton" >Shto kolonen e bankes</button> -->
-        <button class="btn btn-secondary" onclick="location.href = 'financapage.php';" id="myButton">Klasat</button>
-        <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton"> Dil
-            <?php echo decrypt($user) ?>
-        </button><br>
+        <button class="btn btn-secondary" onclick="location.href = 'financapage.php';" id="myButton" >Klasat</button>
+        <button class="btn btn-danger" onclick="location.href = '../authenticate/logout.php';" id="myButton" > Dil <?php echo decrypt($user) ?></button><br>
     </div></br>
     <div id="top-page-right">
-        <form action="searchpayment.php" method="POST">
-            <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search"
-                placeholder="Id, Emer, Mbiemr, Reference">
-            <button class="btn btn-secondary" type="submit" id="search-button">Search</button>
-        </form>
-    </div></br>
+            <form action="searchpayment.php" method="POST"> 
+                <input class="form-group mx-sm-3 mb-2" type="text" name="search" id="search" placeholder = "Id, Emer, Mbiemr, Reference">
+                <button class="btn btn-secondary" type="submit" id="search-button">Search</button>
+            </form>
+            </div></br>
     <div id="tabela">
-        <table id="organizim_javor" class="table table-bordered">
-            <tr>
-                <th>Emri</th>
-                <th>Mbiemri</th>
-                <th>Atesia</th>
-                <th>ID Personale</th>
-                <th>Banka</th>
-                <th>Referenca e Pageses</th>
-                <th>Data Rregjistrimit</th>
-                <th>Data e kursit</th>
-                <th>Orari i Kursit</th>
-                <th>Instruktori</th>
-                <th>Klasa</th>
-            </tr>
-            <tr>
-                <?php 
+            <table id="organizim_javor" class="table table-bordered">  
+                <tr>
+                    <th>Emri</th>
+                    <th>Mbiemri</th>
+                    <th>Atesia</th>
+                    <th>ID Personale</th>
+                    <th>Banka</th>
+                    <th>Referenca e Pageses</th>
+                    <th>Data Rregjistrimit</th>
+                    <th>Data e kursit</th>
+                    <th>Orari i Kursit</th>
+                    <th>Instruktori</th>
+                    <th>Klasa</th>
+                </tr>
+                <tr>
+                    <?php 
                     $firstday = date('Y-m-d');
+                    //$lastday = date('Y-m-d', strtotime("sunday 0 week"));
                     if($fjala <> ""){
                         $sqlquery="SELECT * FROM kursantet WHERE ((Statusi='pabere' AND Datakursit >= '$firstday' AND BankName LIKE '%{$fjala}%')
                                                             OR (Statusi='pabere' AND Datakursit >= '$firstday' AND Emri LIKE '%{$fjalakyc}%')
@@ -135,6 +128,7 @@
                     }else{
                         $sqlquery="SELECT * FROM kursantet WHERE statusi='pabere' AND Datakursit >= '$firstday'";
                     }
+                    // echo $sqlquery;
                     $kursantet=mysqli_query($link, $sqlquery) or die(mysqli_error($link));;
                     while ($row = mysqli_fetch_array($kursantet)) { 
 
@@ -153,45 +147,21 @@
                         $runsqlklasa = mysqli_query($link, $sqlklasa);
                         $rowklasa = mysqli_fetch_array($runsqlklasa);
 
-                        ?>
-                <td>
-                    <?php echo decrypt($row['Emri']); ?>
-                </td>
-                <td>
-                    <?php echo decrypt($row['Mbiemri']); ?>
-                </td>
-                <td>
-                    <?php echo decrypt($row['Atesia']); ?>
-                </td>
-                <td>
-                    <?php echo decrypt($row['PersonalId']); ?>
-                </td>
-                <td>
-                    <?php echo $row['BankName']; ?>
-                </td>
-                <td>
-                    <?php echo $row['BankPayment']; ?>
-                </td>
-                <td>
-                    <?php echo date('d/m/Y',strtotime($row['DataRregjistrimit'])); ?>
-                </td>
-                <td>
-                    <?php echo date('d/m/Y',strtotime($rowkursi['data'])); ?>
-                </td>
-                <td>
-                    <?php echo $rowkursi['orari']; ?>
-                </td>
-                <td>
-                    <?php echo decrypt($rowInstruktori['Emri']);?>
-                    <?php echo decrypt($rowInstruktori['Mbiemri']); ?>
-                </td>
-                <td>
-                    <?php echo decrypt($rowklasa['Emri']); ?>
-                </td>
-            </tr>
-            <?php } ?>
-        </table>
-    </div>
+                        ?> 
+                    <td><?php echo decrypt($row['Emri']); ?></td>
+                    <td><?php echo decrypt($row['Mbiemri']); ?></td>
+                    <td><?php echo decrypt($row['Atesia']); ?></td>
+                    <td><?php echo decrypt($row['PersonalId']); ?></td>
+                    <td><?php echo $row['BankName']; ?></td>
+                    <td><?php echo $row['BankPayment']; ?></td>
+                    <td><?php echo date('d/m/Y',strtotime($row['DataRregjistrimit'])); ?></td>
+                    <td><?php echo date('d/m/Y',strtotime($rowkursi['data'])); ?></td>
+                    <td><?php echo $rowkursi['orari']; ?></td>
+                    <td><?php echo decrypt($rowInstruktori['Emri']);?>  <?php echo decrypt($rowInstruktori['Mbiemri']); ?></td>
+                    <td><?php echo decrypt($rowklasa['Emri']); ?></td>
+                </tr> 
+                <?php } ?>
+            </table>
+        </div>
 </body>
-
 </html>

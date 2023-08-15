@@ -1,58 +1,55 @@
+
 body {
-  background-color: #eeeee4;
+    background-color: #eeeee4;
 }
 
 .get-in-touch .title {
-  text-align: center;
-  letter-spacing: 2%;
-  font-size: 3.2em;
-  padding-bottom: 2%;
-  color: #fa2323;
-  background: #fa2323;
-  background: -moz-linear-gradient(left, #f4524d 0%, #fa2323 100%) !important;
-  background: -webkit-linear-gradient(
-    left,
-    #f4524d 0%,
-    #fa2323 100%
-  ) !important;
-  background: linear-gradient(to right, #f4524d 0%, #fa2323 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
+    text-align: center;
+    letter-spacing: 2%;
+    font-size: 3.2em;
+    padding-bottom: 2%;
+    color: #fa2323;
+    background: #fa2323;
+    background: -moz-linear-gradient(left, #f4524d 0%, #fa2323 100%) !important;
+    background: -webkit-linear-gradient(left, #f4524d 0%, #fa2323 100%) !important;
+    background: linear-gradient(to right, #f4524d 0%, #fa2323 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
 }
 
 .get-in-touch {
-  max-width: 70%;
-  margin: auto;
-  margin-top: 2%;
-  /* background-color: grey;
+    max-width: 70%;
+    margin: auto;
+    margin-top: 2%;
+    /* background-color: grey;
     opacity:0.6; */
 }
 
 .contact-form .submit-btn {
-  display: inline-block;
-  background-color: #e90024;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 2%;
-  padding: 1% 1%;
-  border: none;
-  width: 40%;
-  cursor: pointer;
-  border-radius: 25px;
+    display: inline-block;
+    background-color: #e90024;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2%;
+    padding: 1% 1%;
+    border: none;
+    width: 40%;
+    cursor: pointer;
+    border-radius: 25px;
 }
 
 #kksh_logo {
-  width: 10%;
-  height: 10%;
-  margin-right: 5%;
+    width: 10%;
+    height: 10%;
+    margin-right: 5%;
 }
 
 #kksh_logo100 {
-  width: 13%;
-  height: 13%;
-  margin-left: 5%;
+    width: 13%;
+    height: 13%;
+    margin-left: 5%;
 }
 
-#header {
-  display: inline-flex;
+#header{
+    display: inline-flex;
 }

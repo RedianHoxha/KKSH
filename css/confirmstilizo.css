@@ -1,40 +1,39 @@
-table,
-td,
-th {
-  border-collapse: collapse;
-  border: 3px solid red;
+table, td,th {
+    border-collapse: collapse;
+    border: 3px solid red;
 }
 
-table {
-  margin-left: 1%;
-  margin-top: 2%;
-  width: 90%;
+table{
+    margin-left: 1%;
+    margin-top: 2%;
+    width: 90%;
 }
 
-th {
-  text-align: center;
-  text-transform: uppercase;
+th{
+    text-align: center;
+    text-transform: uppercase;
 }
 
-td {
-  text-align: center;
+td{
+    text-align: center;
 }
 
-body {
-  background-color: lemonchiffon;
+body{
+    background-color: lemonchiffon;
 }
 
-#top-page-left {
-  display: inline-flex;
-  margin-bottom: 1%;
-  margin-top: 2%;
+#top-page-left{
+    display: inline-flex;
+    margin-bottom: 1%;
+    margin-top: 2%;
+}
+  
+#logout{
+    margin-bottom: 1%;
+    margin-top: 2%;
 }
 
-#logout {
-  margin-bottom: 1%;
-  margin-top: 2%;
+#selection-criteria{
+    margin-left: 1%;
 }
 
-#selection-criteria {
-  margin-left: 1%;
-}
