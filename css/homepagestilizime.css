@@ -1,47 +1,49 @@
-body {
-  background-color: grey;
-  width: 98%;
-  height: 98%;
+body{
+    background-color: grey;
+    width: 98%;
+    height: 98%;
 }
 
-#form {
-  text-align: center;
+#form{
+text-align: center;
 }
 
-#welcome {
-  text-align: center;
-  letter-spacing: 3px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  text-shadow: 2px 2px 5px red;
-  font-size: large;
+#welcome{
+        text-align: center;
+        letter-spacing: 3px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-shadow: 2px 2px 5px red;
+        font-size: large;
 }
 
-#KKSH_logo {
-  margin-top: 5%;
-  margin-left: 43.5%;
-  width: 13%;
-  height: 13%;
+
+#KKSH_logo{
+    margin-top: 5%;
+    margin-left: 43.5%;
+    width: 13%;
+    height: 13%;
+
 }
 
-#password,
-#username {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-size: large;
+#password, #username{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+
 }
 
-#password-txt,
-#username-txt {
-  width: 30%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border-radius: 8px;
+#password-txt,#username-txt{
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 8px;
 }
 
-#login-button {
-  border-radius: 8px;
-  width: 10%;
-  box-sizing: border-box;
-  text-align: center;
-  font-size: large;
+#login-button{
+    border-radius: 8px;
+    width: 10%;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: large;
+
 }

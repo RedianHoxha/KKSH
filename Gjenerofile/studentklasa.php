@@ -2,7 +2,7 @@
 require_once('../methods/extra_function.php');
 include('../authenticate/dbconnection.php');
 //$link = mysqli_connect("localhost", "root", "", "kksh");
-if ($link === false) {
+if($link === false){
    die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
@@ -12,10 +12,10 @@ $dataKursit = $_GET['data'];
 $orari = $_GET['orari'];
 
 $jsonData = array();
-$jsonDataCopy = array();
+$jsonDataCopy= array();
 
-$queryklasa = "SELECT * FROM klasa WHERE Emri = '$klasa'";
-$klasa = mysqli_query($link, $queryklasa);
+$queryklasa ="SELECT * FROM klasa WHERE Emri = '$klasa'";
+$klasa=mysqli_query($link, $queryklasa);
 $rowklasa = mysqli_fetch_array($klasa);
 $idklase = $rowklasa['ID'];
 
@@ -27,20 +27,21 @@ while ($array = mysqli_fetch_row($resultinsert)) {
    $jsonDataCopy[] = $array;
 
    $jsonDataCopy[0] = $increment;
-   $jsonDataCopy[1] = date('d/m/Y', strtotime($array[0]));
+   $jsonDataCopy[1] = date('d/m/Y',strtotime($array[0]));
    $jsonDataCopy[2] = "A";
    $jsonDataCopy[3] = decrypt($array[1]);
    $jsonDataCopy[4] = decrypt($array[2]);
    $jsonDataCopy[5] = decrypt($array[3]);
-   $jsonDataCopy[6] = date('d/m/Y', strtotime($array[4]));
+   $jsonDataCopy[6] = date('d/m/Y',strtotime($array[4]));
    $jsonDataCopy[7] = $array[5];
    $jsonDataCopy[8] = decrypt($array[6]);
    $jsonDataCopy[9] = decrypt($array[7]);
-
+   
    $jsonData[] = $jsonDataCopy;
-   $jsonDataCopy = [];
+   $jsonDataCopy=[];
 
-   $increment += 1;
+   $increment +=1;
 }
 echo json_encode($jsonData);
 ?>
+

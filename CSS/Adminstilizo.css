@@ -1,18 +1,18 @@
 body {
-  background-color: seashell;
+    background-color: seashell;
 }
 
-#loginbutton {
-  margin-left: 90%;
-  margin-top: 3%;
+#loginbutton{
+    margin-left: 90%;
+    margin-top: 3%;
 }
 
-#mainaddbutton {
-  margin-top: 10%;
-  margin-left: 40%;
+#mainaddbutton{
+    margin-top: 10%;
+    margin-left: 40%;
 }
 
-#filebutton {
-  margin-top: 5%;
-  margin-left: 33%;
+#filebutton{
+    margin-top: 5%;
+    margin-left: 33%;
 }

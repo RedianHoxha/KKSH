@@ -1,34 +1,36 @@
-#hello-p {
-  text-align: center;
-  text-decoration: none;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  text-shadow: 2px 2px 5px red;
-  font-size: large;
-  font-size: 200%;
+#hello-p{
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 2px 2px 5px red;
+    font-size: large;
+    font-size: 200%;
 }
-p {
-  text-align: center;
-  text-decoration: none;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  font-size: 100%;
-}
-
-#Form {
-  width: 100%;
-  text-align: center;
+p{
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 100%;
 }
 
-body {
-  background-color: #eeeee4;
-  width: 99%;
+#Form{
+    width: 100%;
+    text-align: center;
+
 }
 
-input {
-  width: 30%;
-  padding: 7px 10px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border-radius: 6px;
+body{
+    background-color: #eeeee4;
+    width: 99%;
+}
+
+input{
+    width: 30%;
+    padding: 7px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    
 }
 
 /* #rregjistro-button {
@@ -43,59 +45,56 @@ input {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   } */
 
-#dega,
-#orari,
-#roli {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  height: 20%;
-}
+  #dega,#orari,#roli{
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      height: 20%;
+    }
 
-#emri {
-  display: inline-flex;
-}
+  #emri{
+      display: inline-flex; 
+  }
 
-#datvendlindje {
-  display: inline-flex;
-}
+  #datvendlindje{
+      display: inline-flex;
+      
+  }
 
-#mbiemri-txt {
-  margin-left: 2%;
-}
-#emri-txt {
-  margin-right: 2%;
-}
+  #mbiemri-txt{
+      margin-left: 2%;
+     
+  }
+  #emri-txt{
+    margin-right: 2%;
+  }
+  
 
-#atesia-txt,
-#vendbanim-txt,
-#datelindja-txt {
-  margin-right: 2%;
-  margin-left: 2%;
-}
+  #atesia-txt,#vendbanim-txt,#datelindja-txt{
+    margin-right: 2%;
+    margin-left: 2%;
+  }
 
-#txtHint {
-  text-align: center;
-  /* margin-left: 10%; */
-}
+  #txtHint{
+    text-align: center;
+    /* margin-left: 10%; */
+  }
 
-table,
-td,
-th {
-  border-collapse: collapse;
-  border: 3px solid red;
-}
+  table, td,th {
+    border-collapse: collapse;
+    border: 3px solid red;
+  }
 
-table {
-  width: 80%;
-}
+  table{
+    width: 80%;
+  }
 
-th {
-  text-align: center;
-  text-transform: uppercase;
-}
-td {
-  text-align: center;
-}
+  th{
+    text-align: center;
+    text-transform: uppercase;
+  }
+  td{
+    text-align: center;
+  }
 
-#top-page {
-  margin-top: 2%;
-}
+  #top-page{
+      margin-top: 2%;
+  }

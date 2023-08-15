@@ -1,0 +1,528 @@
+[29-Jun-2022 22:50:15 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/kksh/public_html/autoshkollat/admin/admindege.php on line 190
+[30-Jun-2022 18:04:15 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/kksh/public_html/autoshkollat/admin/admindege.php on line 189
+[30-Jun-2022 18:05:08 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/kksh/public_html/autoshkollat/admin/admindege.php on line 189
+[30-Jun-2022 18:42:13 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/kksh/public_html/autoshkollat/admin/admindege.php on line 195
+[01-Jul-2022 07:58:32 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/kksh/public_html/autoshkollat/admin/searchcourse.php on line 203
+[01-Jul-2022 16:07:41 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/kksh/public_html/autoshkollat/admin/admindege.php on line 195
+[19-Jul-2022 15:02:31 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/kksh/public_html/autoshkollat/admin/admindege.php on line 195
+[26-Jul-2022 14:35:27 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/kksh/public_html/autoshkollat/admin/admindege.php on line 196
+[27-Jul-2022 12:41:56 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/kksh/public_html/autoshkollat/admin/admindege.php on line 196
+[27-Jul-2022 13:21:57 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/kksh/public_html/autoshkollat/admin/admindege.php on line 196
+[05-Aug-2022 17:52:59 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/kksh/public_html/autoshkollat/admin/admindege.php on line 196
+[06-Aug-2022 13:49:08 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, bool given in /home/kksh/public_html/autoshkollat/admin/admindege.php on line 196
+[09-Aug-2022 10:06:02 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[09-Aug-2022 10:06:02 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[09-Aug-2022 10:06:02 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[09-Aug-2022 10:06:02 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[09-Aug-2022 10:06:02 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[09-Aug-2022 11:00:39 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[09-Aug-2022 11:00:39 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[09-Aug-2022 11:00:39 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[09-Aug-2022 11:00:39 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[09-Aug-2022 11:00:39 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[13-Aug-2022 12:04:54 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[13-Aug-2022 12:04:54 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[13-Aug-2022 12:04:54 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[13-Aug-2022 12:04:54 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[13-Aug-2022 12:04:54 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[13-Aug-2022 12:36:24 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[13-Aug-2022 12:36:24 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[13-Aug-2022 12:36:24 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[13-Aug-2022 12:36:24 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[13-Aug-2022 12:36:24 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[18-Aug-2022 22:55:22 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[18-Aug-2022 22:55:22 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[18-Aug-2022 22:55:22 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[18-Aug-2022 22:55:22 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[18-Aug-2022 22:55:22 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[28-Aug-2022 07:13:31 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[28-Aug-2022 07:13:31 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[28-Aug-2022 07:13:31 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[28-Aug-2022 07:13:31 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[28-Aug-2022 07:13:31 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[02-Sep-2022 15:26:31 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[02-Sep-2022 15:26:31 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[02-Sep-2022 15:26:31 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[02-Sep-2022 15:26:31 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[02-Sep-2022 15:26:31 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[03-Sep-2022 13:28:40 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[03-Sep-2022 13:28:40 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[03-Sep-2022 13:28:40 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[03-Sep-2022 13:28:40 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[03-Sep-2022 13:28:40 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[05-Sep-2022 13:45:18 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[05-Sep-2022 13:45:18 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[05-Sep-2022 13:45:18 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[05-Sep-2022 13:45:18 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[05-Sep-2022 13:45:18 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[06-Sep-2022 08:57:18 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[06-Sep-2022 08:57:18 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[06-Sep-2022 08:57:18 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[06-Sep-2022 08:57:18 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[06-Sep-2022 08:57:18 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[06-Sep-2022 08:57:29 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[06-Sep-2022 08:57:29 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[06-Sep-2022 08:57:29 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[06-Sep-2022 08:57:29 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[06-Sep-2022 08:57:29 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[07-Sep-2022 13:29:27 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[07-Sep-2022 13:29:27 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[07-Sep-2022 13:29:27 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[07-Sep-2022 13:29:27 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[07-Sep-2022 13:29:27 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[10-Sep-2022 06:37:23 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[10-Sep-2022 06:37:23 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[10-Sep-2022 06:37:23 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[10-Sep-2022 06:37:23 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[10-Sep-2022 06:37:23 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[13-Sep-2022 07:07:18 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[13-Sep-2022 07:07:18 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[13-Sep-2022 07:07:18 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[13-Sep-2022 08:04:31 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[13-Sep-2022 08:04:31 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[13-Sep-2022 08:04:31 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[13-Sep-2022 08:04:31 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[13-Sep-2022 08:04:31 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[13-Sep-2022 08:35:38 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[13-Sep-2022 08:35:38 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[13-Sep-2022 08:35:38 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[14-Sep-2022 08:20:20 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[14-Sep-2022 08:20:20 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[14-Sep-2022 08:20:20 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[14-Sep-2022 08:20:20 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[14-Sep-2022 08:20:20 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[14-Sep-2022 09:00:32 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shikooret.php on line 114
+[14-Sep-2022 09:00:32 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shikooret.php on line 124
+[14-Sep-2022 13:35:31 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[14-Sep-2022 13:35:31 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[14-Sep-2022 13:35:31 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[14-Sep-2022 15:32:42 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[14-Sep-2022 15:32:42 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[14-Sep-2022 15:32:42 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[14-Sep-2022 15:32:42 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[14-Sep-2022 15:32:42 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[17-Sep-2022 06:49:48 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[17-Sep-2022 06:49:48 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[17-Sep-2022 06:49:48 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[17-Sep-2022 06:49:48 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[17-Sep-2022 06:49:48 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[17-Sep-2022 15:27:16 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[17-Sep-2022 15:27:16 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[17-Sep-2022 15:27:16 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[17-Sep-2022 15:27:16 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[17-Sep-2022 15:27:16 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[17-Sep-2022 21:47:27 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[17-Sep-2022 21:47:27 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[17-Sep-2022 21:47:27 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[17-Sep-2022 21:47:27 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[17-Sep-2022 21:47:27 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[21-Sep-2022 21:30:43 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[21-Sep-2022 21:30:43 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[21-Sep-2022 21:30:43 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[21-Sep-2022 21:30:43 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[21-Sep-2022 21:30:43 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[21-Sep-2022 21:36:42 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[21-Sep-2022 21:36:42 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[21-Sep-2022 21:36:42 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[21-Sep-2022 21:36:42 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[21-Sep-2022 21:36:42 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[26-Sep-2022 13:50:10 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[26-Sep-2022 13:50:10 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[26-Sep-2022 13:50:10 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[26-Sep-2022 13:50:10 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[26-Sep-2022 13:50:10 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[29-Sep-2022 13:04:45 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[29-Sep-2022 13:04:45 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[29-Sep-2022 13:04:45 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[30-Sep-2022 11:42:48 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[30-Sep-2022 11:42:48 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[30-Sep-2022 11:42:48 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[30-Sep-2022 11:42:48 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[30-Sep-2022 11:42:48 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[01-Oct-2022 06:58:17 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[01-Oct-2022 06:58:17 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[01-Oct-2022 06:58:17 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[01-Oct-2022 06:58:17 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[01-Oct-2022 06:58:17 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[02-Oct-2022 06:52:01 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[02-Oct-2022 06:52:01 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[02-Oct-2022 06:52:01 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[02-Oct-2022 06:52:01 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[02-Oct-2022 06:52:01 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[07-Oct-2022 14:19:13 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[07-Oct-2022 14:19:13 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[07-Oct-2022 14:19:13 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[07-Oct-2022 14:19:21 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[07-Oct-2022 14:19:21 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[07-Oct-2022 14:19:21 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[07-Oct-2022 14:19:21 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[07-Oct-2022 14:19:21 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[11-Oct-2022 13:28:55 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[11-Oct-2022 13:28:55 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[11-Oct-2022 13:28:55 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[14-Oct-2022 12:56:08 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[14-Oct-2022 12:56:08 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[14-Oct-2022 12:56:08 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[14-Oct-2022 15:12:03 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[14-Oct-2022 15:12:03 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[14-Oct-2022 15:12:03 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[14-Oct-2022 16:00:13 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[14-Oct-2022 16:00:13 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[14-Oct-2022 16:00:13 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[14-Oct-2022 16:00:13 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[14-Oct-2022 16:00:13 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[14-Oct-2022 17:47:39 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[14-Oct-2022 17:47:39 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[14-Oct-2022 17:47:39 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[14-Oct-2022 17:47:39 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[14-Oct-2022 17:47:39 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[14-Oct-2022 17:47:47 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[14-Oct-2022 17:47:47 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[14-Oct-2022 17:47:47 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[14-Oct-2022 17:47:47 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[14-Oct-2022 17:47:47 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[14-Oct-2022 17:48:30 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[14-Oct-2022 17:48:30 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[14-Oct-2022 17:48:30 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[19-Oct-2022 18:25:59 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[19-Oct-2022 18:25:59 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[19-Oct-2022 18:25:59 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[19-Oct-2022 18:25:59 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[19-Oct-2022 18:25:59 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[04-Nov-2022 22:05:48 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shikooret.php on line 114
+[04-Nov-2022 22:05:48 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shikooret.php on line 124
+[10-Nov-2022 21:12:21 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[10-Nov-2022 21:12:21 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[10-Nov-2022 21:12:21 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[10-Nov-2022 21:12:21 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[10-Nov-2022 21:12:21 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[11-Nov-2022 17:58:12 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[11-Nov-2022 17:58:12 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[11-Nov-2022 17:58:12 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[25-Nov-2022 08:35:50 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[25-Nov-2022 08:35:50 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[25-Nov-2022 08:35:50 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[25-Nov-2022 08:35:50 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[25-Nov-2022 08:35:50 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[25-Nov-2022 13:54:29 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[25-Nov-2022 13:54:29 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[25-Nov-2022 13:54:29 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[25-Nov-2022 13:54:29 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[25-Nov-2022 13:54:29 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[06-Dec-2022 10:58:27 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[06-Dec-2022 10:58:27 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[06-Dec-2022 10:58:27 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[06-Dec-2022 10:58:27 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[06-Dec-2022 10:58:27 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[15-Dec-2022 06:17:38 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[15-Dec-2022 06:17:38 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[15-Dec-2022 06:17:38 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[15-Dec-2022 06:17:38 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[15-Dec-2022 06:17:38 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[22-Dec-2022 15:19:40 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[22-Dec-2022 15:19:40 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[22-Dec-2022 15:19:40 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[22-Dec-2022 15:19:40 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[22-Dec-2022 15:19:40 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[09-Jan-2023 09:28:27 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[09-Jan-2023 09:28:27 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[09-Jan-2023 09:28:27 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[17-Jan-2023 13:00:50 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[17-Jan-2023 13:00:50 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[17-Jan-2023 13:00:50 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[17-Jan-2023 13:00:50 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[17-Jan-2023 13:00:50 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[27-Jan-2023 16:48:15 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[27-Jan-2023 16:48:15 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[27-Jan-2023 16:48:15 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[27-Jan-2023 16:48:15 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[27-Jan-2023 16:48:15 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[17-Feb-2023 17:15:11 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[17-Feb-2023 17:15:11 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[17-Feb-2023 17:15:11 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[17-Feb-2023 17:15:11 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[20-Feb-2023 09:19:15 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:19:19 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:19:30 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:19:32 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:21:10 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:21:35 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:21:38 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:21:46 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:21:48 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:21:54 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:22:11 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:22:17 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:22:19 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:22:29 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:22:43 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:23:08 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:23:17 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:23:19 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:23:25 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:23:35 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:23:42 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:23:44 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:23:51 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:23:53 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:24:05 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:24:07 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:24:15 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:24:20 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:24:31 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:24:32 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:24:38 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:24:39 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:24:44 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:24:46 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:24:56 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:24:58 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:25:07 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:25:09 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:25:16 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:25:18 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:25:20 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:26:13 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:26:21 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:26:23 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:26:30 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:26:32 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:26:39 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:26:41 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:26:50 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:26:54 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 09:26:55 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:37:25 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:37:25 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:37:47 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:38:02 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:38:04 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:38:14 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:38:16 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:38:25 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:38:28 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:38:36 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:38:39 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:38:47 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:39:01 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:39:03 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:39:08 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:39:14 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:39:27 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:39:29 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:39:36 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:39:39 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[20-Feb-2023 10:39:40 UTC] PHP Warning:  mysqli_connect(): Headers and client library minor version mismatch. Headers:100518 Library:30120 in /home2/kksh/public_html/autoshkollat/authenticate/dbconnection.php on line 2
+[22-Feb-2023 21:17:57 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[22-Feb-2023 21:17:57 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[22-Feb-2023 21:17:57 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[22-Feb-2023 21:17:57 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[22-Feb-2023 21:17:57 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[23-Feb-2023 08:31:43 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[23-Feb-2023 08:31:43 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[23-Feb-2023 08:31:43 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[03-Mar-2023 10:42:33 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[03-Mar-2023 10:42:33 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[03-Mar-2023 10:42:33 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[03-Mar-2023 17:18:16 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[03-Mar-2023 17:18:16 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[03-Mar-2023 17:18:16 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[03-Mar-2023 17:18:16 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[03-Mar-2023 17:18:16 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[07-Mar-2023 08:27:33 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[07-Mar-2023 08:27:33 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[07-Mar-2023 08:27:33 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[07-Mar-2023 12:59:31 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[07-Mar-2023 12:59:31 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[07-Mar-2023 12:59:31 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[10-Mar-2023 19:06:04 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[10-Mar-2023 19:06:04 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[10-Mar-2023 19:06:04 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[10-Mar-2023 19:06:04 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[10-Mar-2023 19:06:04 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[12-Mar-2023 19:22:10 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[12-Mar-2023 19:22:10 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[12-Mar-2023 19:22:10 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[12-Mar-2023 19:22:10 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[12-Mar-2023 19:22:10 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[14-Mar-2023 13:49:35 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[14-Mar-2023 13:49:35 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[14-Mar-2023 13:49:35 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[14-Mar-2023 13:49:35 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[14-Mar-2023 13:49:35 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[16-Mar-2023 11:59:46 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[16-Mar-2023 11:59:46 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[16-Mar-2023 11:59:46 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[16-Mar-2023 11:59:46 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[16-Mar-2023 11:59:46 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[16-Mar-2023 15:00:49 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[16-Mar-2023 15:00:49 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[16-Mar-2023 15:00:49 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[17-Mar-2023 11:46:13 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[17-Mar-2023 11:46:13 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[17-Mar-2023 11:46:13 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[17-Mar-2023 11:46:13 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[17-Mar-2023 11:46:13 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[17-Mar-2023 13:32:02 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[17-Mar-2023 13:32:02 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[17-Mar-2023 13:32:02 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[21-Mar-2023 11:35:12 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[21-Mar-2023 11:35:12 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[21-Mar-2023 11:35:12 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[21-Mar-2023 11:35:12 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[21-Mar-2023 11:35:12 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[29-Mar-2023 10:24:35 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[29-Mar-2023 10:24:35 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[29-Mar-2023 10:24:35 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[30-Mar-2023 10:18:35 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[30-Mar-2023 10:18:35 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[30-Mar-2023 10:18:35 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[05-Apr-2023 13:46:57 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[05-Apr-2023 13:46:57 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[05-Apr-2023 13:46:57 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[05-Apr-2023 14:06:01 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[05-Apr-2023 14:06:01 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[05-Apr-2023 14:06:01 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[05-Apr-2023 14:06:01 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[05-Apr-2023 14:06:01 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[11-Apr-2023 10:59:58 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[11-Apr-2023 10:59:58 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[11-Apr-2023 10:59:58 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[12-Apr-2023 07:26:16 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[12-Apr-2023 07:26:16 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[12-Apr-2023 07:26:16 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[12-Apr-2023 08:37:38 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[12-Apr-2023 08:37:38 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[12-Apr-2023 08:37:38 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[12-Apr-2023 13:22:57 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[12-Apr-2023 13:22:57 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[12-Apr-2023 13:22:57 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[18-Apr-2023 08:18:39 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[18-Apr-2023 08:18:39 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[18-Apr-2023 08:18:39 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[20-Apr-2023 08:58:17 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[20-Apr-2023 08:58:17 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[20-Apr-2023 08:58:17 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[20-Apr-2023 12:18:49 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[20-Apr-2023 12:18:49 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[20-Apr-2023 12:18:49 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[20-Apr-2023 12:45:55 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[20-Apr-2023 12:45:55 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[20-Apr-2023 12:45:55 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[20-Apr-2023 13:13:29 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[20-Apr-2023 13:13:29 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[20-Apr-2023 13:13:29 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[26-Apr-2023 08:19:59 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[26-Apr-2023 08:19:59 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[26-Apr-2023 08:19:59 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[26-Apr-2023 09:13:31 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[26-Apr-2023 09:13:31 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[26-Apr-2023 09:13:31 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[26-Apr-2023 20:11:19 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[26-Apr-2023 20:11:19 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[26-Apr-2023 20:11:19 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[26-Apr-2023 20:11:19 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[26-Apr-2023 20:11:19 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[27-Apr-2023 08:33:56 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[27-Apr-2023 08:33:56 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[27-Apr-2023 08:33:56 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[02-May-2023 11:22:01 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[02-May-2023 11:22:01 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[02-May-2023 11:22:01 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[02-May-2023 16:02:47 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[02-May-2023 16:02:47 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[02-May-2023 16:02:47 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[04-May-2023 06:31:06 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[04-May-2023 06:31:06 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[04-May-2023 06:31:06 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[08-May-2023 15:45:12 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[08-May-2023 15:45:12 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[08-May-2023 15:45:12 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[08-May-2023 15:45:12 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[08-May-2023 15:45:12 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[12-May-2023 10:45:01 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[12-May-2023 10:45:01 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[12-May-2023 10:45:01 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[12-May-2023 10:45:01 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[12-May-2023 10:45:01 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[16-May-2023 19:34:00 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[16-May-2023 19:34:00 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[16-May-2023 19:34:00 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[16-May-2023 19:34:00 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[16-May-2023 19:34:00 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[02-Jun-2023 09:04:16 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[02-Jun-2023 09:04:16 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[02-Jun-2023 09:04:16 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[02-Jun-2023 09:04:16 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[02-Jun-2023 09:04:16 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[05-Jun-2023 08:02:58 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[05-Jun-2023 08:02:58 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[05-Jun-2023 08:02:58 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[06-Jun-2023 09:44:58 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[06-Jun-2023 09:44:58 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[06-Jun-2023 09:44:58 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[06-Jun-2023 09:44:58 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[06-Jun-2023 09:44:58 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[16-Jun-2023 12:00:22 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[16-Jun-2023 12:00:22 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[16-Jun-2023 12:00:22 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[16-Jun-2023 12:00:22 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[16-Jun-2023 12:00:22 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[23-Jun-2023 12:54:39 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 72
+[23-Jun-2023 12:54:39 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 80
+[23-Jun-2023 12:54:39 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/shtoplanifikim.php on line 93
+[29-Jun-2023 11:15:08 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[29-Jun-2023 11:15:08 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[29-Jun-2023 11:15:08 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[29-Jun-2023 11:15:08 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[29-Jun-2023 11:15:08 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[29-Jun-2023 11:15:11 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[29-Jun-2023 11:15:11 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[29-Jun-2023 11:15:11 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[29-Jun-2023 11:15:11 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[29-Jun-2023 11:15:11 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[29-Jun-2023 11:15:12 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[29-Jun-2023 11:15:12 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[29-Jun-2023 11:15:12 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[29-Jun-2023 11:15:12 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[29-Jun-2023 11:15:12 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[29-Jun-2023 11:15:14 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[29-Jun-2023 11:15:14 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[29-Jun-2023 11:15:14 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[29-Jun-2023 11:15:14 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[29-Jun-2023 11:15:14 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[29-Jun-2023 11:15:15 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[29-Jun-2023 11:15:15 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[29-Jun-2023 11:15:15 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[29-Jun-2023 11:15:15 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[29-Jun-2023 11:15:15 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[29-Jun-2023 12:06:20 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[29-Jun-2023 12:06:20 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[29-Jun-2023 12:06:20 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[29-Jun-2023 12:06:20 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[29-Jun-2023 12:06:20 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[29-Jun-2023 12:06:22 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[29-Jun-2023 12:06:22 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[29-Jun-2023 12:06:22 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[29-Jun-2023 12:06:22 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[29-Jun-2023 12:06:22 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[29-Jun-2023 12:06:26 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[29-Jun-2023 12:06:26 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[29-Jun-2023 12:06:26 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[29-Jun-2023 12:06:26 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[29-Jun-2023 12:06:26 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[29-Jun-2023 12:06:27 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[29-Jun-2023 12:06:27 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[29-Jun-2023 12:06:27 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[29-Jun-2023 12:06:27 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[29-Jun-2023 12:06:27 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[29-Jun-2023 12:57:16 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[29-Jun-2023 12:57:16 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[29-Jun-2023 12:57:16 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[29-Jun-2023 12:57:16 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[29-Jun-2023 12:57:16 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
+[23-Jul-2023 14:13:04 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 100
+[23-Jul-2023 14:13:04 UTC] PHP Notice:  Undefined variable: user in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 126
+[23-Jul-2023 14:13:04 UTC] PHP Notice:  Undefined variable: dega in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 137
+[23-Jul-2023 14:13:04 UTC] PHP Notice:  Undefined variable: idqyteti in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 194
+[23-Jul-2023 14:13:04 UTC] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home2/kksh/public_html/autoshkollat/admin/admindege.php on line 198
